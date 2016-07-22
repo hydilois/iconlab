@@ -58,6 +58,7 @@ public class IconlabApp {
      * @param args the command line arguments
      * @throws UnknownHostException if the local host name could not be resolved into an address
      */
+    //Un petit comentaire juste pour faire le test
     public static void main(String[] args) throws UnknownHostException {
         SpringApplication app = new SpringApplication(IconlabApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
