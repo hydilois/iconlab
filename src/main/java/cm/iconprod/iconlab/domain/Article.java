@@ -35,7 +35,7 @@ public class Article implements Serializable {
 
     @Column(name = "date_pub")
     private LocalDate datePub;
-
+    //cool la modif
     @Lob
     @Column(name = "fichier")
     private byte[] fichier;
