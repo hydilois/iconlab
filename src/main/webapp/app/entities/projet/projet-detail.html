@@ -1,0 +1,53 @@
+
+<div>
+    <h2><span>Projet</span> {{vm.projet.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Nom</span></dt>
+        <dd>
+            <span>{{vm.projet.nom}}</span>
+        </dd>
+        <dt><span>Code</span></dt>
+        <dd>
+            <span>{{vm.projet.code}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.projet.description}}</span>
+        </dd>
+        <dt><span>Fichier Projet</span></dt>
+        <dd>
+            <div ng-if="vm.projet.fichierProjet">
+                <a ng-click="vm.openFile(vm.projet.fichierProjetContentType, vm.projet.fichierProjet)">open</a>
+                {{vm.projet.fichierProjetContentType}}, {{vm.byteSize(vm.projet.fichierProjet)}}
+            </div>
+        </dd>
+        <dt><span>Date Debut</span></dt>
+        <dd>
+            <span>{{vm.projet.dateDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Date Fin</span></dt>
+        <dd>
+            <span>{{vm.projet.dateFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Actif</span></dt>
+        <dd>
+            <span>{{vm.projet.actif}}</span>
+        </dd>
+        <dt><span>Compte</span></dt>
+        <dd>
+            <a ui-sref="compte-detail({id:vm.projet.compte.id})">{{vm.projet.compte.id}}</a>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.projet.user.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,41 @@
+
+<div>
+    <h2><span>Article</span> {{vm.article.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Titre</span></dt>
+        <dd>
+            <span>{{vm.article.titre}}</span>
+        </dd>
+        <dt><span>Contenu</span></dt>
+        <dd>
+            <span>{{vm.article.contenu}}</span>
+        </dd>
+        <dt><span>Date Pub</span></dt>
+        <dd>
+            <span>{{vm.article.datePub | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Fichier</span></dt>
+        <dd>
+            <div ng-if="vm.article.fichier">
+                <a ng-click="vm.openFile(vm.article.fichierContentType, vm.article.fichier)">open</a>
+                {{vm.article.fichierContentType}}, {{vm.byteSize(vm.article.fichier)}}
+            </div>
+        </dd>
+        <dt><span>Actif</span></dt>
+        <dd>
+            <span>{{vm.article.actif}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.article.user.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

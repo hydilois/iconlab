@@ -1,0 +1,106 @@
+entity Compte{
+	nom String required
+    logo ImageBlob
+    actif Boolean
+}
+
+entity Projet{
+	nom String required
+    code String
+    description String 
+    fichierProjet AnyBlob 
+    dateDebut LocalDate
+    dateFin LocalDate
+    actif Boolean
+}
+
+entity Documents{
+	titre String required
+    fichier AnyBlob required
+    mode Mode
+    actif Boolean
+}
+enum Mode{
+	PUBLIC,
+    PRIVE
+}
+
+entity Article{
+	titre String required
+    contenu String required
+    datePub LocalDate
+    fichier AnyBlob
+    actif Boolean
+}
+entity Commentaire{
+	contenu String required
+    datePost ZonedDateTime
+    actif Boolean
+}
+
+entity PointAvancement{
+	libelle String required
+    description String
+    fichier AnyBlob
+    datePub ZonedDateTime
+    actif Boolean
+}
+
+entity Tache{
+	nom String
+    description String
+    fichierJoint AnyBlob
+    role Role
+    dateDebut ZonedDateTime
+    dateFin ZonedDateTime
+    actif Boolean
+}
+
+enum  Role{
+	GRH,
+    FINANCE,
+    LOGISTIQUE,
+    EXECUTIVE
+}
+
+entity MessageHierachique{
+	contenu String required
+    fichier AnyBlob
+    date ZonedDateTime required
+    status Boolean
+}
+
+relationship OneToMany{
+	User{compte} to Compte
+}
+
+relationship OneToMany{
+	User{article} to Article
+}
+relationship OneToMany{
+	User{documents} to Documents
+}
+relationship OneToMany{
+	User{projet} to Projet
+}
+relationship OneToMany{
+	Compte{projet} to Projet
+}
+relationship OneToMany{
+	User{tache} to Tache
+}
+relationship OneToMany{
+	Projet{message} to MessageHierachique
+}
+relationship OneToMany{
+	Projet{commentaire} to Commentaire
+}
+relationship OneToMany{
+	Projet{tache} to Tache
+}
+
+relationship OneToMany{
+	Tache{pointAvancement} to PointAvancement
+}
+
+paginate all with pagination

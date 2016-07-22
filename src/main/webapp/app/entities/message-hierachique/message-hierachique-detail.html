@@ -1,0 +1,37 @@
+
+<div>
+    <h2><span>Message Hierachique</span> {{vm.messageHierachique.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Contenu</span></dt>
+        <dd>
+            <span>{{vm.messageHierachique.contenu}}</span>
+        </dd>
+        <dt><span>Fichier</span></dt>
+        <dd>
+            <div ng-if="vm.messageHierachique.fichier">
+                <a ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">open</a>
+                {{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}
+            </div>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{vm.messageHierachique.date | date:'medium'}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.messageHierachique.status}}</span>
+        </dd>
+        <dt><span>Projet</span></dt>
+        <dd>
+            <a ui-sref="projet-detail({id:vm.messageHierachique.projet.id})">{{vm.messageHierachique.projet.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

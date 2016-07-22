@@ -1,0 +1,85 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "compte",
+      "otherEntityName": "compte",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "one-to-many",
+      "relationshipName": "message",
+      "otherEntityName": "messageHierachique",
+      "otherEntityRelationshipName": "projet"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "commentaire",
+      "otherEntityName": "commentaire",
+      "otherEntityRelationshipName": "projet"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "one-to-many",
+      "relationshipName": "tache",
+      "otherEntityName": "tache",
+      "otherEntityRelationshipName": "projet"
+    },
+    {
+      "relationshipId": 5,
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "fichierProjet",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "actif",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160722104001",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "projet"
+}

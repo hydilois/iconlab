@@ -1,0 +1,92 @@
+<div>
+    <h2>Point Avancements</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="point-avancement.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs" >
+                        Create new Point Avancement
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="libelle"><span>Libelle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datePub"><span>Date Pub</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tache.id"><span>Tache</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pointAvancement in vm.pointAvancements track by pointAvancement.id">
+                    <td><a ui-sref="point-avancement-detail({id:pointAvancement.id})">{{pointAvancement.id}}</a></td>
+                    <td>{{pointAvancement.libelle}}</td>
+                    <td>{{pointAvancement.description}}</td>
+                    <td>
+                        <a ng-if="pointAvancement.fichier" ng-click="vm.openFile(pointAvancement.fichierContentType, pointAvancement.fichier)">open</a>
+                        <span ng-if="pointAvancement.fichier">{{pointAvancement.fichierContentType}}, {{vm.byteSize(pointAvancement.fichier)}}</span>
+                    </td>
+                    <td>{{pointAvancement.datePub | date:'medium'}}</td>
+                    <td>{{pointAvancement.actif}}</td>
+                    <td>
+                        <a ui-sref="tache-detail({id:pointAvancement.tache.id})">{{pointAvancement.tache.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="point-avancement-detail({id:pointAvancement.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="point-avancement.edit({id:pointAvancement.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="point-avancement.delete({id:pointAvancement.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

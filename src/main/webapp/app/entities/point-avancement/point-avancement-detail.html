@@ -1,0 +1,41 @@
+
+<div>
+    <h2><span>Point Avancement</span> {{vm.pointAvancement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Libelle</span></dt>
+        <dd>
+            <span>{{vm.pointAvancement.libelle}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.pointAvancement.description}}</span>
+        </dd>
+        <dt><span>Fichier</span></dt>
+        <dd>
+            <div ng-if="vm.pointAvancement.fichier">
+                <a ng-click="vm.openFile(vm.pointAvancement.fichierContentType, vm.pointAvancement.fichier)">open</a>
+                {{vm.pointAvancement.fichierContentType}}, {{vm.byteSize(vm.pointAvancement.fichier)}}
+            </div>
+        </dd>
+        <dt><span>Date Pub</span></dt>
+        <dd>
+            <span>{{vm.pointAvancement.datePub | date:'medium'}}</span>
+        </dd>
+        <dt><span>Actif</span></dt>
+        <dd>
+            <span>{{vm.pointAvancement.actif}}</span>
+        </dd>
+        <dt><span>Tache</span></dt>
+        <dd>
+            <a ui-sref="tache-detail({id:vm.pointAvancement.tache.id})">{{vm.pointAvancement.tache.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

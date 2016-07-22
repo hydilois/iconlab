@@ -1,0 +1,44 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "projet",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "compte"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "actif",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160722104000",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "entityTableName": "compte"
+}

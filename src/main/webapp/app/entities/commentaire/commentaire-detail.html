@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span>Commentaire</span> {{vm.commentaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Contenu</span></dt>
+        <dd>
+            <span>{{vm.commentaire.contenu}}</span>
+        </dd>
+        <dt><span>Date Post</span></dt>
+        <dd>
+            <span>{{vm.commentaire.datePost | date:'medium'}}</span>
+        </dd>
+        <dt><span>Actif</span></dt>
+        <dd>
+            <span>{{vm.commentaire.actif}}</span>
+        </dd>
+        <dt><span>Projet</span></dt>
+        <dd>
+            <a ui-sref="projet-detail({id:vm.commentaire.projet.id})">{{vm.commentaire.projet.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

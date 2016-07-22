@@ -1,0 +1,107 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myTacheLabel">Create or edit a Tache</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.tache.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.tache.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.tache.nom"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.tache.description"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFichierJoint($file, vm.tache)">
+            <label class="control-label" for="field_fichierJoint">Fichier Joint</label>
+            <div>
+                <div ng-if="vm.tache.fichierJoint" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)">open</a><br>
+                    <span class="pull-left">{{vm.tache.fichierJointContentType}}, {{vm.byteSize(vm.tache.fichierJoint)}}</span>
+                    <button ng-click="vm.tache.fichierJoint=null;vm.tache.fichierJointContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFichierJoint($file, vm.tache)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="fichierJoint" id="field_fichierJoint"
+                    ng-model="vm.tache.fichierJoint"
+                     />
+            <input type="hidden" class="form-control" name="fichierJointContentType" id="field_fichierJointContentType"
+                    ng-model="vm.tache.fichierJointContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_role">Role</label>
+            <select class="form-control" name="role" ng-model="vm.tache.role" id="field_role">
+                <option value="GRH">GRH</option>
+                <option value="FINANCE">FINANCE</option>
+                <option value="LOGISTIQUE">LOGISTIQUE</option>
+                <option value="EXECUTIVE">EXECUTIVE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateDebut">Date Debut</label>
+                <div class="input-group">
+                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" datetime-picker="{{dateformat}}" ng-model="vm.tache.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateFin">Date Fin</label>
+                <div class="input-group">
+                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" datetime-picker="{{dateformat}}" ng-model="vm.tache.dateFin" is-open="vm.datePickerOpenStatus.dateFin"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actif">Actif</label>
+            <input type="checkbox" class="form-control" name="actif" id="field_actif"
+                    ng-model="vm.tache.actif"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_projet">Projet</label>
+            <select class="form-control" id="field_projet" name="projet" ng-model="vm.tache.projet" ng-options="projet as projet.id for projet in vm.projets track by projet.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

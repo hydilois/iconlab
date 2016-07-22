@@ -1,0 +1,12 @@
+version: '2'
+services:
+    iconlab-postgresql:
+        container_name: iconlab-postgresql
+        image: postgres:9.5.2
+        # volumes:
+        #     - ~/volumes/jhipster/iconlab/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=iconlab
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

@@ -1,0 +1,110 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProjetLabel">Create or edit a Projet</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.projet.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.projet.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.projet.nom"
+                    required />
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="vm.projet.code"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.projet.description"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFichierProjet($file, vm.projet)">
+            <label class="control-label" for="field_fichierProjet">Fichier Projet</label>
+            <div>
+                <div ng-if="vm.projet.fichierProjet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.projet.fichierProjetContentType, vm.projet.fichierProjet)">open</a><br>
+                    <span class="pull-left">{{vm.projet.fichierProjetContentType}}, {{vm.byteSize(vm.projet.fichierProjet)}}</span>
+                    <button ng-click="vm.projet.fichierProjet=null;vm.projet.fichierProjetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFichierProjet($file, vm.projet)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="fichierProjet" id="field_fichierProjet"
+                    ng-model="vm.projet.fichierProjet"
+                     />
+            <input type="hidden" class="form-control" name="fichierProjetContentType" id="field_fichierProjetContentType"
+                    ng-model="vm.projet.fichierProjetContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateDebut">Date Debut</label>
+                <div class="input-group">
+                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" uib-datepicker-popup="{{dateformat}}" ng-model="vm.projet.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateFin">Date Fin</label>
+                <div class="input-group">
+                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" uib-datepicker-popup="{{dateformat}}" ng-model="vm.projet.dateFin" is-open="vm.datePickerOpenStatus.dateFin"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actif">Actif</label>
+            <input type="checkbox" class="form-control" name="actif" id="field_actif"
+                    ng-model="vm.projet.actif"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_compte">Compte</label>
+            <select class="form-control" id="field_compte" name="compte" ng-model="vm.projet.compte" ng-options="compte as compte.id for compte in vm.comptes track by compte.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.projet.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
