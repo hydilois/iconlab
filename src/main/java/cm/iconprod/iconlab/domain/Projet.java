@@ -16,6 +16,7 @@ import java.util.Objects;
 /**
  * A Projet.
  */
+//Creation d'un entite Projet
 @Entity
 @Table(name = "projet")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
