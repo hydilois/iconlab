@@ -31,7 +31,7 @@ public class Projet implements Serializable {
     @NotNull
     @Column(name = "nom", nullable = false)
     private String nom;
-
+    // cool la programmation
     @Column(name = "code")
     private String code;
 
