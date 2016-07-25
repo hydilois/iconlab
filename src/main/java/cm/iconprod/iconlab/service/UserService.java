@@ -91,7 +91,7 @@ public class UserService {
             });
     }
 
-    public User createUserInformation(String login, String password, String firstName, String lastName, String email,
+    public User createUserInformation(String login, String password, String firstName, String lastName, String email,String phonenumber,byte[] image,
         String langKey) {
 
         User newUser = new User();
@@ -104,6 +104,8 @@ public class UserService {
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
         newUser.setEmail(email);
+        newUser.setPhonenumber(phonenumber);
+        newUser.setImage(image);
         newUser.setLangKey(langKey);
         // new user is not active
         newUser.setActivated(false);
@@ -123,6 +125,8 @@ public class UserService {
         user.setFirstName(managedUserDTO.getFirstName());
         user.setLastName(managedUserDTO.getLastName());
         user.setEmail(managedUserDTO.getEmail());
+        user.setPhonenumber(managedUserDTO.getPhonenumber());
+        user.setImage(managedUserDTO.getImage());
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language
         } else {
@@ -146,11 +150,13 @@ public class UserService {
         return user;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email, String langKey) {
+    public void updateUserInformation(String firstName, String lastName, String email,String phonenumber,byte[] image, String langKey) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
+            u.setPhonenumber(phonenumber);
+            u.setImage(image);
             u.setLangKey(langKey);
             userRepository.save(u);
             userSearchRepository.save(u);

@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('UserManagementController', UserManagementController);
 
-    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', '$state', 'pagingParams', 'paginationConstants'];
+    UserManagementController.$inject = ['Principal','DataUtils', 'User', 'ParseLinks', '$state', 'pagingParams', 'paginationConstants'];
 
-    function UserManagementController(Principal, User, ParseLinks, $state, pagingParams, paginationConstants) {
+    function UserManagementController(Principal,DataUtils ,User, ParseLinks, $state, pagingParams, paginationConstants) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN','ROLE_CEO','ROLE_PMO','ROLE_DO','ROLE_GRH','ROLE_FINANCE','ROLE_LOGISTIQUE'];
@@ -18,6 +18,8 @@
         vm.users = [];
         vm.page = 1;
         vm.totalItems = null;
+        vm.openFile = DataUtils.openFile;
+        vm.byteSize = DataUtils.byteSize;
         vm.clear = clear;
         vm.links = null;
         vm.loadPage = loadPage;

@@ -5,11 +5,12 @@
         .module('iconlabApp')
         .controller('UserManagementDetailController', UserManagementDetailController);
 
-    UserManagementDetailController.$inject = ['$stateParams', 'User'];
+    UserManagementDetailController.$inject = ['$stateParams','DataUtils', 'User'];
 
-    function UserManagementDetailController ($stateParams, User) {
+    function UserManagementDetailController ($stateParams,DataUtils, User) {
         var vm = this;
-
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.load = load;
         vm.user = {};
 

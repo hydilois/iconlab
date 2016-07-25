@@ -29,6 +29,10 @@ public class UserDTO {
     @Email
     @Size(min = 5, max = 100)
     private String email;
+    
+    private String phonenumber;
+    
+    private byte[] image;
 
     private boolean activated = false;
 
@@ -42,21 +46,31 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
+            user.getEmail(),user.getPhonenumber(),user.getImage(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email,String phonenumber,byte[] image, boolean activated, String langKey, Set<String> authorities) {
 
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phonenumber = phonenumber;
+        this.image = image;
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public byte[] getImage() {
+        return image;
     }
 
     public String getLogin() {
@@ -94,6 +108,7 @@ public class UserDTO {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
+            ", phonenumber='" + phonenumber + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", authorities=" + authorities +
