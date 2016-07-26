@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('iconlabApp')
-        .config(stateConfig);
+    .module('iconlabApp')
+    .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
 
@@ -15,13 +15,18 @@
                     templateUrl: 'app/layouts/navbar/navbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'
+                },
+                'sidebar@':{
+                    templateUrl: 'app/layouts/sidebar/sidebar.html',
+                    controller: 'SidebarController',
+                    controllerAs: 'vm'
                 }
             },
             resolve: {
                 authorize: ['Auth',
-                    function (Auth) {
-                        return Auth.authorize();
-                    }
+                function (Auth) {
+                    return Auth.authorize();
+                }
                 ]
             }
         });

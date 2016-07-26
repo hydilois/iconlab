@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('iconlabApp')
-        .controller('LoginController', LoginController);
+    .module('iconlabApp')
+    .controller('LoginController', LoginController);
 
     LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
 
@@ -19,6 +19,7 @@
         vm.rememberMe = true;
         vm.requestResetPassword = requestResetPassword;
         vm.username = null;
+        
 
         $timeout(function (){angular.element('#username').focus();});
 
@@ -44,9 +45,9 @@
                 if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                     $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
                     $state.go('home');
-                }
+            }
 
-                $rootScope.$broadcast('authenticationSuccess');
+            $rootScope.$broadcast('authenticationSuccess');
 
                 // previousState was set in the authExpiredInterceptor before being redirected to login modal.
                 // since login is succesful, go to stored previousState and clear previousState
