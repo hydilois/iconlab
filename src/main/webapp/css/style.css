@@ -1,3 +1,5 @@
+/*@import url(animate.min.css)*/
+
 html {
   height: 100%; }
 
@@ -1237,9 +1239,9 @@ body.login-page {
 /* ===================================
        Personnalistion de base
      =================================== */
-    form[name="editForm"]{
+    /*form[name="editForm"]{
       margin-top: 84px;
-    }
+    }*/
     h4{
       text-align: center;
     }
@@ -1265,4 +1267,14 @@ ul#strengthBar {
     height:5px;
     margin-right:1px;
     width:20px;
+}
+.center-modal{
+    position:fixed;
+    top:10%;
+    left:18.5%;
+    z-index: 1050;
+    width:90%;
+    height: 80%;
+    margin-left:-10%;
+
 }

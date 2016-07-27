@@ -78,7 +78,8 @@
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -113,7 +114,8 @@
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['Tache', function(Tache) {
                             return Tache.get({id : $stateParams.id}).$promise;
@@ -137,6 +139,7 @@
                     templateUrl: 'app/entities/tache/tache-delete-dialog.html',
                     controller: 'TacheDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Tache', function(Tache) {

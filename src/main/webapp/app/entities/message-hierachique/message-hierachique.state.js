@@ -78,7 +78,8 @@
                     controller: 'MessageHierachiqueDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -110,7 +111,8 @@
                     controller: 'MessageHierachiqueDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['MessageHierachique', function(MessageHierachique) {
                             return MessageHierachique.get({id : $stateParams.id}).$promise;
@@ -134,6 +136,7 @@
                     templateUrl: 'app/entities/message-hierachique/message-hierachique-delete-dialog.html',
                     controller: 'MessageHierachiqueDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['MessageHierachique', function(MessageHierachique) {

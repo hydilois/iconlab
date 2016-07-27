@@ -78,7 +78,8 @@
                     controller: 'PointAvancementDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -111,7 +112,8 @@
                     controller: 'PointAvancementDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['PointAvancement', function(PointAvancement) {
                             return PointAvancement.get({id : $stateParams.id}).$promise;
@@ -135,6 +137,7 @@
                     templateUrl: 'app/entities/point-avancement/point-avancement-delete-dialog.html',
                     controller: 'PointAvancementDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['PointAvancement', function(PointAvancement) {

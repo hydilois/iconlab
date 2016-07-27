@@ -78,7 +78,8 @@
                     controller: 'DocumentsDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -110,7 +111,8 @@
                     controller: 'DocumentsDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['Documents', function(Documents) {
                             return Documents.get({id : $stateParams.id}).$promise;

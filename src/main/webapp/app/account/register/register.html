@@ -11,7 +11,7 @@
                 <strong>Registration failed!</strong> Please try again later.
             </div>
 
-            <div class="alert alert-danger" ng-show="vm.errorUserExists">
+            <div class="alert alert-danger" ng-show="vm.errorregisterAccountExists">
                 <strong>Login name already registered!</strong> Please choose another one.
             </div>
 
@@ -28,27 +28,51 @@
 
                 <div class="form-group">
                     <label class="control-label" for="login">Username</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Your username"
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Your registerAccountname"
                            ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                     <div ng-show="form.login.$dirty && form.login.$invalid">
                         <p class="help-block"
                                ng-show="form.login.$error.required">
-                            Your username is required.
+                            Your registerAccountname is required.
                         </p>
                         <p class="help-block"
                                ng-show="form.login.$error.minlength">
-                            Your username is required to be at least 1 character.
+                            Your registerAccountname is required to be at least 1 character.
                         </p>
                         <p class="help-block"
                                ng-show="form.login.$error.maxlength">
-                            Your username cannot be longer than 50 characters.
+                            Your registerAccountname cannot be longer than 50 characters.
                         </p>
                         <p class="help-block"
                                ng-show="form.login.$error.pattern">
-                            Your username can only contain lower-case letters and digits.
+                            Your registerAccountname can only contain lower-case letters and digits.
                     </p>
                     </div>
                 </div>
+                 <div class="form-group">
+                    <label class="control-label" for="phonenumber">Phone number</label>
+                    <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Your phone number"
+                           ng-model="vm.registerAccount.phonenumber" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                    <div ng-show="form.phonenumber.$dirty && form.phonenumber.$invalid">
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.required">
+                            Your phone number is required.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.minlength">
+                            Your phone number is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.maxlength">
+                            Your phone number cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.pattern">
+                            Your phone number can only contain lower-case letters and digits.
+                    </p>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label" for="email">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Your e-mail"
@@ -111,12 +135,34 @@
                         </p>
                     </div>
                 </div>
+                <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.registerAccount)" ngf-pattern="'image/*'">
+                        <label class="control-label" for="field_image">Profil Image</label>
+                        <div>
+                            <img data-ng-src="{{'data:' + vm.registerAccount.imageContentType + ';base64,' + vm.registerAccount.image}}" style="max-height: 100px;" ng-if="vm.registerAccount.image"/>
+                            <div ng-if="vm.registerAccount.image" class="help-block clearfix">
+                                <span class="pull-left">{{vm.registerAccount.imageContentType}}, {{vm.byteSize(vm.registerAccount.image)}}</span>
+                                <button ng-click="vm.registerAccount.image=null;vm.registerAccount.imageContentType=null;"
+                                        class="btn btn-default btn-xs pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                            <button type="file" ngf-select class="btn btn-default btn-block"
+                                    ngf-change="vm.setImage($file, vm.registerAccount)" accept="image/*">
+                                Add image
+                            </button>
+                        </div>
+                        <input type="hidden" class="form-control" name="image" id="field_image"
+                               ng-model="vm.registerAccount.image"
+                        />
+                        <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                               ng-model="vm.registerAccount.imageContentType" />
+                    </div>
 
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
             </form>
             <p></p>
             <div class="alert alert-warning">
-                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- registerAccount (login="registerAccount" and password="registerAccount").
             </div>
         </div>
     </div>

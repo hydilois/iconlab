@@ -78,7 +78,8 @@
                     controller: 'ProjetDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -113,7 +114,8 @@
                     controller: 'ProjetDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['Projet', function(Projet) {
                             return Projet.get({id : $stateParams.id}).$promise;
@@ -137,6 +139,7 @@
                     templateUrl: 'app/entities/projet/projet-delete-dialog.html',
                     controller: 'ProjetDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Projet', function(Projet) {

@@ -78,7 +78,8 @@
                     controller: 'CommentaireDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: function () {
                             return {
@@ -108,7 +109,8 @@
                     controller: 'CommentaireDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['Commentaire', function(Commentaire) {
                             return Commentaire.get({id : $stateParams.id}).$promise;
@@ -131,7 +133,9 @@
                 $uibModal.open({
                     templateUrl: 'app/entities/commentaire/commentaire-delete-dialog.html',
                     controller: 'CommentaireDeleteController',
+                    windowClass:'center-modal',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Commentaire', function(Commentaire) {

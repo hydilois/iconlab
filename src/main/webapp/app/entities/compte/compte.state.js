@@ -78,7 +78,8 @@
                         controller: 'CompteDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
-                        size: 'lg',
+                        windowClass:'center-modal',
+                        size: 'md',
                         resolve: {
                             entity: function () {
                                 return {
@@ -109,7 +110,8 @@
                         controller: 'CompteDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
-                        size: 'lg',
+                        windowClass:'center-modal',
+                        size: 'md',
                         resolve: {
                             entity: ['Compte', function(Compte) {
                                 return Compte.get({id : $stateParams.id}).$promise;
@@ -133,6 +135,7 @@
                         templateUrl: 'app/entities/compte/compte-delete-dialog.html',
                         controller: 'CompteDeleteController',
                         controllerAs: 'vm',
+                        windowClass:'center-modal',
                         size: 'md',
                         resolve: {
                             entity: ['Compte', function(Compte) {

@@ -6,18 +6,37 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService'];
+    RegisterController.$inject = ['$scope','$timeout', 'Auth', 'LoginService','DataUtils'];
 
-    function RegisterController ($timeout, Auth, LoginService) {
+    function RegisterController ($scope,$timeout, Auth, LoginService,DataUtils) {
         var vm = this;
 
         vm.doNotMatch = null;
         vm.error = null;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.errorUserExists = null;
         vm.login = LoginService.open;
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
+
+
+
+
+        vm.setImage = function ($file, user) {
+            if ($file && $file.$error === 'pattern') {
+                return;
+            }
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        user.image = base64Data;
+                        user.imageContentType = $file.type;
+                    });
+                });
+            }
+        };
 
         $timeout(function (){angular.element('#login').focus();});
 
