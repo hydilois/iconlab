@@ -1,0 +1,492 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>iconlab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css content/css/vendor.css -->
+    bower:css
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"> -->
+    
+        <!-- Nouveaux Components -->
+    <!-- <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/select2.min.css">
+
+    <!-- endinject -->
+    <!-- endbuild -->
+    <!-- build:css content/css/main.css -->
+    <!-- <link rel="stylesheet" href="content/css/main.css"> -->
+    <!-- endbuild -->
+    
+    <!-- Insertion Nouveau CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/flat-blue.css">
+
+</head>
+<body ng-app="iconlabApp" ng-strict-di>
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- <page-ribbon></page-ribbon>
+<div ui-view="navbar" ng-cloak></div>
+<div class="container">
+    <div class="well" ui-view="content">
+        Angular views
+    </div>
+
+    <div class="footer" ng-cloak>
+        <p>This is your footer</p>
+    </div>
+</div> -->
+
+<div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">0</span>
+                                </li>
+                                <li class="message">
+                                    No new notification
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">Emily Hart</h4>
+                                        <p>emily_hart@email.com</p>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-paper-plane"></div>
+                                <div class="title">Flat Admin V.2</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="index.html">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-element">
+                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-element" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="ui-kits/theming.html">Theming</a>
+                                            </li>
+                                            <li><a href="ui-kits/grid.html">Grid</a>
+                                            </li>
+                                            <li><a href="ui-kits/button.html">Buttons</a>
+                                            </li>
+                                            <li><a href="ui-kits/card.html">Cards</a>
+                                            </li>
+                                            <li><a href="ui-kits/list.html">Lists</a>
+                                            </li>
+                                            <li><a href="ui-kits/modal.html">Modals</a>
+                                            </li>
+                                            <li><a href="ui-kits/alert.html">Alerts & Toasts</a>
+                                            </li>
+                                            <li><a href="ui-kits/panel.html">Panels</a>
+                                            </li>
+                                            <li><a href="ui-kits/loader.html">Loaders</a>
+                                            </li>
+                                            <li><a href="ui-kits/step.html">Tabs & Steps</a>
+                                            </li>
+                                            <li><a href="ui-kits/other.html">Other</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="table/table.html">Table</a>
+                                            </li>
+                                            <li><a href="table/datatable.html">Datatable</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-form">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-form" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="form/ui-kits.html">Form UI Kits</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#component-example">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="component-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="components/pricing-table.html">Pricing Table</a>
+                                            </li>
+                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-example">
+                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="pages/login.html">Login</a>
+                                            </li>
+                                            <li><a href="pages/index.html">Landing Page</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-icon">
+                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-icon" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="icons/glyphicons.html">Glyphicons</a>
+                                            </li>
+                                            <li><a href="icons/font-awesome.html">Font Awesomes</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="license.html">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+                <!-- I rempve the main contain here -->
+            </div>
+        </div>
+        </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+            </div>
+        </footer>
+        <div>
+
+<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>-->
+
+<!-- build:js app/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/messageformat/messageformat.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+<!-- build:js app/app.js  -->
+<!-- inject:js -->
+<script src="app/app.module.js"></script>
+<script src="app/services/user/user.service.js"></script>
+<script src="app/services/profiles/profile.service.js"></script>
+<script src="app/services/profiles/page-ribbon.directive.js"></script>
+<script src="app/services/auth/sessions.service.js"></script>
+<script src="app/services/auth/register.service.js"></script>
+<script src="app/services/auth/principal.service.js"></script>
+<script src="app/services/auth/password-reset-init.service.js"></script>
+<script src="app/services/auth/password-reset-finish.service.js"></script>
+<script src="app/services/auth/password.service.js"></script>
+<script src="app/services/auth/has-authority.directive.js"></script>
+<script src="app/services/auth/has-any-authority.directive.js"></script>
+<script src="app/services/auth/auth.session.service.js"></script>
+<script src="app/services/auth/auth.service.js"></script>
+<script src="app/services/auth/activate.service.js"></script>
+<script src="app/services/auth/account.service.js"></script>
+<script src="app/layouts/navbar/navbar.controller.js"></script>
+<script src="app/layouts/navbar/active-link.directive.js"></script>
+<script src="app/layouts/error/error.state.js"></script>
+<script src="app/home/home.state.js"></script>
+<script src="app/home/home.controller.js"></script>
+<script src="app/entities/tache/tache-dialog.controller.js"></script>
+<script src="app/entities/tache/tache-detail.controller.js"></script>
+<script src="app/entities/tache/tache-delete-dialog.controller.js"></script>
+<script src="app/entities/tache/tache.state.js"></script>
+<script src="app/entities/tache/tache.service.js"></script>
+<script src="app/entities/tache/tache.search.service.js"></script>
+<script src="app/entities/tache/tache.controller.js"></script>
+<script src="app/entities/projet/projet-dialog.controller.js"></script>
+<script src="app/entities/projet/projet-detail.controller.js"></script>
+<script src="app/entities/projet/projet-delete-dialog.controller.js"></script>
+<script src="app/entities/projet/projet.state.js"></script>
+<script src="app/entities/projet/projet.service.js"></script>
+<script src="app/entities/projet/projet.search.service.js"></script>
+<script src="app/entities/projet/projet.controller.js"></script>
+<script src="app/entities/point-avancement/point-avancement-dialog.controller.js"></script>
+<script src="app/entities/point-avancement/point-avancement-detail.controller.js"></script>
+<script src="app/entities/point-avancement/point-avancement-delete-dialog.controller.js"></script>
+<script src="app/entities/point-avancement/point-avancement.state.js"></script>
+<script src="app/entities/point-avancement/point-avancement.service.js"></script>
+<script src="app/entities/point-avancement/point-avancement.search.service.js"></script>
+<script src="app/entities/point-avancement/point-avancement.controller.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique-dialog.controller.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique-detail.controller.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique-delete-dialog.controller.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique.state.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique.service.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique.search.service.js"></script>
+<script src="app/entities/message-hierachique/message-hierachique.controller.js"></script>
+<script src="app/entities/entity.state.js"></script>
+<script src="app/entities/documents/documents-dialog.controller.js"></script>
+<script src="app/entities/documents/documents-detail.controller.js"></script>
+<script src="app/entities/documents/documents-delete-dialog.controller.js"></script>
+<script src="app/entities/documents/documents.state.js"></script>
+<script src="app/entities/documents/documents.service.js"></script>
+<script src="app/entities/documents/documents.search.service.js"></script>
+<script src="app/entities/documents/documents.controller.js"></script>
+<script src="app/entities/compte/compte-dialog.controller.js"></script>
+<script src="app/entities/compte/compte-detail.controller.js"></script>
+<script src="app/entities/compte/compte-delete-dialog.controller.js"></script>
+<script src="app/entities/compte/compte.state.js"></script>
+<script src="app/entities/compte/compte.service.js"></script>
+<script src="app/entities/compte/compte.search.service.js"></script>
+<script src="app/entities/compte/compte.controller.js"></script>
+<script src="app/entities/commentaire/commentaire-dialog.controller.js"></script>
+<script src="app/entities/commentaire/commentaire-detail.controller.js"></script>
+<script src="app/entities/commentaire/commentaire-delete-dialog.controller.js"></script>
+<script src="app/entities/commentaire/commentaire.state.js"></script>
+<script src="app/entities/commentaire/commentaire.service.js"></script>
+<script src="app/entities/commentaire/commentaire.search.service.js"></script>
+<script src="app/entities/commentaire/commentaire.controller.js"></script>
+<script src="app/entities/article/article-dialog.controller.js"></script>
+<script src="app/entities/article/article-detail.controller.js"></script>
+<script src="app/entities/article/article-delete-dialog.controller.js"></script>
+<script src="app/entities/article/article.state.js"></script>
+<script src="app/entities/article/article.service.js"></script>
+<script src="app/entities/article/article.search.service.js"></script>
+<script src="app/entities/article/article.controller.js"></script>
+<script src="app/components/util/truncate-words.filter.js"></script>
+<script src="app/components/util/truncate-characters.filter.js"></script>
+<script src="app/components/util/sort-by.directive.js"></script>
+<script src="app/components/util/sort.directive.js"></script>
+<script src="app/components/util/parse-links.service.js"></script>
+<script src="app/components/util/pagination-util.service.js"></script>
+<script src="app/components/util/jhi-item-count.directive.js"></script>
+<script src="app/components/util/date-util.service.js"></script>
+<script src="app/components/util/data-util.service.js"></script>
+<script src="app/components/util/capitalize.filter.js"></script>
+<script src="app/components/util/base64.service.js"></script>
+<script src="app/components/login/login.service.js"></script>
+<script src="app/components/login/login.controller.js"></script>
+<script src="app/components/form/show-validation.directive.js"></script>
+<script src="app/components/form/pagination.constants.js"></script>
+<script src="app/components/form/minbytes.directive.js"></script>
+<script src="app/components/form/maxbytes.directive.js"></script>
+<script src="app/components/alert/alert-error.directive.js"></script>
+<script src="app/components/alert/alert.service.js"></script>
+<script src="app/components/alert/alert.directive.js"></script>
+<script src="app/blocks/interceptor/notification.interceptor.js"></script>
+<script src="app/blocks/interceptor/errorhandler.interceptor.js"></script>
+<script src="app/blocks/interceptor/auth-expired.interceptor.js"></script>
+<script src="app/blocks/handlers/state.handler.js"></script>
+<script src="app/blocks/config/uib-pagination.config.js"></script>
+<script src="app/blocks/config/uib-pager.config.js"></script>
+<script src="app/blocks/config/localstorage.config.js"></script>
+<script src="app/blocks/config/http.config.js"></script>
+<script src="app/blocks/config/compile.config.js"></script>
+<script src="app/blocks/config/alert.config.js"></script>
+<script src="app/app.state.js"></script>
+<script src="app/app.constants.js"></script>
+<script src="app/admin/user-management/user-management-dialog.controller.js"></script>
+<script src="app/admin/user-management/user-management-detail.controller.js"></script>
+<script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+<script src="app/admin/user-management/user-management.state.js"></script>
+<script src="app/admin/user-management/user-management.controller.js"></script>
+<script src="app/admin/metrics/metrics.state.js"></script>
+<script src="app/admin/metrics/metrics.service.js"></script>
+<script src="app/admin/metrics/metrics.modal.controller.js"></script>
+<script src="app/admin/metrics/metrics.controller.js"></script>
+<script src="app/admin/logs/logs.state.js"></script>
+<script src="app/admin/logs/logs.service.js"></script>
+<script src="app/admin/logs/logs.controller.js"></script>
+<script src="app/admin/health/health.state.js"></script>
+<script src="app/admin/health/health.service.js"></script>
+<script src="app/admin/health/health.modal.controller.js"></script>
+<script src="app/admin/health/health.controller.js"></script>
+<script src="app/admin/docs/docs.state.js"></script>
+<script src="app/admin/configuration/configuration.state.js"></script>
+<script src="app/admin/configuration/configuration.service.js"></script>
+<script src="app/admin/configuration/configuration.controller.js"></script>
+<script src="app/admin/audits/audits.state.js"></script>
+<script src="app/admin/audits/audits.service.js"></script>
+<script src="app/admin/audits/audits.controller.js"></script>
+<script src="app/admin/admin.state.js"></script>
+<script src="app/account/settings/settings.state.js"></script>
+<script src="app/account/settings/settings.controller.js"></script>
+<script src="app/account/sessions/sessions.state.js"></script>
+<script src="app/account/sessions/sessions.controller.js"></script>
+<script src="app/account/reset/request/reset.request.state.js"></script>
+<script src="app/account/reset/request/reset.request.controller.js"></script>
+<script src="app/account/reset/finish/reset.finish.state.js"></script>
+<script src="app/account/reset/finish/reset.finish.controller.js"></script>
+<script src="app/account/register/register.state.js"></script>
+<script src="app/account/register/register.controller.js"></script>
+<script src="app/account/password/password-strength-bar.directive.js"></script>
+<script src="app/account/password/password.state.js"></script>
+<script src="app/account/password/password.controller.js"></script>
+<script src="app/account/activate/activate.state.js"></script>
+<script src="app/account/activate/activate.controller.js"></script>
+<script src="app/account/account.state.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+
+<!-- Javascript Libs -->
+            <script type="text/javascript" src="lib/js/jquery.min.js"></script>
+            <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="lib/js/Chart.min.js"></script>
+            <script type="text/javascript" src="lib/js/bootstrap-switch.min.js"></script>
+            <script type="text/javascript" src="lib/js/jquery.matchHeight-min.js"></script>
+            <script type="text/javascript" src="lib/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" src="lib/js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript" src="lib/js/select2.full.min.js"></script>
+            <script type="text/javascript" src="lib/js/ace/ace.js"></script>
+            <script type="text/javascript" src="lib/js/ace/mode-html.js"></script>
+            <script type="text/javascript" src="lib/js/ace/theme-github.js"></script>
+            <!-- Javascript -->
+            <script type="text/javascript" src="js/app.js"></script>
+            <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>
