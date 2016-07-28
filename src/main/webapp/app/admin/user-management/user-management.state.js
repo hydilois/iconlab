@@ -125,6 +125,7 @@
                     templateUrl: 'app/admin/user-management/user-management-delete-dialog.html',
                     controller: 'UserManagementDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['User', function(User) {
