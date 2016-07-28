@@ -14,7 +14,7 @@
             <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Recherche">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -62,10 +62,10 @@
                         <td>{{projet.dateFin | date:'mediumDate'}}</td>
                     <td>{{projet.actif}}</td>
                     <td>
-                        <a ui-sref="compte-detail({id:projet.compte.id})">{{projet.compte.id}}</a>
+                        <a ui-sref="compte-detail({id:projet.compte.id})">{{projet.compte.nom}}</a>
                     </td>
                     <td>
-                        {{projet.user.id}}
+                        {{projet.user.firstName}} {{projet.user.lastName}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

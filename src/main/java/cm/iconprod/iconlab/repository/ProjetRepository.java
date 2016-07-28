@@ -2,6 +2,8 @@ package cm.iconprod.iconlab.repository;
 
 import cm.iconprod.iconlab.domain.Projet;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -13,6 +15,6 @@ import java.util.List;
 public interface ProjetRepository extends JpaRepository<Projet,Long> {
 
     @Query("select projet from Projet projet where projet.user.login = ?#{principal.username}")
-    List<Projet> findByUserIsCurrentUser();
+    Page<Projet> findByUserIsCurrentUser(Pageable pageable);
 
 }

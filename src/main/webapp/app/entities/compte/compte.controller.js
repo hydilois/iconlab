@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('CompteController', CompteController);
 
-    CompteController.$inject = ['$scope', '$state', 'DataUtils', 'Compte', 'CompteSearch', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
+    CompteController.$inject = ['$rootScope','$scope', '$state', 'DataUtils', 'Compte', 'CompteSearch', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function CompteController ($scope, $state, DataUtils, Compte, CompteSearch, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function CompteController ($rootScope,$scope, $state, DataUtils, Compte, CompteSearch, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
         
         vm.loadPage = loadPage;

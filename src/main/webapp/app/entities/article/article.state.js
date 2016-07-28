@@ -78,8 +78,7 @@
                     controller: 'ArticleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    windowClass:'center-modal',
-                    size: 'md',
+                    size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
@@ -112,8 +111,7 @@
                     controller: 'ArticleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                     windowClass:'center-modal',
-                    size: 'md',
+                    size: 'lg',
                     resolve: {
                         entity: ['Article', function(Article) {
                             return Article.get({id : $stateParams.id}).$promise;
@@ -137,7 +135,6 @@
                     templateUrl: 'app/entities/article/article-delete-dialog.html',
                     controller: 'ArticleDeleteController',
                     controllerAs: 'vm',
-                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Article', function(Article) {

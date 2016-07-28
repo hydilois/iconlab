@@ -18,62 +18,62 @@
                             <span class="title">Home</span>
                         </a>
                     </li>
-                    <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
-                        <a data-toggle="collapse" href="#dropdown-element">
-                            <span class="icon fa fa-desktop"></span><span class="title">Entities</span>
+                    <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
+                        <a  ng-if="vm.listeComptes.length != 0" data-toggle="collapse" href="#dropdown-element">
+                            <span class="icon fa fa-desktop"></span><span class="title">Compte</span>
                         </a>
                         <!-- Dropdown level 1 -->
                         <div id="dropdown-element" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
-                                    <li ui-sref-active="active" >
+                                    <li ng-repeat="(key, compte) in vm.listeComptes" ui-sref-active="active" >
                                     <a ui-sref="compte">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Compte</span>
+                                            <span >{{compte.nom}}</span>
                                         </a>
                                     </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="projet">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Projet</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="documents">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Documents</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="article">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Article</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="commentaire">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Commentaire</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="tache">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Tache</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="message-hierachique">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Message Hierachique</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active" >
-                                        <a ui-sref="point-avancement">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >Point Avancement</span>
-                                        </a>
-                                    </li>
+                                   <!--  <li ui-sref-active="active" >
+                                       <a ui-sref="projet">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Projet</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="documents">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Documents</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="article">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Article</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="commentaire">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Commentaire</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="tache">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Tache</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="message-hierachique">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Message Hierachique</span>
+                                       </a>
+                                   </li>
+                                   <li ui-sref-active="active" >
+                                       <a ui-sref="point-avancement">
+                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                           <span >Point Avancement</span>
+                                       </a>
+                                   </li> -->
                                 </ul>
                             </div>
                         </div>
