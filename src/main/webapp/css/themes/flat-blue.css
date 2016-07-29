@@ -168,7 +168,7 @@
       border-left: 0; }
     .flat-blue .navbar.navbar-inverse .navbar-right {
       background-color: #353d47; } }
-/*   .flat-blue .card.red {
+   .flat-blue .card.red {
   background-color: #FA2A00;
   color: #FFF; }
 .flat-blue .card.yellow {
@@ -179,7 +179,7 @@
   color: #FFF; }
 .flat-blue .card.blue {
   background-color: #22A7F0;
-  color: #FFF; }
+  color: #FFF; }/*
 .flat-blue .card.dark {
   background-color: #353d47;
   color: #FFF; }
@@ -206,7 +206,7 @@
   background-color: #353d47;
   color: #FFF; }
 .flat-blue .card.profile .card-footer {
-  border-top: 1px solid #F9F9F9; }
+  border-top: 1px solid #F9F9F9; }*/
 .flat-blue .card.summary-inline.red:hover {
   background-color: #7c1a06; }
 .flat-blue .card.summary-inline.yellow:hover {
@@ -217,6 +217,7 @@
   background-color: #353d47; }
 .flat-blue .card.summary-inline.dark:hover {
   background-color: #09486b; }
+/*
 .flat-blue .card.card-success .card-header {
   background-color: #1ABC9C; }
   .flat-blue .card.card-success .card-header .title {

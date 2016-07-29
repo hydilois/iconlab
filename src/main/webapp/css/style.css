@@ -408,7 +408,8 @@ a:hover {
   border-radius: 1px;
   overflow: hidden;
   position: relative; }
-  .card .card-body {
+
+  /*.card .card-body {
     padding: 25px; }
     .card .card-body .sub-title {
       font-size: 1.2em;
@@ -418,26 +419,33 @@ a:hover {
         padding-left: 0.4em;
         font-size: 0.8em;
         opacity: 0.8; }
+
   .card .card-body.half-padding {
-    padding: 12.5px; }
+    padding: 12.5px;  }
+
   .card .card-header .card-title {
     padding: 1.2em 25px;
     float: left; }
+
     .card .card-header .card-title .title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 1.5em;
       text-decoration: none; }
+
   .card .card-header .pull-right {
     padding: 0.5em 1em; }
+
   .card .card-header:after {
     content: '';
     display: block;
     clear: both; }
+
   .card .card-profile-img img {
     width: 100%;
     height: auto; }
+
   .card .card-jumbotron {
-    padding: 1.5em 1.5em; }
+    padding: 1.5em 1.5em; }*/
 
 .card:hover .card-header .title {
   text-decoration: none !important; }
@@ -1277,4 +1285,14 @@ ul#strengthBar {
     height: 80%;
     margin-left:-10%;
 
+}
+/*centrer tous les titres des en h2*/
+h2{
+    text-align: center;
+}
+.yes{
+    font-size:2em;
+}
+.cardcontainer{
+    padding: 7px;
 }

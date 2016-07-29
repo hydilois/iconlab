@@ -14,38 +14,34 @@
         vm.toggleSidebar = toggleSidebar;
         vm.collapseSidebar = collapseSidebar;
         vm.$state = $state;
-        vm.listeComptesTotal=[];
-        vm.listeComptes = [];
-        vm.account=null;
-
-        
-        getAccount();
+        vm.isSidebarCollapsed = true;
+        vm.isAuthenticated = Principal.isAuthenticated;
 
         $scope.$on('authenticationSuccess', function() {
-            Compte.query().$promise.then(function(data){
+            loadAllCompte();
+            getAccount();
+        });
+        if(vm.isAuthenticated()){
+            loadAllCompte();
+        getAccount();}
+
+        function loadAllCompte() {
+            vm.listeComptesTotal = [];
+            Compte.query().$promise.then(function (data) {
                 vm.listeComptesTotal = data;
-                userCompte(vm.listeComptesTotal,$scope.mail);
-                
-            },function(){
+                userCompte(vm.listeComptesTotal, $scope.mail);
+                //console.log("authen" + vm.listeComptesTotal);
+
+            }, function () {
                 console.log("Erreur de recuperation des données");
             });
-            getAccount();
-            
-            //console.log(vm.listeComptes);
-        });
+        }
 
         function getAccount() {
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.isAuthenticated = Principal.isAuthenticated;
                 $scope.mail = vm.account.email;
-               
-                /*for(var i=0; i<vm.listeComptesTotal.length; i++){
-                    console.log(vm.listeComptesTotal[i].user.email);
-                    if(vm.listeComptesTotal[i].user.email===$scope.mail)
-                        vm.listeComptes.push(vm.listeComptesTotal[i]);
-                }
-                console.log(vm.listeComptes);*/
             });
         }
 
@@ -56,9 +52,6 @@
                     vm.listeComptes.push(data[i]);
             }
         }
-
-        vm.isSidebarCollapsed = true;
-        vm.isAuthenticated = Principal.isAuthenticated;
 
 
         ProfileService.getProfileInfo().then(function(response) {
@@ -85,15 +78,6 @@
         function collapseSidebar() {
             vm.isSidebarCollapsed = true;
         }
-
-        /*function clear(){
-            vm.listeComptes=[];
-            vm.account=null;
-
-        }*/
-
-        /*Ajout des services de compte*/
-
     }
 
 })();
