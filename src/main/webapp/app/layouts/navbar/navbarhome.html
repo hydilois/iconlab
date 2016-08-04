@@ -1,0 +1,33 @@
+<nav  class=" navbar navbar-default navbar-fixed-top navbar-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+     <button type="button" class="navbar-expand-toggle">
+         <img src="content/images/LOGO_ICON_BM.png" alt="">
+     </button>
+     <ol class="navbarhaut breadcrumb navbar-breadcrumb">
+         <li id="titre" class="navbarhaut active">IconLab</li>
+     </ol>
+     <button type="button" class="navbarhaut navbar-right-expand-toggle pull-right visible-xs">
+         <i class="navbarhaut fa fa-th icon"></i>
+     </button>
+ </div>
+ <ul class="navbarhaut nav navbar-nav navbar-right">
+  <li>
+    <a href="" ng-click="vm.login()" id="login">
+        <span>
+            <span class="glyphicon glyphicon-log-in"></span>
+            <span class="hidden-sm">
+                Sign in
+            </span>
+        </span>
+    </a>
+</li>
+<li ui-sref-active="active">
+    <a ui-sref="register">
+        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+        <span>Register</span>
+    </a>
+</li>
+</ul>
+</div>
+</nav>

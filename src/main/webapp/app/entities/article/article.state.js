@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/article/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'Article'
             },
             views: {

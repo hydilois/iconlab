@@ -12,7 +12,8 @@ import java.util.List;
  * Spring Data JPA repository for the Projet entity.
  */
 @SuppressWarnings("unused")
-public interface ProjetRepository extends JpaRepository<Projet,Long> {
+public interface
+ProjetRepository extends JpaRepository<Projet,Long> {
 
     @Query("select projet from Projet projet where projet.user.login = ?#{principal.username}")
     Page<Projet> findByUserIsCurrentUser(Pageable pageable);

@@ -7,7 +7,65 @@
         <div class="row">
             <h1 ng-switch-when="true" has-authority="ROLE_ADMIN" class="text-center">Page d'administration !!!!</h1>
             <p class="lead text-center">The best is still to come</p>
-               <div class="row cardcontainer">
+               <!--<div ng-switch-when="true" has-authority="ROLE_ADMIN" class="row cardcontainer">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card red summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-inbox fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">{{vm.totalComptes}}</div>
+                                        <div class="sub-title">Accounts</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card yellow summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-comments fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">23</div>
+                                        <div class="sub-title">New Message</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card green summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-tags fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">280</div>
+                                        <div class="sub-title">Product View</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card blue summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-share-alt fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">16</div>
+                                        <div class="sub-title">Share</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div ng-switch-when="true" has-authority="ROLE_ADMIN" class="row cardcontainer">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <a href="#">
                             <div class="card red summary-inline">
@@ -64,77 +122,20 @@
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="row cardcontainer">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <a href="#">
-                            <div class="card red summary-inline">
-                                <div class="card-body">
-                                    <i class="icon fa fa-inbox fa-4x"></i>
-                                    <div class="content">
-                                        <div class="title">50</div>
-                                        <div class="sub-title">New Mails</div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <a href="#">
-                            <div class="card yellow summary-inline">
-                                <div class="card-body">
-                                    <i class="icon fa fa-comments fa-4x"></i>
-                                    <div class="content">
-                                        <div class="title">23</div>
-                                        <div class="sub-title">New Message</div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <a href="#">
-                            <div class="card green summary-inline">
-                                <div class="card-body">
-                                    <i class="icon fa fa-tags fa-4x"></i>
-                                    <div class="content">
-                                        <div class="title">280</div>
-                                        <div class="sub-title">Product View</div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <a href="#">
-                            <div class="card blue summary-inline">
-                                <div class="card-body">
-                                    <i class="icon fa fa-share-alt fa-4x"></i>
-                                    <div class="content">
-                                        <div class="title">16</div>
-                                        <div class="sub-title">Share</div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </div>-->
                 <div class="alert yes alert-success" ng-switch-when="true">
                     You are logged in as user "{{vm.account.login}}".
                 </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+            </div>
+            <div class="row" ng-switch-when="false">
+                <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal">
+                    <a ui-sref="article-detail({id:article.id})" class="lien">
+                    <div class="cardHeader text-center">{{article.titre}}</div>
+                        <span>read more</span>
+                    </a>
                 </div>
             </div>
         </div>
+
     <!--</div>-->
 </div>

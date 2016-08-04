@@ -66,6 +66,27 @@
                 }]
             }
         })
+        .state('projetcompte.tache-projet', {
+            parent: 'entity',
+            url: '/{id}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'Tache'
+            },
+            views:{
+                'content@':{
+            templateUrl: 'app/entities/tache/listeTache.html',
+            controller:'TacheProjetController',
+            controllerAs:'vm'
+            }
+        },
+            resolve: {
+                entity: ['$stateParams', 'Projet', function($stateParams, Projet) {
+                    return Projet.get({id : $stateParams.id}).$promise;
+                }]
+            }
+            }
+        )
         .state('tache.new', {
             parent: 'tache',
             url: '/new',

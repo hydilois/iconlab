@@ -66,6 +66,26 @@
                 }]
             }
         })
+            .state('compte-homeuser', {
+                parent: 'entity',
+                url: '/comptes/{id}',
+                data: {
+                    authorities: [],
+                    pageTitle: 'Compte'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/home/home.html',
+                        controller: 'HomeController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Compte', function($stateParams, Compte) {
+                        return Compte.get({id : $stateParams.id}).$promise;
+                    }]
+                }
+            })
         .state('compte-detail', {
             parent: 'entity',
             url: '/compte/{id}',

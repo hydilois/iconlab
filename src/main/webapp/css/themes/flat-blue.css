@@ -487,7 +487,7 @@
 .flat-blue .badge.warning {
   background-color: #FABE28; }
 .flat-blue .badge.danger {
-  background-color: #FA2A00; }
+  background-color: #FA2A00; }*/
 .flat-blue .nav-tabs {
   background-color: #EAEAEA; }
   .flat-blue .nav-tabs > li > a:hover {
@@ -523,7 +523,7 @@
 .flat-blue .tabs-right > .nav-tabs .active > a:hover,
 .flat-blue .tabs-right > .nav-tabs .active > a:focus {
   border-color: #E4E4E4 #E4E4E4 #E4E4E4 transparent;
-  *border-left-color: #FFF; }
+  border-left-color: #FFF; }
 .flat-blue .step .nav-tabs {
   background-color: #FFF; }
 .flat-blue .step .nav-tabs > li {
@@ -537,14 +537,16 @@
   border-top: 16px solid transparent;
   border-bottom: 16px solid transparent;
   border-left: 16px solid #E4E4E4; }
-.flat-blue .step .nav-tabs > li.active {
-  background-color: #EAEAEA; }
+/* .flat-blue .step .nav-tabs > li.active {
+  background-color: #EAEAEA; } */
   .flat-blue .step .nav-tabs > li.active > a, .flat-blue .step .nav-tabs > li.active > a:focus, .flat-blue .step .nav-tabs > li.active > a:hover {
     background: transparent; }
 .flat-blue .step .nav-tabs > li:hover {
   background-color: #EAEAEA; }
-.flat-blue .step .nav-tabs > li:hover:after, .flat-blue .step .nav-tabs > li.active:after {
-  border-left: 15px solid #EAEAEA; }
+
+/* .flat-blue .step .nav-tabs > li:hover:after, .flat-blue .step .nav-tabs > li.active:after {
+  border-left: 15px solid #EAEAEA; } */
+
 .flat-blue .step .nav-tabs > li:last-child {
   border-right: 1px solid #E4E4E4; }
 .flat-blue .step .nav-tabs > li.step-success {
@@ -576,14 +578,15 @@
   border-top: 16px solid transparent;
   border-bottom: 16px solid transparent;
   border-left: 16px solid #E4E4E4; }
-.flat-blue .step.tabs-left .nav-tabs > li.active {
-  background-color: #EAEAEA; }
+/* .flat-blue .step.tabs-left .nav-tabs > li.active {
+  background-color: #EAEAEA; } */
   .flat-blue .step.tabs-left .nav-tabs > li.active > a, .flat-blue .step.tabs-left .nav-tabs > li.active > a:focus, .flat-blue .step.tabs-left .nav-tabs > li.active > a:hover {
     background: transparent; }
 .flat-blue .step.tabs-left .nav-tabs > li:hover {
   background-color: #EAEAEA; }
-.flat-blue .step.tabs-left .nav-tabs > li:hover:after, .flat-blue .step.tabs-left .nav-tabs > li.active:after {
-  border-left: 15px solid #EAEAEA; }
+/* .flat-blue .step.tabs-left .nav-tabs > li:hover:after, .flat-blue .step.tabs-left .nav-tabs > li.active:after {
+  border-left: 15px solid #EAEAEA; } */
+  /*
 .flat-blue .step.tabs-left.card-no-padding .nav-tabs > li {
   border: 0px solid transparent; }
 .flat-blue .pricing-table {

@@ -1,5 +1,6 @@
 package cm.iconprod.iconlab.web.rest;
 
+import cm.iconprod.iconlab.service.TacheService;
 import com.codahale.metrics.annotation.Timed;
 import cm.iconprod.iconlab.domain.Tache;
 import cm.iconprod.iconlab.repository.TacheRepository;
@@ -34,13 +35,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class TacheResource {
 
     private final Logger log = LoggerFactory.getLogger(TacheResource.class);
-        
+
     @Inject
     private TacheRepository tacheRepository;
-    
+
     @Inject
     private TacheSearchRepository tacheSearchRepository;
-    
+
+    @Inject
+    private TacheService tacheService;
+
     /**
      * POST  /taches : Create a new tache.
      *
@@ -103,9 +107,20 @@ public class TacheResource {
     public ResponseEntity<List<Tache>> getAllTaches(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Taches");
-        Page<Tache> page = tacheRepository.findAll(pageable); 
+        Page<Tache> page = tacheRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/taches");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/taches/projet/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Tache> getAllTachesByProjet(@PathVariable Long id)
+        throws URISyntaxException {
+        //log.debug("REST request to get a page of Projets");
+        List<Tache> taches = tacheService.findTacheByProjetBelong(id);
+        return taches;
     }
 
     /**

@@ -187,25 +187,26 @@
         </div>
     </div>
 </nav> -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-top">
-   <div class="container-fluid">
-       <div class="navbar-header">
-           <button type="button" class="navbar-expand-toggle">
-               <i class="fa fa-bars icon"></i>
-           </button>
-           <ol class="breadcrumb navbar-breadcrumb">
-               <li class="active">IconLab</li>
-           </ol>
-           <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-               <i class="fa fa-th icon"></i>
-           </button>
-       </div>
-       <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
-           <ul class="nav navbar-nav navbar-right">
+<nav  class=" navbar navbar-default navbar-fixed-top navbar-top">
+ <div class="container-fluid">
+     <div class="navbar-header">
+         <button type="button" class="navbar-expand-toggle">
+             <!-- <i class="fa fa-bars icon"></i> -->
+             <img src="content/images/LOGO_ICON_BM.png" alt="logo">
+         </button>
+         <ol class="breadcrumb navbar-breadcrumb">
+             <li id="titre" class="active">IconLab</li>
+         </ol>
+         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+             <i class="fa fa-th icon"></i>
+         </button>
+     </div>
+     <div class=" navbarhaut navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
+         <ul class="nav navbar-nav navbar-right">
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
               <i class="fa fa-times icon"></i>
           </button>
-          <li class="dropdown">
+          <!-- <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
               <ul class="dropdown-menu animated fadeInDown">
                   <li class="title">
@@ -240,27 +241,44 @@
                     </a>
                 </li>
             </ul>
+        </li> -->
+        <li ng-switch-when="false" ui-sref-active="active">
+            <a href="" ng-click="vm.login()" id="login">
+                <span>
+                    <span class="glyphicon glyphicon-log-in lien"></span>
+                    <span class="hidden-sm lien">
+                        Sign in
+                    </span>
+                </span>
+            </a>
+        </li>
+        <li ng-switch-when="false">
+            <a ui-sref="register">
+                <span class="glyphicon glyphicon-plus-sign lien"></span>
+                <span class="hidden-sm lien">
+                <span>Register</span>
+            </a>
         </li>
         <li ng-class="{active: vm.$state.includes('account')}" ng-switch-when="true" class="dropdown profile">
-           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i>&nbsp;{{vm.account.login}} <span class="caret"></span></a>
-           <ul class="dropdown-menu animated fadeInDown">
-               <li ng-show="vm.account.image" class="profile-img">
-                   <img data-ng-src="{{'data:' + vm.account.imageContentType + ';base64,' + vm.account.image}}" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
-               </li>
-               <li ng-show="!vm.account.image" class="profile-img">
-                   <img src="content/images/photo.png" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
-               </li>
-               <li>
-                   <div class="profile-info">
-                       <h4 class="username">{{vm.account.login}}</h4>
-                       <p>{{vm.account.email}}</p>
-                       <div class="margin-bottom-2x" role="group">
-                           <a type="button" ui-sref="settings" ng-click="vm.collapseNavbar()" class="btn btn-default"><i class="glyphicon glyphicon-wrench"></i> Settings</a>
-                           <a type="button" ui-sref="password" ng-click="vm.collapseNavbar()" class="btn btn-default">
-                               <i class="glyphicon glyphicon-lock"></i>
-                               Password
-                           </a>
-                           <a type="button" ui-sref="sessions" ng-click="vm.collapseNavbar()" class="btn btn-default">
+         <a class="dropdown-toggle lien" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user lien"></i>&nbsp; <span class="lien"> {{vm.account.login}}</span> <span class="caret lien"></span></a>
+         <ul class="dropdown-menu animated fadeInDown">
+             <li ng-show="vm.account.image" class="profile-img">
+                 <img data-ng-src="{{'data:' + vm.account.imageContentType + ';base64,' + vm.account.image}}" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
+             </li>
+             <li ng-show="!vm.account.image" class="profile-img">
+                 <img src="content/images/photo.png" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
+             </li>
+             <li>
+                 <div class="profile-info">
+                     <h4 class="username">{{vm.account.login}}</h4>
+                     <p>{{vm.account.email}}</p>
+                     <div class="margin-bottom-2x" role="group">
+                         <a type="button" ui-sref="settings" ng-click="vm.collapseNavbar()" class="btn btn-default"><i class="glyphicon glyphicon-wrench"></i> Settings</a>
+                         <a type="button" ui-sref="password" ng-click="vm.collapseNavbar()" class="btn btn-default">
+                             <i class="glyphicon glyphicon-lock"></i>
+                             Password
+                         </a>
+                         <a type="button" ui-sref="sessions" ng-click="vm.collapseNavbar()" class="btn btn-default">
                             <i class="glyphicon glyphicon-cloud"></i>
                             Sessions
                         </a>
@@ -275,4 +293,35 @@
     </ul>
 </div>
 </div>
+<!-- <div class="container-fluid">
+    <div class="navbar-header">
+     <button type="button" class="navbar-expand-toggle">
+         <img src="content/images/accueil.png" alt="">
+     </button>
+     <ol class="breadcrumb navbar-breadcrumb">
+         <li class="active">IconLab</li>
+     </ol>
+     <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+         <i class="fa fa-th icon"></i>
+     </button>
+ </div>
+ <ul class="nav navbar-nav navbar-right">
+  <li>
+    <a href="" ng-click="vm.login()" id="login">
+        <span>
+            <span class="glyphicon glyphicon-log-in"></span>
+            <span class="hidden-sm">
+                Sign in
+            </span>
+        </span>
+    </a>
+</li>
+<li ui-sref-active="active">
+    <a ui-sref="register">
+        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+        <span>Register</span>
+    </a>
+</li>
+</ul>
+</div> -->
 </nav>

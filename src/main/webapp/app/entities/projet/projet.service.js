@@ -4,7 +4,27 @@
         .module('iconlabApp')
         .factory('Projet', Projet);
 
+    angular
+        .module('iconlabApp')
+        .factory('ProjetSpecial', ProjetSpecial);
+
     Projet.$inject = ['$resource', 'DateUtils'];
+    ProjetSpecial.$inject = ['$http', 'DateUtils'];
+
+    function ProjetSpecial($http,DateUtils){
+        return{
+            getProjetByCompte: function (id) {
+                return $http.get("api/projets/compte/" +id)
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de la liste des projets par compte");
+                        }
+                    );
+            }
+    }
+    }
 
     function Projet ($resource, DateUtils) {
         var resourceUrl =  'api/projets/:id';

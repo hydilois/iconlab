@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <div class="title">{{vm.compte.nom}}</div>
+                </div>
+            </div>
+            <div class="card-body no-padding">
+                <div class="step tabs-left card-no-padding">
+                    <ul class="nav nav-tabs" role="tablist">
+                    <!-- ng-click="select(datalist)" -->
+                        <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-class="{active: isActive(datalist)}">
+                            <a ui-sref=".tache-projet({id:projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                                <div class="icon fa fa-truck"></div>
+                                <div class="step-title">
+                                    <div class="title" >{{projet.nom}}</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" ui-view>
+                        <!-- <div  role="tabpanel" class="tab-pane fade in active" id="top" aria-labelledby="home-tab">
+                            <p>{{vm.projet.id}}</p> 
+                        </div>   -->             
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

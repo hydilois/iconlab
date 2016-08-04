@@ -13,23 +13,11 @@
         vm.isNavbarCollapsed = true;
         vm.isAuthenticated = Principal.isAuthenticated;
 
-         $scope.$on('authenticationSuccess', function() {
-        //     loadAllCompte();
+        $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
-             getAccount();
 
-       /* function loadAllCompte() {
-            vm.listeComptesTotal = [];
-            Compte.query().$promise.then(function (data) {
-                vm.listeComptesTotal = data;
-                userCompte(vm.listeComptesTotal, $scope.mail);
-                //console.log("authen" + vm.listeComptesTotal);
-
-            }, function () {
-                console.log("Erreur de recuperation des données");
-            });
-        }*/
+        getAccount();
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
@@ -52,15 +40,7 @@
             });
         }
 
-        /*function userCompte(data, email){
-            vm.listeComptes = [];
-            for(var i=0; i<data.length; i++){
-                if(data[i].user.email===email)
-                    vm.listeComptes.push(data[i]);
-            }
-        }*/
-
-          function login() {
+        function login() {
             collapseNavbar();
             LoginService.open();
         }
@@ -79,15 +59,15 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
-        $(function() {
-            $(".navbar-expand-toggle").click(function() {
-                $(".app-container").toggleClass("expanded");
-                return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
+            $(function() {
+                $(".navbar-expand-toggle").click(function() {
+                    $(".app-container").toggleClass("expanded");
+                   // return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
+                });
+                return $(".navbar-right-expand-toggle").click(function() {
+                    $(".navbar-right").toggleClass("expanded");
+                    //return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
+                });
             });
-            return $(".navbar-right-expand-toggle").click(function() {
-                $(".navbar-right").toggleClass("expanded");
-                return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
-            });
-        });
-}
-})();
+        }
+    })();

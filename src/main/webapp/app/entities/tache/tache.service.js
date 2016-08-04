@@ -4,7 +4,27 @@
         .module('iconlabApp')
         .factory('Tache', Tache);
 
+    angular
+        .module('iconlabApp')
+        .factory('TacheSpecial', TacheSpecial);
+
     Tache.$inject = ['$resource', 'DateUtils'];
+    TacheSpecial.$inject = ['$http'];
+
+    function TacheSpecial($http){
+        return{
+            getTacheByProjet: function (id) {
+                return $http.get("api/taches/projet/" +id)
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de la liste des projets par compte");
+                        }
+                    );
+            }
+    }
+    }
 
     function Tache ($resource, DateUtils) {
         var resourceUrl =  'api/taches/:id';

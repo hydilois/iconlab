@@ -1,5 +1,6 @@
 package cm.iconprod.iconlab.web.rest;
 
+import cm.iconprod.iconlab.service.PointAvancementService;
 import com.codahale.metrics.annotation.Timed;
 import cm.iconprod.iconlab.domain.PointAvancement;
 import cm.iconprod.iconlab.repository.PointAvancementRepository;
@@ -35,13 +36,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PointAvancementResource {
 
     private final Logger log = LoggerFactory.getLogger(PointAvancementResource.class);
-        
+
     @Inject
     private PointAvancementRepository pointAvancementRepository;
-    
+
     @Inject
     private PointAvancementSearchRepository pointAvancementSearchRepository;
-    
+
+    @Inject
+    private PointAvancementService pointAvancementService;
+
     /**
      * POST  /point-avancements : Create a new pointAvancement.
      *
@@ -104,7 +108,7 @@ public class PointAvancementResource {
     public ResponseEntity<List<PointAvancement>> getAllPointAvancements(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of PointAvancements");
-        Page<PointAvancement> page = pointAvancementRepository.findAll(pageable); 
+        Page<PointAvancement> page = pointAvancementRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/point-avancements");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -127,6 +131,17 @@ public class PointAvancementResource {
                 result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @RequestMapping(value = "/point-avancements/tache/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<PointAvancement> getAllPointAvancementByProjet(@PathVariable Long id)
+        throws URISyntaxException {
+        //log.debug("REST request to get a page of Projets");
+        List<PointAvancement> pointAvancements = pointAvancementService.findPointAvancementByProjetBelong(id);
+        return pointAvancements;
     }
 
     /**

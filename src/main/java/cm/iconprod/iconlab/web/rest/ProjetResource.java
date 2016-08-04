@@ -1,5 +1,6 @@
 package cm.iconprod.iconlab.web.rest;
 
+import cm.iconprod.iconlab.service.ProjetService;
 import com.codahale.metrics.annotation.Timed;
 import cm.iconprod.iconlab.domain.Projet;
 import cm.iconprod.iconlab.repository.ProjetRepository;
@@ -38,6 +39,9 @@ public class ProjetResource {
 
     @Inject
     private ProjetRepository projetRepository;
+
+    @Inject
+    private ProjetService projetService;
 
     @Inject
     private ProjetSearchRepository projetSearchRepository;
@@ -107,6 +111,18 @@ public class ProjetResource {
         Page<Projet> page = projetRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/projets");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/projets/compte/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Projet> getAllProjetsByCompte(@PathVariable Long id)
+        throws URISyntaxException {
+        //log.debug("REST request to get a page of Projets");
+        System.out.println(id);
+        List<Projet> projets = projetService.findProjetByCompteBelong(id);
+        return projets;
     }
 
     /**

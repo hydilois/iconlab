@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
   $(".navbar-expand-toggle").click(function() {
     $(".app-container").toggleClass("expanded");
     return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
@@ -7,7 +7,7 @@ $(function() {
     $(".navbar-right").toggleClass("expanded");
     return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
   });
-});
+});*/
 
 $(function() {
   return $('select').select2();

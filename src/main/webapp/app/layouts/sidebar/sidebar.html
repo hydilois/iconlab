@@ -1,5 +1,5 @@
-<div class="side-menu sidebar-inverse">
-    <nav class="navbar navbar-default" role="navigation">
+<div ng-if="vm.isAuthenticated()" class="side-menu sidebar-inverse">
+    <nav  class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
-                        <a  ng-if="vm.listeComptes.length != 0" data-toggle="collapse" href="#dropdown-element">
+                        <a ng-show="vm.listeComptes.length != 0" data-toggle="collapse" href="#dropdown-element">
                             <span class="icon fa fa-desktop"></span><span class="title">Compte</span>
                         </a>
                         <!-- Dropdown level 1 -->
@@ -27,53 +27,47 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li ng-repeat="(key, compte) in vm.listeComptes" ui-sref-active="active" >
-                                    <a ui-sref="compte-detailuser({id:compte.id})">
+                                         <a ui-sref="projetcompte({id:compte.id})">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                             <span >{{compte.nom}}</span>
+                                         </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
+                        <a  ng-if="vm.listeProjets.length != 0" data-toggle="collapse" href="#dropdown-element2">
+                            <span class="icon fa fa-desktop"></span><span class="title">Projet</span>
+                        </a>
+                        <!-- Dropdown level 1 -->
+                        <div id="dropdown-element2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav navbar-nav">
+                                    <li ng-repeat="(key, projet) in vm.listeProjets" ui-sref-active="active" >
+                                        <a ui-sref="projet-detail({id:projet.id})">
+                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                            <span >{{projet.nom}}</span>
                                         </a>
                                     </li>
-                                   <!--  <li ui-sref-active="active" >
-                                       <a ui-sref="projet">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Projet</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="documents">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Documents</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="article">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Article</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="commentaire">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Commentaire</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="tache">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Tache</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="message-hierachique">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Message Hierachique</span>
-                                       </a>
-                                   </li>
-                                   <li ui-sref-active="active" >
-                                       <a ui-sref="point-avancement">
-                                           <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                           <span >Point Avancement</span>
-                                       </a>
-                                   </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
+                        <a  ng-if="vm.listeTasks.length != 0" data-toggle="collapse" href="#dropdown-element3">
+                            <span class="icon fa fa-desktop"></span><span class="title">Taches</span>
+                        </a>
+                        <!-- Dropdown level 1 -->
+                        <div id="dropdown-element3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav navbar-nav">
+                                    <li ng-repeat="(key, tache) in vm.listeTasks" ui-sref-active="active" >
+                                        <a ui-sref="tache-detail({id:tache.id})">
+                                            <span class="glyphicon glyphicon-tasks"></span>&nbsp;
+                                            <span >{{tache.nom}}</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -193,10 +187,9 @@
                         </ul>
                     </div>
                 </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<!-- /.navbar-collapse -->
 </nav>
+    <div class="listeProjet">
+        <span>Liste des projets</span>
+
+    </div>
 </div>

@@ -62,10 +62,10 @@
                     <td>{{tache.dateFin | date:'medium'}}</td>
                     <td>{{tache.actif}}</td>
                     <td>
-                        <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.id}}</a>
+                        <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.nom}}</a>
                     </td>
                     <td>
-                        {{tache.user.id}}
+                        {{tache.user.login}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

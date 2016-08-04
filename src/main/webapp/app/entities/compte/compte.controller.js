@@ -51,6 +51,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
+                vm.totalComptes=vm.totalItems;
                 vm.comptes = data;
                 vm.page = pagingParams.page;
             }

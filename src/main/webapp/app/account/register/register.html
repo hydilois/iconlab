@@ -4,7 +4,7 @@
             <h1>Registration</h1>
 
             <div class="alert alert-success" ng-show="vm.success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+                <strong>Enregistrement effectué avec succès!</strong> Please check your email for confirmation.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.error">
@@ -20,24 +20,24 @@
             </div>
 
             <div class="alert alert-danger" ng-show="vm.doNotMatch">
-                The password and its confirmation do not match!
+                Le mot de passe et sa confirmation ne correspondent pas!
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
 
                 <div class="form-group">
-                    <label class="control-label" for="login">Username</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Your registerAccountname"
+                    <label class="control-label" for="login">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Nom d'utilisateur"
                            ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                     <div ng-show="form.login.$dirty && form.login.$invalid">
                         <p class="help-block"
                                ng-show="form.login.$error.required">
-                            Your registerAccountname is required.
+                            votre nom d'utilisateur est obligatoire
                         </p>
                         <p class="help-block"
                                ng-show="form.login.$error.minlength">
-                            Your registerAccountname is required to be at least 1 character.
+                            Your username is required to be at least 1 character.
                         </p>
                         <p class="help-block"
                                ng-show="form.login.$error.maxlength">
