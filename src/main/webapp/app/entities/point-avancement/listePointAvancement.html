@@ -1,0 +1,16 @@
+<div><div>
+		<div class="fa fa-tasks"></div>
+		<Label class="title">
+			{{vm.tache.nom}}
+		</Label>
+	</div>
+	
+	<div>
+		<div data-ng-repeat="pa in vm.listePa">
+		  <div class="fa fa-hand-o-right"></div>
+			<label class="title">
+				{{pa.libelle}}
+			</label>
+		</div>			
+	</div>
+</div>

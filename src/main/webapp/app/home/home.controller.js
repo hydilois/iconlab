@@ -51,8 +51,6 @@
             vm.listeProjetsTotalhome = [];
             Projet.query().$promise.then(function (data) {
                 vm.listeProjetsTotalhome = data;
-                console.log(data);
-                console.log($state.params.id);
                 findProjetByCompte(vm.listeProjetsTotalhome,$state.params.id);
             }, function () {
                 console.log("Erreur de recuperation des données");

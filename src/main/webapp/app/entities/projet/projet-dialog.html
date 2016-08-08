@@ -88,7 +88,7 @@
 
         <div class="form-group">
             <label for="field_compte">Compte</label>
-            <select class="form-control" id="field_compte" name="compte" ng-model="vm.projet.compte" ng-options="compte as compte.id for compte in vm.comptes track by compte.id">
+            <select class="form-control" id="field_compte" name="compte" ng-model="vm.projet.compte" ng-options="compte as compte.nom for compte in vm.comptes track by compte.id">
                 <option value=""></option>
             </select>
         </div>

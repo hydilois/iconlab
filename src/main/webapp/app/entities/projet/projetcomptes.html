@@ -1,0 +1,12 @@
+                        <div>
+                        <ul>                   
+                         <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-class="{active: isActive(datalist)}">
+                            <a ui-sref="tacheprojet({id: projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                                <div class="icon fa fa-truck"></div>
+                                <div class="step-title">
+                                    <div class="title" >{{projet.nom}}</div>
+                                </div>
+                            </a>
+                         </li>
+                        </ul>
+                        </div>

@@ -27,7 +27,7 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li ng-repeat="(key, compte) in vm.listeComptes" ui-sref-active="active" >
-                                         <a ui-sref="projetcompte({id:compte.id})">
+                                         <a ui-sref="app.projetcompte({id:compte.id})">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                             <span >{{compte.nom}}</span>
                                          </a>
@@ -45,7 +45,8 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li ng-repeat="(key, projet) in vm.listeProjets" ui-sref-active="active" >
-                                        <a ui-sref="projet-detail({id:projet.id})">
+                                         <!--  dynamiser le contenu par niveau de pririte tel que app.projetcompte.tacheprojet({idprojet:projet.id})-->
+                                        <a ui-sref="app.tacheprojet({idprojet:projet.id})">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                             <span >{{projet.nom}}</span>
                                         </a>

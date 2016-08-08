@@ -66,27 +66,7 @@
                 }]
             }
         })
-            .state('projetcompte', {
-                parent: 'entity',
-                url: '/projet/compte/{id}',
-                data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'Projet'
-                },
-                views: {
-                    'content@': {
-                        templateUrl: 'app/entities/projet/projetcompte.html',
-                        controller: 'ProjetCompteController',
-                        controllerAs: 'vm'
-                    }
-                },
-                resolve: {
-                    entity: ['$stateParams', 'Compte', function($stateParams, Compte) {
-                        return Compte.get({id : $stateParams.id}).$promise;
-                    }]
-                }
-            })
-        .state('projet.new', {
+            .state('projet.new', {
             parent: 'projet',
             url: '/new',
             data: {
@@ -123,7 +103,7 @@
             }]
         })
         .state('projet.edit', {
-            parent: 'projet',
+            parent: 'entity',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']

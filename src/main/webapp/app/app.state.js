@@ -21,6 +21,11 @@
                     templateUrl: 'app/layouts/sidebar/sidebar.html',
                     controller: 'SidebarController',
                     controllerAs: 'vm'
+                },
+                'content@':{
+                    templateUrl: 'app/home/home.html',
+                    controller: 'HomeController',
+                    controllerAs: 'vm'
                 }
             },
             resolve: {
@@ -30,6 +35,154 @@
                 }
                 ]
             }
-        });
+        }).state('app.projetcompte', {
+                parent: 'app',
+                url: '/projet/compte/{id}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Projet'
+                },
+                views: {
+                    'content@': {
+                        
+                        templateUrl: 'app/entities/projet/projetcompte.html',
+                        controller: 'ProjetCompteController',
+                        controllerAs: 'vm'
+                        
+                   }
+                },
+                resolve: {
+                    compte: ['$stateParams', 'Compte', function($stateParams, Compte) {
+                        console.log("id est "+$stateParams.id);
+                        return Compte.get({id : $stateParams.id}).$promise;
+                    }]
+                }
+            }).state('app.tacheprojet',{//tache d'un projet vue d'un chef de projet
+                parent: 'app',
+
+                url: '/listeTache/projet/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ListeTache'
+                },
+                views: {
+                    'content@': {
+                         controller: 'TacheProjetController',
+                        controllerAs: 'vm',
+                        
+                        templateUrl: 'app/entities/tache/listeTacheCp.html'
+                       
+                       
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Projet', function($stateParams, Projet) {
+                        console.log("id du projet "+$stateParams.idprojet);
+                        return Projet.get({id : $stateParams.idprojet}).$promise;
+                    }]
+                }
+
+
+
+            }
+
+
+            ).state('app.tacheprojet.patache',{//Point d'avancement d'une tache  vue d'un chef de projet
+                parent: 'app.tacheprojet',
+
+                url: '/listePointAvancement/tache/{idtache}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: "Evolution Tache"
+                },
+                views: {
+                    'pacontent@app.tacheprojet': {
+                        
+                        templateUrl: 'app/entities/point-avancement/listePointAvancement.html',
+                        controller: 'PointAvancementTacheController',
+                        controllerAs: 'vm'
+                        
+
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Tache', function($stateParams, Tache) {
+                        console.log("id de la Tache "+$stateParams.idtache);
+                        return Tache.get({id : $stateParams.idtache}).$promise;
+                    }]
+                }
+
+
+
+            }
+
+
+            ).state('app.projetcompte.tacheprojet',{
+                parent: 'app.projetcompte',
+
+                url: '/listeTache/projet/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ListeTache'
+                },
+                views: {
+                    'ganttcontent@app.projetcompte': {
+                        
+                        templateUrl: 'app/entities/tache/gantt.html' ,
+                         controller: 'TacheProjetController',
+                        controllerAs: 'vm'
+                    },
+                    'tachecontent@app.projetcompte': {
+                        
+                        templateUrl: 'app/entities/tache/listeTache.html',
+                        controller: 'TacheProjetController',
+                        controllerAs: 'vm'
+                    }
+                    
+
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Projet', function($stateParams, Projet) {
+                        console.log("id du projet "+$stateParams.idprojet);
+                        return Projet.get({id : $stateParams.idprojet}).$promise;
+                    }]
+                }
+
+
+
+            }
+
+
+            ).state('app.projetcompte.tacheprojet.patache',{
+                parent: 'app.projetcompte.tacheprojet',
+
+                url: '/listePointAvancement/tache/{idtache}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: "Evolution Tache"
+                },
+                views: {
+                    'pacontent@app.projetcompte.tacheprojet': {
+                        
+                        templateUrl: 'app/entities/point-avancement/listePointAvancement.html',
+                        controller: 'PointAvancementTacheController',
+                        controllerAs: 'vm'
+                        
+
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Tache', function($stateParams, Tache) {
+                        console.log("id de la Tache "+$stateParams.idtache);
+                        return Tache.get({id : $stateParams.idtache}).$promise;
+                    }]
+                }
+
+
+
+            }
+
+
+            );
     }
 })();

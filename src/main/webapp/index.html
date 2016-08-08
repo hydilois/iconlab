@@ -26,10 +26,21 @@
     <link rel="stylesheet" type="text/css" href="lib/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="lib/css/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="lib/css/select2.min.css">
+
+    <!-- <link rel="stylesheet" href="css/bootstrap-submenu.min.css"> -->
+
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/themes/flat-blue.css">
     <!-- <link rel="stylesheet" href="content/css/main.css"> -->
+
+    <!-- Librairies de CSS pour le diagramme de Gant -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/vendor.css"/> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+
+    <!-- Style pour la barre de  menu  d'administration des différents utilsateurs -->
+    <link rel="stylesheet" href="css/stylemenu.css"/>
 </head>
 
 <body class="flat-blue" ng-app="iconlabApp" ng-strict-di>
@@ -50,10 +61,12 @@
      </div>
      <footer class="app-footer">
         <div class="wrapper">
-            <div class="text-center"> © 2016 Copyright.</div>
+            <div class="text-center"> © ICONProd 2016 Copyright.</div>
         </div>
     </footer>
 </div>
+
+
 <!-- Javascript Libs -->
 <script type="text/javascript" src="lib/js/jquery.min.js"></script>
 <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
@@ -89,6 +102,11 @@
 <!-- endinject -->
 <!-- endbuild -->
 
+<!-- librairies du diagrame de gant -->
+<script src="js/vendor.js"></script>
+<script src="js/scripts.js"></script>
+
+
 <!-- build:js app/app.js  -->
 <!-- inject:js -->
 <script src="app/app.module.js"></script>
@@ -111,6 +129,7 @@
 <script src="app/layouts/sidebar/sidebar.controller.js"></script>
 <script src="app/layouts/navbar/active-link.directive.js"></script>
 <script src="app/layouts/error/error.state.js"></script>
+<script src="app/home/view.state.js"></script>
 <script src="app/home/home.state.js"></script>
 <script src="app/home/home.controller.js"></script>
 <script src="app/entities/tache/tache-dialog.controller.js"></script>
@@ -242,7 +261,22 @@
 <script src="app/account/activate/activate.state.js"></script>
 <script src="app/account/activate/activate.controller.js"></script>
 <script src="app/account/account.state.js"></script>
-</body>
 
+
+
+<!-- <script src="js/bootstrap-submenu.min.js" defer></script> -->
+
+<script type="text/javascript">
+    $(function() {
+                // Affichage du sous menu en douceur
+                jQuery('ul.nav li.dropdown').click(function() {
+                  jQuery(this).find('.jqueryFadeIn').start(true, true).delay(10).fadeIn();
+                }, function() {
+                  jQuery(this).find('.jqueryFadeIn').start(true, true).delay(10).fadeOut();
+                });
+     
+            });     
+</script>
+</body>
 
 </html>

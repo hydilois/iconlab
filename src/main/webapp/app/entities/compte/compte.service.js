@@ -8,6 +8,7 @@
 
     function Compte ($resource) {
         var resourceUrl =  'api/comptes/:id';
+        console.log("je suis passer ici ....");
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},

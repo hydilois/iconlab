@@ -1,4 +1,4 @@
-    <div class="col-xs-12">
+<div class="col-xs-12">
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
@@ -10,7 +10,7 @@
                 <div class="step tabs-left card-no-padding">
                         <ul class="nav nav-tabs" role="tablist">                   
                          <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
-                            <a ui-sref="app.projetcompte.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                            <a ui-sref="app.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                                 <div class="icon fa fa-tasks"></div>
                                 <div class="step-title">
                                     <div class="title" >{{task.nom}}</div>

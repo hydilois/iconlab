@@ -1,32 +1,90 @@
-<div class="row">
+<nav class="navbar navbar-default banniere">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand hidden-md hidden-lg" href="#">Menu</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
+        <ul class="nav navbar-nav">
+            <li class="dropdown"> 
+                <a href="" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
+                <ul class="dropdown-menu fadeInDown">
+                    <li><a href="#"><span class="icon fa fa-users"></span> Projet</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Message</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
+                </ul>
+            </li> 
+            <li class="dropdown"> 
+            <a href="" data-toggle="dropdown"> Edition<b class="caret"></b></a>
+                <ul class="dropdown-menu fadeInDown">
+                        <li class="dropdown-submenu">
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Projets</a>
+                            <ul class="dropdown-menu fadeInDown">
+                                <li data-ng-repeat="projet in vm.listePr"><a ui-sref="projet.edit({id:projet.id})"><span class="fa fa-bar-chart-o"></span> {{projet.nom}}</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Messages</a>
+                            <ul class="dropdown-menu fadeInDown">
+                                <li><a><span class="fa fa-bar-chart-o"></span>Liste des messages</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
+                            <ul class="dropdown-menu fadeInDown">
+                                <li><a><span class="fa fa-bar-chart-o"></span> Liste documents</a></li>
+                            </ul>
+                        </li>
+                </ul>
+            </li>                  
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span glyphicon glyphicon-envelope></span>Messages <span class="caret"></span></a>
+                  <ul class="dropdown-menu fadeInDown">
+                    <li ng-repeat="(key, message) in vm.listeMessage"><a href=""></a>{{message.contenu}}</li>
+                  </ul>
+                </li>
+              </ul>
+    </div>
+</nav>
+<div class="row" >
     <div class="col-xs-12">
         <div class="card">
             <div class="card-header">
+
                 <div class="card-title">
-                    <div class="title">{{vm.compte.nom}}</div>
+                    <div class="fa fa-object-group"></div>
+                    <Label class="title">{{vm.compte.nom}}</Label>
                 </div>
             </div>
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
-                    <ul class="nav nav-tabs" role="tablist">
-                    <!-- ng-click="select(datalist)" -->
-                        <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-class="{active: isActive(datalist)}">
-                            <a ui-sref=".tache-projet({id:projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-                                <div class="icon fa fa-truck"></div>
-                                <div class="step-title">
-                                    <div class="title" >{{projet.nom}}</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" ui-view>
-                        <!-- <div  role="tabpanel" class="tab-pane fade in active" id="top" aria-labelledby="home-tab">
-                            <p>{{vm.projet.id}}</p> 
-                        </div>   -->             
-                       
-                    </div>
+                    <ul class="nav nav-tabs" role="tablist">                   
+                       <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
+                        <a ui-sref="app.projetcompte.tacheprojet({idprojet : projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                            <div class="icon fa fa-users"></div>
+                            <div class="step-title">
+                                <div class="title" >{{projet.nom}}</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" ui-view="tachecontent"> 
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+<div class="row">
+    <dir class="col-md-12 col-xs-12" ui-view="ganttcontent">
+
+    </dir>  
 </div>

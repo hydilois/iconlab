@@ -128,6 +128,23 @@ public class MessageHierachiqueResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    
+    
+    
+    /**
+     * Recuperer la listes des messages en fonction du comptes et des projets y aferant
+     * Etant donnée qu'on ne peut pas avoir les messages associé à un compte directement
+     * il faut d'abord passer par la liste des projets appartenant à ce compte
+     */
+    @RequestMapping(value = "/message-hierachiques/compte/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<MessageHierachique> getMessageHierachiqueByCompte(@PathVariable Long id) {
+        log.debug("REST request to get MessageHierachique By Compte : {}", id);
+        return messageHierachiqueRepository.findMessagesByCompte(id);
+    }
+    
 
     /**
      * DELETE  /message-hierachiques/:id : delete the "id" messageHierachique.

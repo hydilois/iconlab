@@ -1,85 +1,46 @@
-(function() {
-    'use strict';
+'use strict';
 
-    angular
-        .module('iconlabApp')
-        .controller('TacheDetailController', TacheDetailController);
+/**
+ * @ngdoc overview
+ * @name angularGanttDemoApp
+ * @description
+ * # angularGanttDemoApp
+ *
+ * Main module of the application.
+ */
+angular.module('angularGanttDemoApp', [
+    'gantt', // angular-gantt.
+    'gantt.sortable',
+    'gantt.movable',
+    'gantt.drawtask',
+    'gantt.tooltips',
+    'gantt.bounds',
+    'gantt.progress',
+    'gantt.table',
+    'gantt.tree',
+    'gantt.groups',
+    'gantt.dependencies',
+    'gantt.overlap',
+    'gantt.resizeSensor',
+    'ngAnimate',
+    'mgcrea.ngStrap'
+]).config(['$compileProvider', function($compileProvider) {
+    $compileProvider.debugInfoEnabled(false); // Remove debug info (angularJS >= 1.3)
+}]);
 
-    angular
-        .module('iconlabApp')
-        .controller('TacheProjetController', TacheProjetController);
+'use strict';
 
-
-
-    TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
-    TacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial','$timeout','$log', 'ganttUtils', 'GanttObjectModel', 'ganttMouseOffset', 'ganttDebounce', 'moment'];
-   
-    function TacheDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Tache, Projet, PointAvancement, User) {
-        var vm = this;
-
-        vm.tache = entity;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
-
-        var unsubscribe = $rootScope.$on('iconlabApp:tacheUpdate', function(event, result) {
-            vm.tache = result;
-        });
-        $scope.$on('$destroy', unsubscribe);
-    };
-    function TacheProjetController($scope, $rootScope, $state, entity,TacheSpecial,$timeout,$log,ganttUtils,GanttObjectModel,ganttMouseOffset,ganttDebounce,moment) {
-        var vm = this;
-        vm.projet = entity;
-        $scope.hello ="je suis la les gars ...";
-        console.log("je suis entrer les gars ...");
-        var unsubscribe = $rootScope.$on('iconlabApp:projetUpdate', function(event, result) {
-            vm.projet = result;
-        });
-        $scope.$on('$destroy', unsubscribe);
-
-        if($state.params.idprojet){
-            TacheSpecial.getTacheByProjet($state.params.idprojet).then(function(data){
-                vm.listeTachesParProjet = data;
-                // console.log("fatigue la "+vm.listeTachesParProjet);
-                 chargement();
-                    $scope.load();
-
-            }, function(){
-                console.log('Erreur de recuperation des données');
-            });
-        }
-
-       ///debut .....................
-
-          var objectModel;
-         var dataToRemove;
-         //vm.datanew=[];
-    
-
-        vm.datalist = {name: '', tasks: [
-                            {name: '', color: '#F1C232', from: new Date(), to: new Date(), progress : 0}]};
-
-        function chargement(){
-            vm.dataliste=[];
-            vm.datanew =[];
-            console.log("taille est de "+vm.listeTachesParProjet.length);
-                for (var i = 0; i < vm.listeTachesParProjet.length; i++) {
-                    vm.datalist.name=vm.listeTachesParProjet[i].nom;
-                    vm.datalist.tasks[0].name=vm.listeTachesParProjet[i].nom;
-                    vm.datalist.tasks[0].color='#F1C232';
-                    vm.datalist.tasks[0].from=vm.listeTachesParProjet[i].dateDebut;
-                    vm.datalist.tasks[0].to=vm.listeTachesParProjet[i].dateFin;
-                    vm.datalist.tasks[0].progress=0;
-                    console.log(vm.datalist);
-                    //console.log(vm.datalist.tasks[0]);
-
-                    vm.dataliste.push(vm.datalist);
-
-                }
-                 // console.log("cool les :"+vm.dataliste);
-                  vm.datanew = vm.dataliste;
-        };
-
-       //chargement();
+/**
+ * @ngdoc function
+ * @name angularGanttDemoApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the angularGanttDemoApp
+ */
+angular.module('angularGanttDemoApp')
+    .controller('MainCtrl', ['$scope', '$timeout', '$log', 'ganttUtils', 'GanttObjectModel', 'Sample', 'ganttMouseOffset', 'ganttDebounce', 'moment', function($scope, $timeout, $log, utils, ObjectModel, Sample, mouseOffset, debounce, moment) {
+        var objectModel;
+        var dataToRemove;
 
         // Event handler
         var logScrollEvent = function(left, date, direction) {
@@ -256,11 +217,11 @@
                     api.data.on.remove($scope, addEventName('data.on.remove', logDataEvent));
                     api.data.on.load($scope, addEventName('data.on.load', logDataEvent));
                     api.data.on.clear($scope, addEventName('data.on.clear', logDataEvent));
-                    //api.data.on.change($scope, addEventName('data.on.change', logDataEvent));
+                    api.data.on.change($scope, addEventName('data.on.change', logDataEvent));
 
                     api.tasks.on.add($scope, addEventName('tasks.on.add', logTaskEvent));
-                    // api.tasks.on.change($scope, addEventName('tasks.on.change', logTaskEvent));
-                    // api.tasks.on.rowChange($scope, addEventName('tasks.on.rowChange', logTaskEvent));
+                    api.tasks.on.change($scope, addEventName('tasks.on.change', logTaskEvent));
+                    api.tasks.on.rowChange($scope, addEventName('tasks.on.rowChange', logTaskEvent));
                     api.tasks.on.remove($scope, addEventName('tasks.on.remove', logTaskEvent));
 
                     if (api.tasks.on.moveBegin) {
@@ -280,7 +241,7 @@
                     }
 
                     api.rows.on.add($scope, addEventName('rows.on.add', logRowEvent));
-                    //api.rows.on.change($scope, addEventName('rows.on.change', logRowEvent));
+                    api.rows.on.change($scope, addEventName('rows.on.change', logRowEvent));
                     api.rows.on.move($scope, addEventName('rows.on.move', logRowEvent));
                     api.rows.on.remove($scope, addEventName('rows.on.remove', logRowEvent));
 
@@ -294,7 +255,7 @@
                     api.rows.on.filter($scope, logRowsFilterEvent);
                     api.tasks.on.filter($scope, logTasksFilterEvent);
 
-                    /*api.data.on.change($scope, function(newData) {
+                    api.data.on.change($scope, function(newData) {
                         if (dataToRemove === undefined) {
                             dataToRemove = [
                                 {'id': newData[2].id}, // Remove Kickoff row
@@ -311,11 +272,11 @@
                                 } // Remove order basket from Sprint 2
                             ];
                         }
-                    });*/
+                    });
 
                     // When gantt is ready, load data.
                     // `data` attribute could have been used too.
-                    //$scope.load();
+                    $scope.load();
 
                     // Add some DOM events
                     api.directives.on.new($scope, function(directiveName, directiveScope, element) {
@@ -355,11 +316,11 @@
                         }
                     });
 
-                    /*api.tasks.on.rowChange($scope, function(task) {
+                    api.tasks.on.rowChange($scope, function(task) {
                         $scope.live.row = task.row.model;
-                    });*/
+                    });
 
-                    //objectModel = new ObjectModel(api);
+                    objectModel = new ObjectModel(api);
                 });
             }
         };
@@ -418,17 +379,14 @@
             }
 
             return 40 * zoom;
-
         };
-        
+
         // Reload data action
         $scope.load = function() {
-            $scope.data =vm.datanew;
-            console.log( "scope data est "+vm.datanew );
-            //chargement();
-           // dataToRemove = undefined;
+            $scope.data = Sample.getSampleData();
+            dataToRemove = undefined;
 
-            //$scope.timespans = TacheSpecial.getSampleTimespans();
+            $scope.timespans = Sample.getSampleTimespans();
         };
 
         $scope.reload = function() {
@@ -479,7 +437,7 @@
         // Visual two way binding.
         $scope.live = {};
 
-       /* var debounceValue = 1000;
+        var debounceValue = 1000;
 
         var listenTaskJson = debounce(function(taskJson) {
             if (taskJson !== undefined) {
@@ -538,11 +496,8 @@
                     rowModel.tasks.push(newTask);
                 });
             }
-        }, debounceValue);*/
-
-
-
-        //$scope.$watch('live.rowJson', listenRowJson);
+        }, debounceValue);
+        $scope.$watch('live.rowJson', listenRowJson);
 
         $scope.$watchCollection('live.task', function(task) {
             $scope.live.taskJson = angular.toJson(task, true);
@@ -560,8 +515,43 @@
             $scope.live.rowJson = angular.toJson($scope.live.row, true);
         });
 
-      //fin........................
+    }]);
 
-    }
+'use strict';
 
-})();
+/**
+ * @ngdoc service
+ * @name angularGanttDemoApp.Sample
+ * @description
+ * # Sample
+ * Service in the angularGanttDemoApp.
+ */
+angular.module('angularGanttDemoApp')
+    .service('Sample', function Sample() {
+        return {
+            getSampleData: function() {
+                return [
+                        
+                        {name: 'Content', tasks: [
+                            {name: 'Supervise content creation', color: '#F1C232', from: new Date(2013, 10, 26, 9, 0, 0), to: new Date(2013, 10, 29, 16, 0, 0), progress : 50}
+                        ]},
+                        {name: 'Documentation', tasks: [
+                            {name: 'Technical/User documentation', color: '#F1C232', from: new Date(2013, 10, 26, 8, 0, 0), to: new Date(2013, 10, 28, 18, 0, 0)}
+                        ]}
+                    ];
+            },
+            getSampleTimespans: function() {
+                return [
+                        {
+                            from: new Date(2013, 9, 21, 8, 0, 0),
+                            to: new Date(2013, 9, 25, 15, 0, 0),
+                            name: 'Sprint 1 Timespan'
+                            //priority: undefined,
+                            //classes: [],
+                            //data: undefined
+                        }
+                    ];
+            }
+        };
+    })
+;

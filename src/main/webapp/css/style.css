@@ -1298,6 +1298,7 @@ h2{
 }
 
  .navbarhaut{
+ /* height: 60px;*/
   background-color: #071f5d;
 }
 
@@ -1399,4 +1400,8 @@ img[alt="logo"]{
 
 .listeProjet{
     margin-left:250px;
+}
+.banniere{
+	position:relative;
+	z-index:1000;
 }

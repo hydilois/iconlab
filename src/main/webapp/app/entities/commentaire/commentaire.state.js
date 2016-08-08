@@ -135,7 +135,6 @@
                     controller: 'CommentaireDeleteController',
                     windowClass:'center-modal',
                     controllerAs: 'vm',
-                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Commentaire', function(Commentaire) {
