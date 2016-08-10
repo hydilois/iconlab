@@ -59,8 +59,8 @@
                 });
             }
         };
-        vm.datePickerOpenStatus.dateDebut = false;
-        vm.datePickerOpenStatus.dateFin = false;
+        vm.datePickerOpenStatus.fromt = false;
+        vm.datePickerOpenStatus.tot = false;
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;

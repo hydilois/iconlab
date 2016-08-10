@@ -36,46 +36,49 @@
                 ]
             }
         }).state('app.projetcompte', {
-            parent: 'app',
-            url: '/projet/compte/{id}',
-            data: {
-                authorities: ['ROLE_USER'],
-                pageTitle: 'Projet'
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/projet/projetcompte.html',
-                    controller: 'ProjetCompteController',
-                    controllerAs: 'vm'
+                parent: 'app',
+                url: '/projet/compte/{id}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Projet'
+                },
+                views: {
+                    'content@': {
 
-                }
-            },
-            resolve: {
-                compte: ['$stateParams', 'Compte', function ($stateParams, Compte) {
-                        console.log("id est " + $stateParams.id);
-                        return Compte.get({id: $stateParams.id}).$promise;
+                        templateUrl: 'app/entities/projet/projetcompte.html',
+                        controller: 'ProjetCompteController',
+                        controllerAs: 'vm'
+
+                   }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Compte', function($stateParams, Compte) {
+                        console.log("id est "+$stateParams.id);
+                        return Compte.get({id : $stateParams.id}).$promise;
                     }]
-            }
-        }).state('app.tacheprojet', {//tache d'un projet vue d'un chef de projet
-            parent: 'app',
-            url: '/listeTache/projet/{idprojet}',
-            data: {
-                authorities: ['ROLE_USER'],
-                pageTitle: 'ListeTache'
-            },
-            views: {
-                'content@': {
-                    controller: 'TacheProjetController',
-                    controllerAs: 'vm',
-                    templateUrl: 'app/entities/tache/listeTacheCp.html'
-
-
                 }
-            },
-            resolve: {
-                entity: ['$stateParams', 'Projet', function ($stateParams, Projet) {
-                        console.log("id du projet " + $stateParams.idprojet);
-                        return Projet.get({id: $stateParams.idprojet}).$promise;
+            }).state('app.tacheprojet',{//tache d'un projet vue d'un chef de projet
+                parent: 'app',
+
+                url: '/listeTache/projet/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ListeTache'
+                },
+                views: {
+                    'content@': {
+                         controller: 'TacheProjetController',
+                        controllerAs: 'vm',
+
+                        templateUrl: 'app/entities/tache/listeTacheCp.html'
+
+
+                    }
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Projet', function($stateParams, Projet) {
+                        console.log("id du projet "+$stateParams.idprojet);
+                        return Projet.get({id : $stateParams.idprojet}).$promise;
                     }]
             }
 
@@ -110,24 +113,27 @@
         }
 
 
-        ).state('app.projetcompte.tacheprojet', {
-            parent: 'app.projetcompte',
-            url: '/listeTache/projet/{idprojet}',
-            data: {
-                authorities: ['ROLE_USER'],
-                pageTitle: 'ListeTache'
-            },
-            views: {
-                'ganttcontent@app.projetcompte': {
-                    templateUrl: 'app/entities/tache/gantt.html',
-                    controller: 'TacheProjetController',
-                    controllerAs: 'vm'
+            ).state('app.projetcompte.tacheprojet',{
+                parent: 'app.projetcompte',
+
+                url: '/listeTache/projet/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ListeTache'
                 },
-                'tachecontent@app.projetcompte': {
-                    templateUrl: 'app/entities/tache/listeTache.html',
-                    controller: 'TacheProjetController',
-                    controllerAs: 'vm'
-                }
+                views: {
+                    'ganttcontent@app.projetcompte': {
+
+                        templateUrl: 'app/entities/tache/gantt.html' ,
+                         controller: 'GanttTacheProjetController',
+                        controllerAs: 'vm'
+                    },
+                    'tachecontent@app.projetcompte': {
+
+                        templateUrl: 'app/entities/tache/listeTache.html',
+                        controller: 'TacheProjetController',
+                        controllerAs: 'vm'
+                    }
 
 
             },

@@ -21,37 +21,61 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nom" type="varchar(255)">
-                <constraints nullable="false" />
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
-            
+
             <column name="code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="fichier_projet" type="blob">
                 <constraints nullable="true" />
             </column>
             <column name="fichier_projet_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
-            <column name="date_debut" type="date">
+
+            <column name="fromt" type="date">
                 <constraints nullable="true" />
             </column>
-            
-            <column name="date_fin" type="date">
+
+            <column name="tot" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="actif" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
+            <column name="height" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sortable" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="classes" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="parent" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tooltips" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <column name="compte_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -62,6 +86,6 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

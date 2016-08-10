@@ -83,13 +83,19 @@
                     resolve: {
                         entity: function () {
                             return {
-                                nom: null,
+                                name: null,
                                 description: null,
                                 fichierJoint: null,
                                 fichierJointContentType: null,
                                 role: null,
-                                dateDebut: null,
-                                dateFin: null,
+                                from: null,
+                                to: null,
+                                color: null,
+                                data: null,
+                                movable: null,
+                                progress: null,
+                                lct: null,
+                                est: null,
                                 actif: null,
                                 id: null
                             };

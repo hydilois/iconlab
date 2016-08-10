@@ -7,8 +7,8 @@ entity Compte{
 entity Projet{
 	nom String required
     code String
-    description String 
-    fichierProjet AnyBlob 
+    description String
+    fichierProjet AnyBlob
     dateDebut LocalDate
     dateFin LocalDate
     actif Boolean
@@ -103,4 +103,3 @@ relationship OneToMany{
 	Tache{pointAvancement} to PointAvancement
 }
 
-paginate all with pagination

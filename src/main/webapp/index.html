@@ -41,12 +41,16 @@
 
     <!-- Style pour la barre de  menu  d'administration des différents utilsateurs -->
     <link rel="stylesheet" href="css/stylemenu.css"/>
+
+    <link rel="stylesheet" href="bower_components/angular-gantt/angular-gantt.css"/>
+    <link rel="stylesheet" href="bower_components/angular-gantt/angular-gantt-plugins.css"/>
 </head>
 
 <body class="flat-blue" ng-app="iconlabApp" ng-strict-di>
     <div class="app-container">
         <div class="row content-container">
             <!-- <page-ribbon></page-ribbon> -->
+
             <div ui-view="navbar" ng-cloak></div>
             <div ui-view="sidebar" ng-cloak></div>
             <!-- Main Content -->
@@ -101,13 +105,17 @@
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
 <!-- endinject -->
 <!-- endbuild -->
+    <script type='text/javascript' src="lib/js/moment-with-locales.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script type='text/javascript' src="lib/js/angular-ui-tree.js"></script>
+    <script type='text/javascript' src="lib/js/draganddrop.js"></script>
+    <script src="bower_components/angular-gantt/angular-gantt.js"></script>
+    <script src="bower_components/angular-gantt/angular-gantt-plugins.js"></script>
 
-<!-- librairies du diagrame de gant -->
-<script src="js/vendor.js"></script>
-<script src="js/scripts.js"></script>
 
 
-<!-- build:js app/app.js  -->
+
+    <!-- build:js app/app.js  -->
 <!-- inject:js -->
 <script src="app/app.module.js"></script>
 <script src="app/services/user/user.service.js"></script>
@@ -129,7 +137,6 @@
 <script src="app/layouts/sidebar/sidebar.controller.js"></script>
 <script src="app/layouts/navbar/active-link.directive.js"></script>
 <script src="app/layouts/error/error.state.js"></script>
-<script src="app/home/view.state.js"></script>
 <script src="app/home/home.state.js"></script>
 <script src="app/home/home.controller.js"></script>
 <script src="app/entities/tache/tache-dialog.controller.js"></script>
@@ -274,8 +281,8 @@
                 }, function() {
                   jQuery(this).find('.jqueryFadeIn').start(true, true).delay(10).fadeOut();
                 });
-     
-            });     
+
+            });
 </script>
 </body>
 

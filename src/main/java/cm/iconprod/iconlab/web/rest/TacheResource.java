@@ -67,7 +67,6 @@ public class TacheResource {
             .headers(HeaderUtil.createEntityCreationAlert("tache", result.getId().toString()))
             .body(result);
     }
-
     /**
      * PUT  /taches : Updates an existing tache.
      *
@@ -121,6 +120,19 @@ public class TacheResource {
         //log.debug("REST request to get a page of Projets");
         List<Tache> taches = tacheService.findTacheByProjetBelong(id);
         return taches;
+    }
+
+    @RequestMapping(value = "/tachesGantt/projet/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<TacheService.ParserGantt> getAllTachesByProjetGantt(@PathVariable Long id)
+        throws URISyntaxException {
+        //log.debug("REST request to get a page of Projets");
+        List<TacheService.ParserGantt> taches1 = tacheService.findTacheByProjetBelongGantt(id);
+
+
+        return taches1;
     }
 
     /**

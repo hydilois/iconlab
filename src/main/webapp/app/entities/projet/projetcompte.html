@@ -11,21 +11,21 @@
 
     <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
         <ul class="nav navbar-nav">
-            <li class="dropdown"> 
+            <li class="dropdown">
                 <a href="" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
                     <li><a ui-sref="app.projetcompte.newuser"><span class="icon fa fa-users"></span> Projet</a></li>
                     <li><a ui-sref="app.projetcompte.newusermessage"><span class="glyphicon glyphicon-envelope"></span> Message</a></li>
                     <li><a ui-sref="app.projetcompte.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                 </ul>
-            </li> 
-            <li class="dropdown"> 
+            </li>
+            <li class="dropdown">
             <a href="" data-toggle="dropdown"> Edition<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Projets</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="projet in vm.listePr"><a ui-sref="app.projetcompte.edituser({idprojet:projet.id})"><span class="fa fa-bar-chart-o"></span> {{projet.nom}}</a></li>
+                                <li data-ng-repeat="projet in vm.listePr"><a ui-sref="app.projetcompte.edituser({idprojet:projet.id})"><span class="fa fa-bar-chart-o"></span> {{projet.name}}</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -41,7 +41,7 @@
                             </ul>
                         </li>
                 </ul>
-            </li>                  
+            </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -69,17 +69,17 @@
             </div>
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
-                    <ul class="nav nav-tabs" role="tablist">                   
+                    <ul class="nav nav-tabs" role="tablist">
                        <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-click="setSelected(projet.id)" ng-class="{selectedd: projet.id === idSelectedVote}">
                         <a ui-sref="app.projetcompte.tacheprojet({idprojet : projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                             <div class="icon fa fa-users"></div>
                             <div class="step-title">
-                                <div class="title" >{{projet.nom}}</div>
+                                <div class="title" >{{projet.name}}</div>
                             </div>
                         </a>
                     </li>
                 </ul>
-                <div class="tab-content" ui-view="tachecontent"> 
+                <div class="tab-content" ui-view="tachecontent">
                 </div>
             </div>
         </div>
@@ -87,7 +87,8 @@
 </div>
 </div>
 <div class="row">
-    <dir class="col-md-12 col-xs-12" ui-view="ganttcontent">
+    <div class="col-md-12 col-xs-12" ui-view="ganttcontent">
 
-    </dir>  
+    </div>
 </div>
+

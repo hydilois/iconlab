@@ -23,43 +23,73 @@
     }
   ],
   "fields": [
-    {
-      "fieldId": 1,
-      "fieldName": "nom",
-      "fieldType": "String"
-    },
-    {
-      "fieldId": 2,
-      "fieldName": "description",
-      "fieldType": "String"
-    },
-    {
-      "fieldId": 3,
-      "fieldName": "fichierJoint",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "any"
-    },
-    {
-      "fieldId": 4,
-      "fieldName": "role",
-      "fieldType": "Role",
-      "fieldValues": "GRH,FINANCE,LOGISTIQUE,EXECUTIVE"
-    },
-    {
-      "fieldId": 5,
-      "fieldName": "dateDebut",
-      "fieldType": "ZonedDateTime"
-    },
-    {
-      "fieldId": 6,
-      "fieldName": "dateFin",
-      "fieldType": "ZonedDateTime"
-    },
-    {
-      "fieldId": 7,
-      "fieldName": "actif",
-      "fieldType": "Boolean"
-    }
+      {
+          "fieldId": 1,
+          "fieldName": "name",
+          "fieldType": "String"
+      },
+      {
+          "fieldId": 2,
+          "fieldName": "description",
+          "fieldType": "String"
+      },
+      {
+          "fieldId": 3,
+          "fieldName": "fichierJoint",
+          "fieldType": "byte[]",
+          "fieldTypeBlobContent": "any"
+      },
+      {
+          "fieldId": 4,
+          "fieldName": "role",
+          "fieldType": "Role",
+          "fieldValues": "GRH,FINANCE,LOGISTIQUE,EXECUTIF"
+      },
+      {
+          "fieldId": 5,
+          "fieldName": "fromt",
+          "fieldType": "ZonedDateTime"
+      },
+      {
+          "fieldId": 6,
+          "fieldName": "tot",
+          "fieldType": "ZonedDateTime"
+      },
+      {
+          "fieldId": 7,
+          "fieldName": "actif",
+          "fieldType": "Boolean"
+      },
+      {
+          "fieldId": 8,
+          "fieldName": "color",
+          "fieldType": "String"
+      },
+      {
+          "fieldId": 9,
+          "fieldName": "data",
+          "fieldType": "String"
+      },
+      {
+          "fieldId": 10,
+          "fieldName": "movable",
+          "fieldType": "Boolean"
+      },
+      {
+          "fieldId": 11,
+          "fieldName": "progress",
+          "fieldType": "Integer"
+      },
+      {
+          "fieldId": 12,
+          "fieldName": "lct",
+          "fieldType": "LocalDate"
+      },
+      {
+          "fieldId": 13,
+          "fieldName": "est",
+          "fieldType": "LocalDate"
+      }
   ],
   "changelogDate": "20160722104006",
   "dto": "no",

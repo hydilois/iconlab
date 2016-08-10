@@ -4,9 +4,9 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Nom</span></dt>
+        <dt><span>Name</span></dt>
         <dd>
-            <span>{{vm.tache.nom}}</span>
+            <span>{{vm.tache.name}}</span>
         </dd>
         <dt><span>Description</span></dt>
         <dd>
@@ -21,19 +21,43 @@
         </dd>
         <dt><span>Role</span></dt>
         <dd>
-            <span translate="{{'iconlabApp.Role.' + vm.tache.role}}">{{vm.tache.role}}</span>
+            <span>{{vm.tache.role}}</span>
         </dd>
-        <dt><span>Date Debut</span></dt>
+        <dt><span>From</span></dt>
         <dd>
-            <span>{{vm.tache.dateDebut | date:'medium'}}</span>
+            <span>{{vm.tache.fromt | date:'medium'}}</span>
         </dd>
-        <dt><span>Date Fin</span></dt>
+        <dt><span>To</span></dt>
         <dd>
-            <span>{{vm.tache.dateFin | date:'medium'}}</span>
+            <span>{{vm.tache.tot | date:'medium'}}</span>
         </dd>
         <dt><span>Actif</span></dt>
         <dd>
             <span>{{vm.tache.actif}}</span>
+        </dd>
+        <dt><span>Color</span></dt>
+        <dd>
+            <span>{{vm.tache.color}}</span>
+        </dd>
+        <dt><span>Data</span></dt>
+        <dd>
+            <span>{{vm.tache.data}}</span>
+        </dd>
+        <dt><span>Movable</span></dt>
+        <dd>
+            <span>{{vm.tache.movable}}</span>
+        </dd>
+        <dt><span>Progress</span></dt>
+        <dd>
+            <span>{{vm.tache.progress}}</span>
+        </dd>
+        <dt><span>Lct</span></dt>
+        <dd>
+            <span>{{vm.tache.lct | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Est</span></dt>
+        <dd>
+            <span>{{vm.tache.est | date:'mediumDate'}}</span>
         </dd>
         <dt><span>Projet</span></dt>
         <dd>
@@ -46,8 +70,13 @@
     </dl>
 
     <button type="submit"
-            onclick="window.history.back()"
+            ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tache-detail.edit({id:vm.tache.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
     </button>
 </div>

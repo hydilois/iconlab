@@ -21,37 +21,61 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nom" type="varchar(255)">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="fichier_joint" type="blob">
                 <constraints nullable="true" />
             </column>
             <column name="fichier_joint_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="role" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
-            <column name="date_debut" type="timestamp">
+
+            <column name="fromt" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            
-            <column name="date_fin" type="timestamp">
+
+            <column name="tot" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="actif" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="movable" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="progress" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="lct" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="est" type="date">
+                <constraints nullable="true" />
+            </column>
+
             <column name="projet_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -62,8 +86,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="tache" columnName="date_debut" columnDataType="datetime"/>
-        <dropDefaultValue tableName="tache" columnName="date_fin" columnDataType="datetime"/>
-        
+        <dropDefaultValue tableName="tache" columnName="tot" columnDataType="datetime"/>
+        <dropDefaultValue tableName="tache" columnName="fromt" columnDataType="datetime"/>
     </changeSet>
 </databaseChangeLog>

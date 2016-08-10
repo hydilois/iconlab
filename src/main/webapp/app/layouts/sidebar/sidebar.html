@@ -48,7 +48,8 @@
                                          <!--  dynamiser le contenu par niveau de pririte tel que app.projetcompte.tacheprojet({idprojet:projet.id})-->
                                         <a ui-sref="app.tacheprojet({idprojet:projet.id})">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >{{projet.nom}}</span>
+                                            <span >{{projet.name
+                                                }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -66,7 +67,7 @@
                                     <li ng-repeat="(key, tache) in vm.listeTasks" ui-sref-active="active" >
                                         <a ui-sref="app.patache({idtache:tache.id})">
                                             <span class="glyphicon glyphicon-tasks"></span>&nbsp;
-                                            <span >{{tache.nom}}</span>
+                                            <span >{{tache.name}}</span>
                                         </a>
                                     </li>
                                 </ul>

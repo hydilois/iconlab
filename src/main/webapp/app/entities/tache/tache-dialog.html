@@ -11,19 +11,19 @@
         <div class="form-group" ng-show="vm.tache.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.tache.id" readonly />
+                   ng-model="vm.tache.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_nom">Nom</label>
-            <input type="text" class="form-control" name="nom" id="field_nom"
-                    ng-model="vm.tache.nom"
-                     />
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                   ng-model="vm.tache.name"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
-                    ng-model="vm.tache.description"
-                     />
+                   ng-model="vm.tache.description"
+            />
         </div>
         <div class="form-group" ngf-drop ngf-change="vm.setFichierJoint($file, vm.tache)">
             <label class="control-label" for="field_fichierJoint">Fichier Joint</label>
@@ -38,14 +38,14 @@
                 </div>
                 <button type="file" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setFichierJoint($file, vm.tache)">
-                    Ajouter un fichier
+                    Add blob
                 </button>
             </div>
             <input type="hidden" class="form-control" name="fichierJoint" id="field_fichierJoint"
-                    ng-model="vm.tache.fichierJoint"
-                     />
+                   ng-model="vm.tache.fichierJoint"
+            />
             <input type="hidden" class="form-control" name="fichierJointContentType" id="field_fichierJointContentType"
-                    ng-model="vm.tache.fichierJointContentType" />
+                   ng-model="vm.tache.fichierJointContentType" />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_role">Role</label>
@@ -53,45 +53,89 @@
                 <option value="GRH">GRH</option>
                 <option value="FINANCE">FINANCE</option>
                 <option value="LOGISTIQUE">LOGISTIQUE</option>
-                <option value="EXECUTIVE">EXECUTIVE</option>
+                <option value="EXECUTIF">EXECUTIF</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_dateDebut">Date Debut</label>
-                <div class="input-group">
-                    <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" datetime-picker="{{dateformat}}" ng-model="vm.tache.dateDebut" is-open="vm.datePickerOpenStatus.dateDebut"
-                      />
+            <label class="control-label" for="field_fromt">From</label>
+            <div class="input-group">
+                <input id="field_fromt" type="text" class="form-control" name="fromt" datetime-picker="{{dateformat}}" ng-model="vm.tache.fromt" is-open="vm.datePickerOpenStatus.fromt"
+                />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDebut')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fromt')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_dateFin">Date Fin</label>
-                <div class="input-group">
-                    <input id="field_dateFin" type="text" class="form-control" name="dateFin" datetime-picker="{{dateformat}}" ng-model="vm.tache.dateFin" is-open="vm.datePickerOpenStatus.dateFin"
-                      />
+            <label class="control-label" for="field_tot">To</label>
+            <div class="input-group">
+                <input id="field_tot" type="text" class="form-control" name="tot" datetime-picker="{{dateformat}}" ng-model="vm.tache.tot" is-open="vm.datePickerOpenStatus.tot"
+                />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateFin')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tot')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
-                </div>
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="field_actif">Actif</label>
             <input type="checkbox" class="form-control" name="actif" id="field_actif"
-                    ng-model="vm.tache.actif"
-                     />
+                   ng-model="vm.tache.actif"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_color">Color</label>
+            <input type="text" class="form-control" name="color" id="field_color"
+                   ng-model="vm.tache.color"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_data">Data</label>
+            <input type="text" class="form-control" name="data" id="field_data"
+                   ng-model="vm.tache.data"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_movable">Movable</label>
+            <input type="checkbox" class="form-control" name="movable" id="field_movable"
+                   ng-model="vm.tache.movable"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_progress">Progress</label>
+            <input type="number" class="form-control" name="progress" id="field_progress"
+                   ng-model="vm.tache.progress"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lct">Lct</label>
+            <div class="input-group">
+                <input id="field_lct" type="text" class="form-control" name="lct" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tache.lct" is-open="vm.datePickerOpenStatus.lct"
+                />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lct')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_est">Est</label>
+            <div class="input-group">
+                <input id="field_est" type="text" class="form-control" name="est" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tache.est" is-open="vm.datePickerOpenStatus.est"
+                />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('est')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="field_projet">Projet</label>
-            <select class="form-control" id="field_projet" name="projet" ng-model="vm.tache.projet" ng-options="projet as projet.nom for projet in vm.projets track by projet.id">
+            <select class="form-control" id="field_projet" name="projet" ng-model="vm.tache.projet" ng-options="projet as projet.id for projet in vm.projets track by projet.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.login for user in vm.users track by user.id">
+            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.id for user in vm.users track by user.id">
                 <option value=""></option>
             </select>
         </div>
@@ -105,3 +149,4 @@
         </button>
     </div>
 </form>
+

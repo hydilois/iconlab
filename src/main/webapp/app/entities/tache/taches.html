@@ -34,62 +34,74 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="nom"><span>Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="fichierJoint"><span>Fichier Joint</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="role"><span>Role</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dateDebut"><span>Date Debut</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dateFin"><span>Date Fin</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="projet.id"><span>Projet</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th></th>
-                </tr>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="fichierJoint"><span>Fichier Joint</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="role"><span>Role</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="fromt"><span>From</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="tot"><span>To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="color"><span>Color</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="data"><span>Data</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="movable"><span>Movable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="progress"><span>Progress</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="lct"><span>Lct</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="est"><span>Est</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="projet.id"><span>Projet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="tache in vm.taches track by tache.id">
-                    <td><a ui-sref="tache-detail({id:tache.id})">{{tache.id}}</a></td>
-                    <td>{{tache.nom}}</td>
-                    <td>{{tache.description}}</td>
-                    <td>
-                        <a ng-if="tache.fichierJoint" ng-click="vm.openFile(tache.fichierJointContentType, tache.fichierJoint)">open</a>
-                        <span ng-if="tache.fichierJoint">{{tache.fichierJointContentType}}, {{vm.byteSize(tache.fichierJoint)}}</span>
-                    </td>
-                    <td translate="{{'iconlabApp.Role.' + tache.role}}">{{tache.role}}</td>
-                    <td>{{tache.dateDebut | date:'medium'}}</td>
-                    <td>{{tache.dateFin | date:'medium'}}</td>
-                    <td>{{tache.actif}}</td>
-                    <td>
-                        <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.nom}}</a>
-                    </td>
-                    <td>
-                        {{tache.user.login}}
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
-                                    ui-sref="tache-detail({id:tache.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="tache.edit({id:tache.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="tache.delete({id:tache.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+            <tr ng-repeat="tache in vm.taches track by tache.id">
+                <td><a ui-sref="tache-detail({id:tache.id})">{{tache.id}}</a></td>
+                <td>{{tache.name}}</td>
+                <td>{{tache.description}}</td>
+                <td>
+                    <a ng-if="tache.fichierJoint" ng-click="vm.openFile(tache.fichierJointContentType, tache.fichierJoint)">open</a>
+                    <span ng-if="tache.fichierJoint">{{tache.fichierJointContentType}}, {{vm.byteSize(tache.fichierJoint)}}</span>
+                </td>
+                <td>{{tache.role}}</td>
+                <td>{{tache.fromt | date:'medium'}}</td>
+                <td>{{tache.tot | date:'medium'}}</td>
+                <td>{{tache.actif}}</td>
+                <td>{{tache.color}}</td>
+                <td>{{tache.data}}</td>
+                <td>{{tache.movable}}</td>
+                <td>{{tache.progress}}</td>
+                <td>{{tache.lct | date:'mediumDate'}}</td>
+                <td>{{tache.est | date:'mediumDate'}}</td>
+                <td>
+                    <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.id}}</a>
+                </td>
+                <td>
+                    {{tache.user.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="tache-detail({id:tache.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tache.edit({id:tache.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tache.delete({id:tache.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
