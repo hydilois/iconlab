@@ -66,11 +66,11 @@
                 }]
             }
         })
-        .state('tache.new', {
+        .state('tache.new', {//etat de création d'une tache par un administrateur
             parent: 'tache',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -102,11 +102,47 @@
                 });
             }]
         })
+        .state('app.tacheprojet.newusertask', {//etat de création d'une tache par un administrateur
+            parent: 'app.tacheprojet',
+            url: '/newtache',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    controller: 'TacheDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                nom: null,
+                                description: null,
+                                fichierJoint: null,
+                                fichierJointContentType: null,
+                                role: null,
+                                dateDebut: null,
+                                dateFin: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.tacheprojet', null, { reload: true });
+                }, function() {
+                    $state.go('app.tacheprojet');
+                });
+            }]
+        })
         .state('tache.edit', {
             parent: 'tache',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -123,6 +159,32 @@
                     }
                 }).result.then(function() {
                     $state.go('tache', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('app.tacheprojet.edituser', {//édition d'une tache par un utilisateur quelconque autre que l'admin
+            parent: 'app.tacheprojet',
+            url: '/{idtask}/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    controller: 'TacheDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Tache', function(Tache) {
+                            return Tache.get({id : $stateParams.idtask}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('app.tacheprojet', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });

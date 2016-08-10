@@ -14,9 +14,9 @@
             <li class="dropdown"> 
                 <a href="" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                    <li><a href="#"><span class="icon fa fa-users"></span> Projet</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Message</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
+                    <li><a ui-sref="app.projetcompte.newuser"><span class="icon fa fa-users"></span> Projet</a></li>
+                    <li><a ui-sref="app.projetcompte.newusermessage"><span class="glyphicon glyphicon-envelope"></span> Message</a></li>
+                    <li><a ui-sref="app.projetcompte.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                 </ul>
             </li> 
             <li class="dropdown"> 
@@ -25,7 +25,7 @@
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Projets</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="projet in vm.listePr"><a ui-sref="projet.edit({id:projet.id})"><span class="fa fa-bar-chart-o"></span> {{projet.nom}}</a></li>
+                                <li data-ng-repeat="projet in vm.listePr"><a ui-sref="app.projetcompte.edituser({idprojet:projet.id})"><span class="fa fa-bar-chart-o"></span> {{projet.nom}}</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -46,11 +46,14 @@
 
         <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span glyphicon glyphicon-envelope></span>Messages <span class="caret"></span></a>
-                  <ul class="dropdown-menu fadeInDown">
-                    <li ng-repeat="(key, message) in vm.listeMessage"><a href=""></a>{{message.contenu}}</li>
-                  </ul>
-                </li>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="title">
+                                    Notifications <span class="badge pull-right">{{vm.listeMessage.length}}</span>
+                                </li>
+                                <li class="title" ng-repeat="(key, message) in vm.listeMessage"><a ui-sref="app.projetcompte.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
+                            </ul>
+                        </li>
               </ul>
     </div>
 </nav>
@@ -67,7 +70,7 @@
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
                     <ul class="nav nav-tabs" role="tablist">                   
-                       <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
+                       <li data-ng-repeat="projet in vm.listePr"  role="step"  ng-click="setSelected(projet.id)" ng-class="{selectedd: projet.id === idSelectedVote}">
                         <a ui-sref="app.projetcompte.tacheprojet({idprojet : projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                             <div class="icon fa fa-users"></div>
                             <div class="step-title">

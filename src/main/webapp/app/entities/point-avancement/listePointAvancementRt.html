@@ -15,7 +15,7 @@
             <li class="dropdown"> 
                 <a href="" type="button" style="font-size:1.5em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                    <li><a ui-sref="app.tacheprojet.newusertask"><span class="icon fa fa-users"></span> Tache</a></li>
+                    <li><a ui-sref="app.tacheprojet.newusertask"><span class="icon fa fa-users"></span> Point Avancement</a></li>
                     <li><a  ui-sref="app.tacheprojet.newusercomment"><span class="glyphicon glyphicon-envelope"></span> Commentaire</a></li>
                     <li><a  ui-sref="app.tacheprojet.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                 </ul>
@@ -62,17 +62,17 @@
             <div class="card-header">
                 <div class="card-title">
                  <div class="icon fa fa-users"></div>
-                    <Label class="title">{{vm.projet.nom}}</Label>
+                    <Label class="title">{{vm.tache.nom}}</Label>
                 </div>
             </div>
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
                         <ul class="nav nav-tabs" role="tablist">                   
-                         <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
+                         <li data-ng-repeat="pa in vm.listePa"  role="step">
                             <a ui-sref="app.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                                 <div class="icon fa fa-tasks"></div>
                                 <div class="step-title">
-                                    <div class="title" >{{task.nom}}</div>
+                                    <div class="title" >{{pa.libelle}}</div>
                                 </div>
                             </a>
                          </li>

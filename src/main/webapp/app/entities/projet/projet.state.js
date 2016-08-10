@@ -66,11 +66,47 @@
                 }]
             }
         })
-            .state('projet.new', {
-            parent: 'projet',
+            .state('app.projetcompte.newuser', {
+            parent: 'app.projetcompte',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/projet/projet-dialog.html',
+                    controller: 'ProjetDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                nom: null,
+                                code: null,
+                                description: null,
+                                fichierProjet: null,
+                                fichierProjetContentType: null,
+                                dateDebut: null,
+                                dateFin: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.projetcompte', null, { reload: true });
+                }, function() {
+                    $state.go('app.projetcompte');
+                });
+            }]
+        })
+            .state('projet.newadmin', {
+            parent: 'projet',
+            url: '/new',
+            data: {
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -102,11 +138,11 @@
                 });
             }]
         })
-        .state('projet.edit', {
-            parent: 'entity',
+        .state('projet.editadmin', {
+            parent: 'projet',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -123,6 +159,32 @@
                     }
                 }).result.then(function() {
                     $state.go('projet', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('app.projetcompte.edituser', {
+            parent: 'app.projetcompte',
+            url: '/{idprojet}/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/projet/projet-dialog.html',
+                    controller: 'ProjetDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Projet', function(Projet) {
+                            return Projet.get({id : $stateParams.idprojet}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('app.projetcompte', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });

@@ -40,8 +40,8 @@
             TacheSpecial.getTacheByProjet($state.params.idprojet).then(function(data){
                 vm.listeTachesParProjet = data;
                 // console.log("fatigue la "+vm.listeTachesParProjet);
-                 chargement();
-                    $scope.load();
+                 //chargement();
+                   // $scope.load();
 
             }, function(){
                 console.log('Erreur de recuperation des données');

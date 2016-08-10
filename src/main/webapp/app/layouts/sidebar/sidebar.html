@@ -64,7 +64,7 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li ng-repeat="(key, tache) in vm.listeTasks" ui-sref-active="active" >
-                                        <a ui-sref="tache-detail({id:tache.id})">
+                                        <a ui-sref="app.patache({idtache:tache.id})">
                                             <span class="glyphicon glyphicon-tasks"></span>&nbsp;
                                             <span >{{tache.nom}}</span>
                                         </a>

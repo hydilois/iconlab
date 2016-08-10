@@ -70,7 +70,7 @@
             parent: 'commentaire',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -94,6 +94,37 @@
                     $state.go('commentaire', null, { reload: true });
                 }, function() {
                     $state.go('commentaire');
+                });
+            }]
+        })
+        .state('app.tacheprojet.newusercomment', {
+            parent: 'app.tacheprojet',
+            url: '/commentaire/new',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/commentaire/commentaire-dialog.html',
+                    controller: 'CommentaireDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                contenu: null,
+                                datePost: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.tacheprojet', null, { reload: true });
+                }, function() {
+                    $state.go('app.tacheprojet');
                 });
             }]
         })

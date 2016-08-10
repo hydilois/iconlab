@@ -1,0 +1,28 @@
+<!--
+    <div class="modal-header modalh">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+    </div>
+    <div class="modal-body modalb">
+    	<p>{{vm.messageHierachique.contenu}}</p>
+    </div>
+    <div class="modal-footer modalf">
+    </div>-->
+
+
+     <!-- Modal content -->
+  <div class="modal-header mdh">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+    <h2>Modal Header</h2>
+  </div>
+  <div class="modal-body">
+    <p>{{vm.messageHierachique.contenu}}</p>
+    <div ng-if="vm.messageHierachique.fichier">
+                <a ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">open</a>
+                {{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}
+            </div>
+  </div>
+  <div class="modal-footer">
+    <h2>Modal Footer</h2>
+  </div>

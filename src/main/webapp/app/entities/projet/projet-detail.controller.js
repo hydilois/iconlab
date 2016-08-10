@@ -51,12 +51,9 @@
 
         }
 
-        $scope.select= function(item) {
-            $scope.selected = item; 
-        };
-
-        $scope.isActive = function(item) {
-            return $scope.selected === item;
+        //$scope.idSelectedVote = null;
+        $scope.setSelected = function (idSelectedVote) {
+            $scope.idSelectedVote = idSelectedVote;
         };
     }
 })();

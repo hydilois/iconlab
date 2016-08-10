@@ -66,11 +66,11 @@
                 }]
             }
         })
-        .state('message-hierachique.new', {
+        .state('message-hierachique.new', {//etat de créatio  d'un message par un administrateur
             parent: 'message-hierachique',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -99,6 +99,39 @@
                 });
             }]
         })
+        .state('app.projetcompte.newusermessage', {//etat de création des messages par un utilisateur
+            parent: 'app.projetcompte',
+            url: '/new/messages',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
+                    controller: 'MessageHierachiqueDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                contenu: null,
+                                fichier: null,
+                                fichierContentType: null,
+                                date: null,
+                                status: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.projetcompte', null, { reload: true });
+                }, function() {
+                    $state.go('app.projetcompte');
+                });
+            }]
+        })
         .state('message-hierachique.edit', {
             parent: 'message-hierachique',
             url: '/{id}/edit',
@@ -120,6 +153,32 @@
                     }
                 }).result.then(function() {
                     $state.go('message-hierachique', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('app.projetcompte.read', {
+            parent: 'app.projetcompte',
+            url: '/{idmess}/read',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/message-hierachique/modalmessage.html',
+                    controller: 'MessageHierachiqueDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: ['MessageHierachique', function(MessageHierachique) {
+                            return MessageHierachique.get({id : $stateParams.idmess}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('app.projetcompte', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });
