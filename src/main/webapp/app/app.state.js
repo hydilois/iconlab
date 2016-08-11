@@ -35,7 +35,8 @@
                     }
                 ]
             }
-        }).state('app.projetcompte', {
+        })
+       .state('app.projetcompte', {
                 parent: 'app',
                 url: '/projet/compte/{id}',
                 data: {
@@ -53,7 +54,6 @@
                 },
                 resolve: {
                     entity: ['$stateParams', 'Compte', function($stateParams, Compte) {
-                        console.log("id est "+$stateParams.id);
                         return Compte.get({id : $stateParams.id}).$promise;
                     }]
                 }
@@ -71,8 +71,6 @@
                         controllerAs: 'vm',
 
                         templateUrl: 'app/entities/tache/listeTacheCp.html'
-
-
                     }
                 },
                 resolve: {
@@ -81,9 +79,6 @@
                         return Projet.get({id : $stateParams.idprojet}).$promise;
                     }]
             }
-
-
-
         }
         ).state('app.tacheprojet.patache', {//Point d'avancement d'une tache  vue d'un chef de projet
             parent: 'app.tacheprojet',

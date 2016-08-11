@@ -119,13 +119,14 @@
         }
 
     }
-    $(function() {
-        $(".listeProjet").click(function() {
-            $(".app-container").toggleClass("expanded");
-        });
-        return $(".navbar-right-expand-toggle").click(function() {
-            $(".navbar-right").toggleClass("expanded");
-        });
-    });
+    
+    // $(function() {
+    //     $(".listeProjet").click(function() {
+    //         $(".app-container").toggleClass("expanded");
+    //     });
+    //     return $(".navbar-right-expand-toggle").click(function() {
+    //         $(".navbar-right").toggleClass("expanded");
+    //     });
+    // });
 
 })();

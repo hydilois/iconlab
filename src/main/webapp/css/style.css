@@ -223,8 +223,10 @@ a:hover {
     text-align: center;
     display: inline-block; }
 .app-container .content-container .side-menu .navbar-header .navbar-brand .title {
-    margin-left: -10px;
-    display: none; }
+    margin-left: 30px;
+display:none;
+font-size:1.3em;
+color: black;}
 .app-container .content-container .side-menu .navbar-header .navbar-expand-toggle {
     position: absolute;
     right: 0;
@@ -1125,7 +1127,7 @@ body.login-page .login-footer {
     text-align: center;
     display: inline-block; }
 .landing-page .navbar .navbar-header .navbar-brand .title {
-    margin-left: -10px;
+    margin-left: -5px;
     display: inline-block; }
 .landing-page .navbar .navbar-header .navbar-expand-toggle {
     position: absolute;
@@ -1337,7 +1339,7 @@ h2{
 }
 #titre{
     font-size: 1.5em;
-    color: #cccfd8;
+    /*color: #cccfd8;*/
 }
 img[alt="logo"]{
     background-color: white;
@@ -1408,9 +1410,15 @@ nav.banniere{
     border-color: #E7E7E7;
 }
 
-/* .mdh{
-//   background-color: blue;
-// }*/
 .selectedd{
     background-color:#EAEAEA;;
+}
+
+
+
+.app-container.expanded .content-container .side-menu .navbar-header  {
+    background-color: white;
+     }
+.fa-bars{
+    color: white;
 }

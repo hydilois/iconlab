@@ -14,9 +14,10 @@
         vm.isAuthenticated = Principal.isAuthenticated;
 
         $scope.$on('authenticationSuccess', function() {
+            animation();
             getAccount();
         });
-
+        animation();
         getAccount();
 
         ProfileService.getProfileInfo().then(function(response) {
@@ -47,9 +48,15 @@
 
 
         function logout() {
+            animation();
             collapseNavbar();
             Auth.logout();
             $state.go('home');
+            $(".image").removeClass('hide');
+            $(".colorationnav").removeClass('navbarhaut');
+            $(".icon").addClass('hide');
+            $(".nomicon2").removeClass('hide');
+            $(".nomicon1").addClass('hide');
         }
 
         function toggleNavbar() {
@@ -59,15 +66,39 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
+
+        function animation(){
+            if(vm.isAuthenticated()){
+                $(".image").addClass('hide');
+                $(".icon").removeClass('hide');
+
+                $(".nomicon1").removeClass('hide');
+                $(".nomicon2").addClass('hide');
+                
+
+                $(".colorationnav").addClass('navbarhaut');
+
             $(function() {
                 $(".navbar-expand-toggle").click(function() {
                     $(".app-container").toggleClass("expanded");
-                   // return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
+                    return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
                 });
                 return $(".navbar-right-expand-toggle").click(function() {
                     $(".navbar-right").toggleClass("expanded");
-                    //return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
+                    return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
                 });
             });
+        }else{
+                $(".image").removeClass('hide');
+                $(".icon").addClass('hide');
+                $(".colorationnav").removeClass('navbarhaut');
+
+
+                $(".nomicon2").removeClass('hide');
+                $(".nomicon1").addClass('hide');
+                
         }
+
+    }
+    }
     })();

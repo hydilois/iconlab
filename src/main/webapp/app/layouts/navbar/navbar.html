@@ -1,18 +1,20 @@
+   
 <nav  class=" navbar navbar-default navbar-fixed-top navbar-top">
  <div class="container-fluid">
      <div class="navbar-header">
          <button type="button" class="navbar-expand-toggle">
-             <!-- <i class="fa fa-bars icon"></i> -->
-             <img src="content/images/LOGO_ICON_BM.png" alt="logo">
+             <i class="fa fa-bars icon"></i>
+             <img src="content/images/LOGO_ICON_BM.png" class="image"/>
          </button>
          <ol class="breadcrumb navbar-breadcrumb">
-             <li id="titre" class="active">IconLab</li>
+             <li style="color:#cccfd8;" id="titre" class="active nomicon1">&nbsp;IconLab</li>
+             <li id="titre" class="active nomicon2">&nbsp;IconLab</li>
          </ol>
          <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
              <i class="fa fa-th icon"></i>
          </button>
      </div>
-     <div class=" navbarhaut navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
+     <div class="navbar-collapse colorationnav" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
          <ul class="nav navbar-nav navbar-right">
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
               <i class="fa fa-times icon"></i>
@@ -20,8 +22,8 @@
         <li ng-switch-when="false" ui-sref-active="active">
             <a href="" ng-click="vm.login()" id="login">
                 <span>
-                    <span class="glyphicon glyphicon-log-in lien"></span>
-                    <span class="hidden-sm lien">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    <span class="hidden-sm">
                         Sign in
                     </span>
                 </span>
@@ -29,8 +31,8 @@
         </li>
         <li ng-switch-when="false">
             <a ui-sref="register">
-                <span class="glyphicon glyphicon-plus-sign lien"></span>
-                <span class="hidden-sm lien">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <span class="hidden-sm">
                 <span>Register</span>
             </a>
         </li>
@@ -68,35 +70,4 @@
     </ul>
 </div>
 </div>
-<!-- <div class="container-fluid">
-    <div class="navbar-header">
-     <button type="button" class="navbar-expand-toggle">
-         <img src="content/images/accueil.png" alt="">
-     </button>
-     <ol class="breadcrumb navbar-breadcrumb">
-         <li class="active">IconLab</li>
-     </ol>
-     <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-         <i class="fa fa-th icon"></i>
-     </button>
- </div>
- <ul class="nav navbar-nav navbar-right">
-  <li>
-    <a href="" ng-click="vm.login()" id="login">
-        <span>
-            <span class="glyphicon glyphicon-log-in"></span>
-            <span class="hidden-sm">
-                Sign in
-            </span>
-        </span>
-    </a>
-</li>
-<li ui-sref-active="active">
-    <a ui-sref="register">
-        <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-        <span>Register</span>
-    </a>
-</li>
-</ul>
-</div> -->
 </nav>

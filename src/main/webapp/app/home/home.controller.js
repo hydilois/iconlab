@@ -70,4 +70,5 @@
             $state.go('register');
         }
     }
+
 })();
