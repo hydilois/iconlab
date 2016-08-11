@@ -113,7 +113,7 @@ public class TacheService {
             TaskGantt elt1 =  new TaskGantt();
 
              elt.name = tache.getName();
-                elt1.name = tache.getName();
+                elt1.name = tache.getUser().getLogin()+" est le responssable de la "+tache.getName();
                 elt1.color = tache.getColor();
                 elt1.from = tache.getFromt();
                 elt1.to =tache.getTot();

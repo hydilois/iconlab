@@ -125,13 +125,13 @@
                     resolve: {
                         entity: function () {
                             return {
-                                nom: null,
+                                name: null,
                                 description: null,
                                 fichierJoint: null,
                                 fichierJointContentType: null,
                                 role: null,
-                                dateDebut: null,
-                                dateFin: null,
+                                fromt: null,
+                                tot: null,
                                 actif: null,
                                 id: null
                             };

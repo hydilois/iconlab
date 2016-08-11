@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('CommentaireDialogController', CommentaireDialogController);
 
-    CommentaireDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commentaire', 'Projet'];
+    CommentaireDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Commentaire', 'Projet'];
 
-    function CommentaireDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Commentaire, Projet) {
+    function CommentaireDialogController (Principal,$timeout, $scope, $stateParams, $uibModalInstance, entity, Commentaire, Projet) {
         var vm = this;
 
         vm.commentaire = entity;
@@ -20,6 +20,13 @@
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.commentaire.auteur =vm.account.login;
+                console.log(vm.account);
+            });
+        }
 
         function clear () {
             $uibModalInstance.dismiss('cancel');
@@ -28,8 +35,10 @@
         function save () {
             vm.isSaving = true;
             if (vm.commentaire.id !== null) {
+                accessCurrentAccount();
                 Commentaire.update(vm.commentaire, onSaveSuccess, onSaveError);
             } else {
+                accessCurrentAccount();
                 Commentaire.save(vm.commentaire, onSaveSuccess, onSaveError);
             }
         }

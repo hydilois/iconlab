@@ -24,15 +24,18 @@
             <column name="contenu" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+            <column name="auteur" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="date_post" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="actif" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="projet_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -40,6 +43,6 @@
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="commentaire" columnName="date_post" columnDataType="datetime"/>
-        
+
     </changeSet>
 </databaseChangeLog>

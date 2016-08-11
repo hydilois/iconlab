@@ -29,6 +29,9 @@ public class Commentaire implements Serializable {
     @Column(name = "contenu", nullable = false)
     private String contenu;
 
+    @Column(name = "auteur")
+    private String auteur;
+
     @Column(name = "date_post")
     private ZonedDateTime datePost;
 
@@ -37,6 +40,14 @@ public class Commentaire implements Serializable {
 
     @ManyToOne
     private Projet projet;
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
 
     public Long getId() {
         return id;

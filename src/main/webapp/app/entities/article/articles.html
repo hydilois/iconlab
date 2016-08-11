@@ -37,6 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="titre"><span>Titre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auteur"><span>Redacteur</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="contenu"><span>Contenu</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="datePub"><span>Date Pub</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -49,6 +50,7 @@
                 <tr ng-repeat="article in vm.articles track by article.id">
                     <td><a ui-sref="article-detail({id:article.id})">{{article.id}}</a></td>
                     <td>{{article.titre}}</td>
+                    <td>{{article.auteur}}</td>
                     <td>{{article.contenu}}</td>
                         <td>{{article.datePub | date:'mediumDate'}}</td>
                     <td>

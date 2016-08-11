@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('ArticleDialogController', ArticleDialogController);
 
-    ArticleDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Article', 'User'];
+    ArticleDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Article', 'User'];
 
-    function ArticleDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Article, User) {
+    function ArticleDialogController (Principal,$timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Article, User) {
         var vm = this;
 
         vm.article = entity;
@@ -27,11 +27,21 @@
             $uibModalInstance.dismiss('cancel');
         }
 
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.article.auteur =vm.account.login;
+                console.log(vm.account);
+            });
+        }
+
         function save () {
             vm.isSaving = true;
             if (vm.article.id !== null) {
+               accessCurrentAccount();
                 Article.update(vm.article, onSaveSuccess, onSaveError);
             } else {
+                accessCurrentAccount()
                 Article.save(vm.article, onSaveSuccess, onSaveError);
             }
         }

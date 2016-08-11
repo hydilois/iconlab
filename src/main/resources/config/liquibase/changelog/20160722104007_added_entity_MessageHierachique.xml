@@ -24,22 +24,25 @@
             <column name="contenu" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+            <column name="sender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="fichier" type="blob">
                 <constraints nullable="true" />
             </column>
             <column name="fichier_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="date" type="timestamp">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="status" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="projet_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -47,6 +50,6 @@
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="message_hierachique" columnName="date" columnDataType="datetime"/>
-        
+
     </changeSet>
 </databaseChangeLog>

@@ -30,6 +30,9 @@ public class Documents implements Serializable {
     @Column(name = "titre", nullable = false)
     private String titre;
 
+    @Column(name = "sender")
+    private String sender;
+
     @NotNull
     @Lob
     @Column(name = "fichier", nullable = false)
@@ -47,6 +50,14 @@ public class Documents implements Serializable {
 
     @ManyToOne
     private User user;
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
 
     public Long getId() {
         return id;

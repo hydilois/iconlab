@@ -52,7 +52,7 @@
                  <div class="form-group">
                     <label class="control-label" for="phonenumber">Phone number</label>
                     <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Your phone number"
-                           ng-model="vm.registerAccount.phonenumber" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                           ng-model="vm.registerAccount.phonenumber" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[0-9+]*$/" required><!--_'.@A-Za-z - -->
                     <div ng-show="form.phonenumber.$dirty && form.phonenumber.$invalid">
                         <p class="help-block"
                                ng-show="form.phonenumber.$error.required">

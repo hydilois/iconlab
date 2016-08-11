@@ -61,13 +61,19 @@
         $scope.$on('$destroy', unsubscribe);
 
 
+        var parent =  {name: vm.projet.name,from:vm.projet.front,to:vm.projet.tot,children: [], content: '<i class="fa fa-file-code-o" ng-click="scope.handleRowIconClick(row.model)"></i> {{row.model.name}}'};
+
+
         if($state.params.idprojet){
             TacheSpecial.getTacheByProjetGantt($state.params.idprojet).then(function(datanew){
                 vm.listeTachesParProjetGantt = datanew;
 
+                for(var i=0;i< vm.listeTachesParProjetGantt.length;i++) {
+                    parent.children[i] = vm.listeTachesParProjetGantt[i].name;
+                }
+                vm.listeTachesParProjetGantt.splice(0,0,parent);
                 $scope.data = vm.listeTachesParProjetGantt;
 
-                console.log('je suis la'+$scope.data);
             }, function(){
                 console.log('Erreur de recuperation des données');
             });

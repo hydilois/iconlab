@@ -24,28 +24,31 @@
             <column name="titre" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+            <column name="sender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="fichier" type="blob">
                 <constraints nullable="false" />
             </column>
             <column name="fichier_content_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="mode" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="actif" type="bit">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

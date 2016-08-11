@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('MessageHierachiqueDialogController', MessageHierachiqueDialogController);
 
-    MessageHierachiqueDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'MessageHierachique', 'Projet'];
+    MessageHierachiqueDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'MessageHierachique', 'Projet'];
 
-    function MessageHierachiqueDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, MessageHierachique, Projet) {
+    function MessageHierachiqueDialogController (Principal,$timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, MessageHierachique, Projet) {
         var vm = this;
 
         vm.messageHierachique = entity;
@@ -23,6 +23,15 @@
             angular.element('.form-group:eq(1)>input').focus();
         });
 
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.messageHierachique.auteur =vm.account.login;
+                console.log(vm.account);
+            });
+        }
+
+
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
@@ -30,8 +39,10 @@
         function save () {
             vm.isSaving = true;
             if (vm.messageHierachique.id !== null) {
+                accessCurrentAccount();
                 MessageHierachique.update(vm.messageHierachique, onSaveSuccess, onSaveError);
             } else {
+                accessCurrentAccount();
                 MessageHierachique.save(vm.messageHierachique, onSaveSuccess, onSaveError);
             }
         }

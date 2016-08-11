@@ -78,11 +78,13 @@
                     controller: 'ArticleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: function () {
                             return {
                                 titre: null,
+                                auteur: null,
                                 contenu: null,
                                 datePub: null,
                                 fichier: null,

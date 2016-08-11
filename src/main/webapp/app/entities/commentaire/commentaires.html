@@ -37,6 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="contenu"><span>Contenu</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auteur"><span>Auteur</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="datePost"><span>Date Post</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="projet.id"><span>Projet</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -47,6 +48,7 @@
                 <tr ng-repeat="commentaire in vm.commentaires track by commentaire.id">
                     <td><a ui-sref="commentaire-detail({id:commentaire.id})">{{commentaire.id}}</a></td>
                     <td>{{commentaire.contenu}}</td>
+                    <td>{{commentaire.auteur}}</td>
                     <td>{{commentaire.datePost | date:'medium'}}</td>
                     <td>{{commentaire.actif}}</td>
                     <td>

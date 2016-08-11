@@ -84,6 +84,7 @@
                         entity: function () {
                             return {
                                 titre: null,
+                                sender:null,
                                 fichier: null,
                                 fichierContentType: null,
                                 mode: null,

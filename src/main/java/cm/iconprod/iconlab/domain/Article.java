@@ -33,6 +33,9 @@ public class Article implements Serializable {
     @Column(name = "contenu", nullable = false)
     private String contenu;
 
+    @Column(name ="auteur" )
+    private String auteur;
+
     @Column(name = "date_pub")
     private LocalDate datePub;
     //cool la modif
@@ -48,6 +51,14 @@ public class Article implements Serializable {
 
     @ManyToOne
     private User user;
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
 
     public Long getId() {
         return id;

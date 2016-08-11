@@ -84,6 +84,7 @@
                         entity: function () {
                             return {
                                 contenu: null,
+                                auteur: null,
                                 datePost: null,
                                 actif: null,
                                 id: null

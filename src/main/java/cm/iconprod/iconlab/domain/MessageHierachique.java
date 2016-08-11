@@ -25,9 +25,14 @@ public class MessageHierachique implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+
     @NotNull
     @Column(name = "contenu", nullable = false)
     private String contenu;
+
+    @Column(name = "sender")
+    private String sender;
 
     @Lob
     @Column(name = "fichier")
@@ -46,12 +51,22 @@ public class MessageHierachique implements Serializable {
     @ManyToOne
     private Projet projet;
 
+
+
     public Long getId() {
         return id;
     }
 
+
     public void setId(Long id) {
         this.id = id;
+    }
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     public String getContenu() {

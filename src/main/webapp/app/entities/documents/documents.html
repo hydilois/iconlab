@@ -37,6 +37,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="titre"><span>Titre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sender"><span>Sender</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="mode"><span>Mode</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -48,6 +49,7 @@
                 <tr ng-repeat="documents in vm.documents track by documents.id">
                     <td><a ui-sref="documents-detail({id:documents.id})">{{documents.id}}</a></td>
                     <td>{{documents.titre}}</td>
+                    <td>{{documents.sender}}</td>
                     <td>
                         <a ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)">open</a>
                         <span ng-if="documents.fichier">{{documents.fichierContentType}}, {{vm.byteSize(documents.fichier)}}</span>

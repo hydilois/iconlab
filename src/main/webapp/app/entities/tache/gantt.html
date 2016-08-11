@@ -1,13 +1,21 @@
 
+
 <div gantt data="data">
     <gantt-groups></gantt-groups>
     <gantt-tree></gantt-tree>
-    <!--  <gantt-table  columns="['model.name','from','to']"></gantt-table> -->
+
+<!-- <gantt-table  columns="['model.name','from','to']"></gantt-table>-->
     <gantt-tooltips></gantt-tooltips>
     <gantt-bounds></gantt-bounds>
     <gantt-progress></gantt-progress>
     <gantt-sortable></gantt-sortable>
     <gantt-movable></gantt-movable>
-    <gantt-draw-task></gantt-draw-task>
+   <!-- <gantt-draw-task></gantt-draw-task>-->
+    <gantt-draw-task
+        enabled="options.canDraw"
+        move-threshold="2"
+        task-factory="options.drawTaskFactory">
+    </gantt-draw-task>
     <gantt-overlap></gantt-overlap>
 </div>
+

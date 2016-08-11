@@ -6,6 +6,7 @@
     <h2>Modal Header</h2>
   </div>
   <div class="modal-body">
+      <p>{{vm.messageHierachique.sender}}</p>
     <p>{{vm.messageHierachique.contenu}}</p>
     <div ng-if="vm.messageHierachique.fichier">
                 <a ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">open</a>

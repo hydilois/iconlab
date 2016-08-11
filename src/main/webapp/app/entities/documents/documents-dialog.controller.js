@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('DocumentsDialogController', DocumentsDialogController);
 
-    DocumentsDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Documents', 'User'];
+    DocumentsDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Documents', 'User'];
 
-    function DocumentsDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Documents, User) {
+    function DocumentsDialogController (Principal,$timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Documents, User) {
         var vm = this;
 
         vm.documents = entity;
@@ -21,6 +21,14 @@
             angular.element('.form-group:eq(1)>input').focus();
         });
 
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.documents.sender =vm.account.login;
+                console.log(vm.account);
+            });
+        }
+
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
@@ -28,8 +36,10 @@
         function save () {
             vm.isSaving = true;
             if (vm.documents.id !== null) {
+                accessCurrentAccount();
                 Documents.update(vm.documents, onSaveSuccess, onSaveError);
             } else {
+                accessCurrentAccount();
                 Documents.save(vm.documents, onSaveSuccess, onSaveError);
             }
         }
