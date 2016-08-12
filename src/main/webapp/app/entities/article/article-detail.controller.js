@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('ArticleDetailController', ArticleDetailController);
 
-    ArticleDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Article', 'User'];
+    ArticleDetailController.$inject = ['$scope','$state', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Article', 'User'];
 
-    function ArticleDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Article, User) {
+    function ArticleDetailController($scope,$state, $rootScope, $stateParams, DataUtils, entity, Article, User) {
         var vm = this;
 
         vm.article = entity;
@@ -18,5 +18,9 @@
             vm.article = result;
         });
         $scope.$on('$destroy', unsubscribe);
+        $scope.clickGo = function(){
+            $state.go('home');
+        }
+
     }
 })();

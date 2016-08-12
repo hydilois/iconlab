@@ -60,8 +60,8 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.dateDebut = DateUtils.convertDateTimeFromServer(data.dateDebut);
-                        data.dateFin = DateUtils.convertDateTimeFromServer(data.dateFin);
+                        data.fromt = DateUtils.convertDateTimeFromServer(data.fromt);
+                        data.tot = DateUtils.convertDateTimeFromServer(data.tot);
                     }
                     return data;
                 }

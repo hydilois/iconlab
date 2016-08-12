@@ -13,6 +13,15 @@
             <span>{{vm.article.auteur}}</span>
         </dd>
         <dt><span>Contenu</span></dt>
+        <dt><span>Image</span></dt>
+        <dd>
+            <div ng-if="vm.article.image">
+                <a ng-click="vm.openFile(vm.article.imageContentType, vm.article.image)">
+                    <img data-ng-src="{{'data:' + vm.article.imageContentType + ';base64,' + vm.article.image}}" style="max-width: 100%;"/>
+                </a>
+                <span class="hide">{{vm.byteSize(vm.article.image)}}</span>
+            </div>
+        </dd>
         <dd>
             <span>{{vm.article.contenu}}</span>
         </dd>

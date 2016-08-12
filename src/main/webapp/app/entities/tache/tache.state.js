@@ -88,8 +88,8 @@
                                 fichierJoint: null,
                                 fichierJointContentType: null,
                                 role: null,
-                                from: null,
-                                to: null,
+                                fromt: null,
+                                tot: null,
                                 color: null,
                                 data: null,
                                 movable: null,
@@ -132,6 +132,12 @@
                                 role: null,
                                 fromt: null,
                                 tot: null,
+                                color: null,
+                                data: null,
+                                movable: null,
+                                progress: null,
+                                lct: null,
+                                est: null,
                                 actif: null,
                                 id: null
                             };

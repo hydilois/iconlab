@@ -33,6 +33,13 @@ public class Article implements Serializable {
     @Column(name = "contenu", nullable = false)
     private String contenu;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
+
     @Column(name ="auteur" )
     private String auteur;
 
@@ -51,6 +58,22 @@ public class Article implements Serializable {
 
     @ManyToOne
     private User user;
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public String getAuteur() {
         return auteur;

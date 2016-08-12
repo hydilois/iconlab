@@ -37,6 +37,28 @@
                 </p>
             </div>
         </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.article)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_image">Image</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.article.imageContentType + ';base64,' + vm.article.image}}" style="max-height: 100px;" ng-if="vm.article.image"/>
+                <div ng-if="vm.article.image" class="help-block clearfix">
+                    <span class="pull-left">{{vm.article.imageContentType}}, {{vm.byteSize(vm.article.image)}}</span>
+                    <button ng-click="vm.article.image=null;vm.article.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file, vm.article)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                   ng-model="vm.article.image"
+            />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                   ng-model="vm.article.imageContentType" />
+        </div>
         <div class="form-group">
             <label class="control-label" for="field_datePub">Date Pub</label>
                 <div class="input-group">

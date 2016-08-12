@@ -86,6 +86,8 @@
                                 titre: null,
                                 auteur: null,
                                 contenu: null,
+                                image: null,
+                                imageContentType: null,
                                 datePub: null,
                                 fichier: null,
                                 fichierContentType: null,
@@ -113,7 +115,8 @@
                     controller: 'ArticleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
+                    windowClass:'center-modal',
+                    size: 'md',
                     resolve: {
                         entity: ['Article', function(Article) {
                             return Article.get({id : $stateParams.id}).$promise;
@@ -137,6 +140,7 @@
                     templateUrl: 'app/entities/article/article-delete-dialog.html',
                     controller: 'ArticleDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Article', function(Article) {

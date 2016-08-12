@@ -88,8 +88,8 @@
                                 description: null,
                                 fichierProjet: null,
                                 fichierProjetContentType: null,
-                                from: null,
-                                to: null,
+                                fromt: null,
+                                tot: null,
                                 actif: null,
                                 sortable: null,
                                 classes: null,
@@ -133,6 +133,12 @@
                                 fromt: null,
                                 tot: null,
                                 actif: null,
+                                sortable: null,
+                                classes: null,
+                                height: null,
+                                color: null,
+                                parent: null,
+                                tooltips: null,
                                 id: null
                             };
                         }

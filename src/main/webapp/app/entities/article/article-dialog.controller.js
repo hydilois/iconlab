@@ -41,7 +41,7 @@
                accessCurrentAccount();
                 Article.update(vm.article, onSaveSuccess, onSaveError);
             } else {
-                accessCurrentAccount()
+                accessCurrentAccount();
                 Article.save(vm.article, onSaveSuccess, onSaveError);
             }
         }
@@ -57,6 +57,20 @@
         }
 
         vm.datePickerOpenStatus.datePub = false;
+
+        vm.setImage = function ($file, article) {
+            if ($file && $file.$error === 'pattern') {
+                return;
+            }
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        article.image = base64Data;
+                        article.imageContentType = $file.type;
+                    });
+                });
+            }
+        };
 
         vm.setFichier = function ($file, article) {
             if ($file) {

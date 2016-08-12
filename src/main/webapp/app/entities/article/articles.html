@@ -39,6 +39,7 @@
                     <th jh-sort-by="titre"><span>Titre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="auteur"><span>Redacteur</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="contenu"><span>Contenu</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image"><span>Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="datePub"><span>Date Pub</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -52,7 +53,13 @@
                     <td>{{article.titre}}</td>
                     <td>{{article.auteur}}</td>
                     <td>{{article.contenu}}</td>
-                        <td>{{article.datePub | date:'mediumDate'}}</td>
+                    <td>
+                        <a ng-if="article.image" ng-click="vm.openFile(article.imageContentType, article.image)">
+                            <img data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="max-height: 30px;"/>
+                        </a>
+                        <span class="hide" ng-if="article.image">{{article.imageContentType}}, {{vm.byteSize(article.image)}}</span>
+                    </td>
+                    <td>{{article.datePub | date:'mediumDate'}}</td>
                     <td>
                         <a ng-if="article.fichier" ng-click="vm.openFile(article.fichierContentType, article.fichier)">open</a>
                         <span ng-if="article.fichier">{{article.fichierContentType}}, {{vm.byteSize(article.fichier)}}</span>
