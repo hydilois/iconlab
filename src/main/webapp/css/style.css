@@ -7,7 +7,13 @@ body {
     padding-top: 0px;
     height: 100%;
     position: relative;
-    font-size: 13px; }
+    font-size: 13px;
+     }
+
+     .app-container{
+    background-image: url('/content/images/fondiconlab02.jpg');
+    background-repeat: repeat-x;        
+     }
 
 * {
     outline: none; }
@@ -1315,13 +1321,15 @@ h2{
     float: left;
 }
 
-.cardHeader,.cardFooter {
-    background-color: #c8aaaa;
+.cardFooter {
+    background-color: black;
     font-size:15pt;
     text-transform: uppercase;
-    color:#071f5d;
+    color:white;
     padding:5px;
-    opacity: 0.8;
+    margin-top: 181px;
+    text-align: center;
+    /*opacity: 0.8;*/
     font-weight: bold;
 }
 
@@ -1411,7 +1419,7 @@ nav.banniere{
 }
 
 .selectedd{
-    background-color:#EAEAEA;;
+    background-color:#EAEAEA;
 }
 
 
@@ -1421,4 +1429,29 @@ nav.banniere{
      }
 .fa-bars{
     color: white;
+}
+
+.articleInfo{
+    background-color: #EAEAEA;
+}
+
+/*Style pour l'animation des tables avec un effet d'apparition*/
+.tabAnim{
+    /*width: 95%;*/
+    /*position: fixed;*/
+  -webkit-animation-name: fadeInDown;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: fadeInDown;
+  -moz-animation-fill-mode: both;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: linear;
+  animation-name: fadeInDown;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
 }

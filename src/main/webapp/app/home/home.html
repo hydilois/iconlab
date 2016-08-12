@@ -1,21 +1,34 @@
+<div ui-view="article"></div>
+
 <div ng-cloak>
     <div ng-switch="vm.isAuthenticated()">
         <div class="row">
-            <h1 ng-switch-when="true" has-authority="ROLE_ADMIN" class="text-center">Page d'administration !!!!</h1>
-            <p class="lead text-center">The best is still to come</p>
                 <div class="alert yes alert-success" ng-switch-when="true">
                     You are logged in as user "{{vm.account.login}}".
                 </div>
             </div>
             <div class="row" ng-switch-when="false">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-10">
+
+
                 <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal">
-                    <a ui-sref="article-detail({id:article.id})" class="lien">
-                    <div class="cardHeader text-center">{{article.titre}}</div>
-                    </a>
+                <a ui-sref="articleinfo({idarticle:article.id})" class="lien">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    
+                    <div ng-if="vm.article.fichier">
+                    <img data-ng-src="{{'data:' + vm.compte.logoContentType + ';base64,' + vm.article.fichier}}" style="max-width: 100%;"/>
                 </div>
+                
+                </div>
+                <div class="cardFooter">{{article.titre}}
+                </div>
+                </a>
+                </div>
+                <div class="col-md-1"></div>
             </div>
-            <div ui-view='viewzone'>
-                je suis la ...
             </div>
     </div>
 </div>

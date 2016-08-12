@@ -4,8 +4,12 @@
     angular
         .module('iconlabApp')
         .controller('HomeController', HomeController);
+        angular
+        .module('iconlabApp')
+        .controller('AcceuilInfoController', AcceuilInfoController);
 
     HomeController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
+    AcceuilInfoController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
 
     function HomeController ($scope, Principal,Article,Projet, LoginService, $state) {
         var vm = this;
@@ -68,6 +72,20 @@
 
         function register () {
             $state.go('register');
+        }
+    }
+
+    function AcceuilInfoController ($scope, Principal,Article,Projet, LoginService, $state) {
+        var vm = this;
+
+        function loadAllArticles() {
+            vm.listeArticlesTotal = [];
+            Article.query().$promise.then(function (data) {
+                vm.listeArticlesTotal = data;
+
+            }, function () {
+                console.log("Erreur de recuperation des données");
+            });
         }
     }
 

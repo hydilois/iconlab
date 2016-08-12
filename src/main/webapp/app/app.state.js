@@ -22,6 +22,11 @@
                     controller: 'SidebarController',
                     controllerAs: 'vm'
                 },
+                 'article@': {
+                    templateUrl: 'app/home/accueil.html',
+                    controller: 'AcceuilInfoController',
+                    controllerAs: 'vm'
+                },
                 'content@': {
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',
@@ -34,6 +39,26 @@
                         return Auth.authorize();
                     }
                 ]
+            }
+        })
+        .state('articleinfo', {
+            parent: 'app',
+            url: '/articleinfo/{idarticle}',
+            data: {
+                authorities: [],
+                pageTitle: 'Article'
+            },
+            views: {
+                'article@': {
+                    templateUrl: 'app/entities/article/modalarticle.html',
+                    controller: 'ArticleDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Article', function($stateParams, Article) {
+                    return Article.get({id : $stateParams.idarticle}).$promise;
+                }]
             }
         })
        .state('app.projetcompte', {
