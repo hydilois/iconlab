@@ -67,7 +67,7 @@
                      />
         </div>
 
-        <div class="form-group">
+        <div ng-if="vm.documents.mode==='PRIVE'" class="form-group">
             <label for="field_user">User</label>
             <select class="form-control" id="field_user" name="user" ng-model="vm.documents.user" ng-options="user as user.login for user in vm.users track by user.id">
                 <option value=""></option>

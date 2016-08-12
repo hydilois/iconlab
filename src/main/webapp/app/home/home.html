@@ -2,27 +2,95 @@
 
 <div ng-cloak>
     <div ng-switch="vm.isAuthenticated()">
+    <!-- Creation d'un nouveau document -->
+        <div class="row" ng-switch-when="true">
+            <!-- <div class="col-md-4">gauche</div> -->
+            <div class="col-md-offset-4 col-md-4"><button ui-sref="home.newuserdocument" type="button" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Envoyer un document publique</button></div>
+            <!-- <div class="col-md-4">droit</div> -->
+        </div>
+        <!-- TO DO List -->
         <div class="row">
-                <div class="alert yes alert-success" ng-switch-when="true">
-                    You are logged in as user "{{vm.account.login}}".
+        <div class="col-md-6">
+        <div ng-switch-when="true" class="box box-primary">
+          <div class="box-header">
+            <i class="fa fa-book"></i>
+            <h3 class="box-title">Documents Publiques</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <ul class="todo-list">
+              <li ng-repeat="(key, documents) in vm.listeDocumentsPublic">
+                <!-- drag handle -->
+                    <span>
+                      <i class="fa fa-file"></i>
+                    </span>
+                <!-- todo text -->
+                <span class="text">{{documents.titre}}</span>
+                <!-- Emphasis label -->
+                <small class="label label-success"><i class="fa fa-paper-plane"></i> {{documents.sender}}</small>
+                <!-- General tools such as edit or delete-->
+                <div class="tools" ng-if="documents.fichier">
+                  <a title="télécharger le fichier" href="" ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)"><i class="fa fa-download"></i></a>
+                  <!-- <i class="fa fa-trash-o"></i> -->
                 </div>
-            </div>
-            <div class="row" ng-switch-when="false">
+              </li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        </div>
+        <div class="col-md-6">
+            <div ng-switch-when="true" class="box box-primary">
+          <div class="box-header">
+            <i class="fa fa-book"></i>
+            <h3 class="box-title">Documents Privés</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <ul class="todo-list">
+            <li ng-repeat="(key, documents) in vm.listeDocumentsPrive">
+                <!-- drag handle -->
+                    <span>
+                      <i class="fa fa-file"></i>
+                    </span>
+                <!-- todo text -->
+                <span class="text">{{documents.titre}}</span>
+                <!-- Emphasis label -->
+                <small class="label label-success"><i class="fa fa-paper-plane"></i> {{documents.sender}}</small>
+                <!-- General tools such as edit or delete-->
+                <div class="tools" ng-if="documents.fichier">
+                  <a title="télécharger le fichier" href="" ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)"><i class="fa fa-download"></i></a>
+                  <!-- <i class="fa fa-trash-o"></i> -->
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        </div>
+        </div>
+
+            <div class="row animsortie cadrearticle" ng-switch-when="false">
                 <div class="col-md-1"></div>
 
                 <div class="col-md-10">
 
 
                 <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal">
-                <a ui-sref="articleinfo({idarticle:article.id})" class="lien">
                 <div class="card-header"></div>
                 <div class="card-body">
-                    
-                    <div ng-if="vm.article.fichier">
-                    <img data-ng-src="{{'data:' + vm.compte.logoContentType + ';base64,' + vm.article.fichier}}" style="max-width: 100%;"/>
+                    <div ng-if="article.image">
+                <a ng-click="animationcadre()" ui-sref="articleinfo({idarticle:article.id})">
+                    <img data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;"/>
+                </a>
+            </div>
+                    <div ng-if="!article.image">
+                    <a ng-click="animationcadre()" ui-sref="articleinfo({idarticle:article.id})">
+                    <img src="content/images/Icon_WriteArticles-a.png" style="width:100%;"/>
+                    </a>
+            </div> 
                 </div>
-                
-                </div>
+                <a ng-click="animationcadre()" ui-sref="articleinfo({idarticle:article.id})">
                 <div class="cardFooter">{{article.titre}}
                 </div>
                 </a>

@@ -429,7 +429,7 @@ color: black;}
       opacity: 0.8; }
 
 .card .card-body.half-padding {
-  padding: 12.5px;  }
+  padding: 12.5px;  }*/
 
 .card .card-header .card-title {
   padding: 1.2em 25px;
@@ -446,7 +446,7 @@ color: black;}
 .card .card-header:after {
   content: '';
   display: block;
-  clear: both; }
+  clear: both; }/*
 
 .card .card-profile-img img {
   width: 100%;
@@ -1311,25 +1311,23 @@ h2{
 }
 
 .cardArticle {
-    /*background-color:#efefef;*/
-    background-image: url("../content/images/photoArticle.png");
-    border: 1px solid black;
+    border-radius: 10px;
     height:222px;
     width: 220px;
-    margin-bottom: 20px;
+    margin-bottom: 0 auto;
     margin-left: 20px;
     float: left;
 }
 
 .cardFooter {
-    background-color: black;
-    font-size:15pt;
-    text-transform: uppercase;
-    color:white;
+    background-color: white;
+    font-size:12pt;
+    /*text-transform: uppercase;*/
+    color:black;
     padding:5px;
-    margin-top: 181px;
+    position: relative;
+    margin-top: -32px;
     text-align: center;
-    /*opacity: 0.8;*/
     font-weight: bold;
 }
 
@@ -1450,6 +1448,32 @@ nav.banniere{
   -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: linear;
   animation-name: fadeInDown;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.contenu{
+    height: 200px;
+    overflow: scroll;
+}
+
+
+.animsortie{
+    /*width: 95%;*/
+    /*position: fixed;*/
+  -webkit-animation-name: fadeoutUp;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: fadeoutUp;
+  -moz-animation-fill-mode: both;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: linear;
+  animation-name: fadeoutUp;
   animation-fill-mode: both;
   animation-duration: 1s;
   animation-iteration-count: 1;

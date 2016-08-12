@@ -18,7 +18,9 @@
             vm.article = result;
         });
         $scope.$on('$destroy', unsubscribe);
+        
         $scope.clickGo = function(){
+            $('cadrearticle').addClass('animsortie')
             $state.go('home');
         }
 

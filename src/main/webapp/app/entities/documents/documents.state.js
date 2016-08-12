@@ -100,8 +100,8 @@
                 });
             }]
         })
-        .state('app.projetcompte.newuserdocument', {
-            parent: 'app.projetcompte',
+        .state('home.newuserdocument', {
+            parent: 'home',
             url: '/new/document',
             data: {
                 authorities: ['ROLE_USER']
@@ -127,9 +127,9 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('app.projetcompte', null, { reload: true });
+                    $state.go('home', null, { reload: true });
                 }, function() {
-                    $state.go('app.projetcompte');
+                    $state.go('home');
                 });
             }]
         })

@@ -4,7 +4,8 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myArticleLabel">Create or edit a Article</h4>
+        <h4 ng-show="!vm.article.id" class="modal-title" id="myArticleLabel">Creation d'un Article</h4>
+        <h4 ng-show="vm.article.id" class="modal-title" id="myArticleLabel">Edition d'un Article</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -27,7 +28,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_contenu">Contenu</label>
-            <textarea  type="text" class="form-control" name="contenu" id="field_contenu"
+            <textarea rows="5"  type="text" class="form-control" name="contenu" id="field_contenu"
                     ng-model="vm.article.contenu"
                     required ></textarea>
             <div ng-show="editForm.contenu.$invalid">

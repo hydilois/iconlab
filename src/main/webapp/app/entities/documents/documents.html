@@ -52,7 +52,7 @@
                     <td>{{documents.sender}}</td>
                     <td>
                         <a ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)">open</a>
-                        <span ng-if="documents.fichier">{{documents.fichierContentType}}, {{vm.byteSize(documents.fichier)}}</span>
+                        <!-- <span ng-if="documents.fichier">{{documents.fichierContentType}}, {{vm.byteSize(documents.fichier)}}</span> -->
                     </td>
                     <td translate="{{'iconlabApp.Mode.' + documents.mode}}">{{documents.mode}}</td>
                     <td>{{documents.actif}}</td>

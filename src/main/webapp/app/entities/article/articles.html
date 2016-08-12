@@ -52,7 +52,7 @@
                     <td><a ui-sref="article-detail({id:article.id})">{{article.id}}</a></td>
                     <td>{{article.titre}}</td>
                     <td>{{article.auteur}}</td>
-                    <td>{{article.contenu}}</td>
+                    <td>{{article.contenu |limitTo :30}}</td>
                     <td>
                         <a ng-if="article.image" ng-click="vm.openFile(article.imageContentType, article.image)">
                             <img data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="max-height: 30px;"/>
