@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ArticleResource {
 
     private final Logger log = LoggerFactory.getLogger(ArticleResource.class);
-        
+
     @Inject
     private ArticleRepository articleRepository;
-    
+
     @Inject
     private ArticleSearchRepository articleSearchRepository;
-    
+
     /**
      * POST  /articles : Create a new article.
      *
@@ -104,7 +104,7 @@ public class ArticleResource {
     public ResponseEntity<List<Article>> getAllArticles(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Articles");
-        Page<Article> page = articleRepository.findAll(pageable); 
+        Page<Article> page = articleRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/articles");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

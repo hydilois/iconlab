@@ -10,6 +10,16 @@
         </div>
         <!-- TO DO List -->
         <div class="row">
+                <div class="alert yes alert-success" ng-switch-when="true">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+                <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
+                    <div class="row">
+                        <div zingchart id="chart-1" zc-json="mydata" zc-width="50%" zc-height="300px"></div>
+
+                    </div>
+            </div>
+            <div class="row" ng-switch-when="false">
         <div class="col-md-6">
         <div ng-switch-when="true" class="box box-primary">
           <div class="box-header">
@@ -88,7 +98,7 @@
                     <a ng-click="animationcadre()" ui-sref="articleinfo({idarticle:article.id})">
                     <img src="content/images/Icon_WriteArticles-a.png" style="width:100%;"/>
                     </a>
-            </div> 
+            </div>
                 </div>
                 <a ng-click="animationcadre()" ui-sref="articleinfo({idarticle:article.id})">
                 <div class="cardFooter">{{article.titre}}

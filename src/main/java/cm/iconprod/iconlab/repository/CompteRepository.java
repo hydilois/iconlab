@@ -15,7 +15,7 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
     @Query("select compte from Compte compte where compte.user.login = ?#{principal.username}")
     List<Compte> findByUserIsCurrentUser();
 
-    @Query("select compte from Compte compte where compte.user.login = ?#{principal.username}")
-    List<Compte> findByUserIsCurrentAdmin();
+    /*@Query("select compte from Compte compte where compte.user.login = ?#{principal.username}")
+    List<Compte> findByUserIsCurrentAdmin();*/
 
 }

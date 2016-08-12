@@ -3,7 +3,10 @@ package cm.iconprod.iconlab.web.rest;
 import cm.iconprod.iconlab.service.AuditEventService;
 
 import java.time.LocalDate;
+
+import cm.iconprod.iconlab.service.StatistikDashboardService;
 import cm.iconprod.iconlab.web.rest.util.PaginationUtil;
+import com.codahale.metrics.annotation.Timed;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +29,8 @@ import java.util.List;
 public class AuditResource {
 
     private AuditEventService auditEventService;
+
+
 
     @Inject
     public AuditResource(AuditEventService auditEventService) {
@@ -81,4 +86,6 @@ public class AuditResource {
                 .map((entity) -> new ResponseEntity<>(entity, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+
 }

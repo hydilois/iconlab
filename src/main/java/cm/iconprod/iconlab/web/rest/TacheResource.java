@@ -1,5 +1,6 @@
 package cm.iconprod.iconlab.web.rest;
 
+import cm.iconprod.iconlab.service.StatistikDashboardService;
 import cm.iconprod.iconlab.service.TacheService;
 import com.codahale.metrics.annotation.Timed;
 import cm.iconprod.iconlab.domain.Tache;
@@ -41,6 +42,8 @@ public class TacheResource {
 
     @Inject
     private TacheSearchRepository tacheSearchRepository;
+
+    private StatistikDashboardService statService;
 
     @Inject
     private TacheService tacheService;
@@ -133,6 +136,13 @@ public class TacheResource {
 
 
         return taches1;
+    }
+
+    @RequestMapping(value = "/audits/statData",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public StatistikDashboardService.CounterStatistik getStatData() {
+        return statService.getStatData() ;
     }
 
     /**

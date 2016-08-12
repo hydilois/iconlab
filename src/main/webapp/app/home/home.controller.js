@@ -8,9 +8,11 @@
         .module('iconlabApp')
         .controller('AcceuilInfoController', AcceuilInfoController);
 
+    HomeController.$inject = ['$scope', 'Principal','StatService','Article','Projet', 'LoginService', '$state'];
     HomeController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state','Documents','DataUtils'];
     AcceuilInfoController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
 
+    function HomeController ($scope, Principal,StatService,Article,Projet,LoginService, $state) {
     function HomeController ($scope, Principal,Article,Projet, LoginService, $state,Documents,DataUtils) {
         var vm = this;
 
@@ -20,7 +22,37 @@
         vm.register = register;
         vm.openFile = DataUtils.openFile;
 
-        vm.isAuthenticated = Principal.isAuthenticated;
+        var info = StatService.getStatData();
+
+
+        $scope.mydata = {
+            type : "bar",
+            "plot": {
+                "value-box": {
+                    "text": "%node-value"
+                }
+            },
+            title:{
+                backgroundColor : "transparent",
+                fontColor :"black",
+                text : "Hello world"
+            },
+            backgroundColor : "white",
+            "scale-x":{
+                "labels":["Taches","PA","Documents","Projets","MessagesH","Comptes","Articles"]
+            },
+            series : [
+                {
+                    values : [1,3,3,6,7,8,7],
+                    backgroundColor : "#4DC0CF"
+                }
+            ]
+        };
+
+        //values : [info.tacheLength,info.pointAvancementLength,info.documentLength,info.projeteLength,info.messageHierachiqueLength,info.compteLength,info.articleLength,],
+
+
+            vm.isAuthenticated = Principal.isAuthenticated;
 
         $scope.$on('authenticationSuccess', function() {
             getAccount();
@@ -59,10 +91,10 @@
                 vm.listeDocumentsPrive=[];
                 vm.listeDocumentsPublic=[];
             for (var i = 0; i < vm.listeDocumentsTotal.length; i++) {
-                if(vm.listeDocumentsTotal[i].mode==="PUBLIC" 
+                if(vm.listeDocumentsTotal[i].mode==="PUBLIC"
                     && vm.listeDocumentsTotal[i].actif===true){
                     vm.listeDocumentsPublic.push(vm.listeDocumentsTotal[i]);
-                }else if(vm.listeDocumentsTotal[i].mode==="PRIVE" 
+                }else if(vm.listeDocumentsTotal[i].mode==="PRIVE"
                     && vm.listeDocumentsTotal[i].actif===true
                     && vm.listeDocumentsTotal[i].user.email===vm.account.email){
                     vm.listeDocumentsPrive.push(vm.listeDocumentsTotal[i]);
@@ -116,3 +148,4 @@
     }
 
 })();
+
