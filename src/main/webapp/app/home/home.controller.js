@@ -8,12 +8,10 @@
         .module('iconlabApp')
         .controller('AcceuilInfoController', AcceuilInfoController);
 
-    HomeController.$inject = ['$scope', 'Principal','StatService','Article','Projet', 'LoginService', '$state'];
-    HomeController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state','Documents','DataUtils'];
+    HomeController.$inject = ['$scope', 'Principal','StatService','Article','Projet', 'LoginService', '$state','Documents','DataUtils','User'];
     AcceuilInfoController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
 
-    function HomeController ($scope, Principal,StatService,Article,Projet,LoginService, $state) {
-    function HomeController ($scope, Principal,Article,Projet, LoginService, $state,Documents,DataUtils) {
+    function HomeController ($scope, Principal,StatService,Article,Projet,LoginService, $state,Documents ,DataUtils,User) {
         var vm = this;
 
         vm.account = null;
@@ -21,8 +19,10 @@
         vm.login = LoginService.open;
         vm.register = register;
         vm.openFile = DataUtils.openFile;
+        $scope.pageSize = 4;
+        $scope.currentPage = 1;
 
-        var info = StatService.getStatData();
+       /* var info = StatService.getStatData();*/
 
 
         $scope.mydata = {
@@ -57,12 +57,15 @@
         $scope.$on('authenticationSuccess', function() {
             getAccount();
             loadAllDocuments();
+            loadAllUsers();
+            $()
         });
         if(!vm.isAuthenticated()){
             loadAllArticles();
         }else{
         getAccount();
-        loadAllDocuments();}
+        loadAllDocuments();
+        loadAllUsers();}
 
         if($state.params.id){
             loadAllProjetHome();
@@ -88,21 +91,26 @@
             vm.listeDocumentsTotal = [];
             Documents.query().$promise.then(function (data) {
                 vm.listeDocumentsTotal = data;
-                vm.listeDocumentsPrive=[];
-                vm.listeDocumentsPublic=[];
-            for (var i = 0; i < vm.listeDocumentsTotal.length; i++) {
-                if(vm.listeDocumentsTotal[i].mode==="PUBLIC"
-                    && vm.listeDocumentsTotal[i].actif===true){
-                    vm.listeDocumentsPublic.push(vm.listeDocumentsTotal[i]);
-                }else if(vm.listeDocumentsTotal[i].mode==="PRIVE"
-                    && vm.listeDocumentsTotal[i].actif===true
-                    && vm.listeDocumentsTotal[i].user.email===vm.account.email){
-                    vm.listeDocumentsPrive.push(vm.listeDocumentsTotal[i]);
-                }
-            }
+
+                documentbelonging(vm.listeDocumentsTotal);
             }, function () {
                 console.log("Erreur de recuperation des données");
             });
+        }
+
+        function documentbelonging(donnee){
+                vm.listeDocumentsPrive=[];
+                vm.listeDocumentsPublic=[];
+            for (var i = 0; i < donnee.length; i++) {
+                if(donnee[i].mode==="PUBLIC"
+                    && donnee[i].actif===true){
+                    vm.listeDocumentsPublic.push(donnee[i]);
+                }else if(donnee[i].mode==="PRIVE"
+                    && donnee[i].actif===true
+                    && donnee[i].user.email===vm.account.email){
+                    vm.listeDocumentsPrive.push(donnee[i]);
+                }
+            }
         }
 
         function loadAllProjetHome() {
@@ -110,6 +118,15 @@
             Projet.query().$promise.then(function (data) {
                 vm.listeProjetsTotalhome = data;
                 findProjetByCompte(vm.listeProjetsTotalhome,$state.params.id);
+            }, function () {
+                console.log("Erreur de recuperation des données");
+            });
+        }
+
+        function loadAllUsers() {
+            vm.listeUsersTotal = [];
+            User.query().$promise.then(function (data) {
+                vm.listeUsersTotal = data;
             }, function () {
                 console.log("Erreur de recuperation des données");
             });
@@ -125,11 +142,6 @@
 
         function register () {
             $state.go('register');
-        }
-
-        $scope.animationcadre = function(){
-            console.log("yessssssssssss");
-            $('cadrearticle').addClass('tabAnim');
         }
     }
 

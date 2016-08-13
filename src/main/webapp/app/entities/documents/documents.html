@@ -1,5 +1,5 @@
 <div>
-    <h2>Documents</h2>
+    <h2>Liste des Documents</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="documents.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span class="hidden-xs" >
-                        Create new Documents
+                        Envoyer un Document
                     </span>
                 </button>
             </div>
@@ -41,7 +41,7 @@
                     <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="mode"><span>Mode</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span>Destinataire</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -51,13 +51,16 @@
                     <td>{{documents.titre}}</td>
                     <td>{{documents.sender}}</td>
                     <td>
-                        <a ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)">open</a>
+                        <a ng-if="documents.fichier" ng-click="vm.openFile(documents.fichierContentType, documents.fichier)">ouvrir</a>
                         <!-- <span ng-if="documents.fichier">{{documents.fichierContentType}}, {{vm.byteSize(documents.fichier)}}</span> -->
                     </td>
                     <td translate="{{'iconlabApp.Mode.' + documents.mode}}">{{documents.mode}}</td>
                     <td>{{documents.actif}}</td>
-                    <td>
-                        {{documents.user.login}}
+                    <td ng-show="documents.user">
+                        {{documents.user.firstName}} {{documents.user.lastName}}
+                    </td>
+                    <td ng-show="!documents.user">
+                        PUBLIC
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

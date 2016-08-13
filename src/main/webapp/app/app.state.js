@@ -22,11 +22,6 @@
                     controller: 'SidebarController',
                     controllerAs: 'vm'
                 },
-                 'article@': {
-                    templateUrl: 'app/home/accueil.html',
-                    controller: 'AcceuilInfoController',
-                    controllerAs: 'vm'
-                },
                 'content@': {
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',

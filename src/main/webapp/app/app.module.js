@@ -26,7 +26,8 @@
             'gantt.progress',
             'gantt.table',
             'gantt.tree',
-            'gantt.groups'
+            'gantt.groups',
+            'ngAnimate'
         ]).run(run);
 
     run.$inject = ['stateHandler'];
@@ -34,4 +35,14 @@
     function run(stateHandler) {
         stateHandler.initialize();
     }
-})();
+
+     angular
+            .module('iconlabApp').filter("startFrom", function () {
+                 return function (data,start) {
+                    //var data;
+                     return data.slice(start);
+                 };
+});
+}
+
+)();

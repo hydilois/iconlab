@@ -25,7 +25,6 @@
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.documents.sender =vm.account.login;
-                console.log(vm.account);
             });
         }
 

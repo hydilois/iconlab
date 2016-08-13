@@ -1,4 +1,4 @@
-    
+    (function() {    
     'use strict';
         angular
         .module('iconlabApp')
@@ -24,3 +24,4 @@
       
     };
 });
+      })();

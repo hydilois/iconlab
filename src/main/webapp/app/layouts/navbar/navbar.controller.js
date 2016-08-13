@@ -57,6 +57,10 @@
             $(".icon").addClass('hide');
             $(".nomicon2").removeClass('hide');
             $(".nomicon1").addClass('hide');
+            if($(".navbar-expand-toggle").hasClass("fa-rotate-90")){
+                $(".app-container").toggleClass("expanded");
+                $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
+        }
         }
 
         function toggleNavbar() {

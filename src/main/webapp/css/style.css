@@ -1311,7 +1311,6 @@ h2{
 }
 
 .cardArticle {
-    border-radius: 10px;
     height:222px;
     width: 220px;
     margin-bottom: 0 auto;
@@ -1435,8 +1434,6 @@ nav.banniere{
 
 /*Style pour l'animation des tables avec un effet d'apparition*/
 .tabAnim{
-    /*width: 95%;*/
-    /*position: fixed;*/
   -webkit-animation-name: fadeInDown;
   -webkit-animation-fill-mode: both;
   -webkit-animation-duration: 1s;
@@ -1463,12 +1460,12 @@ nav.banniere{
 .animsortie{
     /*width: 95%;*/
     /*position: fixed;*/
-  -webkit-animation-name: fadeoutUp;
+  -webkit-animation-name: fadeout;
   -webkit-animation-fill-mode: both;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: linear;
-  -moz-animation-name: fadeoutUp;
+  -moz-animation-name: fadeout;
   -moz-animation-fill-mode: both;
   -moz-animation-duration: 1s;
   -moz-animation-iteration-count: 1;

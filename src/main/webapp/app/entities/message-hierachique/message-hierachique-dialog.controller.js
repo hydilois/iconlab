@@ -26,7 +26,7 @@
         function accessCurrentAccount(){
             Principal.identity().then(function(account) {
                 vm.account = account;
-                vm.messageHierachique.auteur =vm.account.login;
+                vm.messageHierachique.sender =vm.account.login;
                 console.log(vm.account);
             });
         }

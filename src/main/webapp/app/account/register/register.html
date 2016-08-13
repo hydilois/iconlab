@@ -1,14 +1,14 @@
 <div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h1>Registration</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="text-center">Enregistrement</h1>
 
             <div class="alert alert-success" ng-show="vm.success">
                 <strong>Enregistrement effectué avec succès!</strong> Please check your email for confirmation.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.error">
-                <strong>Registration failed!</strong> Please try again later.
+                <strong>Echec d'enregistrement!</strong> Réessayer.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.errorregisterAccountExists">
@@ -16,19 +16,19 @@
             </div>
 
             <div class="alert alert-danger" ng-show="vm.errorEmailExists">
-                <strong>E-mail is already in use!</strong> Please choose another one.
+                <strong>E-mail déja en cours d'utilsation!</strong> Please choose another one.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.doNotMatch">
                 Le mot de passe et sa confirmation ne correspondent pas!
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
 
                 <div class="form-group">
-                    <label class="control-label" for="login">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="Nom d'utilisateur"
+                    <!-- <label class="control-label" for="login">Nom d'utilisateur</label> -->
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Votre login"
                            ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                     <div ng-show="form.login.$dirty && form.login.$invalid">
                         <p class="help-block"
@@ -49,9 +49,47 @@
                     </p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <!-- <label class="control-label" for="firstName">Nom</label> -->
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Votre nom"
+                           ng-model="vm.registerAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                        <p class="help-block"
+                               ng-show="form.firstName.$error.required">
+                            Votre nom est obligtoire .
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.firstName.$error.minlength">
+                            Votre nom doit contenir au moins un caractère.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.firstName.$error.maxlength">
+                            Your first name cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label class="control-label" for="lastName">Prénom</label> -->
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Votre prénom"
+                           ng-model="vm.registerAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                        <p class="help-block"
+                               ng-show="form.lastName.$error.required">
+                            Votre prénom est oblligatoire.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.lastName.$error.minlength">
+                            Votre prénom doit contenir au moins un caractère.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.lastName.$error.maxlength">
+                            Your last name cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
                  <div class="form-group">
-                    <label class="control-label" for="phonenumber">Phone number</label>
-                    <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Your phone number"
+                    <!-- <label class="control-label" for="phonenumber">Numéro de Téléphone</label> -->
+                    <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Numéro de téléphone"
                            ng-model="vm.registerAccount.phonenumber" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[0-9+]*$/" required><!--_'.@A-Za-z - -->
                     <div ng-show="form.phonenumber.$dirty && form.phonenumber.$invalid">
                         <p class="help-block"
@@ -64,7 +102,7 @@
                         </p>
                         <p class="help-block"
                                ng-show="form.phonenumber.$error.maxlength">
-                            Your phone number cannot be longer than 50 characters.
+                            Votre numéro de téléphone  ne doit pas dépasser 50 caractères.
                         </p>
                         <p class="help-block"
                                ng-show="form.phonenumber.$error.pattern">
@@ -74,17 +112,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your e-mail"
+                    <!-- <label class="control-label" for="email">E-mail</label> -->
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Votre e-mail"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
                                ng-show="form.email.$error.required">
-                            Your e-mail is required.
+                            votre e-mail est obligatoire..
                         </p>
                         <p class="help-block"
                                ng-show="form.email.$error.email">
-                            Your e-mail is invalid.
+                            votre e-mail est  invalide.
                         </p>
                         <p class="help-block"
                                ng-show="form.email.$error.minlength">
@@ -97,46 +135,46 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="password">New password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="New password"
+                    <!-- <label class="control-label" for="password">New password</label> -->
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe"
                            ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.password.$dirty && form.password.$invalid">
                         <p class="help-block"
                                ng-show="form.password.$error.required">
-                            Your password is required.
+                           Le  mot de passe est obligatoire.
                         </p>
                         <p class="help-block"
                                ng-show="form.password.$error.minlength">
-                            Your password is required to be at least 4 characters.
+                            Votre mot de passe doit contenir au moins 4 caractères.
                         </p>
                         <p class="help-block"
                                ng-show="form.password.$error.maxlength">
-                            Your password cannot be longer than 50 characters.
+                            Votre mot de passe ne doit pas dépasser 50 caractères.
                         </p>
                     </div>
                     <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="confirmPassword">New password confirmation</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
+                    <!-- <label class="control-label" for="confirmPassword">New password confirmation</label> -->
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmez votre mot de passe"
                            ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                         <p class="help-block"
                                ng-show="form.confirmPassword.$error.required">
-                            Your confirmation password is required.
+                            La confirmation du mot de passe est obligatoire.
                         </p>
                         <p class="help-block"
                                ng-show="form.confirmPassword.$error.minlength">
-                            Your confirmation password is required to be at least 4 characters.
+                            Votre mot de passe doit contenir au moins 4 caractères.
                         </p>
                         <p class="help-block"
                                ng-show="form.confirmPassword.$error.maxlength">
-                            Your confirmation password cannot be longer than 50 characters.
+                            Votre mot de passe ne doit pas dépasser 50 caractères.
                         </p>
                     </div>
                 </div>
                 <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.registerAccount)" ngf-pattern="'image/*'">
-                        <label class="control-label" for="field_image">Profil Image</label>
+                        <!-- <label class="control-label" for="field_image">Profil Image</label> -->
                         <div>
                             <img data-ng-src="{{'data:' + vm.registerAccount.imageContentType + ';base64,' + vm.registerAccount.image}}" style="max-height: 100px;" ng-if="vm.registerAccount.image"/>
                             <div ng-if="vm.registerAccount.image" class="help-block clearfix">
@@ -148,7 +186,7 @@
                             </div>
                             <button type="file" ngf-select class="btn btn-default btn-block"
                                     ngf-change="vm.setImage($file, vm.registerAccount)" accept="image/*">
-                                Add image
+                                Photo de profil
                             </button>
                         </div>
                         <input type="hidden" class="form-control" name="image" id="field_image"
@@ -158,12 +196,8 @@
                                ng-model="vm.registerAccount.imageContentType" />
                     </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">S'enregistrer</button>
             </form>
-            <p></p>
-            <div class="alert alert-warning">
-                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- registerAccount (login="registerAccount" and password="registerAccount").
-            </div>
         </div>
     </div>
 </div>

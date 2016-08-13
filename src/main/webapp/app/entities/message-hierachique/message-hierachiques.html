@@ -14,7 +14,7 @@
             <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Recherche">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -57,7 +57,7 @@
                     <td>{{messageHierachique.date | date:'medium'}}</td>
                     <td>{{messageHierachique.status}}</td>
                     <td>
-                        <a ui-sref="projet-detail({id:messageHierachique.projet.id})">{{messageHierachique.projet.id}}</a>
+                        <a ui-sref="projet-detail({id:messageHierachique.projet.id})">{{messageHierachique.projet.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

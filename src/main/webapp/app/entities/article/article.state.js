@@ -70,7 +70,7 @@
             parent: 'article',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -100,6 +100,43 @@
                     $state.go('article', null, { reload: true });
                 }, function() {
                     $state.go('article');
+                });
+            }]
+        })
+        .state('app.tacheprojet.newarticle', {
+            parent: 'app.tacheprojet',
+            url: '/new/article',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/article/article-dialog.html',
+                    controller: 'ArticleDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                titre: null,
+                                auteur: null,
+                                contenu: null,
+                                image: null,
+                                imageContentType: null,
+                                datePub: null,
+                                fichier: null,
+                                fichierContentType: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.tacheprojet', null, { reload: true });
+                }, function() {
+                    $state.go('app.tacheprojet');
                 });
             }]
         })

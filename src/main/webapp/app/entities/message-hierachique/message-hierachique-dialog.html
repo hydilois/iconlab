@@ -4,15 +4,15 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myMessageHierachiqueLabel">Create or edit a Message Hierachique</h4>
+        <h4 class="modal-title" id="myMessageHierachiqueLabel">Creation Message Hierachique</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.messageHierachique.id">
+        <!-- <div class="form-group" ng-show="vm.messageHierachique.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.messageHierachique.id" readonly />
-        </div>
+        </div> -->
         <div class="form-group">
             <label class="control-label" for="field_contenu">Contenu</label>
             <input type="text" class="form-control" name="contenu" id="field_contenu"
@@ -21,7 +21,7 @@
             <div ng-show="editForm.contenu.$invalid">
                 <p class="help-block"
                     ng-show="editForm.contenu.$error.required">
-                    This field is required.
+                    Ce champ est obligatoire.
                 </p>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <label class="control-label" for="field_fichier">Fichier</label>
             <div>
                 <div ng-if="vm.messageHierachique.fichier" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">open</a><br>
+                    <a class="pull-left" ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">Ouvrir</a><br>
                     <span class="pull-left">{{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}</span>
                     <button ng-click="vm.messageHierachique.fichier=null;vm.messageHierachique.fichierContentType=null;"
                             class="btn btn-default btn-xs pull-right">
@@ -38,7 +38,7 @@
                 </div>
                 <button type="file" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setFichier($file, vm.messageHierachique)">
-                    Add blob
+                    Joindre un fichier
                 </button>
             </div>
             <input type="hidden" class="form-control" name="fichier" id="field_fichier"
@@ -59,7 +59,7 @@
             <div ng-show="editForm.date.$invalid">
                 <p class="help-block"
                     ng-show="editForm.date.$error.required">
-                    This field is required.
+                    Ce champ est obligatoire.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.date.$error.ZonedDateTimelocal">
@@ -76,17 +76,17 @@
 
         <div class="form-group">
             <label for="field_projet">Projet</label>
-            <select class="form-control" id="field_projet" name="projet" ng-model="vmjet.messageHierachique.projet" ng-options="projet as projet.id for projet in vm.projets track by projet.id">
+            <select class="form-control" id="field_projet" name="projet" ng-model="vm.messageHierachique.projet" ng-options="projet as projet.name for projet in vm.projets track by projet.id">
                 <option value=""></option>
             </select>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Envoyer</span>
         </button>
     </div>
 </form>

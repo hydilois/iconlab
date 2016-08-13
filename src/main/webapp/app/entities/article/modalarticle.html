@@ -1,5 +1,5 @@
-
-<div class="row tabAnim">
+<div ng-switch="vm.isAuthenticated()">
+<div ng-switch-when="false" class="row">
 <!-- <div class="col-md-1"></div> -->
 <div class="articleInfo col-md-offset-1 col-md-10">
   <div class="modal-header mdh">
@@ -31,3 +31,4 @@
   </div>
   <div class="col-md-1"></div>
   </div>
+</div>

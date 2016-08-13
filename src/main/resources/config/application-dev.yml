@@ -20,7 +20,7 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/iconlab
         name:
-        username: postgres
+        username: elshasql
         password: admin
     jpa:
         database-platform: cm.iconprod.iconlab.domain.util.FixedPostgreSQL82Dialect
