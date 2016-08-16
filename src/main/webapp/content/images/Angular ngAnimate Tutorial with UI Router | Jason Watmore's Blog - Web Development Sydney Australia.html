@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_002.axd"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_006.axd"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js.axd"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_003.axd"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_004.axd"></script><link type="text/css" href="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/css.css" rel="stylesheet"><title>
+	Angular ngAnimate Tutorial with UI Router | Jason Watmore's Blog - Web Development Sydney Australia
+</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="author" href="https://plus.google.com/105285862613636033893">
+
+    <link rel="shortcut icon" href="http://jasonwatmore.com/favicon.png" type="image/png">
+    <link rel="icon" href="http://jasonwatmore.com/favicon.png" type="image/png">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/main.css" rel="stylesheet">
+
+    <script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/jquery.js"></script>
+    <script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/hover_002.js"></script>
+    <script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/hover.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="http://jasonwatmore.com/favicon.ico" type="image/x-icon">
+<meta name="keywords" content="AngularJS,ngAnimate,Angular UI Router"><meta name="description" content="A tutorial on using ngAnimate with UI Router to transition between views."><meta name="author" content="Jason Watmore"><link rel="last" title="AngularJS - Enable HTML5 Mode Page Refresh Without 404 Errors in NodeJS and IIS" href="http://jasonwatmore.com/post/2016/07/26/AngularJS-enable-html5mode-page-refresh-without-404-error-in-NodeJS-and-IIS.aspx"><link rel="first" title="Validate date dropdown lists with JavaScript / jQuery " href="http://jasonwatmore.com/post/2011/11/18/Validate-date-dropdown-lists-with-JavaScript-jQuery.aspx"><link rel="next" title="AngularJS - Pagination Example with Logic like Google" href="http://jasonwatmore.com/post/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx"><link rel="prev" title="Setup the MEAN Stack on Windows" href="http://jasonwatmore.com/post/2015/12/26/Setup-the-MEAN-Stack-on-Windows.aspx"><link type="application/rss+xml" rel="alternate" title="Angular ngAnimate Tutorial with UI Router | Jason Watmore&amp;#39;s Blog - Web Development Sydney Australia (RSS)" href="http://jasonwatmore.com/post/feed/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx?format=ATOM"><link type="application/rss+xml" rel="alternate" title="Angular ngAnimate Tutorial with UI Router | Jason Watmore&amp;#39;s Blog - Web Development Sydney Australia (ATOM)" href="http://jasonwatmore.com/post/feed/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx?format=ATOM"><link rel="contents" title="Archive" href="http://jasonwatmore.com/archive.aspx"><link rel="start" title="Jason Watmore's Blog" href="http://jasonwatmore.com/"><link type="application/rdf+xml" rel="meta" title="SIOC" href="http://jasonwatmore.com/sioc.axd"><link type="application/apml+xml" rel="meta" title="APML" href="http://jasonwatmore.com/apml.axd"><link type="application/rdf+xml" rel="meta" title="FOAF" href="http://jasonwatmore.com/foaf.axd"><link type="application/rss+xml" rel="alternate" title="Jason Watmore's Blog (RSS)" href="http://jasonwatmore.com/syndication.axd?format=rss"><link type="application/atom+xml" rel="alternate" title="Jason Watmore's Blog (ATOM)" href="http://jasonwatmore.com/syndication.axd?format=atom"><link type="application/rsd+xml" rel="edituri" title="RSD" href="http://jasonwatmore.com/rsd.axd"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link type="application/opensearchdescription+xml" rel="search" title="Jason Watmore's Blog" href="http://jasonwatmore.com/opensearch.axd"><link type="text/css" rel="stylesheet" href="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shCore.css"><link type="text/css" rel="stylesheet" href="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shThemeDefault.css"><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shCore.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushCSharp.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushCss.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushJScript.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushPlain.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushSql.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushVb.js"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/shBrushXml.js"></script><script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/embed.js" async="" type="text/javascript"></script><script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/C6AILKT.html" type="text/javascript" id="_carbonads_projs"></script></head>
+<body>
+
+  <form name="aspnetForm" method="post" action="/post/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx" id="aspnetForm" class="body">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1OTYzNzA2NjYPZBYCZg9kFgICAQ9kFgICAw9kFgQCBQ9kFgQCAQ8PFgYeC05hdmlnYXRlVXJsBTUvcG9zdC8yMDE1LzEyLzI2L1NldHVwLXRoZS1NRUFOLVN0YWNrLW9uLVdpbmRvd3MuYXNweB4EVGV4dAUoJmx0OyZsdDsgU2V0dXAgdGhlIE1FQU4gU3RhY2sgb24gV2luZG93cx4HVG9vbFRpcAUNUHJldmlvdXMgcG9zdGRkAgMPDxYGHwAFSS9wb3N0LzIwMTYvMDEvMzEvQW5ndWxhckpTLVBhZ2luYXRpb24tRXhhbXBsZS13aXRoLUxvZ2ljLWxpa2UtR29vZ2xlLmFzcHgfAQU+QW5ndWxhckpTIC0gUGFnaW5hdGlvbiBFeGFtcGxlIHdpdGggTG9naWMgbGlrZSBHb29nbGUgJmd0OyZndDsfAgUJTmV4dCBwb3N0ZGQCCw8PFgIeB1Zpc2libGVoZBYEAgEPFgIfA2hkAgIPZBYEAg0PDxYCHwNoZGQCDg8WAh4FVmFsdWUFJGZhYzJmYWI4LTMyMjctNGVhZS04NjdjLWYzZDViNGZjOWE1NmRkYpfsyn46znfVg6R4GN+XDeDw+dg=" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_007.axd" type="text/javascript"></script>
+
+    
+      
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://jasonwatmore.com/">
+            <img src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/jason-watmore.jpg">
+            <span>Jason Watmore's Blog</span>
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://jasonwatmore.com/">Home</a></li>
+              <li><a href="http://jasonwatmore.com/page/Code-Snippets.aspx">Code Snippets</a></li>
+              <li><a href="http://jasonwatmore.com/archive.aspx">Archive</a></li>
+            <li><a href="http://jasonwatmore.com/syndication.axd">RSS</a></li>
+            <li><a href="http://jasonwatmore.com/contact.aspx">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    
+      
+  
+    
+
+    
+
+        <div id="white" style="padding-bottom:0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 blog-post">
+                        <script async="" type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/carbon.js" id="_carbonads_js"></script>
+                        <p class="post-date"><bd>January 20, 2016</bd></p>
+                        <div class="clearfix"></div>
+                        <h1>Angular ngAnimate Tutorial with UI Router</h1>
+                        <p>In this tutorial I'll show you how you can 
+implement animations between routes in your Angular project using 
+ngAnimate and the Angular UI Router.</p>
+<p>The example in this post is built with Angular and <strong>ngAnimate version 1.4.8 </strong>and uses CSS transitions to perform the animations.</p>
+<p>Here's the example application in action, it uses a fade transition 
+between top level tabs and a slide in/out transition on the products 
+page for adding and editing a product.</p>
+<p><iframe class="plunker" src="http://embed.plnkr.co/nzln5V/preview" frameborder="0" height="550" width="100%"></iframe> <span class="small-text">(See on Plunker at <a href="http://plnkr.co/edit/nzln5V?p=preview" rel="nofollow" target="_blank">http://plnkr.co/edit/nzln5V?p=preview</a>)</span></p>
+<p>Project is also available on GitHub at&nbsp;<a href="https://github.com/cornflourblue/ng-animate-ui-router-example" rel="nofollow" target="_blank">https://github.com/cornflourblue/ng-animate-ui-router-example</a></p>
+<p>The example uses bootstrap and a few other pieces as well but I'll 
+focus on how the transitions work in this post, the rest is there so I 
+could demonstrate the animations in a real world-ish example.</p>
+<h2>Add ngAnimate as a dependency to your Angular application</h2>
+<p>The first step is to add the angular animate library to your 
+application, to do this add this script tag to your root html file 
+(usually index.html):</p>
+<div><div id="highlighter_313470" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">script</code> <code class="xml color1">src</code><code class="xml plain">=</code><code class="xml string">"//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"</code><code class="xml plain">&gt;&lt;/</code><code class="xml keyword">script</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+<p><br>Then add 'ngAnimate' as a dependency to your angular application like this:</p>
+<div><div id="highlighter_54089" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">angular</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">.module(</code><code class="js string">'app'</code><code class="js plain">, [</code><code class="js string">'ui.router'</code><code class="js plain">, </code><code class="js string">'ngAnimate'</code><code class="js plain">])</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">.config(config)</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">.run(run);</code></div></div></td></tr></tbody></table></div></div>
+<h2><br>Add CSS 'transition' styles to your views to enable animation</h2>
+<p>The way ngAnimate works is by adding the following classes to your view elements while changing between routes/states:</p>
+<ul>
+<li><strong>.ng-enter </strong>-&nbsp;added at the very start of the transition to enter/display a view</li>
+<li><strong>.ng-enter-active </strong>- also added at the start of the transition, immediately after adding .ng-enter</li>
+<li><strong>.ng-leave&nbsp;</strong>- added at the very start of the transition to leave/hide a view</li>
+<li><strong>.ng-leave-active&nbsp;</strong>- also added at the start of the transition, immediately after adding .ng-leave</li>
+</ul>
+<p><strong><br>IMPORTANT:&nbsp;</strong>To enable this functionality you
+ must add a CSS 'transition' property to either/both of the 
+.ng-enter/.ng-leave classes for the views that you want to animate.</p>
+<p>For example the main view in the above plunk performs a 0.5 second 
+fade in transition when entering into a view using the following styles:</p>
+<div><div id="highlighter_404571" class="syntaxhighlighter  css"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="css plain">main {</code></div><div class="line number2 index1 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* start 'enter' transition */</code></div><div class="line number3 index2 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-enter {</code></div><div class="line number4 index3 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition on enter for .5s */</code></div><div class="line number5 index4 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: .</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* start with opacity 0 (invisible) */</code></div><div class="line number8 index7 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number9 index8 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end 'enter' transition */</code></div><div class="line number12 index11 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-enter-active {</code></div><div class="line number13 index12 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end with opacity 1 (fade in) */</code></div><div class="line number14 index13 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: </code><code class="css value">1</code><code class="css plain">;</code></div><div class="line number15 index14 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number16 index15 alt1"><code class="css plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p><br>As you can see there's only a transition on .ng-enter and not on 
+.ng-leave, which is why the new view (that is entering) fades in on each
+ tab change while the old view (that is leaving) disappears instantly 
+without a transition.</p>
+<h2><br>A slightly trickier animation involving multiple child elements</h2>
+<p>Getting the slide in/slide out animation working for the product 
+add/edit view is a bit trickier because it requires animating multiple 
+child elements in different ways, i.e. the background div fades in and 
+out while the content div slides in and out.</p>
+<p>Even though I'm only animating child elements, I still need to add 
+the CSS 'transition' property to the .ng-enter and .ng-leave classes for
+ the view (since I'm animating on both enter and leave), otherwise 
+ngAnimate would not be enabled for the view.</p>
+<p>I then also added CSS transition rules for the .background and 
+.content child elements in order to fade the background in and out while
+ sliding the content in and out of view.</p>
+<p>It's important to keep all of the child element transition times the 
+same as the view transition time (in this case 0.5 seconds) to keep the 
+transitions smooth.</p>
+<p>Here's the snippet from the example app.less file showing all the style rules for the side form along with detailed comments:</p>
+<div><div id="highlighter_350229" class="syntaxhighlighter  css"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div><div class="line number64 index63 alt1">64</div><div class="line number65 index64 alt2">65</div><div class="line number66 index65 alt1">66</div><div class="line number67 index66 alt2">67</div><div class="line number68 index67 alt1">68</div><div class="line number69 index68 alt2">69</div><div class="line number70 index69 alt1">70</div><div class="line number71 index70 alt2">71</div><div class="line number72 index71 alt1">72</div><div class="line number73 index72 alt2">73</div><div class="line number74 index73 alt1">74</div><div class="line number75 index74 alt2">75</div><div class="line number76 index75 alt1">76</div><div class="line number77 index76 alt2">77</div><div class="line number78 index77 alt1">78</div><div class="line number79 index78 alt2">79</div><div class="line number80 index79 alt1">80</div><div class="line number81 index80 alt2">81</div><div class="line number82 index81 alt1">82</div><div class="line number83 index82 alt2">83</div><div class="line number84 index83 alt1">84</div><div class="line number85 index84 alt2">85</div><div class="line number86 index85 alt1">86</div><div class="line number87 index86 alt2">87</div><div class="line number88 index87 alt1">88</div><div class="line number89 index88 alt2">89</div><div class="line number90 index89 alt1">90</div><div class="line number91 index90 alt2">91</div><div class="line number92 index91 alt1">92</div><div class="line number93 index92 alt2">93</div><div class="line number94 index93 alt1">94</div><div class="line number95 index94 alt2">95</div><div class="line number96 index95 alt1">96</div><div class="line number97 index96 alt2">97</div><div class="line number98 index97 alt1">98</div><div class="line number99 index98 alt2">99</div><div class="line number100 index99 alt1">100</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="css comments">/* side form */</code></div><div class="line number2 index1 alt1"><code class="css plain">.view-side-form {</code></div><div class="line number3 index2 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.side-form {</code></div><div class="line number4 index3 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">position</code><code class="css plain">: </code><code class="css value">fixed</code><code class="css plain">;</code></div><div class="line number5 index4 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">top</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number6 index5 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">left</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number7 index6 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">right</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number8 index7 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">bottom</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.content {</code></div><div class="line number11 index10 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">position</code><code class="css plain">: </code><code class="css value">absolute</code><code class="css plain">;</code></div><div class="line number12 index11 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">z-index</code><code class="css plain">: </code><code class="css value">100</code><code class="css plain">;</code></div><div class="line number13 index12 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">top</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number14 index13 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">right</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number15 index14 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">width</code><code class="css plain">: </code><code class="css value">80%</code><code class="css plain">;</code></div><div class="line number16 index15 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">height</code><code class="css plain">: </code><code class="css value">100%</code><code class="css plain">;</code></div><div class="line number17 index16 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">overflow</code><code class="css plain">: </code><code class="css value">auto</code><code class="css plain">;</code></div><div class="line number18 index17 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">background</code><code class="css plain">: </code><code class="css value">#fff</code><code class="css plain">;</code></div><div class="line number19 index18 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">padding</code><code class="css plain">: </code><code class="css value">20px</code><code class="css plain">;</code></div><div class="line number20 index19 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">border-left</code><code class="css plain">: </code><code class="css value">1px</code> <code class="css value">solid</code> <code class="css value">#e0e0e0</code><code class="css plain">;</code></div><div class="line number21 index20 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.background {</code></div><div class="line number24 index23 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">background</code><code class="css plain">: </code><code class="css value">#000</code><code class="css plain">;</code></div><div class="line number25 index24 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: .</code><code class="css value">8</code><code class="css plain">;</code></div><div class="line number26 index25 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">width</code><code class="css plain">: </code><code class="css value">100%</code><code class="css plain">;</code></div><div class="line number27 index26 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">height</code><code class="css plain">: </code><code class="css value">100%</code><code class="css plain">;</code></div><div class="line number28 index27 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number29 index28 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number30 index29 alt1">&nbsp;</div><div class="line number31 index30 alt2">&nbsp;</div><div class="line number32 index31 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* TRANSITION ANIMATIONS FOR SIDE FORM VIEW</code></div><div class="line number33 index32 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">------------------------------------------*/</code></div><div class="line number34 index33 alt1">&nbsp;</div><div class="line number35 index34 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* enable animations for side form view */</code></div><div class="line number36 index35 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-enter, </code></div><div class="line number37 index36 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-leave {</code></div><div class="line number38 index37 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition on enter and leave for .5s */</code></div><div class="line number39 index38 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: .</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number40 index39 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number41 index40 alt2">&nbsp;</div><div class="line number42 index41 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* start 'enter' transition */</code></div><div class="line number43 index42 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-enter {</code></div><div class="line number44 index43 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.side-form {</code></div><div class="line number45 index44 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.content {</code></div><div class="line number46 index45 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* start with content 80% off the right of the page */</code></div><div class="line number47 index46 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">right</code><code class="css plain">: </code><code class="css value">-80%</code><code class="css plain">;</code></div><div class="line number48 index47 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number49 index48 alt2">&nbsp;</div><div class="line number50 index49 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.background {</code></div><div class="line number51 index50 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* start with background opacity 0 (invisible) */</code></div><div class="line number52 index51 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number53 index52 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number54 index53 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number55 index54 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number56 index55 alt1">&nbsp;</div><div class="line number57 index56 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end 'enter' transition */</code></div><div class="line number58 index57 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-enter-active {</code></div><div class="line number59 index58 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.side-form {</code></div><div class="line number60 index59 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.content {</code></div><div class="line number61 index60 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition the right position which </code></div><div class="line number62 index61 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">slides the content into view */</code></div><div class="line number63 index62 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: </code><code class="css value">right</code> <code class="css plain">.</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number64 index63 alt1">&nbsp;</div><div class="line number65 index64 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end with content aligned to the right of the page */</code></div><div class="line number66 index65 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">right</code><code class="css plain">: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number67 index66 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number68 index67 alt1">&nbsp;</div><div class="line number69 index68 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.background {</code></div><div class="line number70 index69 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition the background opacity to fades it in */</code></div><div class="line number71 index70 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: opacity .</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number72 index71 alt1">&nbsp;</div><div class="line number73 index72 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end with background opacity 0.8 to give the overlay effect */</code></div><div class="line number74 index73 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: .</code><code class="css value">8</code><code class="css plain">;</code></div><div class="line number75 index74 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number76 index75 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number77 index76 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number78 index77 alt1">&nbsp;</div><div class="line number79 index78 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end 'leave' transition */</code></div><div class="line number80 index79 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">&amp;.ng-leave-active {</code></div><div class="line number81 index80 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.side-form {</code></div><div class="line number82 index81 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.content {</code></div><div class="line number83 index82 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition the right position which </code></div><div class="line number84 index83 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">slides the content out of view */</code></div><div class="line number85 index84 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: </code><code class="css value">right</code> <code class="css plain">.</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number86 index85 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number87 index86 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end transition with the content completely off the page */</code></div><div class="line number88 index87 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css keyword">right</code><code class="css plain">: </code><code class="css value">-100%</code><code class="css plain">;</code></div><div class="line number89 index88 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number90 index89 alt1">&nbsp;</div><div class="line number91 index90 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">.background {</code></div><div class="line number92 index91 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* transition the background opacity to fades it out */</code></div><div class="line number93 index92 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">transition: opacity .</code><code class="css value">5</code><code class="css plain">s;</code></div><div class="line number94 index93 alt1">&nbsp;</div><div class="line number95 index94 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css comments">/* end with background opacity 0 to hide it */</code></div><div class="line number96 index95 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">opacity: </code><code class="css value">0</code><code class="css plain">;</code></div><div class="line number97 index96 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number98 index97 alt1"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number99 index98 alt2"><code class="css spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="css plain">}</code></div><div class="line number100 index99 alt1"><code class="css plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>&nbsp;</p>
+<h2>Web Development and AngularJS Development Sydney</h2>
+<p>Feel free to <a href="http://jasonwatmore.com/contact.aspx">drop me a line</a>
+ if you're looking for web development or AngularJS development or 
+consulting services in Sydney Australia, I also provide remote 
+contracting services for clients outside Sydney.</p>
+                        <br>
+                        <div class="blog-post-footer">
+                            <p>By <a href="https://plus.google.com/105285862613636033893?rel=author" target="_blank">Jason Watmore</a></p>
+                            <p>TAGS: <a href="http://jasonwatmore.com/?tag=/AngularJS" rel="tag">AngularJS</a>, <a href="http://jasonwatmore.com/?tag=/ngAnimate" rel="tag">ngAnimate</a>, <a href="http://jasonwatmore.com/?tag=/Angular+UI+Router" rel="tag">Angular UI Router</a> </p>
+                            <p class="social-share-buttons">
+                                <span>Share on: </span>
+                                <a class="facebook-button" href="http://facebook.com/sharer.php?u=http://jasonwatmore.com/post.aspx?id=bbb8a48f-c9f0-404d-a780-d6b7ae252790">Facebook</a>
+                                <a class="twitter-button" href="http://twitter.com/intent/tweet?url=http://jasonwatmore.com/post.aspx?id=bbb8a48f-c9f0-404d-a780-d6b7ae252790&amp;text=Angular%20ngAnimate%20Tutorial%20with%20UI%20Router">Twitter</a>
+                                <a class="googleplus-button" href="https://plus.google.com/share?url=http://jasonwatmore.com/post.aspx?id=bbb8a48f-c9f0-404d-a780-d6b7ae252790">Google+</a>
+                            </p>
+                        </div>
+                        <hr>
+                    </div>
+                </div><!-- /row -->
+            </div> <!-- /container -->
+        </div><!-- /white -->
+
+
+  
+    
+  
+    
+        <!-- 
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+            <rdf:Description rdf:about="http://jasonwatmore.com/post/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx" dc:identifier="http://jasonwatmore.com/post/2016/01/20/Angular-ngAnimate-Tutorial-with-UI-Router.aspx" dc:title="Angular ngAnimate Tutorial with UI Router" trackback:ping="http://jasonwatmore.com/trackback.axd?id=bbb8a48f-c9f0-404d-a780-d6b7ae252790" />
+        </rdf:RDF>
+        -->
+    
+  
+    
+  
+    
+
+    <div id="white" style="padding-top:0;">
+	    <div class="container">
+		    <div class="row">
+			    <div class="col-lg-10 col-lg-offset-1">
+                    <div id="ctl00_cphBody_disqus_box">
+                        <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/a_002.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 1796px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app2" id="dsq-app2" frameborder="0" width="100%"></iframe></div>
+                        <script type="text/javascript">
+                            var disqus_url = 'http://jasonwatmore.com/post.aspx?id=bbb8a48f-c9f0-404d-a780-d6b7ae252790';
+                            var disqus_developer = '0';
+                            (function () {
+                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://jasonwatmoresblog.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=jasonwatmoresblog">comments powered by Disqus.</a></noscript>
+                        
+                    </div>
+			    </div>
+		    </div><!-- /row -->
+	    </div> <!-- /container -->
+    </div><!-- /white -->
+  
+
+      
+
+
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+                <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone">
+<div class="col-lg-4">
+    
+        <h4>About me</h4>
+    <p>
+        
+</p><p>I'm a web developer in Sydney Australia and the owner of <a href="https://www.pointblankdevelopment.com.au/" target="_blank">Point Blank Development</a>, I've been building websites and web applications in Sydney since 1998.</p>
+
+    <p></p>
+</div>
+
+<div class="col-lg-4">
+    
+        <h4>Month List</h4>
+    <p>
+        
+</p><ul id="monthList">
+	<li class="year" onclick="BlogEngine.toggleMonth('year2016')">2016<ul id="year2016" class="open">
+		<li><a href="http://jasonwatmore.com/2016/07/default.aspx">July</a> (3)</li><li><a href="http://jasonwatmore.com/2016/06/default.aspx">June</a> (1)</li><li><a href="http://jasonwatmore.com/2016/05/default.aspx">May</a> (1)</li><li><a href="http://jasonwatmore.com/2016/04/default.aspx">April</a> (1)</li><li><a href="http://jasonwatmore.com/2016/03/default.aspx">March</a> (1)</li><li><a href="http://jasonwatmore.com/2016/02/default.aspx">February</a> (1)</li><li><a href="http://jasonwatmore.com/2016/01/default.aspx">January</a> (2)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2015')">2015<ul id="year2015">
+		<li><a href="http://jasonwatmore.com/2015/12/default.aspx">December</a> (2)</li><li><a href="http://jasonwatmore.com/2015/11/default.aspx">November</a> (1)</li><li><a href="http://jasonwatmore.com/2015/10/default.aspx">October</a> (1)</li><li><a href="http://jasonwatmore.com/2015/07/default.aspx">July</a> (1)</li><li><a href="http://jasonwatmore.com/2015/06/default.aspx">June</a> (1)</li><li><a href="http://jasonwatmore.com/2015/04/default.aspx">April</a> (1)</li><li><a href="http://jasonwatmore.com/2015/03/default.aspx">March</a> (2)</li><li><a href="http://jasonwatmore.com/2015/01/default.aspx">January</a> (1)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2014')">2014<ul id="year2014">
+		<li><a href="http://jasonwatmore.com/2014/12/default.aspx">December</a> (1)</li><li><a href="http://jasonwatmore.com/2014/09/default.aspx">September</a> (1)</li><li><a href="http://jasonwatmore.com/2014/08/default.aspx">August</a> (1)</li><li><a href="http://jasonwatmore.com/2014/07/default.aspx">July</a> (1)</li><li><a href="http://jasonwatmore.com/2014/05/default.aspx">May</a> (2)</li><li><a href="http://jasonwatmore.com/2014/04/default.aspx">April</a> (3)</li><li><a href="http://jasonwatmore.com/2014/03/default.aspx">March</a> (2)</li><li><a href="http://jasonwatmore.com/2014/02/default.aspx">February</a> (2)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2013')">2013<ul id="year2013">
+		<li><a href="http://jasonwatmore.com/2013/11/default.aspx">November</a> (1)</li><li><a href="http://jasonwatmore.com/2013/10/default.aspx">October</a> (1)</li><li><a href="http://jasonwatmore.com/2013/07/default.aspx">July</a> (1)</li><li><a href="http://jasonwatmore.com/2013/04/default.aspx">April</a> (1)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2012')">2012<ul id="year2012">
+		<li><a href="http://jasonwatmore.com/2012/10/default.aspx">October</a> (1)</li><li><a href="http://jasonwatmore.com/2012/09/default.aspx">September</a> (1)</li><li><a href="http://jasonwatmore.com/2012/08/default.aspx">August</a> (1)</li><li><a href="http://jasonwatmore.com/2012/07/default.aspx">July</a> (1)</li><li><a href="http://jasonwatmore.com/2012/06/default.aspx">June</a> (1)</li><li><a href="http://jasonwatmore.com/2012/05/default.aspx">May</a> (1)</li><li><a href="http://jasonwatmore.com/2012/04/default.aspx">April</a> (1)</li><li><a href="http://jasonwatmore.com/2012/03/default.aspx">March</a> (1)</li><li><a href="http://jasonwatmore.com/2012/02/default.aspx">February</a> (1)</li>
+	</ul></li><li class="year" onclick="BlogEngine.toggleMonth('year2011')">2011<ul id="year2011">
+		<li><a href="http://jasonwatmore.com/2011/12/default.aspx">December</a> (1)</li><li><a href="http://jasonwatmore.com/2011/11/default.aspx">November</a> (3)</li>
+	</ul></li>
+</ul>
+
+    <p></p>
+</div>
+
+<div class="col-lg-4">
+    
+        <h4>Tag cloud</h4>
+    <p>
+        
+</p><ul id="widgetContainerf61e79ca309d4665aa77e8d80029c648_f61e79ca309d4665aa77e8d80029c648_ulTags"><li><a href="http://jasonwatmore.com/?tag=/Altairis-Web-Security-Toolkit" class="smallest" title="Tag: Altairis Web Security Toolkit">Altairis Web Security Toolkit</a> </li><li><a href="http://jasonwatmore.com/?tag=/Angular-Directive" class="smallest" title="Tag: Angular Directive">Angular Directive</a> </li><li><a href="http://jasonwatmore.com/?tag=/Angular-UI-Router" class="smallest" title="Tag: Angular UI Router">Angular UI Router</a> </li><li><a href="http://jasonwatmore.com/?tag=/AngularJS" class="biggest" title="Tag: AngularJS">AngularJS</a> </li><li><a href="http://jasonwatmore.com/?tag=/ASPNET" class="big" title="Tag: ASP.NET">ASP.NET</a> </li><li><a href="http://jasonwatmore.com/?tag=/ASPNET-Web-API" class="medium" title="Tag: ASP.NET Web API">ASP.NET Web API</a> </li><li><a href="http://jasonwatmore.com/?tag=/Authentication-and-Authorization" class="small" title="Tag: Authentication and Authorization">Authentication and Authorization</a> </li><li><a href="http://jasonwatmore.com/?tag=/Bootstrap" class="smallest" title="Tag: Bootstrap">Bootstrap</a> </li><li><a href="http://jasonwatmore.com/?tag=/C" class="big" title="Tag: C#">C#</a> </li><li><a href="http://jasonwatmore.com/?tag=/Chai" class="smallest" title="Tag: Chai">Chai</a> </li><li><a href="http://jasonwatmore.com/?tag=/CSS3" class="smallest" title="Tag: CSS3">CSS3</a> </li><li><a href="http://jasonwatmore.com/?tag=/Dynamic-LINQ" class="smallest" title="Tag: Dynamic LINQ">Dynamic LINQ</a> </li><li><a href="http://jasonwatmore.com/?tag=/ELMAH" class="smallest" title="Tag: ELMAH">ELMAH</a> </li><li><a href="http://jasonwatmore.com/?tag=/Exchange" class="smallest" title="Tag: Exchange">Exchange</a> </li><li><a href="http://jasonwatmore.com/?tag=/Facebook" class="smallest" title="Tag: Facebook">Facebook</a> </li><li><a href="http://jasonwatmore.com/?tag=/Fluent-NHibernate" class="smallest" title="Tag: Fluent NHibernate">Fluent NHibernate</a> </li><li><a href="http://jasonwatmore.com/?tag=/Google-Analytics" class="smallest" title="Tag: Google Analytics">Google Analytics</a> </li><li><a href="http://jasonwatmore.com/?tag=/Google-API" class="smallest" title="Tag: Google API">Google API</a> </li><li><a href="http://jasonwatmore.com/?tag=/Google-Maps-API" class="smallest" title="Tag: Google Maps API">Google Maps API</a> </li><li><a href="http://jasonwatmore.com/?tag=/Google-Plus" class="smallest" title="Tag: Google Plus">Google Plus</a> </li><li><a href="http://jasonwatmore.com/?tag=/Heroku" class="smallest" title="Tag: Heroku">Heroku</a> </li><li><a href="http://jasonwatmore.com/?tag=/HTML5" class="smallest" title="Tag: HTML5">HTML5</a> </li><li><a href="http://jasonwatmore.com/?tag=/HTTP" class="smallest" title="Tag: HTTP">HTTP</a> </li><li><a href="http://jasonwatmore.com/?tag=/IIS" class="smallest" title="Tag: IIS">IIS</a> </li><li><a href="http://jasonwatmore.com/?tag=/Insecure-Content" class="smallest" title="Tag: Insecure Content">Insecure Content</a> </li><li><a href="http://jasonwatmore.com/?tag=/Instagram-API" class="smallest" title="Tag: Instagram API">Instagram API</a> </li><li><a href="http://jasonwatmore.com/?tag=/Ionic-Framework" class="smallest" title="Tag: Ionic Framework">Ionic Framework</a> </li><li><a href="http://jasonwatmore.com/?tag=/iOS" class="smallest" title="Tag: iOS">iOS</a> </li><li><a href="http://jasonwatmore.com/?tag=/iPhone" class="smallest" title="Tag: iPhone">iPhone</a> </li><li><a href="http://jasonwatmore.com/?tag=/JavaScript" class="medium" title="Tag: JavaScript">JavaScript</a> </li><li><a href="http://jasonwatmore.com/?tag=/jQuery" class="small" title="Tag: jQuery">jQuery</a> </li><li><a href="http://jasonwatmore.com/?tag=/JWT" class="smallest" title="Tag: JWT">JWT</a> </li><li><a href="http://jasonwatmore.com/?tag=/LINQ" class="smallest" title="Tag: LINQ">LINQ</a> </li><li><a href="http://jasonwatmore.com/?tag=/Login" class="smallest" title="Tag: Login">Login</a> </li><li><a href="http://jasonwatmore.com/?tag=/MEAN-Stack" class="smallest" title="Tag: MEAN Stack">MEAN Stack</a> </li><li><a href="http://jasonwatmore.com/?tag=/Mocha" class="smallest" title="Tag: Mocha">Mocha</a> </li><li><a href="http://jasonwatmore.com/?tag=/Moq" class="smallest" title="Tag: Moq">Moq</a> </li><li><a href="http://jasonwatmore.com/?tag=/MVC" class="smallest" title="Tag: MVC">MVC</a> </li><li><a href="http://jasonwatmore.com/?tag=/MVC3" class="small" title="Tag: MVC3">MVC3</a> </li><li><a href="http://jasonwatmore.com/?tag=/MVC4" class="smallest" title="Tag: MVC4">MVC4</a> </li><li><a href="http://jasonwatmore.com/?tag=/MVC5" class="smallest" title="Tag: MVC5">MVC5</a> </li><li><a href="http://jasonwatmore.com/?tag=/ngAnimate" class="smallest" title="Tag: ngAnimate">ngAnimate</a> </li><li><a href="http://jasonwatmore.com/?tag=/ngMock" class="smallest" title="Tag: ngMock">ngMock</a> </li><li><a href="http://jasonwatmore.com/?tag=/NHibernate" class="smallest" title="Tag: NHibernate">NHibernate</a> </li><li><a href="http://jasonwatmore.com/?tag=/Ninject" class="smallest" title="Tag: Ninject">Ninject</a> </li><li><a href="http://jasonwatmore.com/?tag=/NodeJS" class="smallest" title="Tag: NodeJS">NodeJS</a> </li><li><a href="http://jasonwatmore.com/?tag=/Pagination" class="smallest" title="Tag: Pagination">Pagination</a> </li><li><a href="http://jasonwatmore.com/?tag=/Pinterest" class="smallest" title="Tag: Pinterest">Pinterest</a> </li><li><a href="http://jasonwatmore.com/?tag=/Redmine" class="smallest" title="Tag: Redmine">Redmine</a> </li><li><a href="http://jasonwatmore.com/?tag=/Registration" class="smallest" title="Tag: Registration">Registration</a> </li><li><a href="http://jasonwatmore.com/?tag=/Repository" class="smallest" title="Tag: Repository">Repository</a> </li><li><a href="http://jasonwatmore.com/?tag=/Security" class="smallest" title="Tag: Security">Security</a> </li><li><a href="http://jasonwatmore.com/?tag=/Sinon" class="smallest" title="Tag: Sinon">Sinon</a> </li><li><a href="http://jasonwatmore.com/?tag=/SinonJS" class="smallest" title="Tag: SinonJS">SinonJS</a> </li><li><a href="http://jasonwatmore.com/?tag=/Subversion" class="smallest" title="Tag: Subversion">Subversion</a> </li><li><a href="http://jasonwatmore.com/?tag=/TDD" class="smallest" title="Tag: TDD">TDD</a> </li><li><a href="http://jasonwatmore.com/?tag=/Twitter" class="smallest" title="Tag: Twitter">Twitter</a> </li><li><a href="http://jasonwatmore.com/?tag=/Umbraco" class="smallest" title="Tag: Umbraco">Umbraco</a> </li><li><a href="http://jasonwatmore.com/?tag=/Unit-of-Work" class="smallest" title="Tag: Unit of Work">Unit of Work</a> </li><li><a href="http://jasonwatmore.com/?tag=/Unit-Testing" class="smallest" title="Tag: Unit Testing">Unit Testing</a> </li><li><a href="http://jasonwatmore.com/?tag=/URL-Rewrite" class="smallest" title="Tag: URL Rewrite">URL Rewrite</a> </li><li><a href="http://jasonwatmore.com/?tag=/Validation" class="smallest" title="Tag: Validation">Validation</a> </li><li><a href="http://jasonwatmore.com/?tag=/Windows-Server-2008" class="smallest" title="Tag: Windows Server 2008">Windows Server 2008</a> </li></ul>
+
+    <p></p>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center copyright">
+        © 2016 JasonWatmore.com
+        &nbsp;-&nbsp;
+        Powered by <a href="http://pointblankdevelopment.com.au/" target="_blank">Point Blank Development</a>
+    </div>
+
+    <script src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/bootstrap.js"></script>
+
+    
+  
+<div>
+
+	<input name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" type="hidden">
+</div>
+<script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/js_005.axd"></script><script type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/res.axd"></script>
+<script type="text/javascript"> 
+//<![CDATA[ 
+(function() { var links = document.getElementsByTagName('a'); var query = '?'; for(var i = 0; i < links.length; i++) { if(links[i].href.indexOf('#disqus_thread') >= 0) { query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&'; }}document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/jasonwatmoresblog/get_num_replies.js' + query + '"></' + 'script>'); })(); 
+//]]> 
+</script><script charset="utf-8" type="text/javascript" src="Angular%20ngAnimate%20Tutorial%20with%20UI%20Router%20%7C%20Jason%20Watmore%27s%20Blog%20-%20Web%20Development%20Sydney%20Australia_files/get_num_replies.js"></script> 
+
+<!-- Begin Google scripts -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-30211492-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<!-- End Google scripts -->
+
+
+
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf='/Scripts/syntaxhighlighter/clipboard.swf';
+	SyntaxHighlighter.defaults['gutter'] = true;
+	SyntaxHighlighter.defaults['smart-tabs'] = true;
+	SyntaxHighlighter.defaults['auto-links'] = true;
+	SyntaxHighlighter.defaults['collapse'] = false;
+	SyntaxHighlighter.defaults['light'] = false;
+	SyntaxHighlighter.defaults['tab-size'] = 4;
+	SyntaxHighlighter.defaults['toolbar'] = true;
+	SyntaxHighlighter.defaults['wrap-lines'] = true;
+	SyntaxHighlighter.all();
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+WebForm_InitCallback();//]]>
+</script>
+</form>
+  
+
+
+</body></html>

@@ -18,13 +18,13 @@
             <i class="fa fa-book"></i>
             <h3 class="box-title">Documents Publiques</h3>
             <div class="box-tools pull-right">
-                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSize" total-items="vm.listeDocumentsPublic.length " ng-model="currentPage"></uib-pagination>
+                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizedocPub" total-items="vm.listeDocumentsPublic.length " ng-model="currentPagedocPub"></uib-pagination>
               </div>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
             <ul class="todo-list">
-              <li ng-repeat="(key, documents) in vm.listeDocumentsPublic |startFrom:(currentPage - 1) * pageSize |limitTo:pageSize">
+              <li ng-repeat="(key, documents) in vm.listeDocumentsPublic |startFrom:(currentPagedocPub - 1) * pageSizedocPub |limitTo:pageSizedocPub">
                 <!-- drag handle -->
                     <span>
                       <i class="fa fa-file"></i>
@@ -50,13 +50,13 @@
             <i class="fa fa-book"></i>
             <h3 class="box-title">Documents Privés</h3>
             <div class="box-tools pull-right">
-                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSize" total-items="vm.listeDocumentsPrive.length " ng-model="currentPage"></uib-pagination>
+                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizedocPriv" total-items="vm.listeDocumentsPrive.length " ng-model="currentPagedocPriv"></uib-pagination>
               </div>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
             <ul class="todo-list">
-            <li ng-repeat="(key, documents) in vm.listeDocumentsPrive |startFrom:(currentPage - 1) * pageSize |limitTo:pageSize">
+            <li ng-repeat="(key, documents) in vm.listeDocumentsPrive |startFrom:(currentPagedocPriv - 1) * pageSizedocPriv |limitTo:pageSizedocPriv">
                 <!-- drag handle -->
                     <span>
                       <i class="fa fa-file"></i>
@@ -97,7 +97,7 @@
               <!-- /.box-header -->
               <div class="box-body no-padding">
                 <ul class="users-list clearfix">
-                  <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'true' }|startFrom:(currentPage - 1) * pageSize |limitTo:pageSize ">
+                  <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'true' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers ">
                   <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
                     <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
                     <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
@@ -110,7 +110,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSize" total-items="vm.listeUsersTotal.length " ng-model="currentPage"></uib-pagination>
+                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.listeUsersTotal.length " ng-model="currentPageUsers"></uib-pagination>
               </div>
               <!-- /.box-footer -->
             </div>
@@ -147,7 +147,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <uib-pagination class="pagination-sm pull-right" items-per-page="pageSize" total-items="vm.listeUsersTotal.length " ng-model="currentPage"></uib-pagination>
+                        <uib-pagination class="pagination-sm pull-right" items-per-page="vm.pageSize" total-items="vm.listeUsersTotal.length " ng-model="vm.currentPage"></uib-pagination>
                     </div>
                     <!-- /.box-footer -->
                 </div>

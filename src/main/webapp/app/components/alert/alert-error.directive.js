@@ -18,6 +18,51 @@
         .module('iconlabApp')
         .directive('dateAfter', dateAfter);
 
+
+
+
+angular
+        .module('iconlabApp').directive("dateGreater", function () {
+    return {
+        restrict: 'A', // only activate on element attribute
+        require: '?ngModel', // get a hold of NgModelController
+
+        link: function (scope, elem, attrs, ngModel) {
+            if (!ngModel) return; // do nothing if no ng-model
+
+            // watch own value and re-validate on change
+            scope.$watch(attrs.ngModel, function () {
+                validate();
+            });
+
+            // observe the other value and re-validate on change
+            attrs.$observe('dateGreater', function (val) {
+                validate();
+            });
+
+            var validate = function () {
+                // values
+                var dateTo = angular.isDefined(ngModel.$viewValue) === true && !_.isNull(ngModel.$viewValue) ? moment(ngModel.$viewValue).toDate() : null;
+                var dateFrom = attrs.dateGreater !== "" ? moment(attrs.dateGreater.replace('"', '').replace('\\', '').replace('"', '')).toDate() : null;
+                //passing date with braces around it causes and issue therfore we need to use replace
+
+            };
+        }
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
         function dateAfter(){
             return {
       
@@ -41,6 +86,17 @@
     };
 
         }
+
+        angular
+        .module('iconlabApp').directive('textare', [function () {
+
+    return {
+        restrict: 'AEC',
+        link: function (scope, element, attrs) {
+
+        $('element').wysihtml5();
+    }
+}}]);
 
 
     jhiAlertErrorController.$inject = ['$scope', 'AlertService', '$rootScope'];

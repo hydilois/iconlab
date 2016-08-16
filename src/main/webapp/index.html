@@ -46,6 +46,8 @@
 
     <link rel="stylesheet" href="bower_components/angular-gantt/angular-gantt.css"/>
     <link rel="stylesheet" href="bower_components/angular-gantt/angular-gantt-plugins.css"/>
+
+
 </head>
 
 <body class="flat-blue" ng-app="iconlabApp" ng-strict-di>
@@ -56,7 +58,7 @@
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">
-                	<div ui-view="article" class="article1"></div>
+                	<div ui-view="article" class="article-side"></div>
                     <div ui-view="content" class="content1">
                      <!-- Angular views -->
                  </div>
@@ -108,6 +110,9 @@
 
 <script src="js/zingchart.min.js"></script>
 <script src="js/zingchart-angularjs.js" ></script>
+<!-- <script src="lib/js/moment.js"></script> -->
+<script src="lib/js/underscore.js"></script>
+
 <!-- endinject -->
 <!-- endbuild -->
     <script type='text/javascript' src="lib/js/moment-with-locales.js"></script>
@@ -116,6 +121,7 @@
     <script type='text/javascript' src="lib/js/draganddrop.js"></script>
     <script src="bower_components/angular-gantt/angular-gantt.js"></script>
     <script src="bower_components/angular-gantt/angular-gantt-plugins.js"></script>
+    <script src="lib/js/paging.js"></script>
 
 
 
@@ -276,7 +282,8 @@
 <script src="app/account/account.state.js"></script>
 
 <!-- Script pour la zone d'edtion des articles, messages -->
-<script src="lib/css/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="lib/js/bootstrap3-wysihtml5.js"></script>
+<script src="lib/js/wysihtml5-0.3.0.min.js"></script>
 <script src="lib/js/angular-animate.min.js"></script>
 
 

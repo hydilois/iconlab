@@ -42,6 +42,12 @@
                                 <li><a><span class="fa fa-bar-chart-o"></span> Liste documents</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown-submenu">
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Commentaires</a>
+                            <ul class="dropdown-menu fadeInDown">
+                                <li><a ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet"><span class="fa fa-bar-chart-o"></span> {{commentaire.contenu}}</a></li>
+                            </ul>
+                        </li>
                 </ul>
             </li>
         </ul>
@@ -82,5 +88,72 @@
                     </div>
                 </div>
             </div>
+        </div> <br>
+                        <!-- Zone de commentaire assàcié à une  -->
+        <div class="row">
+                <div class="col-md-12 col-xs-12">
+          <!-- Box Comment -->
+          <div class="box box-widget">
+            <div class="box-header with-border">
+              <div class="user-block">
+                <img ng-show="!vm.projet.user.image" class="img-circle" src="/content/images/photo.png" alt="User Image">
+                <img ng-show="vm.projet.user.image" class="img-circle" data-ng-src="{{'data:' + vm.projet.user.imageContentType + ';base64,' + vm.projet.user.image}}" alt="User Image">
+                <span class="username"><a href="#">{{vm.projet.user.firstName}} {{vm.projet.user.lastName}}</a></span>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- Attachment -->
+              <div class="attachment-block clearfix">
+                <!-- <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image">
+                <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image"> -->
+
+                <div class="attachment-pushed">
+                  <h4 class="attachment-heading">{{vm.projet.name}}</h4>
+
+                  <div class="attachment-text">
+                    {{vm.projet.description}}</a>
+                  </div>
+                  <!-- /.attachment-text -->
+                </div>
+                <!-- /.attachment-pushed -->
+              </div>
+              <!-- /.attachment-block -->
+              <span class="pull-right text-muted">{{vm.listeCommentaireParProjet.length}}</span>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer box-comments">
+              <div ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet" class="box-comment">
+                <!-- User image -->
+                <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image">
+                <div class="comment-text">
+                      <span class="username">
+                       {{commentaire.auteur}}
+                        <span class="text-muted pull-right">{{commentaire.datePost | date}}</span>
+                      </span><!-- /.username -->
+                  {{commentaire.contenu}}
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <!-- /.box-comment -->
+            </div>
+            <!-- /.box-footer -->
+            <div class="box-footer">
+              <form action="#" method="post">
+                <img class="img-responsive img-circle img-sm" src="/content/images/photo.png" alt="Alt Text">
+                <!-- .img-push is used to add margin to elements next to floating images -->
+                <div class="img-push">
+                <div class="row">
+                  <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                  <button class="btn btn-primary">Commenter</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
         </div>
+            </div>
     </div>

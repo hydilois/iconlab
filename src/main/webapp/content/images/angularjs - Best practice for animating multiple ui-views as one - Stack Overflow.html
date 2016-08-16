@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>angularjs - Best practice for animating multiple ui-views as one - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Best practice for animating multiple ui-views as one">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have an app that basically looks like this
+
+&amp;lt;div ui-view=&quot;header&quot;&amp;gt;
+&amp;lt;div ui-view=&quot;main&quot;&amp;gt;
+&amp;lt;div ui-view=&quot;footer&quot;&amp;gt;
+
+
+Now, the footer will stay the same for all different states of t...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one">
+    <link rel="canonical" href="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/best-practice-for-animating-multiple-ui-views-as-one.html">
+
+    
+    
+    <script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/quant.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/beacon.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/analytics.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/ados" async="" type="text/javascript"></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/ados.js" async="" type="text/javascript"></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/jquery.js"></script>
+    <script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'Best practice for animating multiple ui-views as one'" href="http://stackoverflow.com/feeds/question/31032974">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:2,shownCommentCount:2,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:31032974});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '31032974');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1471213897,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"5df9292c14b7dc68183df5ffeb0a36ad","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true},"tags":{},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"e373cf51ce90","js/moderator.en.js":"fd4e61072bfc","js/full-anon.en.js":"1fe708fddd6d","js/full.en.js":"95c6cd6073b9","js/wmd.en.js":"8a0593b53102","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"d60a8524a8a6","js/help.en.js":"a2f92aacc060","js/tageditor.en.js":"17ad28fc31be","js/tageditornew.en.js":"56a9927fe846","js/inline-tag-editing.en.js":"96140c37890f","js/revisions.en.js":"47de10a8358f","js/review.en.js":"41bec120d3d4","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"9bf262e5e155","js/explore-qlist.en.js":"d33e3ab2f2e0","js/events.en.js":"bf49a299e94c","js/keyboard-shortcuts.en.js":"23c697b3c686","js/external-editor.en.js":"7e4776eedc29","js/external-editor.en.js":"7e4776eedc29","js/snippet-javascript.en.js":"9741c25254db","js/snippet-javascript-codemirror.en.js":"ba7295e4d32d"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+<script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/full-anon.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/snippet-javascript.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/post-validation.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/prettify-full.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/external-editor.js" async=""></script><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/adFeedback.js" type="text/javascript"></script><link href="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/adFeedback.css" rel="stylesheet"></head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    
+        <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 159 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one" class="login-link">log in</a>
+
+                            <a href="http://stackoverflow.com/tour">tour</a>
+        <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab">Jobs</a></li>
+                                                <li><a id="nav-docs" href="http://stackoverflow.com/documentation">Documentation</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+<div class="hero-box docs-announcement">
+    <div class="hero-close js-dismiss">Dismiss</div>
+    
+    
+    <div class="hero-content text-left">
+        <div class="text-wrapper">
+            <div class="hero-title">
+                Announcing Stack Overflow Documentation
+            </div>
+
+            <p class="subtitle">
+                We started with Q&amp;A. Technical documentation is next, and we need your help.
+            </p>
+            <p class="subtitle">
+                Whether you're a beginner or an experienced developer, you <i>can</i> contribute.
+            </p>
+        </div>
+
+            <a href="http://stackoverflow.com/users/signup?ssrc=docs_hero&amp;returnurl=%2Ftour%2Fdocumentation" class="btn js-gps-track" data-gps-track="docs.hero.clicked({target: 2 })">
+                Sign up and start helping →
+            </a>
+            <a href="http://stackoverflow.com/tour/documentation" class="btn-clear js-gps-track" data-gps-track="docs.hero.clicked({target: 1 })">
+                Learn more about Documentation →
+            </a>
+
+        <div class="img"></div>
+    </div>
+</div>
+
+<script>
+    StackExchange.ready(function() {
+        var location = 0;
+        if ($("body").hasClass("question-page")) {
+            location = 2;
+        } else if ($("body").hasClass("home-page")) {
+            location = 1;
+        }
+
+        $(".docs-announcement .js-dismiss").one("click", function() {
+            $(".docs-announcement").fadeOut("fast");
+            $.post("/dismiss-documentation-hero", { fkey: StackExchange.options.user.fkey, location: location });
+        });
+
+        StackExchange.using("gps", function () {
+            StackExchange.gps.track("docs.hero.show", { location: location }, true);
+        });
+    });
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one" class="question-hyperlink">Best practice for animating multiple ui-views as one</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="31032974" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1767034954",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1767034954"><iframe scrolling="no" id="ados_frame_adzerk1767034954_1876254" frameborder="0" height="90" width="728"></iframe><img class="rfwunplbuopxzjbsfzdq" src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/i_002.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="31032974" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">8</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have an app that basically looks like this</p>
+
+<pre style="" class="default prettyprint prettyprinted"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"header"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"main"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"footer"</span><span class="tag">&gt;</span></code></pre>
+
+<p>Now, the footer will stay the same for all different states of the 
+app, but the header will change in some states, but also share content 
+in a lot of the states. The only <code>ui-view</code> that will change across all states is <code>ui-view="main"</code>.</p>
+
+<p>Currently my <code>$stateProvider</code> looks like this (footer not implemented yet):</p>
+
+<pre style="" class="default prettyprint prettyprinted"><code><span class="pln">app</span><span class="pun">.</span><span class="pln">config</span><span class="pun">([</span><span class="str">'$stateProvider'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'$urlRouterProvider'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$stateProvider</span><span class="pun">,</span><span class="pln"> $urlRouterProvider</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  $stateProvider</span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root'</span><span class="pun">,{</span><span class="pln">
+      url</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pun">,</span><span class="pln">
+      </span><span class="kwd">abstract</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+      views</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">'header'</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          templateUrl</span><span class="pun">:</span><span class="pln"> appHelper</span><span class="pun">.</span><span class="pln">views</span><span class="pun">+</span><span class="str">'/header.html'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">})</span><span class="pln">
+    </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root.home'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      url</span><span class="pun">:</span><span class="pln"> </span><span class="str">'/'</span><span class="pun">,</span><span class="pln">
+      views</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">'header'</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          templateUrl</span><span class="pun">:</span><span class="pln"> appHelper</span><span class="pun">.</span><span class="pln">views</span><span class="pun">+</span><span class="str">'/header.html'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="str">'main@'</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          templateUrl</span><span class="pun">:</span><span class="pln"> appHelper</span><span class="pun">.</span><span class="pln">views</span><span class="pun">+</span><span class="str">'/home.html'</span><span class="pun">,</span><span class="pln">
+          controller</span><span class="pun">:</span><span class="pln"> </span><span class="str">'HomeController as homeVm'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+      resolve</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        posts</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">dataService</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> dataService</span><span class="pun">.</span><span class="pln">getPosts</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        artists</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">dataService</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> dataService</span><span class="pun">.</span><span class="pln">getArtists</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">})</span><span class="pln">
+    </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root.artist'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      url</span><span class="pun">:</span><span class="pln"> </span><span class="str">'/artist/:slug'</span><span class="pun">,</span><span class="pln">
+      views</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">'header@'</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          templateUrl</span><span class="pun">:</span><span class="pln"> appHelper</span><span class="pun">.</span><span class="pln">views</span><span class="pun">+</span><span class="str">'/artistHeader.html'</span><span class="pun">,</span><span class="pln">
+          controller</span><span class="pun">:</span><span class="pln"> </span><span class="str">'ArtistController as artistVm'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="str">'main@'</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          templateUrl</span><span class="pun">:</span><span class="pln"> appHelper</span><span class="pun">.</span><span class="pln">views</span><span class="pun">+</span><span class="str">'/artist.html'</span><span class="pun">,</span><span class="pln">
+          controller</span><span class="pun">:</span><span class="pln"> </span><span class="str">'ArtistController as artistVm'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">},</span><span class="pln">
+      resolve</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        artist</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$stateParams</span><span class="pun">,</span><span class="pln"> dataService</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> dataService</span><span class="pun">.</span><span class="pln">getArtist</span><span class="pun">(</span><span class="pln">$stateParams</span><span class="pun">.</span><span class="pln">slug</span><span class="pun">);</span><span class="pln">    
+        </span><span class="pun">}</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}]);</span></code></pre>
+
+<p>So far, so good. But here’s the catch. During transitions I want to animate all the <code>ui-view</code>s
+ as one. To make things look cohesive in my case (it’s a fade animation)
+ I would like to put them in a wrapping div and have that div do the 
+fade out/fade in (doing it on each different <code>ui-view</code> will cause all kinds of ugliness). </p>
+
+<p>What is best practice in this scenario? </p>
+
+<p>Do I wrap them in a <code>ui-view</code> and hook that up in the <code>$stateProvider</code> somehow (nested <code>ui-view</code>s?).
+Are there any other ways to do it? Can I listen to <code>$stateChange</code> and apply classes to my wrapper like <code>ngAnimate</code> would with an <code>ui-view</code>? (fade out then wait until entirely faded out with a successful resolve before fading in).</p>
+
+<p>From my googling efforts it seems <code>ui-view</code> is much preferred when handling animations of the transition type. </p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/angularjs" class="post-tag js-gps-track" title="show questions tagged 'angularjs'" rel="tag">angularjs</a> <a href="http://stackoverflow.com/questions/tagged/angular-ui-router" class="post-tag js-gps-track" title="show questions tagged 'angular-ui-router'" rel="tag">angular-ui-router</a> <a href="http://stackoverflow.com/questions/tagged/transition" class="post-tag js-gps-track" title="show questions tagged 'transition'" rel="tag">transition</a> <a href="http://stackoverflow.com/questions/tagged/ng-animate" class="post-tag js-gps-track" title="show questions tagged 'ng-animate'" rel="tag">ng-animate</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/31032974" title="short permalink to this question" class="short-link" id="link-post-31032974">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/31032974/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/31032974/revisions" title="show all edits to this post">edited <span title="2016-04-20 10:26:28Z" class="relativetime">Apr 20 at 10:26</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/593958/skmasq"><div class="gravatar-wrapper-32"><img src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/b2a43f917e86d519bcea42c9f6f08f09.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/593958/skmasq">skmasq</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,859</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="46 bronze badges"><span class="badge3"></span><span class="badgecount">46</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-06-24 17:16:50Z" class="relativetime">Jun 24 '15 at 17:16</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/562747/int"><div class="gravatar-wrapper-32"><img src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/ccfc9f604122155a2f0dc2fe11de76d9.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/562747/int">INT</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">218</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-31032974" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-50090946" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Animations in the <code>$stateChangeStart</code> and <code>$stateChangeSuccess</code>
+ events have some odd side effects, so avoid them (at the moment). Until
+ the ui-router has a better way to manage the transition promise other 
+than <code>event.preventDefault()</code> animations through JS will be tricky. Running three <code>ui-views</code>
+ and animating them all syncronously should not be a problem through 
+pure CSS. Take a look in the ui-routers FAQ section, there is a section 
+dedicated to animating transitions.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1010632/david-barker" title="9,415 reputation" class="comment-user">David Barker</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment50090946_31032974"><span title="2015-06-24 17:32:53Z" class="relativetime-clean">Jun 24 '15 at 17:32</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-50091551" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">While the animation indeed is syncronously it causes problem with the design as the <code>header</code> is fixed to the top of the viewport during scroll. When the fade out starts it'll reveal the content of <code>main</code> underneath which is not desired. With a wrapper this is obviously not a problem as it'll fade as one single element..</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/562747/int" title="218 reputation" class="comment-user owner">INT</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment50091551_31032974"><span title="2015-06-24 17:48:53Z" class="relativetime-clean">Jun 24 '15 at 17:48</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-31032974" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="31234750"></a>
+<div id="answer-31234750" class="answer" data-answerid="31234750" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="31234750" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 25 reputation by Community">+25</span></div>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>... During transitions I want to animate all the ui-views as one. To make
+  things look cohesive in my case (it’s a fade animation) I would like
+  to put them in a wrapping div and have that div do the fade out/fade
+  in (doing it on each different ui-view will cause all kinds of
+  uglyness).</p>
+  
+  <p>What is best practice in this scenario?</p>
+</blockquote>
+
+<p><strong>Option 1:</strong> Using event hooks <code>$stateChangeStart</code> and <code>$stateChangeSuccess</code> </p>
+
+<p>This approach would have some side effects as @David mentioned in comments. So avoid it until <code>ui-router</code> comes up with a better way to manage state transition promise. Currently it relies on <code>event.preventDefault()</code> to prevent the transition from happening.</p>
+
+<p>Basically, <code>ui-router</code> will fire your <code>ui-view</code> route change view-out at the same time as the incoming view-in. So what you get is the previous <code>ui-view</code> still visible while the next <code>ui-view</code>
+ is rendered and if you're animating the view-out then there will be 
+that transition duration of overlap between the old view and the new. 
+You should look into holding off on rendering the new ui-view until the 
+old one is finished animating out (before animating the new one in)</p>
+
+<p>For similar reasons, wrapping them in another <code>ui-view</code> and hooking them up in the <code>$stateProvider</code> would not be wise.</p>
+
+<p><strong>Option 2:</strong>(Recommended) CSS based animations</p>
+
+<p>I mostly go with CSS based transitions and you may achieve this either by </p>
+
+<ul>
+<li>assigning a common CSS class to each <code>ui-view</code> and applying animation on that class.</li>
+<li>or enclosing the three <code>ui-view</code> in a <code>&lt;div&gt;</code>(if you really need this)  and apply animation on it.</li>
+</ul>
+
+<p>Either way, you would be treating all <code>ui-views</code> as a single entity and animating them would make things look more cohesive.</p>
+
+<p>HTML:</p>
+
+<pre style="" class="default prettyprint prettyprinted"><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"header"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">    
+</span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"main"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+</span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ui-view</span><span class="pun">=</span><span class="atv">"footer"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span></code></pre>
+
+<p>CSS:</p>
+
+<pre style="" class="default prettyprint prettyprinted"><code><span class="pun">[</span><span class="pln">ui</span><span class="pun">-</span><span class="pln">view</span><span class="pun">].</span><span class="pln">ng</span><span class="pun">-</span><span class="pln">enter </span><span class="pun">{</span><span class="pln"> 
+   animation</span><span class="pun">:</span><span class="pln"> fadein </span><span class="lit">2s</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="lit">@keyframes</span><span class="pln"> fadein </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">from</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> opacity</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+    to   </span><span class="pun">{</span><span class="pln"> opacity</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>Here's a working <a href="http://plnkr.co/edit/wW3irpAGGrDMr5q29xY7?p=preview" rel="nofollow"><strong>plunkr</strong></a> based on your use case where, I have an abstract state <code>root</code> and three nested states <code>root.home</code>, <code>root.artist</code> and <code>root.band</code>. While the <code>ui-view='main'</code> gets changed across all states, <code>ui-view='footer'</code> doesnt change in any and <code>ui-view='header'</code> changes for the state 'root.artist'.
+The fact that you are using css based <code>.ng-enter</code> and <code>.ng-leave</code> classes to trigger the animations, you technically overcome the issues with previous approach.</p>
+
+<pre style="" class="default prettyprint prettyprinted"><code><span class="pln">  $stateProvider
+        </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root'</span><span class="pun">,{</span><span class="pln">
+          </span><span class="kwd">abstract</span><span class="pun">:</span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+            views</span><span class="pun">:{</span><span class="pln">
+              </span><span class="str">'header'</span><span class="pun">:{</span><span class="pln">  </span><span class="com">//absolutely targets the 'header' view in root unnamed state.</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'header.html'</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">
+              </span><span class="str">'footer'</span><span class="pun">:{</span><span class="pln">  </span><span class="com">//absolutely targets the 'footer' view in root unnamed state.</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'footer.html'</span><span class="pln">
+              </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">})</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root.home'</span><span class="pun">,{</span><span class="pln">
+            views</span><span class="pun">:{</span><span class="pln">
+              </span><span class="str">'main@'</span><span class="pun">:{</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'main.html'</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">          
+        </span><span class="pun">})</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root.artist'</span><span class="pun">,{</span><span class="pln">
+            views</span><span class="pun">:{</span><span class="pln">
+              </span><span class="str">'header@'</span><span class="pun">:{</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'artist-header.html'</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">
+              </span><span class="str">'main@'</span><span class="pun">:{</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'artist-main.html'</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">          
+        </span><span class="pun">})</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">state</span><span class="pun">(</span><span class="str">'root.band'</span><span class="pun">,{</span><span class="pln">
+            views</span><span class="pun">:{</span><span class="pln">
+              </span><span class="str">'main@'</span><span class="pun">:{</span><span class="pln">
+                templateUrl</span><span class="pun">:</span><span class="str">'band-main.html'</span><span class="pln">
+              </span><span class="pun">},</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">          
+        </span><span class="pun">})</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/31234750" title="short permalink to this answer" class="short-link" id="link-post-31234750">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/31234750/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-07-05 20:34:59Z" class="relativetime">Jul 5 '15 at 20:34</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1379667/nln"><div class="gravatar-wrapper-32"><img src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/21774807e48fd4b628e5f470beb3fab6.jpeg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1379667/nln">NLN</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">5,475</span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-31234750" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-50490480" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hey @NLN, thanks for your extensive reply! I've updated your plunkr a bit to better reflect the issue I'm facing: <a href="http://plnkr.co/edit/mLUqKIjby9WGZ60k56ym?p=preview" rel="nofollow">plnkr.co/edit/mLUqKIjby9WGZ60k56ym?p=preview</a>
+ With the fade out you also have to absolute position the divs which 
+makes it a bit difficult with the footer. Thus I want to be able to 
+animate the parent div rather than the individual divs (as you can see 
+the red and blue divs overlaps which doesn't look good at all when the 
+opacity kicks in).</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/562747/int" title="218 reputation" class="comment-user owner">INT</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment50490480_31234750"><span title="2015-07-06 13:02:34Z" class="relativetime-clean">Jul 6 '15 at 13:02</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-31234750" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/31032974/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="31032974" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="https://www.google.com/" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="5df9292c14b7dc68183df5ffeb0a36ad" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f31032974%2fbest-practice-for-animating-multiple-ui-views-as-one%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/angularjs" class="post-tag" title="show questions tagged 'angularjs'" rel="tag">angularjs</a> <a href="http://stackoverflow.com/questions/tagged/angular-ui-router" class="post-tag" title="show questions tagged 'angular-ui-router'" rel="tag">angular-ui-router</a> <a href="http://stackoverflow.com/questions/tagged/transition" class="post-tag" title="show questions tagged 'transition'" rel="tag">transition</a> <a href="http://stackoverflow.com/questions/tagged/ng-animate" class="post-tag" title="show questions tagged 'ng-animate'" rel="tag">ng-animate</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-06-24 17:16:50Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>626 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/31032974/best-practice-for-animating-multiple-ui-views-as-one?lastactivity" class="lastactivity-link" title="2016-04-20 10:26:28Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1642607130",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1642607130"><div id="careersadsdoublehigh" style="display:none;"></div><img class="rfwunplbuopxzjbsfzdq" src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/i.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>
+            <div id="hireme"></div>
+        <script>
+;"use strict";var _typeof=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(n){return typeof n}:function(n){return n&&typeof Symbol=="function"&&n.constructor===Symbol?"symbol":typeof n};(function(n){try{var t=function(){var r,t,i;if(typeof[].indexOf!="function")return{v:void 0};if(r=["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],r[0]!=="*"&&r.indexOf(location.hostname)===-1)return{v:void 0};t=window;t.clc_opts=n;n.autoload&&(t.clc_init=t.clc_init||[],t.clc_init.push(function(){return t.clc.load()}));i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}();if((typeof t=="undefined"?"undefined":_typeof(t))==="object")return t.v}catch(i){}}).call(null, {"az":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/p.js","lib":"//cdn.sstatic.net/clc/clc.min.js?v=84432a71b7a2"});        </script>
+			
+
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/19514445?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">29</div></a><a href="http://stackoverflow.com/questions/19514445/how-can-i-use-ng-animate-with-ui-view-rather-than-ng-view?rq=1" class="question-hyperlink">How can I use ng-animate with ui-view rather than ng-view?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/21336796?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="http://stackoverflow.com/questions/21336796/sliding-view-with-angular-ui-router-and-ng-animate-auto-scroll-to-targeted-view?rq=1" class="question-hyperlink">Sliding view with angular ui-router and ng-animate auto scroll to targeted view</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/25494908?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">6</div></a><a href="http://stackoverflow.com/questions/25494908/slide-left-right-with-angular-ui-router-on-state-change-back-button-for-mobil?rq=1" class="question-hyperlink">Slide left/right with angular ui-router on state change + back button (for mobile usage)</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26036051?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">5</div></a><a href="http://stackoverflow.com/questions/26036051/callback-when-ui-view-animation-is-done?rq=1" class="question-hyperlink">callback when ui-view animation is done</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26366393?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/26366393/angular-ng-animate-when-using-the-same-ui-view?rq=1" class="question-hyperlink">Angular ng-animate when using the same ui-view</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/29091137?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="http://stackoverflow.com/questions/29091137/apply-a-state-class-to-ui-view-to-allow-different-ng-animation?rq=1" class="question-hyperlink">Apply a state class to ui-view to allow different ng animation</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/29347651?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/29347651/angular-ng-view-animation-transitions?rq=1" class="question-hyperlink">Angular ng-view animation transitions</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/32138993?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">7</div></a><a href="http://stackoverflow.com/questions/32138993/angular-ui-view-animation-not-working-when-using-named-views?rq=1" class="question-hyperlink">Angular ui-view animation not working when using named views</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/32385668?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">5</div></a><a href="http://stackoverflow.com/questions/32385668/make-sure-dom-changes-are-finished-before-transition?rq=1" class="question-hyperlink">Make sure DOM changes are finished before transition</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/36167207?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="http://stackoverflow.com/questions/36167207/animating-a-ui-router-state-change-div-reappears-briefly-when-animation-ends?rq=1" class="question-hyperlink">Animating a ui-router state change: div reappears briefly when animation ends</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a href="http://philosophy.stackexchange.com/questions/37239/what-is-the-truth-value-of-a-sarcastic-statement" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    what is the truth value of a sarcastic statement?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/303157/is-there-something-wrong-with-my-script-or-is-bash-much-slower-than-python" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there something wrong with my script or is Bash much slower than Python?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/76662/is-there-any-stunning-church-in-san-francisco" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there any stunning church in San Francisco?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/38944480/adjusting-thickness-of-text-overline" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Adjusting Thickness of Text Overline
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/137975/just-how-much-of-the-cursed-child-is-jkrs" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Just how much of The Cursed Child is JKR's?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/128024/how-can-i-make-text-based-combat-more-engaging" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I make text-based combat more engaging?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-monero" title="Monero Stack Exchange"></div><a href="http://monero.stackexchange.com/questions/1128/what-is-the-purpose-of-enforcing-a-minimum-mixin" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:656 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the purpose of enforcing a minimum mixin?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1889760/example-of-a-very-simple-math-statement-in-old-literature-which-is-verbatim-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Example of a very simple math statement in old literature which is (verbatim) a pain to understand
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40584/lots-of-gold-golden-coins-and-a-scale" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Lots of Gold Golden Coins and a Scale
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/75147/peer-reviewers-do-they-receive-any-salary" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Peer reviewers, do they receive any salary?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/76659/visa-usa-to-uk-short-visit-for-business-meetings-tourism" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Visa: USA to UK, Short Visit for Business Meetings &amp; Tourism
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89621/random-golf-of-the-day-7-a-distinctly-random-character" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Random Golf of the Day #7: A distinctly random character
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/342273/are-whores-and-horse-homophones" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are "whores" and "horse" homophones?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40596/the-crossroads-of-dejection" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The Crossroads of Dejection
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/51210/if-time-travel-is-possible-in-the-future-no-matter-how-distant-why-havent-the" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If time travel is possible in the future, no matter how distant, why haven't they come back to tell us?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/59140/how-did-they-make-yogurt-so-short" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How did they make Yogurt so short?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/38918741/do-an-action-only-if-a-condition-is-met-in-all-iterations-of-a-loop" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Do an action only if a condition is met in all iterations of a loop
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/100453/verb-for-how-much-space-a-file-takes-up" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Verb for how much space a file takes up?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/35219/can-i-run-the-engine-for-a-short-amount-of-time-with-a-loose-crankshaft-pulley-b" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I run the engine for a short amount of time with a loose crankshaft pulley bolt?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/812198/sudo-permissions-mixed-up" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sudo permissions mixed up
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89767/percent-encode-a-string" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Percent-Encode a String
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1113172/what-is-my-actual-ip-address" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is my actual IP address?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/97760/why-are-animations-out-often-neglected-even-from-google" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are animations out often neglected, even from Google?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/123835/how-to-generate-all-possible-orderless-partitions-of-a-list-according-to-another" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to generate all possible orderless partitions of a list according to another list?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/31032974" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/31032974/ivc/6717');});
+</script>
+<noscript>
+    <div><img src="/posts/31032974/ivc/6717" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div><script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/clc.js" async=""></script>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.8.13.3888
+            </div>
+                </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('angularjs,angular-ui-router,transition,ng-animate');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            
+            ga('create', 'UA-5620270-1');
+            ga('set', 'dimension2', '|angularjs|angular-ui-router|transition|ng-animate|');             ga('send', 'pageview');
+        
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<script src="angularjs%20-%20Best%20practice%20for%20animating%20multiple%20ui-views%20as%20one%20-%20Stack%20Overflow_files/p.js" async=""></script></body></html>
