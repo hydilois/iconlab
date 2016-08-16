@@ -202,7 +202,59 @@
                 });
             }]
         })
-        .state('projet.delete', {
+            .state('app.projetcompte.editmessage', {
+                parent: 'app.projetcompte',
+                url: '/{idedtmess}/editmessage',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
+                        controller: 'MessageHierachiqueDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['MessageHierachique', function(MessageHierachique) {
+                                return MessageHierachique.get({id : $stateParams.idedtmess}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.projetcompte', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]//({idedtdoc:document.id})"
+            })
+            .state('app.projetcompte.editdocument', {
+                parent: 'app.projetcompte',
+                url: '/{idedtdoc}/editDoc',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        controller: 'DocumentsDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Documents', function(Documents) {
+                                return Documents.get({id : $stateParams.idedtdoc}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.projetcompte', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
+            .state('projet.delete', {
             parent: 'projet',
             url: '/{id}/delete',
             data: {

@@ -99,7 +99,7 @@
                     $state.go('message-hierachique');
                 });
             }]
-        })
+        })//app.projetcompte.newuserdocument
         .state('app.projetcompte.newusermessage', {//etat de création des messages par un utilisateur
             parent: 'app.projetcompte',
             url: '/new/messages',
@@ -118,6 +118,7 @@
                         entity: function () {
                             return {
                                 contenu: null,
+                                sender: null,
                                 fichier: null,
                                 fichierContentType: null,
                                 date: null,

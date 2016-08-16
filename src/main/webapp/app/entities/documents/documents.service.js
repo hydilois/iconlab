@@ -4,7 +4,12 @@
         .module('iconlabApp')
         .factory('Documents', Documents);
 
+    angular
+        .module('iconlabApp')
+        .factory('DocumentSpecial', DocumentSpecial);
+
     Documents.$inject = ['$resource'];
+    DocumentSpecial.$inject = ['$http', 'DateUtils'];
 
     function Documents ($resource) {
         var resourceUrl =  'api/documents/:id';
@@ -22,5 +27,20 @@
             },
             'update': { method:'PUT' }
         });
+    };
+    function DocumentSpecial($http,DateUtils){
+        return{
+            getDocumentByCUser: function () {
+                return $http.get("api/document/compteuser")
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de la liste des messages des projets par compte");
+                        }
+                    );
+            }
+
+        }
     }
 })();

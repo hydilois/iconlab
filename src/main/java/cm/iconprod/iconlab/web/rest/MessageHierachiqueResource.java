@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class MessageHierachiqueResource {
 
     private final Logger log = LoggerFactory.getLogger(MessageHierachiqueResource.class);
-        
+
     @Inject
     private MessageHierachiqueRepository messageHierachiqueRepository;
-    
+
     @Inject
     private MessageHierachiqueSearchRepository messageHierachiqueSearchRepository;
-    
+
     /**
      * POST  /message-hierachiques : Create a new messageHierachique.
      *
@@ -104,7 +104,7 @@ public class MessageHierachiqueResource {
     public ResponseEntity<List<MessageHierachique>> getAllMessageHierachiques(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of MessageHierachiques");
-        Page<MessageHierachique> page = messageHierachiqueRepository.findAll(pageable); 
+        Page<MessageHierachique> page = messageHierachiqueRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/message-hierachiques");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -128,9 +128,9 @@ public class MessageHierachiqueResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
-    
-    
+
+
+
     /**
      * Recuperer la listes des messages en fonction du comptes et des projets y aferant
      * Etant donnée qu'on ne peut pas avoir les messages associé à un compte directement
@@ -144,7 +144,19 @@ public class MessageHierachiqueResource {
         log.debug("REST request to get MessageHierachique By Compte : {}", id);
         return messageHierachiqueRepository.findMessagesByCompte(id);
     }
-    
+
+    /**
+     *Recuperation de la liste des messages envoyer par un utilisateur
+     * quelconque grace q son login qui est unique a lui
+     */
+    @RequestMapping(value = "/message-hierachiques/compte/user",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<MessageHierachique> getMessageHierachiqueByCompte() {
+        return messageHierachiqueRepository.findByMessageIsCurrentUser();
+    }
+
 
     /**
      * DELETE  /message-hierachiques/:id : delete the "id" messageHierachique.

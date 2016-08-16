@@ -1,4 +1,4 @@
-   
+
 <nav  class=" navbar navbar-default navbar-fixed-top navbar-top">
  <div class="container-fluid">
      <div class="navbar-header">
@@ -7,8 +7,8 @@
              <img src="content/images/LOGO_ICON_BM.png" class="image"/>
          </button>
          <ol class="breadcrumb navbar-breadcrumb">
-             <li style="color:#cccfd8;" id="titre" class="active nomicon1">&nbsp;IconLab</li>
-             <li id="titre" class="active nomicon2">&nbsp;IconLab</li>
+             <li style="color:#cccfd8;" id="titre" class="active nomicon1">&nbsp;ICONProdLab</li>
+             <li id="titre" class="active nomicon2">&nbsp;ICONProdLab</li>
          </ol>
          <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
              <i class="fa fa-th icon"></i>
@@ -40,10 +40,10 @@
          <a class="dropdown-toggle lien" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user lien"></i>&nbsp; <span class="lien"> {{vm.account.login}}</span> <span class="caret lien"></span></a>
          <ul class="dropdown-menu animated fadeInDown">
              <li ng-show="vm.account.image" class="profile-img">
-                 <img data-ng-src="{{'data:' + vm.account.imageContentType + ';base64,' + vm.account.image}}" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
+                 <img data-ng-src="{{'data:' + vm.account.imageContentType + ';base64,' + vm.account.image}}" style="height: 150px;width:150px; border-radius:75px;" class="profile-user-img img-responsive img-circle"/>
              </li>
              <li ng-show="!vm.account.image" class="profile-img">
-                 <img src="content/images/photo.png" style="height: 150px;width:150px; border-radius:75px;" class="profile-img"/>
+                 <img src="content/images/photo.png"  class="profile-user-img img-responsive img-circle"/>
              </li>
              <li>
                  <div class="profile-info">

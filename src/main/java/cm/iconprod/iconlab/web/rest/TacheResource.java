@@ -42,7 +42,7 @@ public class TacheResource {
 
     @Inject
     private TacheSearchRepository tacheSearchRepository;
-
+    @Inject
     private StatistikDashboardService statService;
 
     @Inject
@@ -138,11 +138,14 @@ public class TacheResource {
         return taches1;
     }
 
-    @RequestMapping(value = "/audits/statData",
+    @RequestMapping(value = "/taches/statData",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public StatistikDashboardService.CounterStatistik getStatData() {
-        return statService.getStatData() ;
+    @Timed
+    public List<Integer> getStatData()  throws URISyntaxException{
+        System.out.println(statService.getStatData().size());
+        List<Integer> liste = statService.getStatData();
+        return liste ;
     }
 
     /**

@@ -51,7 +51,8 @@
             animation();
             collapseNavbar();
             Auth.logout();
-            $state.go('home');
+
+            $state.go('home', null, { reload: true });
             $(".image").removeClass('hide');
             $(".colorationnav").removeClass('navbarhaut');
             $(".icon").addClass('hide');
@@ -78,7 +79,6 @@
 
                 $(".nomicon1").removeClass('hide');
                 $(".nomicon2").addClass('hide');
-                
 
                 $(".colorationnav").addClass('navbarhaut');
 
@@ -95,12 +95,11 @@
         }else{
                 $(".image").removeClass('hide');
                 $(".icon").addClass('hide');
-                $(".colorationnav").removeClass('navbarhaut');
 
+                $(".colorationnav").removeClass('navbarhaut');
 
                 $(".nomicon2").removeClass('hide');
                 $(".nomicon1").addClass('hide');
-                
         }
 
     }

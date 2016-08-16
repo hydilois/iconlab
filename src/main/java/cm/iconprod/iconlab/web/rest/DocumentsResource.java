@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class DocumentsResource {
 
     private final Logger log = LoggerFactory.getLogger(DocumentsResource.class);
-        
+
     @Inject
     private DocumentsRepository documentsRepository;
-    
+
     @Inject
     private DocumentsSearchRepository documentsSearchRepository;
-    
+
     /**
      * POST  /documents : Create a new documents.
      *
@@ -91,6 +91,24 @@ public class DocumentsResource {
     }
 
     /**
+     *Recuperation de la liste des documents envoyer par un utilisateur grace a son login qui est unique a lui
+     */
+    @RequestMapping(value = "/document/compteuser",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Documents> getDocumentByCompteUser() {
+        return documentsRepository.findByDocumentIsCurrentCompteUser();
+    }
+
+
+
+
+
+
+
+
+    /**
      * GET  /documents : get all the documents.
      *
      * @param pageable the pagination information
@@ -104,7 +122,7 @@ public class DocumentsResource {
     public ResponseEntity<List<Documents>> getAllDocuments(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Documents");
-        Page<Documents> page = documentsRepository.findAll(pageable); 
+        Page<Documents> page = documentsRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/documents");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

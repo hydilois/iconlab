@@ -10,7 +10,7 @@
     .controller('ProjetCompteController', ProjetCompteController);
 
     ProjetDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Projet', 'Compte', 'MessageHierachique', 'Commentaire', 'Tache', 'User'];
-    ProjetCompteController.$inject = ['$rootScope','$scope','$state','entity', 'ProjetSpecial','MessageHierachiqueSpecial'];
+    ProjetCompteController.$inject = ['$rootScope','$scope','$state','entity', 'ProjetSpecial','MessageHierachiqueSpecial','DocumentSpecial'];
 
     function ProjetDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Projet, Compte, MessageHierachique, Commentaire, Tache, User) {
         var vm = this;
@@ -24,7 +24,7 @@
         $scope.$on('$destroy', unsubscribe);
     }
 
-    function ProjetCompteController($rootScope,$scope,$state,entity,ProjetSpecial,MessageHierachiqueSpecial) {
+    function ProjetCompteController($rootScope,$scope,$state,entity,ProjetSpecial,MessageHierachiqueSpecial,DocumentSpecial) {
         var vm = this;
 
         vm.compte = entity;
@@ -46,7 +46,16 @@
             },function(){
                 console.log("Erreur");
             });
-
+            MessageHierachiqueSpecial.getMessageByCompteUser().then(function(data){
+                vm.listeMeUser = data;
+            },function(){
+                console.log("Erreur");
+            });
+            DocumentSpecial.getDocumentByCUser().then(function(data){
+                vm.listeDocumentUser = data;
+            },function(){
+                console.log("Erreur");
+            });
         }
 
         //$scope.idSelectedVote = null;

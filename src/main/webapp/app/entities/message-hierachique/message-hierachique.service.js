@@ -19,10 +19,21 @@
                             return response.data;
                         },
                         function (errResponse) {
-                            console.error("Erreur de recuperation de la liste des projets par compte");
+                            console.error("Erreur de recuperation de la liste des messages des projets par compte");
+                        }
+                    );
+            },
+            getMessageByCompteUser: function () {
+                return $http.get("api/message-hierachiques/compte/user")
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de la liste des messages par user");
                         }
                     );
             }
+
     }
     }
 

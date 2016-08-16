@@ -31,13 +31,13 @@
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Messages</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li><a><span class="fa fa-bar-chart-o"></span>Liste des messages</a></li>
+                                <li data-ng-repeat="message in vm.listeMeUser"><a ui-sref="app.projetcompte.editmessage({idedtmess:message.id})" ><span class="fa fa-bar-chart-o"></span>{{message.contenu | limitTo:20}}</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li><a><span class="fa fa-bar-chart-o"></span> Liste documents</a></li>
+                                <li data-ng-repeat="document in vm.listeDocumentUser"><a ui-sref="app.projetcompte.editdocument({idedtdoc:document.id})"><span class="fa fa-bar-chart-o"></span>{{document.titre | limitTo:20}}</a></li>
                             </ul>
                         </li>
                 </ul>

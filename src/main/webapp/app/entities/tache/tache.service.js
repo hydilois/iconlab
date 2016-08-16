@@ -8,6 +8,7 @@
         .module('iconlabApp')
         .factory('TacheSpecial', TacheSpecial);
 
+
     Tache.$inject = ['$resource', 'DateUtils'];
     TacheSpecial.$inject = ['$http'];
 
@@ -43,6 +44,16 @@
                         },
                         function (errResponse) {
                             console.error("Erreur de recuperation de la liste des projets par compte");
+                        }
+                    );
+            },
+            getStatData: function () {
+                return $http.get("api/taches/statData")
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de l'objet CounterStatistik ");
                         }
                     );
             }

@@ -9,10 +9,17 @@ body {
     position: relative;
     font-size: 13px;
      }
+.profile-user-img {
+    margin: 0 auto;
+    width: 120px;
+    padding: 3px;
+    border: 3px solid #d2d6de;
+}
+
 
      .app-container{
     background-image: url('/content/images/fondiconlab02.jpg');
-    background-repeat: repeat-x;        
+    background-repeat: repeat-x;
      }
 
 * {

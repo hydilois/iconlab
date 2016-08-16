@@ -8,10 +8,12 @@
         .module('iconlabApp')
         .controller('AcceuilInfoController', AcceuilInfoController);
 
-    HomeController.$inject = ['$scope', 'Principal','StatService','Article','Projet', 'LoginService', '$state','Documents','DataUtils','User'];
+
+    HomeController.$inject = ['$scope', 'Principal','TacheSpecial','Article','Projet', 'LoginService', '$state','Documents','DataUtils','User'];
     AcceuilInfoController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
 
-    function HomeController ($scope, Principal,StatService,Article,Projet,LoginService, $state,Documents ,DataUtils,User) {
+
+    function HomeController ($scope, Principal,TacheSpecial,Article,Projet,LoginService, $state,Documents ,DataUtils,User) {
         var vm = this;
 
         vm.account = null;
@@ -22,33 +24,89 @@
         $scope.pageSize = 4;
         $scope.currentPage = 1;
 
-       /* var info = StatService.getStatData();*/
 
 
-        $scope.mydata = {
-            type : "bar",
-            "plot": {
-                "value-box": {
-                    "text": "%node-value"
+
+            vm.isAuthenticated = Principal.isAuthenticated;
+
+        $scope.$on('authenticationSuccess', function() {
+            getAccount();
+            loadAllDocuments();
+            statChart();
+        });
+        if(!vm.isAuthenticated()){
+            loadAllArticles();
+        }else{
+        getAccount();
+        loadAllDocuments();
+        statChart(); //actualisation du graph
+        }
+
+        if($state.params.id){
+            statChart();
+            loadAllProjetHome();
+        }
+        function statChart() {
+            TacheSpecial.getStatData().then(function (datanew) {
+                $scope.data = datanew;
+                console.log('coool  ' + $scope.data.length);
+                $scope.mydata = {
+                    type: "line",//bar
+                    "plot": {
+                        "value-box": {
+                            "text": "%node-value"
+                        }
+                    },
+                    title: {
+                        backgroundColor: "transparent",
+                        fontColor: "black",
+                        text: "Data base counter line chart "
+                    },
+                    backgroundColor: "transparent",
+                    "scale-x": {
+                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com", "Users"]
+                    },
+                    series: [
+                        {
+                            values: [$scope.data[0], $scope.data[1], $scope.data[2], $scope.data[3], $scope.data[4], $scope.data[5], $scope.data[6], $scope.data[7], $scope.data[8]],
+                            backgroundColor: "#4DC0CF"
+                        }
+                    ]
+                };
+                var somme = 0;
+                for (var i = 0; i < 9; i++) {
+                    somme = somme + $scope.data[i];
                 }
-            },
-            title:{
-                backgroundColor : "transparent",
-                fontColor :"black",
-                text : "Hello world"
-            },
-            backgroundColor : "white",
-            "scale-x":{
-                "labels":["Taches","PA","Documents","Projets","MessagesH","Comptes","Articles"]
-            },
-            series : [
-                {
-                    values : [1,3,3,6,7,8,7],
-                    backgroundColor : "#4DC0CF"
-                }
-            ]
-        };
 
+
+                $scope.mydata2 = {
+                    type: "bar",
+                    "plot": {
+                        "value-box": {
+                            "text": "%node-value"
+                        }
+                    },
+                    title: {
+                        backgroundColor: "transparent",
+                        fontColor: "black",
+                        text: "Data base counter bar chart "
+                    },
+                    backgroundColor: "transparent",
+                    "scale-x": {
+                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com", "Users"]
+                    },
+                    series: [
+                        {
+                            values: [Math.round(($scope.data[0] / somme) * 100), Math.round(($scope.data[1] / somme) * 100), Math.round(($scope.data[2] / somme) * 100), Math.round(($scope.data[3] / somme) * 100), Math.round(($scope.data[4] / somme) * 100), Math.round(($scope.data[5] / somme) * 100), Math.round(($scope.data[6] / somme) * 100), Math.round(($scope.data[7] / somme) * 100), Math.round(($scope.data[8] / somme) * 100)],
+                            backgroundColor: "#4DC0CF"
+                        }
+                    ]
+                };
+
+            }, function () {
+                console.log('Erreur de recuperation des données');
+            });
+        }
         //values : [info.tacheLength,info.pointAvancementLength,info.documentLength,info.projeteLength,info.messageHierachiqueLength,info.compteLength,info.articleLength,],
 
 
@@ -58,7 +116,7 @@
             getAccount();
             loadAllDocuments();
             loadAllUsers();
-            $()
+            //$()
         });
         if(!vm.isAuthenticated()){
             loadAllArticles();
@@ -70,6 +128,7 @@
         if($state.params.id){
             loadAllProjetHome();
         }
+
 
         function getAccount() {
             Principal.identity().then(function(account){

@@ -19,3 +19,4 @@ ProjetRepository extends JpaRepository<Projet,Long> {
     Page<Projet> findByUserIsCurrentUser(Pageable pageable);
 
 }
+
