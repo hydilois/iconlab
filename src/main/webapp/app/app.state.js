@@ -164,7 +164,37 @@
         }
 
 
-        ).state('app.projetcompte.tacheprojet.patache', {
+        ).state('app.tacheprojet.gantP',{
+                parent: 'app.tacheprojet',
+
+                url: '/listeTacheP/projet/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'ListeTache'
+                },
+                views: {
+                    'ganttcontent@app.tacheprojet': {
+
+                        templateUrl: 'app/entities/tache/gantt.html' ,
+                        controller: 'GanttTacheProjetController',
+                        controllerAs: 'vm'
+                    }
+
+                },
+                resolve: {
+                    entity: ['$stateParams', 'Projet', function ($stateParams, Projet) {
+                        console.log("id du projet " + $stateParams.idprojet);
+                        return Projet.get({id: $stateParams.idprojet}).$promise;
+                    }]
+                }
+
+
+
+            }
+
+
+            )
+            .state('app.projetcompte.tacheprojet.patache', {
             parent: 'app.projetcompte.tacheprojet',
             url: '/listePointAvancement/tache/{idtache}',
             data: {

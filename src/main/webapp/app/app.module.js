@@ -27,7 +27,6 @@
             'gantt.table',
             'gantt.tree',
             'gantt.groups',
-            'bw.paging',
             'ngAnimate'
         ]).run(run);
 
