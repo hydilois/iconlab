@@ -34,7 +34,7 @@
                     );
             }
 
-    }
+    };
     }
 
     function MessageHierachique ($resource, DateUtils) {

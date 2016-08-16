@@ -49,7 +49,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_role">Role</label>
-            <select class="form-control" name="role" ng-model="vm.tache.role" id="field_role">
+            <select class="form-control" name="role" ng-model="vm.tache.role" id="field_role" required>
                 <option value="GRH">GRH</option>
                 <option value="FINANCE">FINANCE</option>
                 <option value="LOGISTIQUE">LOGISTIQUE</option>
@@ -60,7 +60,7 @@
             <label class="control-label" for="field_fromt">Date début</label>
             <div class="input-group">
                 <input id="field_fromt" type="text" class="form-control" name="fromt" datetime-picker="{{dateformat}}" ng-model="vm.tache.fromt" is-open="vm.datePickerOpenStatus.fromt"
-                />
+                required/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fromt')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -70,7 +70,7 @@
             <label class="control-label" for="field_tot">Date Fin</label>
             <div class="input-group">
                 <input id="field_tot" type="text" class="form-control" name="tot" datetime-picker="{{dateformat}}" ng-model="vm.tache.tot" is-open="vm.datePickerOpenStatus.tot"
-                date-after="vm.tache.fromt"/>
+                date-after="vm.tache.fromt" required/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tot')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -81,7 +81,7 @@
             <label class="control-label" for="field_actif">Actif</label>
             <input type="checkbox" class="form-control" name="actif" id="field_actif"
                    ng-model="vm.tache.actif"
-            />
+            required/>
         </div>
         <div class="form-group">
             <label class="control-label" for="field_color">Couleur</label>
@@ -131,12 +131,12 @@
         <div class="form-group">
             <label for="field_projet">Projet</label>
             <select class="form-control" id="field_projet" name="projet" ng-model="vm.tache.projet" ng-options="projet as projet.name for projet in vm.projets track by projet.id">
-                <option value=""></option>
+                <option value="" required></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_user">Responsable de la tache</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.firstName+' '+user.lastName for user in vm.users track by user.id">
+            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.firstName+' '+user.lastName for user in vm.users track by user.id" required>
                 <option value=""></option>
             </select>
         </div>

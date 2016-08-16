@@ -65,10 +65,10 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_tot">Date Fin {{vm.projet.tot}}</label>
-            <span ng-show="form.vm.projet.tot.$error.dateAfter" class="error">Must be after start date!</span>
+            <!-- <span ng-show="form.vm.projet.tot.$error.dateAfter" class="error">Must be after start date!</span> -->
             <div class="input-group">
                 <input id="field_tot" type="text" class="form-control" name="tot" uib-datepicker-popup="{{dateformat}}" ng-model="vm.projet.tot" is-open="vm.datePickerOpenStatus.tot"
-                date-after="vm.tache.fromt"/>
+                date-greater="{{vm.projet.fromt}}"/>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tot')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>

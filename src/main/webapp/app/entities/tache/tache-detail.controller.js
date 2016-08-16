@@ -15,7 +15,7 @@
 
 
     TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
-    TacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial'];
+    TacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial','CommentaireSpecial'];
     GanttTacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial'];
 
 
@@ -31,7 +31,7 @@
         });
         $scope.$on('$destroy', unsubscribe);
     };
-    function TacheProjetController($scope, $rootScope, $state, entity,TacheSpecial) {
+    function TacheProjetController($scope, $rootScope, $state, entity,TacheSpecial,CommentaireSpecial) {
         var vm = this;
         vm.projet = entity;
 
@@ -47,8 +47,14 @@
             }, function(){
                 console.log('Erreur de recuperation des données');
             });
+            
+            CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data){
+                console.log("I am there");
+                vm.listeCommentaireParProjet = data;
+            },function(){
+                 console.log('Erreur de recuperation des données');
+            });
         }
-
     }
     ;
     function GanttTacheProjetController($scope, $rootScope, $state, entity,TacheSpecial) {

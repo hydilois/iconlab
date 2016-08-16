@@ -21,8 +21,12 @@
         vm.login = LoginService.open;
         vm.register = register;
         vm.openFile = DataUtils.openFile;
-        $scope.pageSize = 4;
-        $scope.currentPage = 1;
+        $scope.pageSizedocPub = 4;
+        $scope.currentPagedocPub = 1;
+        $scope.pageSizedocPriv = 4;
+        $scope.currentPagedocPriv = 1;
+        $scope.pageSizeUsers = 4;
+        $scope.currentPageUsers = 1;
 
 
 

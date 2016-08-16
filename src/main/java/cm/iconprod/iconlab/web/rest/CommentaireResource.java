@@ -128,6 +128,16 @@ public class CommentaireResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    
+    @RequestMapping(value = "/commentaires/project/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Commentaire> getCommentaireByProject(@PathVariable Long id) {
+        log.debug("REST request to get commentare By Project : {}", id);
+        System.out.println("Je suis la");
+        return commentaireRepository.findCommentaireByProject(id);
+    }
 
     /**
      * DELETE  /commentaires/:id : delete the "id" commentaire.
