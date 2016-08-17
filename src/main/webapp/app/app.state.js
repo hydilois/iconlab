@@ -100,7 +100,33 @@
                     }]
             }
         }
-        ).state('app.tacheprojet.patache', {//Point d'avancement d'une tache  vue d'un chef de projet
+        ).state('app.tacheprojet.editdocumentP', {
+                parent: 'app.tacheprojet',
+                url: '/{iddoc}/editus',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        controller: 'DocumentsDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Documents', function(Documents) {
+                                return Documents.get({id : $stateParams.iddoc}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.tacheprojet', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
+            .state('app.tacheprojet.patache', {//Point d'avancement d'une tache  vue d'un chef de projet
             parent: 'app.tacheprojet',
             url: '/listePointAvancement/tache/{idtache}',
             data: {

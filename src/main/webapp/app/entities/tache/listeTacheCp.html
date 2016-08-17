@@ -30,24 +30,24 @@
                                 <li data-ng-repeat="tache in vm.listeTachesParProjet"><a ui-sref="app.tacheprojet.edituser({idtask:tache.id})"><span class="fa fa-bar-chart-o"></span> {{tache.name}}</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown-submenu">
+                       <!-- <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Messages</a>
                             <ul class="dropdown-menu fadeInDown">
                                 <li><a><span class="fa fa-bar-chart-o"></span>Liste des messages</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li><a><span class="fa fa-bar-chart-o"></span> Liste documents</a></li>
-                            </ul>
+                                <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="fa fa-bar-chart-o"></span>{{document.titre}}</a></li>
+                                  </ul>
                         </li>
-                        <li class="dropdown-submenu">
+                       <!-- <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Commentaires</a>
                             <ul class="dropdown-menu fadeInDown">
                                 <li><a ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet"><span class="fa fa-bar-chart-o"></span> {{commentaire.contenu}}</a></li>
                             </ul>
-                        </li>
+                        </li>-->
 
                 </ul>
             </li>
@@ -73,8 +73,11 @@
               </ul>
     </div>
 </nav>
-        <div ui-view ="ganttcontent"></div>
-        <div class="card">
+      <div class="row">
+          <div class="col-md-12" ui-view ="ganttcontent"></div>
+      </div>
+     <div class="row">
+        <div class="card col-md-12">
             <div class="card-header">
                 <div class="card-title">
                  <div class="icon fa fa-users"></div>
@@ -97,7 +100,9 @@
                     </div>
                 </div>
             </div>
-        </div> <br>
+        </div>
+      </div>
+      <br>
                         <!-- Zone de commentaire assàcié à une  -->
         <div class="row">
                 <div class="col-md-12 col-xs-12">

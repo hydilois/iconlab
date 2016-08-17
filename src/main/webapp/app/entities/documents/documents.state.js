@@ -233,7 +233,7 @@
             })
         .state('documents.edit', {//etat de l'édition d'un document par l'administrateur
             parent: 'documents',
-            url: '/{id}/edit',
+            url: '/{id}/edittAd',
             data: {
                 authorities: ['ROLE_ADMIN']
             },
@@ -259,7 +259,7 @@
         })
         .state('app.projetcompte.edituserdocument', {
             parent: 'app.projetcompte',
-            url: '/{iddoc}/edit',
+            url: '/{iddoc}/editus',
             data: {
                 authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
