@@ -15,7 +15,7 @@
 
 
     TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
-    TacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial','CommentaireSpecial'];
+    TacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial','CommentaireSpecial','Principal','Commentaire','User','MessageHierachiqueSpecial'];
     GanttTacheProjetController.$inject = ['$scope', '$rootScope', '$state','entity','TacheSpecial'];
 
 
@@ -31,7 +31,7 @@
         });
         $scope.$on('$destroy', unsubscribe);
     };
-    function TacheProjetController($scope, $rootScope, $state, entity,TacheSpecial,CommentaireSpecial) {
+    function TacheProjetController($scope, $rootScope, $state, entity,TacheSpecial,CommentaireSpecial,Principal,Commentaire,User,MessageHierachiqueSpecial) {
         var vm = this;
         vm.projet = entity;
 
@@ -39,6 +39,16 @@
             vm.projet = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.commentaire.auteur =vm.account.login;
+                vm.commentaire.datePost = new Date();
+                vm.commentaire.projet = vm.projet;
+
+            });
+        }
 
         if($state.params.idprojet){
             TacheSpecial.getTacheByProjet($state.params.idprojet).then(function(data){
@@ -49,12 +59,31 @@
             });
             
             CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data){
-                console.log("I am there");
                 vm.listeCommentaireParProjet = data;
             },function(){
                  console.log('Erreur de recuperation des données');
             });
+            CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data){
+                vm.listeCommentaireParProjet = data;
+            },function(){
+                 console.log('Erreur de recuperation des données');
+            });
+
+            MessageHierachiqueSpecial.getMessageByProjet($state.params.idprojet).then(function(data){
+                vm.listeMessageParProjet = data;
+            },function(){
+                console.log("Erreur");
+            });
         }
+
+        $scope.savecomment = function () {
+            //vm.isSaving = true;
+                accessCurrentAccount();
+                console.log(vm.commentaire);
+                Commentaire.save(vm.commentaire);
+               $state.go('app.tacheprojet', null, { reload: true });
+        }
+
     }
     ;
     function GanttTacheProjetController($scope, $rootScope, $state, entity,TacheSpecial) {

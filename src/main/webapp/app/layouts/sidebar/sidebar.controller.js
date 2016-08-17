@@ -34,7 +34,9 @@
             vm.listeComptesTotal = [];
             Compte.query().$promise.then(function (data) {
                 vm.listeComptesTotal = data;
+                //console.log(vm.listeComptesTotal);
                 userCompte(vm.listeComptesTotal, $scope.mail);
+                console.log(vm.listeComptesTotal);
             }, function () {
                 console.log("Erreur de recuperation des données");
             });

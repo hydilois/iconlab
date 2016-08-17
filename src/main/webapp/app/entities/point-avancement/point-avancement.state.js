@@ -70,7 +70,7 @@
             parent: 'point-avancement',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -97,6 +97,40 @@
                     $state.go('point-avancement', null, { reload: true });
                 }, function() {
                     $state.go('point-avancement');
+                });
+            }]
+        })
+        .state('app.patache.newpa', {
+            parent: 'app.patache',
+            url: '/new/patache',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/point-avancement/point-avancement-dialog.html',
+                    controller: 'PointAvancementDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                libelle: null,
+                                description: null,
+                                fichier: null,
+                                fichierContentType: null,
+                                datePub: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.patache', null, { reload: true });
+                }, function() {
+                    $state.go('app.patache');
                 });
             }]
         })

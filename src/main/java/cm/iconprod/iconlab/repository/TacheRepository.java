@@ -1,10 +1,12 @@
 package cm.iconprod.iconlab.repository;
 
+import cm.iconprod.iconlab.domain.MessageHierachique;
 import cm.iconprod.iconlab.domain.Tache;
 
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Spring Data JPA repository for the Tache entity.

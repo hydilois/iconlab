@@ -188,8 +188,12 @@
 
         function loadAllUsers() {
             vm.listeUsersTotal = [];
+            vm.listeUsersLocal = [];
             User.query().$promise.then(function (data) {
                 vm.listeUsersTotal = data;
+                for (var i = 3; i < vm.listeUsersTotal.length; i++) {
+                    vm.listeUsersLocal.push(vm.listeUsersTotal[i]);
+                }
             }, function () {
                 console.log("Erreur de recuperation des données");
             });

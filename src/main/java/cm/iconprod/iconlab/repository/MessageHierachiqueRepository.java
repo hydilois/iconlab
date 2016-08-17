@@ -22,6 +22,9 @@ public interface MessageHierachiqueRepository extends JpaRepository<MessageHiera
     //@Query("SELECT message from MessageHierachique message INNER JOIN Projet p.messages ON p.messages.id = message.projet_id INNER JOIN Compte c.projets ON c.projets.id = p.compte_id where c.id =:id")
     @Query("SELECT message from MessageHierachique message JOIN message.projet p JOIN p.compte c WHERE c.id=:id")
     List<MessageHierachique> findMessagesByCompte(@Param("id") Long id);
+    
+    @Query("SELECT message from MessageHierachique message JOIN message.projet p WHERE p.id=:id")
+    List<MessageHierachique> findMessagesByProject(@Param("id") Long id);
 
    
      @Query("select message from MessageHierachique message where message.sender = ?#{principal.username}")

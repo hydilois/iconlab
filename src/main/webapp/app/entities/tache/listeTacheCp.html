@@ -61,10 +61,13 @@
                 <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
                             <ul class="dropdown-menu animated fadeInDown">
-                                <li class="title">
-                                    Notifications <span class="badge pull-right">{{vm.listeMessage.length}}</span>
+                                <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
+                                    Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
                                 </li>
-                                <li class="title" ng-repeat="(key, message) in vm.listeMessage"><a ui-sref="app.projetcompte.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
+                                 <li ng-show="vm.listeMessageParProjet.length == 0"  class="title">
+                                    Notifications <span class="badge pull-right">0</span>
+                                </li>
+                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.projetcompte.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
                             </ul>
                         </li>
               </ul>
@@ -126,13 +129,14 @@
                 <!-- /.attachment-pushed -->
               </div>
               <!-- /.attachment-block -->
-              <span class="pull-right text-muted">{{vm.listeCommentaireParProjet.length}}</span>
+              <span class="pull-right text-muted">{{vm.listeCommentaireParProjet.length}} commentaires</span>
             </div>
             <!-- /.box-body -->
             <div class="box-footer box-comments">
               <div ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet" class="box-comment">
                 <!-- User image -->
-                <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image">
+                <!-- <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image"> -->
+                <span class="img-circle img-sm first-letter">{{commentaire.auteur |uppercase | limitTo:1}}</span>
                 <div class="comment-text">
                       <span class="username">
                        {{commentaire.auteur}}
@@ -146,14 +150,14 @@
             </div>
             <!-- /.box-footer -->
             <div class="box-footer">
-              <form action="#" method="post">
+              <form role="form">
                 <img class="img-responsive img-circle img-sm" src="/content/images/photo.png" alt="Alt Text">
                 <!-- .img-push is used to add margin to elements next to floating images -->
                 <div class="img-push">
-                <div class="row">
-                  <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                  <button class="btn btn-primary">Commenter</button>
-                  </div>
+                  <input type="text" class="form-control" name="contenu" id="field_contenu"
+                    ng-model="vm.commentaire.contenu"
+                    required ng-keyup="$event.keyCode == 13 && savecomment()"/>
+                  <!-- <button ng-click="savecomment()" class="btn btn-primary">Commenter</button> -->
                 </div>
               </form>
             </div>

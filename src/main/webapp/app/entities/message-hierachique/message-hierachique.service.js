@@ -32,6 +32,16 @@
                             console.error("Erreur de recuperation de la liste des messages par user");
                         }
                     );
+            },
+            getMessageByProjet: function (id) {
+                return $http.get("api/message-hierachiques/projet/" +id)
+                    .then(function (response) {
+                            return response.data;
+                        },
+                        function (errResponse) {
+                            console.error("Erreur de recuperation de la liste des messages par projet");
+                        }
+                    );
             }
 
     };

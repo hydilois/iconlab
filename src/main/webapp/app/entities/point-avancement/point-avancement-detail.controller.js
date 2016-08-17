@@ -12,7 +12,7 @@
     .controller('PointAvancementTacheController', PointAvancementTacheController);
 
 
-    PointAvancementTacheController.$inject = ['$rootScope','$scope','$state','entity','PointAvancementSpecial'];
+    PointAvancementTacheController.$inject = ['$rootScope','$scope','$state','entity','PointAvancementSpecial','CommentaireSpecial','Commentaire','Principal','MessageHierachiqueSpecial','DocumentSpecial'];
 
     function PointAvancementDetailController($scope, $rootScope, $stateParams, DataUtils, entity, PointAvancementSpecial, Tache) {
         var vm = this;
@@ -26,23 +26,56 @@
         });
         $scope.$on('$destroy', unsubscribe);
     }
-     function PointAvancementTacheController($rootScope,$scope,$state,entity,PointAvancementSpecial) {
+     function PointAvancementTacheController($rootScope,$scope,$state,entity,PointAvancementSpecial,CommentaireSpecial,Commentaire,Principal,MessageHierachiqueSpecial,DocumentSpecial) {
         var vm = this;
 
         vm.tache = entity;
-        console.log("l'objet  est de "+vm.tache);
+        console.log("projet associ"+vm.tache.projet.id);
         var unsubscribe = $rootScope.$on('iconlabApp:tacheUpdate', function(event, result) {
             vm.tache = result;
         });
         $scope.$on('$destroy', unsubscribe);
 
+        function accessCurrentAccount(){
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.commentaire.auteur =vm.account.login;
+                vm.commentaire.datePost = new Date();
+                vm.commentaire.projet = vm.tache.projet;
+
+            });
+        }
+
         if($state.params.idtache){
             PointAvancementSpecial.getPointAvancementByTache($state.params.idtache).then(function(data){
                 vm.listePa= data;
-                console.log("la taille est de "+data.length);
             },function(){
                 console.log("Erreur");
             });
+            CommentaireSpecial.getCommentaireByProject(vm.tache.projet.id).then(function(data){
+                vm.listeCommentairesParTache= data;
+            },function(){
+                console.log("Erreur");
+            });
+
+            MessageHierachiqueSpecial.getMessageByProjet(vm.tache.projet.id).then(function(data){
+                vm.listeMessageParProjet = data;
+            },function(){
+                console.log("Erreur");
+            });
+            DocumentSpecial.getDocumentByCUser().then(function(data){
+                vm.listeDocumentUser = data;
+                console.log(vm.listeDocumentUser);
+            },function(){
+                console.log("Erreur");
+            });
+        }
+
+        $scope.savecomment = function () {
+            //vm.isSaving = true;
+                accessCurrentAccount();
+                Commentaire.save(vm.commentaire);
+               $state.go('app.patache', null, { reload: true });
         }
 
         $scope.select= function(item) {

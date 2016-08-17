@@ -2,15 +2,55 @@
 
 <div ng-cloak>
     <div ng-switch="vm.isAuthenticated()">
-               <!-- <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
-                    <div class="row">
-                        <div zingchart id="chart-1" zc-json="mydata" zc-width="50%" zc-height="300px"></div>
-                    </div>
-                </div>-->
-            <!-- Creation d'un nouveau document -->
-            <div class="row" ng-switch-when="true">
-            <div class="col-md-offset-4 col-md-4"><button ui-sref="home.newuserdocument" type="button" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Envoyer un document</button></div>
+            <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
+            <div class="row">
+                <div class="col-md-6"  zingchart id="chart-1" zc-json="mydata" zc-width="100%" zc-height="300px">
+                </div>
+                <div class="col-md-6"  zingchart id="chart-2" zc-json="mydata2" zc-width="100%" zc-height="300px">
+                </div>
+            </div>
         </div>
+        <!-- Zone reservée au personnel non activé -->
+        <div  class="row" has-authority="ROLE_ADMIN">
+           <div class="col-md-12">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">utilisateurs non activés</h3>
+
+                        <div class="box-tools pull-right">
+                            <span class="label label-danger">utilisateurs non activés</span>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <ul class="users-list clearfix">
+                            <li ng-repeat="(key, user) in vm.listeUsersLocal |filter: { activated: 'false' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers">
+                                <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
+                                    <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
+                                    <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
+                                <a class="users-list-name" href="#">{{user.firstName}} {{user.lastName}}</a>
+                                <span class="users-list-date">{{user.phonenumber}}</span>
+                                <span class="users-list-date">{{user.email}}</span>
+                            </li>
+                        </ul>
+                        <!-- /.users-list -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.listeUsersLocal.length " ng-model="currentPageUsers"></uib-pagination>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
+            </div>
+        </div>
+        <!-- Creation d'un nouveau document -->
+            <div class="row" ng-switch-when="true">
+            <div has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH" class="col-md-offset-2 col-md-3"><button ui-sref="home.newcompteany" type="button" class="btn btn-primary"><span class="icon fa  fa-object-group"></span> Créer un nouveau compte </button></div>
+            <div class="col-md-offset-2 col-md-3"><button ui-sref="home.newuserdocument" type="button" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Envoyer un document</button></div>
+        </div>
+
             <div class="row"  ng-switch-when="true">
         <div class="col-md-6">
         <div  class="box box-primary">
@@ -79,25 +119,21 @@
         </div>
                 <!-- Zone affichage des membres -->
         <div ng-switch-when="true" class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <!-- USERS LIST -->
             <div class="box box-danger">
               <div class="box-header with-border">
                 <h3 class="box-title">Personnel</h3>
 
                 <div class="box-tools pull-right">
-                  <span class="label label-danger">{{vm.listeUsersTotal.length}} membres</span>
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
-                  <i class="fa fa-times"></i></button>
+                  <span class="label label-danger">{{vm.listeUsersLocal.length}} membres</span>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
                 <ul class="users-list clearfix">
-                  <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'true' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers ">
+                  <li ng-repeat="(key, user) in vm.listeUsersLocal |filter: { activated: 'true' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers ">
                   <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
                     <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
                     <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
@@ -110,59 +146,14 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.listeUsersTotal.length " ng-model="currentPageUsers"></uib-pagination>
+                <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.listeUsersLocal.length " ng-model="currentPageUsers"></uib-pagination>
               </div>
               <!-- /.box-footer -->
             </div>
             <!--/.box -->
           </div>
-            <div class="col-md-6">
-                <!-- USERS LIST -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">utilisateurs non activer</h3>
-
-                        <div class="box-tools pull-right">
-                            <span class="label label-danger">utilisateurs non activer</span>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                           <!-- <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fa fa-times"></i></button>
-                            </button>-->
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <ul class="users-list clearfix">
-                            <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'false' }|startFrom:(currentPage - 1) * pageSize |limitTo:pageSize">
-                                <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
-                                    <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
-                                    <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
-                                <a class="users-list-name" href="#">{{user.firstName}} {{user.lastName}}</a>
-                                <span class="users-list-date">{{user.phonenumber}}</span>
-                                <span class="users-list-date">{{user.email}}</span>
-                            </li>
-                        </ul>
-                        <!-- /.users-list -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <uib-pagination class="pagination-sm pull-right" items-per-page="vm.pageSize" total-items="vm.listeUsersTotal.length " ng-model="vm.currentPage"></uib-pagination>
-                    </div>
-                    <!-- /.box-footer -->
-                </div>
-                <!--/.box -->
-            </div>
         </div>
 
-        <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
-            <div class="row">
-                <div class="col-md-6"  zingchart id="chart-1" zc-json="mydata" zc-width="100%" zc-height="300px">
-                </div>
-                <div class="col-md-6"  zingchart id="chart-2" zc-json="mydata2" zc-width="100%" zc-height="300px">
-                </div>
-            </div>
-        </div>
             <div class="row animsortie cadrearticle" ng-switch-when="false">
                 <div class="col-md-1"></div>
 
@@ -174,12 +165,12 @@
                 <div class="card-body">
                     <div ng-if="article.image">
                 <a ui-sref="articleinfo({idarticle:article.id})">
-                    <img data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;"/>
+                    <img class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;"/>
                 </a>
             </div>
                     <div ng-if="!article.image">
                     <a ui-sref="articleinfo({idarticle:article.id})">
-                    <img src="content/images/Icon_WriteArticles-a.png" style="width:100%;"/>
+                    <img class="img-rounded" src="content/images/Icon_WriteArticles-a.png" style="width:100%;"/>
                     </a>
             </div>
                 </div>
@@ -195,19 +186,17 @@
 </div>
             </div>
 
-            <!--<div class="row" ng-switch-when="false">
+            <!-- <div class="row" ng-switch-when="false">
                 <div class="col-md-6">
                     <div class="box box-info">
             <div class="box-header">
               <i class="fa fa-envelope"></i>
 
               <h3 class="box-title">Quick Email</h3>
-              <!~~ tools box ~~>
               <div class="pull-right box-tools">
                 <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
                   <i class="fa fa-times"></i></button>
               </div>
-              <!~~ /. tools ~~>
             </div>
             <div class="box-body">
               <form action="#" method="post">
@@ -228,6 +217,6 @@
             </div>
           </div>
                 </div>
-            </div>-->
+            </div> -->
     </div>
 </div>

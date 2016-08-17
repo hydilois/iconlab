@@ -18,7 +18,7 @@ body {
 
 
      .app-container{
-    background-image: url('/content/images/fondiconlab02.jpg');
+    /*background-image: url('/content/images/fondiconlab02.jpg');*/
     background-repeat: repeat-x;
      }
 
@@ -1332,6 +1332,7 @@ h2{
     color:black;
     padding:5px;
     position: relative;
+    opacity: 0.8;
     margin-top: -32px;
     text-align: center;
     font-weight: bold;
@@ -1460,7 +1461,7 @@ nav.banniere{
 
 .contenu{
     height: 200px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 

@@ -138,11 +138,43 @@
                 });
             }]
         })
+        .state('home.newcompteany', {
+            parent: 'home',
+            url: '/new/comptebyauthorities',
+            data: {
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/compte/compte-dialog.html',
+                    controller: 'CompteDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                nom: null,
+                                logo: null,
+                                logoContentType: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('home', null, { reload: true });
+                }, function() {
+                    $state.go('home');
+                });
+            }]
+        })
         .state('compte.edit', {
             parent: 'compte',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

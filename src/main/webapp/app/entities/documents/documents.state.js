@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/documents/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO'],
                 pageTitle: 'Documents'
             },
             views: {
@@ -104,7 +104,7 @@
             parent: 'home',
             url: '/new/document',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -133,11 +133,44 @@
                 });
             }]
         })
+        .state('app.patache.newdocpa', {
+            parent: 'app.patache',
+            url: '/new/documentpa',
+            data: {
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/documents/documents-dialog.html',
+                    controller: 'DocumentsDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                titre: null,
+                                fichier: null,
+                                fichierContentType: null,
+                                mode: null,
+                                actif: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('app.patache', null, { reload: true });
+                }, function() {
+                    $state.go('app.patache');
+                });
+            }]
+        })
         .state('app.tacheprojet.newuserdocument', {//nouveau document vu du chef d'un projet
             parent: 'app.tacheprojet',
             url: '/new/document1',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -169,7 +202,7 @@
                 parent: 'app.projetcompte',
                 url: '/new/document',
                 data: {
-                    authorities: ['ROLE_USER']
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -228,7 +261,7 @@
             parent: 'app.projetcompte',
             url: '/{iddoc}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

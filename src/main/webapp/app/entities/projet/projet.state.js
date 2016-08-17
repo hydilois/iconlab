@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/projet/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO'],
                 pageTitle: 'Projet'
             },
             views: {
@@ -70,7 +70,7 @@
             parent: 'app.projetcompte',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -180,7 +180,7 @@
             parent: 'app.projetcompte',
             url: '/{idprojet}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -206,7 +206,7 @@
                 parent: 'app.projetcompte',
                 url: '/{idedtmess}/editmessage',
                 data: {
-                    authorities: ['ROLE_USER']
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -232,7 +232,7 @@
                 parent: 'app.projetcompte',
                 url: '/{idedtdoc}/editDoc',
                 data: {
-                    authorities: ['ROLE_USER']
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({

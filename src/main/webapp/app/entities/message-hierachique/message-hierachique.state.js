@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/message-hierachique/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO'],
                 pageTitle: 'MessageHierachique'
             },
             views: {
@@ -104,7 +104,7 @@
             parent: 'app.projetcompte',
             url: '/new/messages',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -138,7 +138,7 @@
             parent: 'message-hierachique',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -164,7 +164,7 @@
             parent: 'app.projetcompte',
             url: '/{idmess}/read',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

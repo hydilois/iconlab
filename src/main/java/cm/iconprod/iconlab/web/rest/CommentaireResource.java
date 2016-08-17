@@ -129,6 +129,7 @@ public class CommentaireResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
+    //Recherche des commentaires par projet
     @RequestMapping(value = "/commentaires/project/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -138,6 +139,15 @@ public class CommentaireResource {
         System.out.println("Je suis la");
         return commentaireRepository.findCommentaireByProject(id);
     }
+    
+    /*Recherche des commentaires par tache*/
+//    @RequestMapping(value = "/commentaires/tache/{id}",
+//        method = RequestMethod.GET,
+//        produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public List<Commentaire> getCommentaireByTask(@PathVariable Long id) {
+//        return commentaireRepository.findCommentaireByTache(id);
+//    }
 
     /**
      * DELETE  /commentaires/:id : delete the "id" commentaire.

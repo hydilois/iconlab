@@ -432,7 +432,7 @@
 }
 .users-list > li img {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
 }
 .users-list > li > a:hover,
@@ -565,19 +565,6 @@
 .user-block.user-block-sm .username {
   font-size: 14px;
 }
-.img-sm,
-.img-md,
-.img-lg,
-.box-comments .box-comment img,
-.user-block.user-block-sm img {
-  float: left;
-}
-.img-sm,
-.box-comments .box-comment img,
-.user-block.user-block-sm img {
-  width: 30px !important;
-  height: 30px !important;
-}
 
 /* Style fichier joint du projet */
 
@@ -608,16 +595,25 @@
 .img-sm,
 .img-md,
 .img-lg,
-.box-comments .box-comment img,
+.box-comments .box-comment .first-letter,
 .user-block.user-block-sm img {
   float: left;
 }
 .img-sm,
-.box-comments .box-comment img,
+.box-comments .box-comment .first-letter,
 .user-block.user-block-sm img {
   width: 30px !important;
   height: 30px !important;
 }
+
+.box-comments .box-comment .first-letter {
+  background-color: #3FB0A1;
+  color: white;
+  font-size:1.5em;
+  text-align: center;
+  padding-top: 3px;
+}
+
 .img-sm + .img-push {
   margin-left: 40px;
 }

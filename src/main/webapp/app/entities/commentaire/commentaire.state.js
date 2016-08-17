@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/commentaire/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO'],
                 pageTitle: 'Commentaire'
             },
             views: {
@@ -102,7 +102,7 @@
             parent: 'app.tacheprojet',
             url: '/commentaire/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -133,7 +133,7 @@
             parent: 'commentaire',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

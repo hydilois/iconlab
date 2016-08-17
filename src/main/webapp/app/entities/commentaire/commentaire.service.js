@@ -22,7 +22,7 @@
                             console.error("Erreur de recuperation de la liste des commentaires par projet");
                         }
                     );
-            }
+            },
 
     };
     }

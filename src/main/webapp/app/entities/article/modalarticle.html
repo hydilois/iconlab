@@ -11,7 +11,7 @@
           <img class="img-circle" src="content/images/Icon_WriteArticles-a.png" style="width:30%"/>
   </div>
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="clickGo()">&times;</button>
+                ng-click="clickGo()"><i class="fa fa-times"></i></button>
     <h2 class="col-md-7">{{vm.article.titre}}</h2>
     <h5 class="col-md-2">{{vm.article.datePub | date:'mediumDate'}}</h5>
   </div>
@@ -23,7 +23,7 @@
   <div class="row">
     <h5 class="col-md-3">Article redigé par: {{vm.article.user.login}}</h5>
     <div class="col-md-offset-6 col-md-2" ng-if="vm.article.fichier">
-                <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.article.fichierContentType, vm.article.fichier)">Télécharger</a>
+                <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.article.fichierContentType, vm.article.fichier)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
             </div>
            <!--  <div class="col-md-offset-1"></div> -->
   </div>

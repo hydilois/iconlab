@@ -144,6 +144,19 @@ public class MessageHierachiqueResource {
         log.debug("REST request to get MessageHierachique By Compte : {}", id);
         return messageHierachiqueRepository.findMessagesByCompte(id);
     }
+    
+    
+    /**
+     * Recuperer la listes des messages en fonction du projets
+     * il faut d'abord passer par la liste des projets appartenant
+     */
+    @RequestMapping(value = "/message-hierachiques/projet/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<MessageHierachique> getMessageHierachiqueByProject(@PathVariable Long id) {
+        return messageHierachiqueRepository.findMessagesByProject(id);
+    }
 
     /**
      *Recuperation de la liste des messages envoyer par un utilisateur

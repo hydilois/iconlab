@@ -50,7 +50,7 @@
             parent: 'entity',
             url: '/tache/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO'],
                 pageTitle: 'Tache'
             },
             views: {
@@ -112,7 +112,7 @@
             parent: 'app.tacheprojet',
             url: '/newtache',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -180,7 +180,7 @@
             parent: 'app.tacheprojet',
             url: '/{idtask}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
