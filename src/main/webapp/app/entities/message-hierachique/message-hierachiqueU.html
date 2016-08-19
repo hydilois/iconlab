@@ -8,19 +8,14 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <!-- <div class="form-group" ng-show="vm.messageHierachique.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.messageHierachique.id" readonly />
-        </div> -->
         <div class="form-group">
             <label class="control-label" for="field_contenu">Contenu</label>
             <input type="text" class="form-control" name="contenu" id="field_contenu"
-                    ng-model="vm.messageHierachique.contenu"
-                    required />
+                   ng-model="vm.messageHierachique.contenu"
+                   required />
             <div ng-show="editForm.contenu.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.contenu.$error.required">
+                   ng-show="editForm.contenu.$error.required">
                     Ce champ est obligatoire.
                 </p>
             </div>
@@ -42,16 +37,10 @@
                 </button>
             </div>
             <input type="hidden" class="form-control" name="fichier" id="field_fichier"
-                    ng-model="vm.messageHierachique.fichier"
-                     />
+                   ng-model="vm.messageHierachique.fichier"
+            />
             <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
-                    ng-model="vm.messageHierachique.fichierContentType" />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <input type="checkbox" class="form-control" name="status" id="field_status"
-                    ng-model="vm.messageHierachique.status"
-                     />
+                   ng-model="vm.messageHierachique.fichierContentType" />
         </div>
 
         <div class="form-group">

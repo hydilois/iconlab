@@ -18,9 +18,27 @@
                             <span class="title">Home</span>
                         </a>
                     </li>
+                    <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH" ng-switch-when="true" class="panel panel-default dropdown">
+                        <a ng-show="vm.listeComptesTotal.length != 0" data-toggle="collapse" href="#dropdown-elementany">
+                            <span class="icon fa  fa-list"></span><span class="title">Comptes</span>
+                        </a>
+                        <!-- Dropdown level 1 -->
+                        <div id="dropdown-elementany" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav navbar-nav">
+                                    <li ng-repeat="(key, compte) in vm.listeComptesTotal" ui-sref-active="active" >
+                                        <a ui-sref="app.projetcompte({id:compte.id})">
+                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                            <span >{{compte.nom}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
                     <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
                         <a ng-show="vm.listeComptes.length != 0" data-toggle="collapse" href="#dropdown-element">
-                            <span class="icon fa  fa-object-group"></span><span class="title">Comptes</span>
+                            <span class="icon fa  fa-object-group"></span><span class="title">Comptes supervisés </span>
                         </a>
                         <!-- Dropdown level 1 -->
                         <div id="dropdown-element" class="panel-collapse collapse">
@@ -36,27 +54,9 @@
                             </div>
                         </div>
                     </li>
-                    <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH" ng-switch-when="true" class="panel panel-default dropdown">
-                        <a ng-show="vm.listeComptesTotal.length != 0" data-toggle="collapse" href="#dropdown-elementany">
-                            <span class="icon fa  fa-object-group"></span><span class="title">Comptes</span>
-                        </a>
-                        <!-- Dropdown level 1 -->
-                        <div id="dropdown-elementany" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul class="nav navbar-nav">
-                                    <li ng-repeat="(key, compte) in vm.listeComptesTotal" ui-sref-active="active" >
-                                         <a ui-sref="app.projetcompte({id:compte.id})">
-                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                            <span >{{compte.nom}}</span>
-                                         </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
                     <li  ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" class="panel panel-default dropdown">
                         <a  ng-if="vm.listeProjets.length != 0" data-toggle="collapse" href="#dropdown-element2">
-                            <span class="icon fa fa-users"></span><span class="title">Projets</span>
+                            <span class="icon fa fa-users"></span><span class="title">Projets supervisés </span>
                         </a>
                         <!-- Dropdown level 1 -->
                         <div id="dropdown-element2" class="panel-collapse collapse">

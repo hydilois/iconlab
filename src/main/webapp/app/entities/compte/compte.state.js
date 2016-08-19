@@ -146,7 +146,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/compte/compte-dialog.html',
+                    templateUrl: 'app/entities/compte/compte-dialogU.html',
                     controller: 'CompteDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -178,7 +178,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/compte/compte-dialog.html',
+                    templateUrl: 'app/entities/compte/compte-dialogU.html',
                     controller: 'CompteDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

@@ -1,0 +1,79 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 ng-show="vm.documents.id" class="modal-title" id="myDocumentsLabel">Edition d'un Document</h4>
+        <h4 ng-show="!vm.documents.id" class="modal-title" id="myDocumentsLabel">Envoi d'un Document</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <!-- <div class="form-group" ng-show="vm.documents.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.documents.id" readonly />
+        </div> -->
+        <div class="form-group">
+            <label class="control-label" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                   ng-model="vm.documents.titre"
+                   required />
+            <div ng-show="editForm.titre.$invalid">
+                <p style="color:red;" class="help-block"
+                   ng-show="editForm.titre.$error.required">
+                    Ce champ est obligatoire.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFichier($file, vm.documents)">
+            <label class="control-label" for="field_fichier">Fichier</label>
+            <div>
+                <div ng-if="vm.documents.fichier" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.documents.fichierContentType, vm.documents.fichier)">Ouvrir</a><br>
+                    <span class="pull-left">{{vm.documents.fichierContentType}}, {{vm.byteSize(vm.documents.fichier)}}</span>
+                    <button ng-click="vm.documents.fichier=null;vm.documents.fichierContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFichier($file, vm.documents)">
+                    Joindre le fichier
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="fichier" id="field_fichier"
+                   ng-model="vm.documents.fichier"
+                   required />
+            <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
+                   ng-model="vm.documents.fichierContentType" />
+            <div ng-show="editForm.fichier.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.fichier.$error.required">
+                    Ce champ est obligatoire.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_mode">Mode</label>
+            <select class="form-control" name="mode" ng-model="vm.documents.mode" id="field_mode">
+                <option value="PUBLIC">PUBLIC</option>
+                <option value="PRIVE">PRIVE</option>
+            </select>
+        </div>
+        <div ng-if="vm.documents.mode==='PRIVE'" class="form-group">
+            <label for="field_user">Destinataire</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.documents.user" ng-options="user as user.firstName+' '+user.lastName for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enregistrer</span>
+        </button>
+    </div>
+</form>

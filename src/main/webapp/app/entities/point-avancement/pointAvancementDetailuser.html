@@ -53,22 +53,6 @@
             <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
                    ng-model="vm.pointAvancement.fichierContentType" />
         </div>
-        <div class="form-group">
-            <label class="control-label" for="field_datePub">Date Pub</label>
-            <div class="input-group">
-                <input id="field_datePub" type="text" class="form-control" name="datePub" datetime-picker="{{dateformat}}" ng-model="vm.pointAvancement.datePub" is-open="vm.datePickerOpenStatus.datePub"
-                />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datePub')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_actif">Actif</label>
-            <input type="checkbox" class="form-control" name="actif" id="field_actif"
-                   ng-model="vm.pointAvancement.actif"
-            />
-        </div>
 
         <!--<div class="form-group">
             <label for="field_tache">Tache</label>

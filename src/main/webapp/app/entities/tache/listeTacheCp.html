@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a style="font-size:1.5em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"  role="button"> Gantt </a>
+                <a style="font-size:1.5em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"  role="button"> Diagramme de distribution des taches(Gantt) </a>
             </li>
 
         </ul>
@@ -54,7 +54,7 @@
                                  <li ng-show="vm.listeMessageParProjet.length == 0"  class="title">
                                     Notifications <span class="badge pull-right">0</span>
                                 </li>
-                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.projetcompte.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
+                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.tacheprojet.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
                             </ul>
                         </li>
               </ul>
@@ -68,7 +68,7 @@
             <div class="card-header">
                 <div class="card-title">
                  <div class="icon fa fa-users"></div>
-                    <Label class="title">{{vm.projet.name}}</Label>
+                    <Label class="title">{{vm.projet.name | limitTo:15}}</Label>
                 </div>
             </div>
             <div class="card-body no-padding">
@@ -78,7 +78,7 @@
                             <a ui-sref="app.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                                 <div class="icon fa fa-tasks"></div>
                                 <div class="step-title">
-                                    <div class="title" >{{task.name}}</div>
+                                    <div class="title" >{{task.name | limitTo:15}}</div>
                                 </div>
                             </a>
                          </li>

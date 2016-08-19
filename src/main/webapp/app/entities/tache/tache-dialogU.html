@@ -7,11 +7,11 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.tache.id">
+       <!-- <div class="form-group" ng-show="vm.tache.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    ng-model="vm.tache.id" readonly />
-        </div>
+        </div>-->
         <div class="form-group">
             <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
@@ -75,18 +75,6 @@
                     </span>
                 <span ng-show="form.tot.$error.dateAfter" class="error">Must be after start date!</span>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_actif">Actif</label>
-            <input type="checkbox" class="form-control" name="actif" id="field_actif"
-                   ng-model="vm.tache.actif"
-                   />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_color">Couleur</label>
-            <input type="text" class="form-control" name="color" id="field_color"
-                   ng-model="vm.tache.color" placeholder="definir la couleur de repesentation sur le diagramme"
-            />
         </div>
         <div class="form-group">
             <label for="field_user">Responsable de la tache</label>

@@ -105,7 +105,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        templateUrl: 'app/entities/documents/documents-dialogU.html',
                         controller: 'DocumentsDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
@@ -238,7 +238,7 @@
 
 
                 )
-                .state('app.tacheprojet.patacheprojet.padetail', {
+                .state('app.tacheprojet.patache.padetail', {
                     parent: 'app.tacheprojet.patache',
                     url: '/pa/{idpa}',
                     data: {
@@ -262,6 +262,7 @@
                 .state('app.projetcompte.tacheprojet.patache.padetail', {
                     parent: 'app.projetcompte.tacheprojet.patache',
                     url: '/pavancement/{idpa}',
+
                     data: {
                         authorities: ['ROLE_USER'],
                         pageTitle: "Detail point avancement"

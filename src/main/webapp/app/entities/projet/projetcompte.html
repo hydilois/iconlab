@@ -64,7 +64,7 @@
 
                 <div class="card-title">
                     <div class="fa fa-object-group"></div>
-                    <Label class="title">{{vm.compte.nom}}</Label>
+                    <Label class="title">{{vm.compte.nom | limitTo:15}}</Label>
                 </div>
             </div>
             <div class="card-body no-padding">

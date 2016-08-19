@@ -141,7 +141,7 @@
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        templateUrl: 'app/entities/documents/documents-dialogU.html',
                         controller: 'DocumentsDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',

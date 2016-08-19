@@ -27,6 +27,7 @@
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.messageHierachique.sender =vm.account.login;
+                vm.messageHierachique.date = new Date();
                 console.log(vm.account);
             });
         }

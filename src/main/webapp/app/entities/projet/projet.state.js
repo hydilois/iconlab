@@ -210,7 +210,7 @@
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
+                        templateUrl: 'app/entities/message-hierachique/message-hierachiqueU.html',
                         controller: 'MessageHierachiqueDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',
@@ -226,7 +226,7 @@
                     }, function() {
                         $state.go('^');
                     });
-                }]//({idedtdoc:document.id})"
+                }]
             })
             .state('app.projetcompte.editdocument', {
                 parent: 'app.projetcompte',
@@ -236,7 +236,7 @@
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        templateUrl: 'app/entities/documents/documents-dialogU.html',
                         controller: 'DocumentsDialogController',
                         controllerAs: 'vm',
                         backdrop: 'static',

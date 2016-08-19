@@ -99,7 +99,7 @@
                     $state.go('message-hierachique');
                 });
             }]
-        })//app.projetcompte.newuserdocument
+        })
         .state('app.projetcompte.newusermessage', {//etat de création des messages par un utilisateur
             parent: 'app.projetcompte',
             url: '/new/messages',
@@ -108,7 +108,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
+                    templateUrl: 'app/entities/message-hierachique/message-hierachiqueU.html',
                     controller: 'MessageHierachiqueDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -142,7 +142,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
+                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialogU.html',
                     controller: 'MessageHierachiqueDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -186,6 +186,58 @@
                 });
             }]
         })
+            .state('app.patache.read', {
+                parent: 'app.patache',
+                url: '/{idmess}/read',
+                data: {
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/message-hierachique/modalmessage.html',
+                        controller: 'MessageHierachiqueDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['MessageHierachique', function(MessageHierachique) {
+                                return MessageHierachique.get({id : $stateParams.idmess}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.patache', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
+    .state('app.tacheprojet.read', {
+            parent: 'app.tacheprojet',
+            url: '/{idmess}/read',
+            data: {
+                authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/message-hierachique/modalmessage.html',
+                    controller: 'MessageHierachiqueDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    windowClass:'center-modal',
+                    size: 'md',
+                    resolve: {
+                        entity: ['MessageHierachique', function(MessageHierachique) {
+                            return MessageHierachique.get({id : $stateParams.idmess}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('app.tacheprojet', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+    })
         .state('message-hierachique.delete', {
             parent: 'message-hierachique',
             url: '/{id}/delete',

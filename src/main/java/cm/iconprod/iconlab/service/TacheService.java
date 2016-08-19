@@ -116,7 +116,7 @@ public class TacheService {
                 elt1.name = tache.getUser().getLogin()+" est le responssable de la tache "+tache.getName();
                 elt1.color = tache.getColor();
                 if (tache.getColor()== null) {
-                    elt1.color = "#ff8000";
+                    elt1.color = "#ffea00";
                 }
                 elt1.from = tache.getFromt();
                 elt1.to =tache.getTot();
