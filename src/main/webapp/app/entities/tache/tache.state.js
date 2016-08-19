@@ -149,8 +149,50 @@
                     $state.go('app.tacheprojet');
                 });
             }]
-        })
-        .state('tache.edit', {
+        }).state('app.tacheprojet.newtaskuser', {//etat de création d'une tache par un administrateur
+                parent: 'app.tacheprojet',
+                url: '/newtachebyuser',
+                data: {
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/tache/tache-dialogU.html',
+                        controller: 'TacheDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: function () {
+                                return {
+                                    name: null,
+                                    description: null,
+                                    fichierJoint: null,
+                                    fichierJointContentType: null,
+                                    role: null,
+                                    fromt: null,
+                                    tot: null,
+                                    color: null,
+                                    data: null,
+                                    movable: null,
+                                    progress: null,
+                                    lct: null,
+                                    est: null,
+                                    actif: null,
+                                    id: null
+                                };
+                            }
+                        }
+                    }).result.then(function() {
+                        $state.go('app.tacheprojet', null, { reload: true });
+                    }, function() {
+                        $state.go('app.tacheprojet');
+                    });
+                }]
+            })
+
+            .state('tache.edit', {
             parent: 'tache',
             url: '/{id}/edit',
             data: {
@@ -184,7 +226,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    templateUrl: 'app/entities/tache/tache-dialogU.html',
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

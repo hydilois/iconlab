@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('TacheDialogController', TacheDialogController);
 
-    TacheDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
+    TacheDialogController.$inject = ['$timeout','$state' ,'$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
 
-    function TacheDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Tache, Projet, PointAvancement, User) {
+    function TacheDialogController ($timeout,$state ,$scope, $stateParams, $uibModalInstance, DataUtils, entity, Tache, Projet, PointAvancement, User) {
         var vm = this;
 
         vm.tache = entity;
@@ -20,6 +20,7 @@
         vm.projets = Projet.query();
         vm.pointavancements = PointAvancement.query();
         vm.users = User.query();
+        vm.pojetP = Projet.get({id : $stateParams.idprojet});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -32,8 +33,19 @@
         function save () {
             vm.isSaving = true;
             if (vm.tache.id !== null) {
+
+                if ($state.params.idprojet){
+                    vm.tache.projet = vm.pojetP;
+                    console.log("pojet est ..."+vm.pojetP);
+                }
+
                 Tache.update(vm.tache, onSaveSuccess, onSaveError);
             } else {
+                if ($state.params.idprojet){
+                    vm.tache.projet = vm.pojetP;
+                    console.log("pojet est 13..."+vm.pojetP);
+                }
+                console.log("pojet est 13..."+vm.pojetP);
                 Tache.save(vm.tache, onSaveSuccess, onSaveError);
             }
         }

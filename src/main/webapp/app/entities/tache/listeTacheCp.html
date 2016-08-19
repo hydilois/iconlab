@@ -15,8 +15,7 @@
             <li class="dropdown">
                 <a href="" type="button" style="font-size:1.5em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                    <li><a ui-sref="app.tacheprojet.newusertask"><span class="icon fa fa-users"></span> Tache</a></li>
-                    <li><a  ui-sref="app.tacheprojet.newusercomment"><span class="glyphicon glyphicon-envelope"></span> Commentaire</a></li>
+                    <li><a ui-sref="app.tacheprojet.newtaskuser"><span class="icon fa fa-users"></span> Tache</a></li>
                     <li><a  ui-sref="app.tacheprojet.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                     <li><a  ui-sref="app.tacheprojet.newarticle"><span class="glyphicon glyphicon-folder-open"></span> Article</a></li>
                 </ul>
@@ -30,24 +29,12 @@
                                 <li data-ng-repeat="tache in vm.listeTachesParProjet"><a ui-sref="app.tacheprojet.edituser({idtask:tache.id})"><span class="fa fa-bar-chart-o"></span> {{tache.name}}</a></li>
                             </ul>
                         </li>
-                       <!-- <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Messages</a>
-                            <ul class="dropdown-menu fadeInDown">
-                                <li><a><span class="fa fa-bar-chart-o"></span>Liste des messages</a></li>
-                            </ul>
-                        </li>-->
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
                                 <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="fa fa-bar-chart-o"></span>{{document.titre}}</a></li>
                                   </ul>
                         </li>
-                       <!-- <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Commentaires</a>
-                            <ul class="dropdown-menu fadeInDown">
-                                <li><a ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet"><span class="fa fa-bar-chart-o"></span> {{commentaire.contenu}}</a></li>
-                            </ul>
-                        </li>-->
 
                 </ul>
             </li>
@@ -138,7 +125,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer box-comments">
-              <div ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet" class="box-comment">
+              <div ng-repeat="(key, commentaire) in vm.listeCommentaireParProjet | orderBy:'- datePost'" class="box-comment">
                 <!-- User image -->
                 <!-- <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image"> -->
                 <span class="img-circle img-sm first-letter">{{commentaire.auteur |uppercase | limitTo:1}}</span>

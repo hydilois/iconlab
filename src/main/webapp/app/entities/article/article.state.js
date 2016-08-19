@@ -136,7 +136,7 @@
                 }).result.then(function() {
                     $state.go('app.tacheprojet', null, { reload: true });
                 }, function() {
-                    $state.go('app.tacheprojet');
+                    $state.go('app.tacheprojet', null, { reload: true });
                 });
             }]
         })

@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('PointAvancementDialogController', PointAvancementDialogController);
 
-    PointAvancementDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PointAvancement', 'Tache'];
+    PointAvancementDialogController.$inject = ['$timeout','$state','$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'PointAvancement', 'Tache'];
 
-    function PointAvancementDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PointAvancement, Tache) {
+    function PointAvancementDialogController ($timeout,$state, $scope, $stateParams, $uibModalInstance, DataUtils, entity, PointAvancement, Tache) {
         var vm = this;
 
         vm.pointAvancement = entity;
@@ -18,7 +18,7 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.taches = Tache.query();
-
+        vm.tacheuser= Tache.get({id : $stateParams.idtache});
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -30,8 +30,15 @@
         function save () {
             vm.isSaving = true;
             if (vm.pointAvancement.id !== null) {
+                if($state.params.idtache) {
+                    vm.pointAvancement.tache = vm.tacheuser;
+                }
                 PointAvancement.update(vm.pointAvancement, onSaveSuccess, onSaveError);
             } else {
+
+                if($state.params.idtache) {
+                    vm.pointAvancement.tache = vm.tacheuser;
+                }
                 PointAvancement.save(vm.pointAvancement, onSaveSuccess, onSaveError);
             }
         }

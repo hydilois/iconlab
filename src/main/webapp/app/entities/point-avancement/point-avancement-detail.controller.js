@@ -43,6 +43,7 @@
                 vm.commentaire.datePost = new Date();
                 vm.commentaire.projet = vm.tache.projet;
 
+
             });
         }
 
@@ -73,13 +74,15 @@
 
         $scope.savecomment = function () {
             //vm.isSaving = true;
+
+            $state.go('app.patache', null, { reload: true });
                 accessCurrentAccount();
                 Commentaire.save(vm.commentaire);
                $state.go('app.patache', null, { reload: true });
         }
 
         $scope.select= function(item) {
-            $scope.selected = item; 
+            $scope.selected = item;
         };
 
         $scope.isActive = function(item) {

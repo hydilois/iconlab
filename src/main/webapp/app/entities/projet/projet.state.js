@@ -74,7 +74,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/projet/projet-dialog.html',
+                    templateUrl: 'app/entities/projet/projet-dialogC.html',
                     controller: 'ProjetDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -184,7 +184,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/projet/projet-dialog.html',
+                    templateUrl: 'app/entities/projet/projet-dialogC.html',
                     controller: 'ProjetDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('ProjetDialogController', ProjetDialogController);
 
-    ProjetDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Projet', 'Compte', 'MessageHierachique', 'Commentaire', 'Tache', 'User'];
+    ProjetDialogController.$inject = ['$timeout','$state', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Projet', 'Compte', 'MessageHierachique', 'Commentaire', 'Tache', 'User'];
 
-    function ProjetDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Projet, Compte, MessageHierachique, Commentaire, Tache, User) {
+    function ProjetDialogController ($timeout,$state, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Projet, Compte, MessageHierachique, Commentaire, Tache, User) {
         var vm = this;
 
         vm.projet = entity;
@@ -22,6 +22,7 @@
         vm.commentaires = Commentaire.query();
         vm.taches = Tache.query();
         vm.users = User.query();
+        vm.comptechefprojet = Compte.get({id :$stateParams.id});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -34,8 +35,14 @@
         function save () {
             vm.isSaving = true;
             if (vm.projet.id !== null) {
+                if ($state.params.id){
+                    vm.projet.compte = vm.comptechefprojet;
+                }
                 Projet.update(vm.projet, onSaveSuccess, onSaveError);
             } else {
+                if ($state.params.id){
+                    vm.projet.compte = vm.comptechefprojet;
+                }
                 Projet.save(vm.projet, onSaveSuccess, onSaveError);
             }
         }

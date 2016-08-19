@@ -108,7 +108,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/point-avancement/point-avancement-dialog.html',
+                    templateUrl: 'app/entities/point-avancement/pointAvancementDetailuser.html',
                     controller: 'PointAvancementDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -133,7 +133,32 @@
                     $state.go('app.patache');
                 });
             }]
-        })
+        }).state('app.patache.editdocumentU', {
+                parent: 'app.patache',
+                url: '/{iddocpa}/editdocpa',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/documents/documents-dialog.html',
+                        controller: 'DocumentsDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Documents', function(Documents) {
+                                return Documents.get({id : $stateParams.iddocpa}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.patache', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
         .state('point-avancement.edit', {
             parent: 'point-avancement',
             url: '/{id}/edit',
