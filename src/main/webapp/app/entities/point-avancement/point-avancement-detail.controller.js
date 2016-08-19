@@ -81,12 +81,8 @@
                $state.go('app.patache', null, { reload: true });
         }
 
-        $scope.select= function(item) {
-            $scope.selected = item;
-        };
-
-        $scope.isActive = function(item) {
-            return $scope.selected === item;
+        $scope.setSelected = function (idSelectedVote) {
+            $scope.idSelectedVote = idSelectedVote;
         };
     }
 })();

@@ -15,7 +15,7 @@
             <li class="dropdown">
                 <a href="" type="button" style="font-size:1.5em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                    <li><a ui-sref="app.tacheprojet.newtaskuser"><span class="icon fa fa-users"></span> Tache</a></li>
+                    <li><a ui-sref="app.tacheprojet.newtaskuser"><span class="icon fa fa-tasks"></span> Tache</a></li>
                     <li><a  ui-sref="app.tacheprojet.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                     <li><a  ui-sref="app.tacheprojet.newarticle"><span class="glyphicon glyphicon-folder-open"></span> Article</a></li>
                 </ul>
@@ -24,15 +24,15 @@
             <a href="" style="font-size:1.5em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
                         <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Taches</a>
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-tasks"></span>  Taches</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="tache in vm.listeTachesParProjet"><a ui-sref="app.tacheprojet.edituser({idtask:tache.id})"><span class="fa fa-bar-chart-o"></span> {{tache.name}}</a></li>
+                                <li data-ng-repeat="tache in vm.listeTachesParProjet"><a ui-sref="app.tacheprojet.edituser({idtask:tache.id})"><span class="fa fa-tasks"></span> {{tache.name}}</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="fa fa-bar-chart-o"></span>{{document.titre}}</a></li>
+                                <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="glyphicon glyphicon-folder-open"></span>{{document.titre}}</a></li>
                                   </ul>
                         </li>
 

@@ -524,8 +524,8 @@
 .flat-blue .tabs-right > .nav-tabs .active > a:focus {
   border-color: #E4E4E4 #E4E4E4 #E4E4E4 transparent;
   border-left-color: #FFF; }
-.flat-blue .step .nav-tabs {
-  background-color: #FFF; }
+/*.flat-blue .step .nav-tabs {
+  background-color: #FFF; }*/
 .flat-blue .step .nav-tabs > li {
   border: 1px solid #E4E4E4;
   border-right: 0; }

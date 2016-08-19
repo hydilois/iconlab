@@ -15,31 +15,17 @@
             <li class="dropdown">
                 <a href="" type="button" style="font-size:1.5em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                    <li><a ui-sref="app.patache.newpa"><span class="icon fa fa-users"></span> Point Avancement</a></li>
+                    <li><a ui-sref="app.patache.newpa"><span class="icon fa fa-hand-o-right"></span> Point Avancement</a></li>
                     <li><a  ui-sref="app.patache.newdocpa"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
                 </ul>
             </li>
              <li class="dropdown">
             <a href="" style="font-size:1.5em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
-                        <!-- <li class="dropdown-submenu">
-                       <!-- <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Taches</a>
-                            <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="tache in vm.listeTachesParProjet"><a ui-sref="app.tacheprojet.edituser({idtask:tache.id})"><span class="fa fa-bar-chart-o"></span> {{tache.name}}</a></li>
-                            </ul>
-                        </li>
                         <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Messages</a>
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-folder"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li><a><span class="fa fa-bar-chart-o"></span>Liste des messages</a></li>
-                            </ul>
-                        </li>
-                        </li> -->
-                        <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
-                            <ul class="dropdown-menu fadeInDown">
-                                <li ng-repeat="(key, document) in vm.listeDocumentUser"><a ui-sref="app.patache.editdocumentU({iddocpa:document.id})"><span class="fa fa-bar-chart-o"></span> {{document.titre}}</a></li>
+                                <li ng-repeat="(key, document) in vm.listeDocumentUser"><a ui-sref="app.patache.editdocumentU({iddocpa:document.id})"><span class="fa fa-file"></span> {{document.titre}}</a></li>
                             </ul>
                         </li>
                 </ul>
@@ -62,30 +48,33 @@
               </ul>
     </div>
 </nav>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                 <div class="icon fa fa-users"></div>
-                    <Label class="title">{{vm.tache.name}}</Label>
-                </div>
-            </div>
-            <div class="card-body no-padding">
-                <div class="step tabs-left card-no-padding">
-                        <ul class="nav nav-tabs" role="tablist">
-                         <li data-ng-repeat="pa in vm.listePa"  role="step">
-                            <a ui-sref="app.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-                                <div class="icon fa fa-tasks"></div>
-                                <div class="step-title">
-                                    <div class="title" >{{pa.libelle}}</div>
-                                </div>
-                            </a>
-                         </li>
-                        </ul>
-                    <div class="tab-content" ui-view="pacontent">
-                    </div>
-                </div>
+        <div class="col-xs-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+             <div class="icon fa fa-tasks"></div>
+                <Label class="title">{{vm.tache.name}}</Label>
             </div>
         </div>
+        <div class="card-body no-padding">
+            <div class="step tabs-left card-no-padding">
+                    <ul class="nav nav-tabs cadrePa" role="tablist">
+                     <li data-ng-repeat="pa in vm.listePa"  role="step"  ng-click="setSelected(pa.id)" ng-class="{selectedd: pa.id === idSelectedVote}">
+                        <a ui-sref="app.patache.padetail({idpa : pa.id})" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                            <div class="icon fa fa-hand-o-right"></div>
+                            <div class="step-title">
+                                <div class="title" >{{pa.libelle | limitTo:15}}</div>
+                            </div>
+                        </a>
+                     </li>
+                    </ul>
+                    <div class="tab-content" ui-view="pointavancement">
+                      
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
     </div><br>
                      <!-- Zone de commentaire assàcié à une  -->
         <div class="row">

@@ -57,7 +57,7 @@
               </ul>
     </div>
 </nav>
-<div class="row" >
+<div class="row cardrecompte" >
     <div class="col-xs-12">
         <div class="card">
             <div class="card-header">
@@ -74,7 +74,7 @@
                         <a ui-sref="app.projetcompte.tacheprojet({idprojet : projet.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                             <div class="icon fa fa-users"></div>
                             <div class="step-title">
-                                <div class="title" >{{projet.name}}</div>
+                                <div class="title" >{{projet.name | limitTo:15}}</div>
                             </div>
                         </a>
                     </li>

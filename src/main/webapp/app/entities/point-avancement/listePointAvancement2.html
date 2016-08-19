@@ -10,7 +10,7 @@
             <div class="step tabs-left card-no-padding">
                     <ul class="nav nav-tabs cadrePa" role="tablist">
                      <li data-ng-repeat="pa in vm.listePa"  role="step"  ng-click="setSelected(pa.id)" ng-class="{selectedd: pa.id === idSelectedVote}">
-                        <a ui-sref="app.projetcompte.tacheprojet.patache.padetail({idpa : pa.id})" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                        <a ui-sref="app.tacheprojet.patache.padetail({idpa : pa.id})" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                             <div class="icon fa fa-hand-o-right"></div>
                             <div class="step-title">
                                 <div class="title" >{{pa.libelle | limitTo:15}}</div>

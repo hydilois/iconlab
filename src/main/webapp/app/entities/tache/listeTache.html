@@ -8,12 +8,12 @@
             </div>
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
-                        <ul class="nav nav-tabs" role="tablist">
-                         <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
+                        <ul class="nav nav-tabs cadreTache" role="tablist">
+                         <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-click="setSelected(task.id)" ng-class="{selectedd: task.id === idSelectedVote}">
                             <a ui-sref="app.projetcompte.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                                 <div class="icon fa fa-tasks"></div>
                                 <div class="step-title">
-                                    <div class="title" >{{task.name}}</div>
+                                    <div class="title" >{{task.name | limitTo:15}}</div>
                                 </div>
                             </a>
                          </li>
