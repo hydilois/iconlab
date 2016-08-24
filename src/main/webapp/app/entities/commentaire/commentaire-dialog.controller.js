@@ -39,6 +39,7 @@
                 Commentaire.update(vm.commentaire, onSaveSuccess, onSaveError);
             } else {
                 accessCurrentAccount();
+                vm.commentaire.actif =true;
                 Commentaire.save(vm.commentaire, onSaveSuccess, onSaveError);
             }
         }

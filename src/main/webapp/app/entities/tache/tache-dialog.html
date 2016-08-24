@@ -81,53 +81,14 @@
             <label class="control-label" for="field_actif">Actif</label>
             <input type="checkbox" class="form-control" name="actif" id="field_actif"
                    ng-model="vm.tache.actif"
-            required/>
+           />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_color">Couleur</label>
             <input type="text" class="form-control" name="color" id="field_color"
-                   ng-model="vm.tache.color" placeholder="definir la couleur de repesentation sur le diagramme" 
+                   ng-model="vm.tache.color" placeholder="definir la couleur de repesentation sur le diagramme"
             />
         </div>
-        <!-- <div class="form-group">
-            <label class="control-label" for="field_data">Data</label>
-            <input type="text" class="form-control" name="data" id="field_data"
-                   ng-model="vm.tache.data"
-            />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_movable">Movable</label>
-            <input type="checkbox" class="form-control" name="movable" id="field_movable"
-                   ng-model="vm.tache.movable"
-            />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_progress">Progress</label>
-            <input type="number" class="form-control" name="progress" id="field_progress"
-                   ng-model="vm.tache.progress"
-            />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_lct">Lct</label>
-            <div class="input-group">
-                <input id="field_lct" type="text" class="form-control" name="lct" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tache.lct" is-open="vm.datePickerOpenStatus.lct"
-                />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lct')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_est">Est</label>
-            <div class="input-group">
-                <input id="field_est" type="text" class="form-control" name="est" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tache.est" is-open="vm.datePickerOpenStatus.est"
-                />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('est')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-            </div>
-        </div> -->
-
         <div class="form-group">
             <label for="field_projet">Projet</label>
             <select class="form-control" id="field_projet" name="projet" ng-model="vm.tache.projet" ng-options="projet as projet.name for projet in vm.projets track by projet.id">

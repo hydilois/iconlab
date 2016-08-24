@@ -41,9 +41,11 @@
             vm.isSaving = true;
             if (vm.messageHierachique.id !== null) {
                 accessCurrentAccount();
+
                 MessageHierachique.update(vm.messageHierachique, onSaveSuccess, onSaveError);
             } else {
                 accessCurrentAccount();
+                vm.messageHierachique.actif = true;
                 MessageHierachique.save(vm.messageHierachique, onSaveSuccess, onSaveError);
             }
         }

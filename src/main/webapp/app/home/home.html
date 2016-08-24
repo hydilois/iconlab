@@ -52,7 +52,7 @@
         </div>
         <!-- Creation d'un nouveau document -->
         <div class="row" ng-switch-when="true">
-            <div has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH" class="col-md-offset-2 col-md-3"><button ui-sref="home.newcompteany" type="button" class="btn btn-primary"><span class="icon fa  fa-object-group"></span> Créer un nouveau compte </button></div>
+            <div has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO" class="col-md-offset-2 col-md-3"><button ui-sref="home.newcompteany" type="button" class="btn btn-primary"><span class="icon fa  fa-object-group"></span> Créer un nouveau compte </button></div>
             <div class="col-md-offset-2 col-md-3"><button ui-sref="home.newuserdocument" type="button" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Envoyer un document</button></div>
         </div>
 
@@ -167,24 +167,24 @@
                     <div class="card-body">
                         <div ng-if="article.image">
                             <a ui-sref="articleinfo({idarticle:article.id})">
-                                <img class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;"/>
+                                <img title="{{article.titre}}" class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;height:100%"/>
                             </a>
                         </div>
                         <div ng-if="!article.image">
                             <a ui-sref="articleinfo({idarticle:article.id})">
-                                <img class="img-rounded" src="content/images/Icon_WriteArticles-a.png" style="width:100%;"/>
+                                <img title="{{article.titre}}" class="img-rounded" src="content/images/Icon_WriteArticles-a.png" style="width:100%;height:100%"/>
                             </a>
                         </div>
                     </div>
                     <a ui-sref="articleinfo({idarticle:article.id})">
-                        <div class="cardFooter">{{article.titre}}
+                        <div class="cardFooter">{{article.titre | limitTo : 15}}
                         </div>
                     </a>
                 </div>
                 <div class="col-md-1"></div>
             </div>
             <div class="row">
-                    <div class="col-md-offset-4"><uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination></div>
+                    <div class="col-md-offset-5"><uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination></div>
                 </div>
         </div>
     </div>

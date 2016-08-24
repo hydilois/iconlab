@@ -43,6 +43,7 @@
                 Article.update(vm.article, onSaveSuccess, onSaveError);
             } else {
                 accessCurrentAccount();
+                vm.article.actif=true;
                 Article.save(vm.article, onSaveSuccess, onSaveError);
             }
         }

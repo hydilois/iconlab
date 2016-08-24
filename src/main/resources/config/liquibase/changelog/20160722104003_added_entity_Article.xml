@@ -28,7 +28,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="contenu" type="text">
+            <column name="contenu" type="varchar(2000)">
                 <constraints nullable="false" />
             </column>
 

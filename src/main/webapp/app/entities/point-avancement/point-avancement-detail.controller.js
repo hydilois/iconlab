@@ -12,7 +12,7 @@
     .controller('PointAvancementTacheController', PointAvancementTacheController);
 
 
-    PointAvancementTacheController.$inject = ['$rootScope','$scope','$state','entity','PointAvancementSpecial','CommentaireSpecial','Commentaire','Principal','MessageHierachiqueSpecial','DocumentSpecial'];
+    PointAvancementTacheController.$inject = ['DataUtils','$rootScope','$scope','$state','entity','PointAvancementSpecial','CommentaireSpecial','Commentaire','Principal','MessageHierachiqueSpecial','DocumentSpecial'];
 
     function PointAvancementDetailController($scope, $rootScope, $stateParams, DataUtils, entity, PointAvancementSpecial, Tache) {
         var vm = this;
@@ -26,8 +26,10 @@
         });
         $scope.$on('$destroy', unsubscribe);
     }
-     function PointAvancementTacheController($rootScope,$scope,$state,entity,PointAvancementSpecial,CommentaireSpecial,Commentaire,Principal,MessageHierachiqueSpecial,DocumentSpecial) {
+     function PointAvancementTacheController(DataUtils,$rootScope,$scope,$state,entity,PointAvancementSpecial,CommentaireSpecial,Commentaire,Principal,MessageHierachiqueSpecial,DocumentSpecial) {
         var vm = this;
+         vm.byteSize = DataUtils.byteSize;
+         vm.openFile = DataUtils.openFile;
 
         vm.tache = entity;
         console.log("projet associ"+vm.tache.projet.id);

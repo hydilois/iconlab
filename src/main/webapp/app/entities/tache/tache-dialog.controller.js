@@ -45,6 +45,7 @@
                     vm.tache.projet = vm.pojetP;
                     console.log("pojet est 13..."+vm.pojetP);
                 }
+                vm.tache.actif = true;
                 console.log("pojet est 13..."+vm.pojetP);
                 Tache.save(vm.tache, onSaveSuccess, onSaveError);
             }

@@ -1,3 +1,4 @@
+
 <div ng-if="vm.isAuthenticated()" class="side-menu sidebar-inverse">
     <nav  class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
@@ -18,11 +19,10 @@
                             <span class="title">Home</span>
                         </a>
                     </li>
-                    <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH" ng-switch-when="true" class="panel panel-default dropdown">
+                    <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH, ROLE_FINANCE, ROLE_LOGISTIQUE" ng-switch-when="true" class="panel panel-default dropdown">
                         <a ng-show="vm.listeComptesTotal.length != 0" data-toggle="collapse" href="#dropdown-elementany">
                             <span class="icon fa  fa-list"></span><span class="title">Comptes</span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-elementany" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
@@ -40,7 +40,6 @@
                         <a ng-show="vm.listeComptes.length != 0" data-toggle="collapse" href="#dropdown-element">
                             <span class="icon fa  fa-object-group"></span><span class="title">Comptes supervisés </span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-element" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
@@ -58,12 +57,10 @@
                         <a  ng-if="vm.listeProjets.length != 0" data-toggle="collapse" href="#dropdown-element2">
                             <span class="icon fa fa-users"></span><span class="title">Projets supervisés </span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-element2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li ng-repeat="(key, projet) in vm.listeProjets" ui-sref-active="active" >
-                                         <!--  dynamiser le contenu par niveau de pririte tel que app.projetcompte.tacheprojet({idprojet:projet.id})-->
                                         <a ui-sref="app.tacheprojet({idprojet:projet.id})">
                                             <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                             <span >{{projet.name
@@ -78,7 +75,6 @@
                         <a  ng-if="vm.listeTasks.length != 0" data-toggle="collapse" href="#dropdown-element3">
                             <span class="icon fa fa-tasks"></span><span class="title">Taches</span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-element3" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
@@ -96,7 +92,6 @@
                         <a data-toggle="collapse" href="#dropdown-element1">
                             <span class="icon fa fa-desktop"></span><span class="title">Entities</span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-element1" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
@@ -156,7 +151,6 @@
                         <a data-toggle="collapse" href="#dropdown-table">
                             <span class="icon fa fa-table"></span><span class="title">Administration</span>
                         </a>
-                        <!-- Dropdown level 1 -->
                         <div id="dropdown-table" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">

@@ -43,6 +43,7 @@
                 if ($state.params.id){
                     vm.projet.compte = vm.comptechefprojet;
                 }
+                vm.projet.actif = true;
                 Projet.save(vm.projet, onSaveSuccess, onSaveError);
             }
         }

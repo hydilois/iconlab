@@ -25,6 +25,7 @@
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.documents.sender =vm.account.login;
+
             });
         }
 
@@ -39,6 +40,7 @@
                 Documents.update(vm.documents, onSaveSuccess, onSaveError);
             } else {
                 accessCurrentAccount();
+                vm.documents.actif = true ;
                 Documents.save(vm.documents, onSaveSuccess, onSaveError);
             }
         }

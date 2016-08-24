@@ -42,7 +42,7 @@
                                 <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
                                     Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
                                 </li>
-                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.projetcompte.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
+                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.patache.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
                             </ul>
                         </li>
               </ul>
@@ -51,10 +51,15 @@
         <div class="row cardrecompte">
         <div class="col-xs-12">
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
+        <div class="row card-header">
+            <div class="col-md-4 pull-left card-title">
              <div class="icon fa fa-tasks"></div>
                 <Label class="title">{{vm.tache.name | limitTo:15}}</Label>
+            </div>
+            <div class="pull-right col-md-2">
+                <div class="pull-right" ng-if="vm.tache.fichierJoint">
+                    <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
+                </div>
             </div>
         </div>
         <div class="card-body no-padding">

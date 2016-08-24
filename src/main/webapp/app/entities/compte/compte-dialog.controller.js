@@ -31,6 +31,7 @@
             if (vm.compte.id !== null) {
                 Compte.update(vm.compte, onSaveSuccess, onSaveError);
             } else {
+                vm.compte.actif = true ;
                 Compte.save(vm.compte, onSaveSuccess, onSaveError);
                 //toastr.info("Enregistrement du compte effectué avec Succès");
             }

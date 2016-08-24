@@ -15,7 +15,7 @@
 
 
     TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
-    TacheProjetController.$inject = ['$scope', '$rootScope', '$state', 'entity', 'TacheSpecial', 'CommentaireSpecial', 'DocumentSpecial', 'Principal', 'Commentaire', 'User', 'MessageHierachiqueSpecial'];
+    TacheProjetController.$inject = ['DataUtils','$scope', '$rootScope', '$state', 'entity', 'TacheSpecial', 'CommentaireSpecial', 'DocumentSpecial', 'Principal', 'Commentaire', 'User', 'MessageHierachiqueSpecial'];
     GanttTacheProjetController.$inject = ['$scope', '$rootScope', '$state', 'entity', 'TacheSpecial'];
 
 
@@ -32,9 +32,11 @@
         $scope.$on('$destroy', unsubscribe);
     }
     ;
-    function TacheProjetController($scope, $rootScope, $state, entity, TacheSpecial, CommentaireSpecial, DocumentSpecial, Principal, Commentaire, User, MessageHierachiqueSpecial) {
+    function TacheProjetController(DataUtils,$scope, $rootScope, $state, entity, TacheSpecial, CommentaireSpecial, DocumentSpecial, Principal, Commentaire, User, MessageHierachiqueSpecial) {
         var vm = this;
         vm.projet = entity;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
 
         var unsubscribe = $rootScope.$on('iconlabApp:projetUpdate', function (event, result) {
             vm.projet = result;

@@ -39,6 +39,7 @@
                 if($state.params.idtache) {
                     vm.pointAvancement.tache = vm.tacheuser;
                 }
+                vm.pointAvancement.actif = true;
                 PointAvancement.save(vm.pointAvancement, onSaveSuccess, onSaveError);
             }
         }

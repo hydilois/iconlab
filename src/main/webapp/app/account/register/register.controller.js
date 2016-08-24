@@ -6,9 +6,9 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = ['$scope','$timeout', 'Auth', 'LoginService','DataUtils'];
+    RegisterController.$inject = ['$state','$scope','$timeout', 'Auth', 'LoginService','DataUtils'];
 
-    function RegisterController ($scope,$timeout, Auth, LoginService,DataUtils) {
+    function RegisterController ($state,$scope,$timeout, Auth, LoginService,DataUtils) {
         var vm = this;
 
         vm.doNotMatch = null;
@@ -52,6 +52,8 @@
 
                 Auth.createAccount(vm.registerAccount).then(function () {
                     vm.success = 'OK';
+                    $state.go('home',null,{reload:true});
+                    toastr.info("Enregistrement Ok ,Attender votre identificqtion par l'administration ");
                 }).catch(function (response) {
                     vm.success = null;
                     if (response.status === 400 && response.data === 'login already in use') {
