@@ -1,10 +1,10 @@
 
 <form class="animated fadeInDown" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
                     <div class="box box-info">
-            <div class="box-header">
+            <div class="box-header text-center">
               <i class="fa fa-file"></i>
-              <h4 ng-show="!vm.article.id" class="box-title" id="myArticleLabel">Creation d'un Article</h4>
-        <h4 ng-show="vm.article.id" class="box-title" id="myArticleLabel">Edition d'un Article</h4>
+              <h4 ng-show="!vm.article.id" class="box-title">Creation d'un Article</h4>
+        <h4 ng-show="vm.article.id" class="box-title">Edition d'un Article</h4>
               <!-- tools box -->
               <div class="pull-right box-tools">
                 <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
@@ -66,7 +66,7 @@
                    ng-model="vm.article.imageContentType" />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_datePub">Date de Pubkication</label>
+            <label class="control-label" for="field_datePub">Date de Publication</label>
                 <div class="input-group">
                     <input id="field_datePub" type="text" class="form-control" name="datePub" uib-datepicker-popup="{{dateformat}}" ng-model="vm.article.datePub" is-open="vm.datePickerOpenStatus.datePub"
                     />

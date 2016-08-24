@@ -28,6 +28,9 @@
         $scope.pageSizeUsers = 4;
         $scope.currentPageUsers = 1;
 
+        $scope.pageSizeArticles = 4;
+        $scope.currentPageArticles = 1;
+
 
 
 

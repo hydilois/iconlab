@@ -10,6 +10,7 @@ import cm.iconprod.iconlab.security.AuthoritiesConstants;
 import cm.iconprod.iconlab.security.SecurityUtils;
 import cm.iconprod.iconlab.service.util.RandomUtil;
 import cm.iconprod.iconlab.web.rest.dto.ManagedUserDTO;
+import java.net.URISyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,11 +18,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import javax.inject.Inject;
 import java.util.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 /**
  * Service class for managing users.
@@ -32,7 +34,6 @@ public class UserService {
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
-
     @Inject
     private PasswordEncoder passwordEncoder;
 
@@ -42,57 +43,69 @@ public class UserService {
     @Inject
     private UserSearchRepository userSearchRepository;
 
-
     @Inject
     private PersistentTokenRepository persistentTokenRepository;
 
     @Inject
     private AuthorityRepository authorityRepository;
 
+    public Page<User> getAllUsersService() throws URISyntaxException {
+        List<User> listeUser = userRepository.findAll();
+       // List<User> listeUserFinale = new ArrayList<User>();
+       if("system".equals(listeUser.get(0).getLogin())){
+        listeUser.remove(0);
+        }
+        if("anonymoususer".equals(listeUser.get(0).getLogin())){
+        listeUser.remove(0);
+        }
+        //listeUser.remove(0);
+        return new PageImpl<User>(listeUser);
+    }
+
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
         return userRepository.findOneByActivationKey(key)
-            .map(user -> {
-                // activate given user for the registration key.
-                user.setActivated(true);
-                user.setActivationKey(null);
-                userRepository.save(user);
-                userSearchRepository.save(user);
-                log.debug("Activated user: {}", user);
-                return user;
-            });
+                .map(user -> {
+                    // activate given user for the registration key.
+                    user.setActivated(true);
+                    user.setActivationKey(null);
+                    userRepository.save(user);
+                    userSearchRepository.save(user);
+                    log.debug("Activated user: {}", user);
+                    return user;
+                });
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
-       log.debug("Reset user password for reset key {}", key);
+        log.debug("Reset user password for reset key {}", key);
 
-       return userRepository.findOneByResetKey(key)
-            .filter(user -> {
-                ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
-                return user.getResetDate().isAfter(oneDayAgo);
-           })
-           .map(user -> {
-                user.setPassword(passwordEncoder.encode(newPassword));
-                user.setResetKey(null);
-                user.setResetDate(null);
-                userRepository.save(user);
-                return user;
-           });
+        return userRepository.findOneByResetKey(key)
+                .filter(user -> {
+                    ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
+                    return user.getResetDate().isAfter(oneDayAgo);
+                })
+                .map(user -> {
+                    user.setPassword(passwordEncoder.encode(newPassword));
+                    user.setResetKey(null);
+                    user.setResetDate(null);
+                    userRepository.save(user);
+                    return user;
+                });
     }
 
     public Optional<User> requestPasswordReset(String mail) {
         return userRepository.findOneByEmail(mail)
-            .filter(User::getActivated)
-            .map(user -> {
-                user.setResetKey(RandomUtil.generateResetKey());
-                user.setResetDate(ZonedDateTime.now());
-                userRepository.save(user);
-                return user;
-            });
+                .filter(User::getActivated)
+                .map(user -> {
+                    user.setResetKey(RandomUtil.generateResetKey());
+                    user.setResetDate(ZonedDateTime.now());
+                    userRepository.save(user);
+                    return user;
+                });
     }
 
-    public User createUserInformation(String login, String password, String firstName, String lastName, String email,String phonenumber,byte[] image,
-        String langKey) {
+    public User createUserInformation(String login, String password, String firstName, String lastName, String email, String phonenumber, byte[] image,
+            String langKey) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -135,7 +148,7 @@ public class UserService {
         if (managedUserDTO.getAuthorities() != null) {
             Set<Authority> authorities = new HashSet<>();
             managedUserDTO.getAuthorities().stream().forEach(
-                authority -> authorities.add(authorityRepository.findOne(authority))
+                    authority -> authorities.add(authorityRepository.findOne(authority))
             );
             user.setAuthorities(authorities);
         }
@@ -150,7 +163,7 @@ public class UserService {
         return user;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email,String phonenumber,byte[] image, String langKey) {
+    public void updateUserInformation(String firstName, String lastName, String email, String phonenumber, byte[] image, String langKey) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
@@ -204,8 +217,8 @@ public class UserService {
     }
 
     /**
-     * Persistent Token are used for providing automatic authentication, they should be automatically deleted after
-     * 30 days.
+     * Persistent Token are used for providing automatic authentication, they
+     * should be automatically deleted after 30 days.
      * <p>
      * This is scheduled to get fired everyday, at midnight.
      * </p>

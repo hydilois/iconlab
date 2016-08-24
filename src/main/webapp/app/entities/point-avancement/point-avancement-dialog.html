@@ -1,13 +1,19 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myPointAvancementLabel">Create or edit a Point Avancement</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
+<form class="animated fadeInDown" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+                    <div class="box box-info">
+            <div class="box-header text-center">
+              <i class="fa fa-hand-o-right"></i>
+              <h4 ng-show="!vm.pointAvancement.id" class="box-title">Creation d'un  Point d'Avancement</h4>
+        <h4 ng-show="vm.pointAvancement.id" class="box-title">Edition d'un  Point d'Avancement</h4>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
+                  <i class="fa fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <div class="box-body">
+              <jhi-alert-error></jhi-alert-error>
         <div class="form-group">
             <label class="control-label" for="field_libelle">Libelle</label>
             <input type="text" class="form-control" name="libelle" id="field_libelle"
@@ -27,7 +33,7 @@
                      />
         </div>
         <div class="form-group" ngf-drop ngf-change="vm.setFichier($file, vm.pointAvancement)">
-            <label class="control-label" for="field_fichier">Fichier</label>
+            <label class="control-label" for="field_fichier">Fichier joint</label>
             <div>
                 <div ng-if="vm.pointAvancement.fichier" class="help-block clearfix">
                     <a class="pull-left" ng-click="vm.openFile(vm.pointAvancement.fichierContentType, vm.pointAvancement.fichier)">open</a><br>
@@ -39,7 +45,7 @@
                 </div>
                 <button type="file" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setFichier($file, vm.pointAvancement)">
-                    Add blob
+                    Joindre fichier
                 </button>
             </div>
             <input type="hidden" class="form-control" name="fichier" id="field_fichier"
@@ -62,13 +68,16 @@
                 <option value=""></option>
             </select>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            </div>
+            <div class="box-footer clearfix">
+              <button type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
+        </button>&nbsp;
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary pull-right">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enregistrer</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
+            </div>
+          </div>
 </form>
+
+

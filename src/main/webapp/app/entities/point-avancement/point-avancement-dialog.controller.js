@@ -46,6 +46,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:pointAvancementUpdate', result);
             $uibModalInstance.close(result);
+            toastr.info(" Enregistrement réussie");
             vm.isSaving = false;
         }
 

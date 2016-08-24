@@ -1,4 +1,4 @@
-<form  name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<!-- <form  name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -8,11 +8,6 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <!-- <div class="form-group" ng-show="vm.compte.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.compte.id" readonly />
-        </div> -->
         <div class="form-group">
             <label class="control-label" for="field_nom">Nom du compte</label>
             <input type="text" class="form-control" name="nom" id="field_nom"
@@ -69,4 +64,81 @@
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enregistrer</span>
         </button>
     </div>
+</form> -->
+
+
+<form class="animated fadeInDown" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+                    <div class="box box-info">
+            <div class="box-header text-center">
+              <i class="fa fa-file"></i>
+              <h4 ng-show="!vm.compte.id" class="box-title">Creation d'un compte</h4>
+        <h4 ng-show="vm.compte.id" class="box-title">Edition d'un compte</h4>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
+                  <i class="fa fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <div class="box-body">
+              <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label" for="field_nom">Nom du compte</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="vm.compte.nom"
+                    required />
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required">
+                    Ce champ est obligatoire.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setLogo($file, vm.compte)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_logo">Logo du compte</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.compte.logoContentType + ';base64,' + vm.compte.logo}}" style="max-height: 100px;" ng-if="vm.compte.logo"/>
+                <div ng-if="vm.compte.logo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.compte.logoContentType}}, {{vm.byteSize(vm.compte.logo)}}</span>
+                    <button ng-click="vm.compte.logo=null;vm.compte.logoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setLogo($file, vm.compte)" accept="image/*">
+                    Ajouter le logo
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="logo" id="field_logo"
+                    ng-model="vm.compte.logo"
+                     />
+            <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                    ng-model="vm.compte.logoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actif">Actif</label>
+            <input type="checkbox" class="form-control" name="actif" id="field_actif"
+                    ng-model="vm.compte.actif"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">Chef de compte</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.compte.user" ng-options="user as user.firstName+' '+user.lastName for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+            </div>
+            <div class="box-footer clearfix">
+              <button style="margin-left:2px;" type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
+        </button>&nbsp;
+        <button  type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary pull-right">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enregistrer</span>
+        </button>
+            </div>
+          </div>
 </form>
+
+

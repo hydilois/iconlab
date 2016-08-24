@@ -43,7 +43,7 @@
                     <th jh-sort-by="datePub"><span>Date Pub</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fichier"><span>Fichier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span>Redacteur</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -66,7 +66,7 @@
                     </td>
                     <td>{{article.actif}}</td>
                     <td>
-                        {{article.user.id}}
+                        {{article.user.firstName}} {{article.user.lastName}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

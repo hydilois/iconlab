@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
         <ul class="nav navbar-nav">
             <li class="dropdown">
-                <a href="" type="button" style="font-size:1.5em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
+                <a href="" type="button" style="font-size:1.2em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
                     <li><a ui-sref="app.tacheprojet.newtaskuser"><span class="icon fa fa-tasks"></span> Tache</a></li>
                     <li><a  ui-sref="app.tacheprojet.newuserdocument"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
@@ -21,7 +21,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-            <a href="" style="font-size:1.5em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
+            <a href="" style="font-size:1.2em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
                 <ul class="dropdown-menu fadeInDown">
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-tasks"></span>  Taches</a>
@@ -39,14 +39,14 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a style="font-size:1.5em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"  role="button"> Diagramme de distribution des taches(Gantt) </a>
+                <a style="font-size:1.2em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"  role="button"> Diagramme de distribution des taches(Gantt) </a>
             </li>
 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
+                            <a style="font-size:1.2em;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
                                     Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
@@ -63,7 +63,7 @@
       <div class="row">
           <div class="col-md-12" ui-view ="ganttcontent"></div>
       </div>
-     <div class="row">
+     <div class="row cardrecompte">
         <div class="card col-md-12">
             <div class="card-header">
                 <div class="card-title">

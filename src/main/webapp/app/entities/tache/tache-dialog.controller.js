@@ -53,6 +53,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:tacheUpdate', result);
             $uibModalInstance.close(result);
+            toastr.info("Enregistrement de la tâche effectué avec Succès");
             vm.isSaving = false;
         }
 

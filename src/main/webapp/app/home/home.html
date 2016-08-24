@@ -161,11 +161,8 @@
 
         <div class="row animsortie cadrearticle" ng-switch-when="false">
             <div class="col-md-1"></div>
-
             <div class="col-md-10">
-
-
-                <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal">
+                <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal |startFrom:(currentPageArticles - 1) * pageSizeUsers |limitTo:pageSizeArticles">
                     <div class="card-header"></div>
                     <div class="card-body">
                         <div ng-if="article.image">
@@ -186,7 +183,9 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
+            <div class="row">
+                    <div class="col-md-offset-4"><uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination></div>
+                </div>
         </div>
-        
     </div>
 </div>

@@ -10,7 +10,7 @@
     .controller('ProjetCompteController', ProjetCompteController);
 
     ProjetDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Projet', 'Compte', 'MessageHierachique', 'Commentaire', 'Tache', 'User'];
-    ProjetCompteController.$inject = ['$rootScope','$scope','$state','entity', 'ProjetSpecial','MessageHierachiqueSpecial','DocumentSpecial'];
+    ProjetCompteController.$inject = ['$rootScope','$scope','$state','entity', 'ProjetSpecial','MessageHierachiqueSpecial','DocumentSpecial','Principal'];
 
     function ProjetDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Projet, Compte, MessageHierachique, Commentaire, Tache, User) {
         var vm = this;
@@ -24,7 +24,7 @@
         $scope.$on('$destroy', unsubscribe);
     }
 
-    function ProjetCompteController($rootScope,$scope,$state,entity,ProjetSpecial,MessageHierachiqueSpecial,DocumentSpecial) {
+    function ProjetCompteController($rootScope,$scope,$state,entity,ProjetSpecial,MessageHierachiqueSpecial,DocumentSpecial,Principal) {
         var vm = this;
 
         vm.compte = entity;
@@ -34,8 +34,15 @@
         });
         $scope.$on('$destroy', unsubscribe);
 
+        function accessCurrentAccount() {
+            Principal.identity().then(function (account) {
+                vm.account = account;
+            });
+        }
+
         if($state.params.id){
             ProjetSpecial.getProjetByCompte($state.params.id).then(function(data){
+                accessCurrentAccount();
                 vm.listePr = data;
             },function(){
                 console.log("Erreur");

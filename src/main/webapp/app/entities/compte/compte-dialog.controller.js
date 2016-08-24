@@ -32,12 +32,14 @@
                 Compte.update(vm.compte, onSaveSuccess, onSaveError);
             } else {
                 Compte.save(vm.compte, onSaveSuccess, onSaveError);
+                //toastr.info("Enregistrement du compte effectué avec Succès");
             }
         }
 
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:compteUpdate', result);
             $uibModalInstance.close(result);
+            toastr.info("Enregistrement du compte effectué avec Succès");
             vm.isSaving = false;
         }
 
