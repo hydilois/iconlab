@@ -142,7 +142,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialogU.html',
+                    templateUrl: 'app/entities/message-hierachique/message-hierachique-dialog.html',
                     controller: 'MessageHierachiqueDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

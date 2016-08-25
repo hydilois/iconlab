@@ -30,9 +30,9 @@
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-cogs"></span>  Documents</a>
+                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="glyphicon glyphicon-folder-open"></span>   Documents</a>
                             <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="glyphicon glyphicon-folder-open"></span>{{document.titre}}</a></li>
+                                <li data-ng-repeat="document in vm.listeDocumentP"><a ui-sref="app.tacheprojet.editdocumentP({iddoc:document.id})"><span class="glyphicon glyphicon-folder-open"></span>  {{document.titre}}</a></li>
                                   </ul>
                         </li>
 
@@ -77,7 +77,7 @@
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">
                         <ul class="nav nav-tabs" role="tablist">
-                         <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-class="{active: isActive(datalist)}" class="active">
+                         <li data-ng-repeat="task in vm.listeTachesParProjet"  role="step"  ng-click="setSelected(task.id)" ng-class="{selectedd: task.id === idSelectedVote}">
                             <a ui-sref="app.tacheprojet.patache({idtache : task.id})"  role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
                                 <div class="icon fa fa-tasks"></div>
                                 <div class="step-title">

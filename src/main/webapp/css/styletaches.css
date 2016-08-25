@@ -336,6 +336,12 @@
   font-size: 12px;
 }
 
+.box-info .corps {
+  background-color: #00c0ef !important;
+  color: #fff !important;
+  font-size:1.2em;
+}
+
 
 
 /* Widget: TODO LIST */
@@ -632,61 +638,4 @@
   margin-left: 110px;
 }
 
-
-/*
-@import "content1";
-@import"article1";
-
-
-.content1{
-  -webkit-transition: all 2s ease;
-  -moz-transition: all 2s ease;
-  -o-transition: all 2s ease;
-  -webkit-animation-name: fadeInDown;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: fadeInDown;
-  -moz-animation-fill-mode: both;
-  -moz-animation-duration: 2s;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: linear;
-  animation-name: fadeInDown;
-  animation-fill-mode: both;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  &.ng-enter{
-}
-}
-
-
-
-.article1{
-  -webkit-transition: all 2s ease;
-  -moz-transition: all 2s ease;
-  -o-transition: all 2s ease;
-  -webkit-animation-name: fadeInDown;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: fadeInDown;
-  -moz-animation-fill-mode: both;
-  -moz-animation-duration: 2s;
-  -moz-animation-iteration-count: 1;
-  -moz-animation-timing-function: linear;
-  animation-name: fadeInDown;
-  animation-fill-mode: both;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  &.ng-enter{
-
-    }
-  }
-*/
-
-/*Personnalisation de bouton fa */
 

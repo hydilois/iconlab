@@ -1488,6 +1488,7 @@ nav.banniere{
 .contenu{
     height: 200px;
     overflow: auto;
+    font-size: 1.2em;
 }
 
 

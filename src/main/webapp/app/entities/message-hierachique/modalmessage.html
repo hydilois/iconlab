@@ -1,18 +1,23 @@
+<div class=" fadeInDown box box-info">
+  <div class="box-header text-center">
+    <i class="fa fa-file"></i>
+    <h4 class="box-title">Message</h4>
+    <!-- tools box -->
+    <div class="pull-right box-tools">
+      <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
+        <i class="fa fa-times"></i></button>
+      </div>
+      <!-- /. tools -->
+    </div>
+    <div class="box-body corps">
+      <p>{{vm.messageHierachique.contenu}}</p>
+      <div class="pull-right" ng-if="vm.messageHierachique.fichier">
+        <a type="button" ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">Télécharger fichier joint</a>
+        {{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}
+      </div>
+    </div>
+    <div class="box-footer clearfix">
+            <p class="pull-right"> De la part de: {{vm.messageHierachique.sender}}</p>
+    </div>
+  </div>
 
-     <!-- Modal content -->
-  <div class="modal-header mdh">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-    <h2>Modal Header</h2>
-  </div>
-  <div class="modal-body">
-      <p>{{vm.messageHierachique.sender}}</p>
-    <p>{{vm.messageHierachique.contenu}}</p>
-    <div ng-if="vm.messageHierachique.fichier">
-                <a ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">open</a>
-                {{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}
-            </div>
-  </div>
-  <div class="modal-footer">
-    <h2>Modal Footer</h2>
-  </div>
