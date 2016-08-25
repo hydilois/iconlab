@@ -74,7 +74,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    templateUrl: 'app/entities/tache/tache-dialog1.html',
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -116,7 +116,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    templateUrl: 'app/entities/tache/tache-dialog1.html',
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
@@ -200,7 +200,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/tache/tache-dialog.html',
+                    templateUrl: 'app/entities/tache/tache-dialog1.html',
                     controller: 'TacheDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

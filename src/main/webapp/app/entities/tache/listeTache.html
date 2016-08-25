@@ -1,10 +1,20 @@
     <div class=" row">
     <div class="col-xs-12">
         <div class="card">
-            <div class="card-header">
+            <!--<div class="card-header">
                 <div class="card-title">
                  <div class="icon fa fa-users"></div>
                     <Label class="title">{{vm.projet.name}}</Label>
+                </div>
+
+            </div>-->
+            <div class="row card-header">
+                <div class="pull-left card-title">
+                    <div class="icon fa fa-users"></div>
+                    <Label class="title">{{vm.projet.name | limitTo:15}}</Label>
+                </div>
+                <div class="pull-right" ng-if="vm.projet.fichierProjet">
+                    <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.projet.fichierProjetContentType, vm.projet.fichierProjet)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
                 </div>
             </div>
             <div class="card-body no-padding">

@@ -1,9 +1,14 @@
 <div class="col-xs-12">
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
+        <div class="row card-header">
+            <div class="pull-left card-title">
              <div class="icon fa fa-tasks"></div>
                 <Label class="title">{{vm.tache.name}}</Label>
+            </div>
+            <div class="pull-right">
+                <div class="pull-right" ng-if="vm.tache.fichierJoint">
+                    <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
+                </div>
             </div>
         </div>
         <div class="card-body no-padding">

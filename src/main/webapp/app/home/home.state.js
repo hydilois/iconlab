@@ -12,7 +12,8 @@
             parent: 'app',
             url: '/',
             data: {
-                authorities: []
+                authorities: [],
+                pageTitle:'ICONProdLab'
             },
             views: {
                 'content@': {

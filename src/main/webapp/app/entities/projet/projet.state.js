@@ -152,7 +152,7 @@
         })
         .state('projet.editadmin', {
             parent: 'projet',
-            url: '/{id}/edit',
+            url: '/{idp}/edit',
             data: {
                 authorities: ['ROLE_ADMIN']
             },
@@ -166,7 +166,7 @@
                     size: 'md',
                     resolve: {
                         entity: ['Projet', function(Projet) {
-                            return Projet.get({id : $stateParams.id}).$promise;
+                            return Projet.get({id : $stateParams.idp}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -178,7 +178,7 @@
         })
         .state('app.projetcompte.edituser', {
             parent: 'app.projetcompte',
-            url: '/{idprojet}/edit',
+            url: '/{idprojet}/edituser',
             data: {
                 authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
             },
