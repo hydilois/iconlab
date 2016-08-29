@@ -100,6 +100,42 @@
     function GanttTacheProjetController($scope, $rootScope, $state, entity, TacheSpecial) {
         var vm = this;
         vm.projet = entity;
+        $scope.options = {
+            mode: 'custom',
+            scale: 'day',
+            sortMode: undefined,
+            sideMode: 'TreeTable',
+            daily: false,
+            maxHeight: false,
+            width: false,
+            zoom: 1,
+            columns: ['model.name', 'from', 'to'],
+            treeTableColumns: ['model.name','from','to'],
+            columnsHeaders: {'model.name' : 'Name', 'from': 'From', 'to': 'To'},
+            columnsClasses: {'model.name' : 'gantt-column-name', 'from': 'gantt-column-from', 'to': 'gantt-column-to'},
+            columnsFormatters: {
+                'from': function(from) {
+                    return from !== undefined ? from.format('lll') : undefined;
+                },
+                'to': function(to) {
+                    return to !== undefined ? to.format('lll') : undefined;
+                }
+            },
+            treeHeaderContent: '<i class="fa fa-align-justify"></i> {{getHeader()}}',
+            columnsHeaderContents: {
+                'model.name': '<i class="fa fa-align-justify"></i> {{getHeader()}}',
+                'from': '<i class="fa fa-calendar"></i> {{getHeader()}}',
+                'to': '<i class="fa fa-calendar"></i> {{getHeader()}}'
+            },
+            autoExpand: 'none',
+            taskOutOfRange: 'truncate',
+            fromDate: moment(null),
+            toDate: undefined,
+            rowContent: '<i class="fa fa-align-justify"></i> {{row.model.name}}',
+            taskContent : '<i class="fa fa-tasks"></i> {{task.model.name}}',
+            allowSideResizing: true
+
+        };
 
         var unsubscribe = $rootScope.$on('iconlabApp:projetUpdate', function (event, result) {
             vm.projet = result;

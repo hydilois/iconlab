@@ -1,44 +1,10 @@
-<!-- <div ng-switch="vm.isAuthenticated()">
-<div ng-switch-when="false" class="row yess">
-<div class="articleInfo col-md-offset-1 col-md-10">
-  <div class="modal-header mdh">
-  <div class="row">
-          <div class="col-md-3" id="imageArticle" ng-if="vm.article.image">
-          <img class="img-circle" data-ng-src="{{'data:' +vm.article.imageContentType + ';base64,' +vm.article.image}}" style="width:30%"/>
-  </div>
-  <div class="col-md-3" id="imageArticle" ng-if="!vm.article.image">
-          <img class="img-circle" src="content/images/Icon_WriteArticles-a.png" style="width:30%"/>
-  </div>
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="clickGo()"><i class="fa fa-times"></i></button>
-    <h2 class="col-md-7">{{vm.article.titre}}</h2>
-    <h5 class="col-md-2">{{vm.article.datePub | date:'mediumDate'}}</h5>
-  </div>
-  </div>
-  <div class="modal-body contenu">
-    <p>{{vm.article.contenu}}</p>
-  </div>
-  <div class="modal-footer">
-  <div class="row">
-    <h5 class="col-md-3">Article redigé par: {{vm.article.user.login}}</h5>
-    <div class="col-md-offset-6 col-md-2" ng-if="vm.article.fichier">
-                <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.article.fichierContentType, vm.article.fichier)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
-            </div>
-  </div>
-  </div>
-  </div>
-  <div class="col-md-1"></div>
-  </div>
-</div> -->
-
-
 
   <div ng-switch="vm.isAuthenticated()">
    <div ng-switch-when="false" class="box box-info">
               <div class="box-header text-center">
                 <div class="row">
             <div class="col-md-3" id="imageArticle" ng-if="vm.article.image">
-            <img class="img-circle" data-ng-src="{{'data:' +vm.article.imageContentType + ';base64,' +vm.article.image}}" style="width:30%"/>
+            <img class=" circle" data-ng-src="{{'data:' +vm.article.imageContentType + ';base64,' +vm.article.image}}" />
     </div>
     <div class="col-md-3" id="imageArticle" ng-if="!vm.article.image">
             <img class="img-circle" src="content/images/Icon_WriteArticles-a.png" style="width:30%"/>

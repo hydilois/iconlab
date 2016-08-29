@@ -1,3 +1,5 @@
+<!-- <div class="cadrearticle" ui-view="article"></div> -->
+
 <div ng-cloak>
     <div ng-switch="vm.isAuthenticated()">
         <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
@@ -30,8 +32,8 @@
                         <ul class="users-list clearfix">
                             <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'false' }|startFrom:(currentPage - 1) * pageSize |limitTo:pageSize">
                                 <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
-                                    <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
-                                    <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
+                                    <img class="circleUser" ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" class="img-responsive profile-user-img" alt="User Picture" />
+                                    <img ng-show="!user.image" src="content/images/photo.png" class="img-responsive profile-user-img" alt="User Picture"/></a>
                                 <a class="users-list-name" href="#">{{user.firstName}} {{user.lastName}}</a>
                                 <span class="users-list-date">{{user.phonenumber}}</span>
                                 <span class="users-list-date">{{user.email}}</span>
@@ -129,16 +131,16 @@
                         <h3 class="box-title">Personnel</h3>
 
                         <div class="box-tools pull-right">
-                            <span class="label label-danger">{{vm.listeUsersLocal.length}} membres</span>
+                            <span class="label label-danger">{{vm.count}} membres</span>
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body no-padding">
                         <ul class="users-list clearfix">
-                            <li ng-repeat="(key, user) in vm.listeUsersLocal |filter: { activated: 'true' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers ">
+                            <li ng-repeat="(key, user) in vm.listeUsersTotal |filter: { activated: 'true' }|startFrom:(currentPageUsers - 1) * pageSizeUsers |limitTo:pageSizeUsers ">
                                 <a href="" title="{{user.firstName}} {{user.phonenumber}} " >
-                                    <img ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" alt="User Picture" />
-                                    <img ng-show="!user.image" src="content/images/photo.png" alt="User Picture"/></a>
+                                    <img  ng-show="user.image" data-ng-src="{{'data:' + user.imageContentType + ';base64,' + user.image}}" class="img-responsive profile-user-img" alt="User Picture" />
+                                    <img ng-show="!user.image" src="content/images/photo.png" class="profile-user-img" alt="User Picture"/></a>
                                 <a class="users-list-name" href="#">{{user.firstName}} {{user.lastName}}</a>
                                 <span class="users-list-date">{{user.phonenumber}}</span>
                                 <span class="users-list-date">{{user.email}}</span>
@@ -148,7 +150,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.listeUsersLocal.length " ng-model="currentPageUsers"></uib-pagination>
+                        <uib-pagination class="pagination-sm pull-right" items-per-page="pageSizeUsers" total-items="vm.count" ng-model="currentPageUsers"></uib-pagination>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -165,7 +167,7 @@
                     <div class="card-body">
                         <div ng-if="article.image">
                             <a ui-sref="articleinfo({idarticle:article.id})">
-                                <img title="{{article.titre}}" class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;min-height:222px;"/>
+                                <img title="{{article.titre}}" class="img-rounded carre" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}"/>
                             </a>
                         </div>
                         <div ng-if="!article.image">
@@ -181,7 +183,7 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <div class="text-center">
+            <div ng-if="vm.listeArticlesTotal.length> 0" class="text-center">
                 <uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination>
                 </div>
         </div>

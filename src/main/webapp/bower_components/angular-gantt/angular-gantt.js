@@ -60,6 +60,7 @@ Github: https://github.com/angular-gantt/angular-gantt.git
                 data: '=?',
                 api: '=?',
                 options: '=?'
+
             },
             controller: ['$scope', '$element', function($scope, $element) {
                 for (var option in $scope.options) {

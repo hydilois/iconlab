@@ -19,9 +19,10 @@
                             <span class="title">Acceuil</span>
                         </a>
                     </li>
+
                     <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH, ROLE_FINANCE, ROLE_LOGISTIQUE" ng-switch-when="true" class="panel panel-default dropdown">
                         <a ng-show="vm.listeComptesTotal.length != 0" data-toggle="collapse" href="#dropdown-elementany">
-                            <span class="icon fa  fa-object-group"></span><span class="title">Comptes</span>
+                            <span class="icon fa  fa-list"></span><span class="title">Comptes</span>
                         </a>
                         <div id="dropdown-elementany" class="panel-collapse collapse">
                             <div class="panel-body">

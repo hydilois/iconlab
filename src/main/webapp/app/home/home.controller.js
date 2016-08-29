@@ -191,11 +191,13 @@
 
         function loadAllUsers() {
             vm.listeUsersTotal = [];
-            vm.listeUsersLocal = [];
+            vm.count = 0;
             User.query().$promise.then(function (data) {
                 vm.listeUsersTotal = data;
-                for (var i = 3; i < vm.listeUsersTotal.length; i++) {
-                    vm.listeUsersLocal.push(vm.listeUsersTotal[i]);
+                for (var i = 0; i < vm.listeUsersTotal.length; i++) {
+                    if(vm.listeUsersTotal[i].activated === true) {
+                        vm.count++;
+                    }
                 }
             }, function () {
                 console.log("Erreur de recuperation des données");

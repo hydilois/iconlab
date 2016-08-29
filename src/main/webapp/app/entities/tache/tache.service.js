@@ -30,10 +30,10 @@
                         {
                             from: new Date(),
                             to: new Date(),
-                            name: 'Sprint 1 Timespan',
-                            priority: undefined,
-                            classes: [],
-                            data: undefined
+                            name: 'Sprint 1 Timespan'
+                            //priority: undefined,
+                            //classes: [],
+                            //data: undefined
                         }
                     ];
             },

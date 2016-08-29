@@ -111,7 +111,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/article/article-dialog.html',
+                    templateUrl: 'app/entities/article/articleDialogU.html',
                     controller: 'ArticleDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

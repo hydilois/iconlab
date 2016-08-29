@@ -38,8 +38,8 @@
 
                 </ul>
             </li>
-            <li class="dropdown">
-                <a style="font-size:1.2em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"  role="button"> Diagramme de distribution des taches(Gantt) </a>
+            <li class="dropdown" >
+                <a style="font-size:1.2em;" ui-sref="app.tacheprojet.gantP({idprojet : vm.projet.id})"    role="button"> Diagramme de distribution des taches(Gantt) </a>
             </li>
 
         </ul>
@@ -66,14 +66,15 @@
      <div class="row cardrecompte">
         <div class="card col-md-12">
             <div class="row card-header">
-            <h4 style="display:inline;" class="text-center"><label>Compte:</label> {{vm.projet.compte.nom}}</h4><h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.projet.compte.user.firstName}} {{vm.projet.compte.user.lastName}}</h4>
+            <h4 style="display:inline;" class="text-center"><label>Compte:</label> {{vm.projet.compte.nom}}</h4>
+                <h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.projet.compte.user.firstName}} {{vm.projet.compte.user.lastName}}</h4>
                 <div class="pull-left card-title">
                  <div class="icon fa fa-users"></div>
                     <Label class="title">{{vm.projet.name | limitTo:15}}</Label>
                 </div>
-                    <div class="pull-right" ng-if="vm.projet.fichierProjet">
+                <div class="pull-right" ng-if="vm.projet.fichierProjet">
                         <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.projet.fichierProjetContentType, vm.projet.fichierProjet)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
-                    </div>
+                </div>
             </div>
             <div class="card-body no-padding">
                 <div class="step tabs-left card-no-padding">

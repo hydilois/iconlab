@@ -15,7 +15,7 @@
         <dd>
             <div ng-if="vm.user.image">
                 <a ng-click="vm.openFile(vm.user.imageContentType, vm.user.image)">
-                    <img height="150px" width="100px" data-ng-src="{{'data:' + vm.user.imageContentType + ';base64,' + vm.user.image}}" class="img-thumbnail img-circle" style="max-width: 100%;"/>
+                    <img class="circleProfil" data-ng-src="{{'data:' + vm.user.imageContentType + ';base64,' + vm.user.image}}" class="img-thumbnail img-circle" style="max-width: 100%;"/>
                 </a>
                 {{vm.user.imageContentType}}, {{vm.byteSize(vm.user.image)}}
             </div>

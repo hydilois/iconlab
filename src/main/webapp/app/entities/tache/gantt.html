@@ -1,16 +1,40 @@
 
 
-<div   gantt data="data">
-    <gantt-groups></gantt-groups>
-    <gantt-tree></gantt-tree>
+<div gantt data="data"
 
-<!-- <gantt-table  columns="['model.name','from','to']"></gantt-table>-->
+       show-side="options.labelsEnabled"
+       daily="options.daily"
+
+
+
+
+       from-date = "options.fromDate"
+       to-date = "options.toDate"
+
+
+       current-date="options.currentDate"
+       current-date-value="options.currentDateValue"
+
+
+       date-frames="options.dateFrames"
+      >
+
+   <!-- <gantt-tree></gantt-tree>-->
+    <gantt-table enabled="options.sideMode === 'Table' || options.sideMode === 'TreeTable'"
+                 columns="options.sideMode === 'TreeTable' ? options.treeTableColumns : options.columns"
+                 headers="options.columnsHeaders"
+                 classes="options.columnsClasses"
+                 formatters="options.columnsFormatters"
+                 contents="options.columnsContents"
+                 header-contents="options.columnsHeaderContents">
+    </gantt-table>
+    <gantt-groups enabled="options.groupDisplayMode === 'group' || options.groupDisplayMode === 'overview' || options.groupDisplayMode === 'promote'" display="options.groupDisplayMode"></gantt-groups>
     <gantt-tooltips></gantt-tooltips>
     <gantt-bounds></gantt-bounds>
     <gantt-progress></gantt-progress>
     <gantt-sortable></gantt-sortable>
-    <gantt-movable></gantt-movable>
-   <!-- <gantt-draw-task></gantt-draw-task>-->
+
+    <gantt-draw-task></gantt-draw-task>
     <gantt-draw-task
         enabled="options.canDraw"
         move-threshold="2"
@@ -18,4 +42,3 @@
     </gantt-draw-task>
     <gantt-overlap></gantt-overlap>
 </div>
-
