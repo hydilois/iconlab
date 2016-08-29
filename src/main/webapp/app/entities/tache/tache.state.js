@@ -66,6 +66,32 @@
                 }]
             }
         })
+            .state('app.patache.tache-detail', {
+                parent: 'app.patache',
+                url: '/tachedesc/{idtache}',
+                data: {
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/tache/detailtache.html',
+                        controller: 'TacheDetailController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['$stateParams', 'Tache', function($stateParams, Tache) {
+                                return Tache.get({id : $stateParams.idtache}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.patache', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
         .state('tache.new', {//etat de création d'une tache par un administrateur
             parent: 'tache',
             url: '/new',

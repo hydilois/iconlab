@@ -183,7 +183,7 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <div ng-if="vm.listeArticlesTotal.length> 0" class="text-center">
+            <div ng-show="vm.listeArticlesTotal.length> 0" class="text-center">
                 <uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination>
                 </div>
         </div>

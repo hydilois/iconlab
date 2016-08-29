@@ -297,7 +297,6 @@
             },
             resolve: {
                 entity: ['$stateParams', 'Tache', function ($stateParams, Tache) {
-                        console.log("id de la Tache " + $stateParams.idtache);
                         return Tache.get({id: $stateParams.idtache}).$promise;
                     }]
             }

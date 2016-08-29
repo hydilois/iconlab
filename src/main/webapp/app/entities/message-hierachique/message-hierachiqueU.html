@@ -1,62 +1,67 @@
-
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myMessageHierachiqueLabel">Creation Message Hierachique</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group">
-            <label class="control-label" for="field_contenu">Contenu</label>
-            <input type="text" class="form-control" name="contenu" id="field_contenu"
-                   ng-model="vm.messageHierachique.contenu"
-                   required />
-            <div ng-show="editForm.contenu.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.contenu.$error.required">
-                    Ce champ est obligatoire.
-                </p>
+<form class="animated fadeInDown" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+    <div class="box box-info">
+        <div class="box-header text-center">
+            <i class="fa fa-file"></i>
+            <h4 ng-show="!vm.pointAvancement.id" class="box-title">Nouvelle Notification hierarchique </h4>
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+                <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
+                    <i class="fa fa-times"></i></button>
             </div>
+            <!-- /. tools -->
         </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setFichier($file, vm.messageHierachique)">
-            <label class="control-label" for="field_fichier">Fichier</label>
-            <div>
-                <div ng-if="vm.messageHierachique.fichier" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">Ouvrir</a><br>
-                    <span class="pull-left">{{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}</span>
-                    <button ng-click="vm.messageHierachique.fichier=null;vm.messageHierachique.fichierContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
+        <div class="box-body">
+            <jhi-alert-error></jhi-alert-error>
+            <div class="form-group">
+                <label class="control-label" for="field_contenu">Contenu</label>
+                <input type="text" class="form-control" name="contenu" id="field_contenu"
+                       ng-model="vm.messageHierachique.contenu"
+                       required />
+                <div ng-show="editForm.contenu.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.contenu.$error.required">
+                        Ce champ est obligatoire.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group" ngf-drop ngf-change="vm.setFichier($file, vm.messageHierachique)">
+                <label class="control-label" for="field_fichier">Fichier</label>
+                <div>
+                    <div ng-if="vm.messageHierachique.fichier" class="help-block clearfix">
+                        <a class="pull-left" ng-click="vm.openFile(vm.messageHierachique.fichierContentType, vm.messageHierachique.fichier)">Ouvrir</a><br>
+                        <span class="pull-left">{{vm.messageHierachique.fichierContentType}}, {{vm.byteSize(vm.messageHierachique.fichier)}}</span>
+                        <button ng-click="vm.messageHierachique.fichier=null;vm.messageHierachique.fichierContentType=null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                    <button type="file" ngf-select class="btn btn-default btn-block"
+                            ngf-change="vm.setFichier($file, vm.messageHierachique)">
+                        Joindre un fichier
                     </button>
                 </div>
-                <button type="file" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setFichier($file, vm.messageHierachique)">
-                    Joindre un fichier
-                </button>
+                <input type="hidden" class="form-control" name="fichier" id="field_fichier"
+                       ng-model="vm.messageHierachique.fichier"
+                />
+                <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
+                       ng-model="vm.messageHierachique.fichierContentType" />
             </div>
-            <input type="hidden" class="form-control" name="fichier" id="field_fichier"
-                   ng-model="vm.messageHierachique.fichier"
-            />
-            <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
-                   ng-model="vm.messageHierachique.fichierContentType" />
-        </div>
 
-        <div class="form-group">
-            <label for="field_projet">Projet</label>
-            <select class="form-control" id="field_projet" name="projet" ng-model="vm.messageHierachique.projet" ng-options="projet as projet.name for projet in vm.projets track by projet.id">
-                <option value=""></option>
+            <div class="form-group">
+                <label for="field_projet">Projet</label>
+                <select class="form-control" id="field_projet" name="projet" ng-model="vm.messageHierachique.projet" ng-options="projet as projet.name for projet in vm.projets track by projet.id">
+                    <option value=""></option>
 
-            </select>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Envoyer</span>
-        </button>
+        <div class="box-footer clearfix">
+            <button style="margin-left:10px;" type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary pull-right">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Envoyer</span>
+            </button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
+            </button>
+        </div>
     </div>
 </form>

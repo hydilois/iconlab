@@ -1,0 +1,18 @@
+<div class=" fadeInDown box box-info">
+    <div class="box-header text-center">
+        <h4 class="box-title">Description du projet</h4>
+        <!-- tools box -->
+        <div class="pull-right box-tools">
+            <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
+                <i class="fa fa-times"></i></button>
+        </div>
+        <!-- /. tools -->
+    </div>
+    <div class="box-body">
+        <p>{{vm.projet.description}}</p>
+        <div class="pull-right" ng-if="vm.projet.fichierProjet">
+            <a type="button" ng-click="vm.openFile(vm.projet.fichierProjetContentType, vm.projet.fichierProjet)">Télécharger</a>
+            {{vm.projet.fichierProjetContentType}}, {{vm.byteSize(vm.projet.fichierProjet)}}
+        </div>
+    </div>
+</div>

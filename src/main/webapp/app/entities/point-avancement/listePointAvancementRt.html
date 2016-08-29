@@ -54,7 +54,7 @@
                 <div class="row card-header">
                     <h4 style="display:inline;" class="text-center"><label>Projet:</label> {{vm.tache.projet.name}}</h4><h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.tache.projet.user.firstName}} {{vm.tache.projet.user.lastName}}</h4>
                     <div class="pull-left card-title">
-                        <div class="icon fa fa-tasks"></div>
+                        <a ui-sref="app.patache.tache-detail({idtache:vm.tache.id})" class="btn btn-primary" href=""><span class="glyphicon glyphicon-eye-open"></span></a>
                         <Label class="title">{{vm.tache.name| limitTo:15}}</Label>
                     </div>
                     <div class="pull-right">

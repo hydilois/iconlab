@@ -14,17 +14,22 @@
 
 
 
-    TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User'];
+    TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User','$uibModalInstance'];
     TacheProjetController.$inject = ['DataUtils','$scope', '$rootScope', '$state', 'entity', 'TacheSpecial', 'CommentaireSpecial', 'DocumentSpecial', 'Principal', 'Commentaire', 'User', 'MessageHierachiqueSpecial'];
     GanttTacheProjetController.$inject = ['$scope', '$rootScope', '$state', 'entity', 'TacheSpecial'];
 
 
-    function TacheDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Tache, Projet, PointAvancement, User) {
+    function TacheDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Tache, Projet, PointAvancement, User,$uibModalInstance) {
         var vm = this;
 
         vm.tache = entity;
+        vm.clear = clear;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
+        }
 
         var unsubscribe = $rootScope.$on('iconlabApp:tacheUpdate', function (event, result) {
             vm.tache = result;

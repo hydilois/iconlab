@@ -1,97 +1,3 @@
-<!--<form name="editForm" name="form" role="form" novalidate ng-submit="vm.save()">
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myTacheLabel">Create or edit a Tache</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-       &lt;!&ndash; <div class="form-group" ng-show="vm.tache.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   ng-model="vm.tache.id" readonly />
-        </div>&ndash;&gt;
-        <div class="form-group">
-            <label class="control-label" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                   ng-model="vm.tache.name"
-            />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                   ng-model="vm.tache.description"
-            />
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setFichierJoint($file, vm.tache)">
-            <label class="control-label" for="field_fichierJoint">Fichier Joint</label>
-            <div>
-                <div ng-if="vm.tache.fichierJoint" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)">open</a><br>
-                    <span class="pull-left">{{vm.tache.fichierJointContentType}}, {{vm.byteSize(vm.tache.fichierJoint)}}</span>
-                    <button ng-click="vm.tache.fichierJoint=null;vm.tache.fichierJointContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="file" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setFichierJoint($file, vm.tache)">
-                    Joindre fichier
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="fichierJoint" id="field_fichierJoint"
-                   ng-model="vm.tache.fichierJoint"
-            />
-            <input type="hidden" class="form-control" name="fichierJointContentType" id="field_fichierJointContentType"
-                   ng-model="vm.tache.fichierJointContentType" />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_role">Role</label>
-            <select class="form-control" name="role" ng-model="vm.tache.role" id="field_role" required>
-                <option value="GRH">GRH</option>
-                <option value="FINANCE">FINANCE</option>
-                <option value="LOGISTIQUE">LOGISTIQUE</option>
-                <option value="EXECUTIVE">EXECUTIVE</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_fromt">Date début</label>
-            <div class="input-group">
-                <input id="field_fromt" type="text" class="form-control" name="fromt" datetime-picker="{{dateformat}}" ng-model="vm.tache.fromt" is-open="vm.datePickerOpenStatus.fromt"
-                       required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fromt')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_tot">Date Fin</label>
-            <div class="input-group">
-                <input id="field_tot" type="text" class="form-control" name="tot" datetime-picker="{{dateformat}}" ng-model="vm.tache.tot" is-open="vm.datePickerOpenStatus.tot"
-                       date-after="vm.tache.fromt" required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('tot')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                <span ng-show="form.tot.$error.dateAfter" class="error">Must be after start date!</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="field_user">Responsable de la tache</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.tache.user" ng-options="user as user.firstName+' '+user.lastName for user in vm.users track by user.id" required>
-                <option value=""></option>
-            </select>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Créér</span>
-        </button>
-    </div>
-</form>-->
 <form class="animated fadeInDown" name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
     <div class="box box-info">
         <div class="box-header text-center">
@@ -177,7 +83,7 @@
             </div>
             <div class="box-footer clearfix">
                 <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" style="margin-left : 4px;" class="btn btn-primary pull-right">
-                    <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enregistrer</span>
+                    <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Créer</span>
                 </button>
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.clear()">
                     <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>

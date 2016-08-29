@@ -202,6 +202,32 @@
                 });
             }]
         })
+            .state('app.tacheprojet.detailuser', {
+                parent: 'app.tacheprojet',
+                url: '/projetdesc/{idprojet}',
+                data: {
+                    authorities: ['ROLE_USER','ROLE_CEO','ROLE_DO','ROLE_PMO']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/projet/detailprojet.html',
+                        controller: 'ProjetDetailController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        windowClass:'center-modal',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Projet', function(Projet) {
+                                return Projet.get({id : $stateParams.idprojet}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('app.tacheprojet', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            })
             .state('app.projetcompte.editmessage', {
                 parent: 'app.projetcompte',
                 url: '/{idedtmess}/editmessage',
@@ -258,7 +284,7 @@
             parent: 'projet',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['ROLE_ADMIN']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

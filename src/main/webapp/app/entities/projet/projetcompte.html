@@ -29,12 +29,6 @@
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <a data-toggle="dropdown" tabindex="-1" href=""><span class="glyphicon glyphicon-envelope"></span>  Messages</a>
-                            <ul class="dropdown-menu fadeInDown">
-                                <li data-ng-repeat="message in vm.listeMeUser"><a ui-sref="app.projetcompte.editmessage({idedtmess:message.id})" ><span class="glyphicon glyphicon-envelope"></span>{{message.contenu | limitTo:20}}</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="glyphicon glyphicon-folder-open"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
                                 <li data-ng-repeat="document in vm.listeDocumentUser"><a ui-sref="app.projetcompte.editdocument({idedtdoc:document.id})"><span class="glyphicon glyphicon-folder-open"></span>  {{document.titre | limitTo:20}}</a></li>
