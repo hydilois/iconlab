@@ -5,9 +5,9 @@
         .module('iconlabApp')
         .controller('PasswordController', PasswordController);
 
-    PasswordController.$inject = ['Auth', 'Principal'];
+    PasswordController.$inject = ['Auth', 'Principal','$state'];
 
-    function PasswordController (Auth, Principal) {
+    function PasswordController (Auth, Principal,$state) {
         var vm = this;
 
         vm.changePassword = changePassword;
@@ -29,6 +29,8 @@
                 Auth.changePassword(vm.password).then(function () {
                     vm.error = null;
                     vm.success = 'OK';
+                    $state.go('home',null,{reload:true});
+                    toastr.info("Modification du mot de passe effectuée avec succès ");
                 }).catch(function () {
                     vm.success = null;
                     vm.error = 'ERROR';

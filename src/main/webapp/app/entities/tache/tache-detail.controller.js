@@ -46,7 +46,7 @@
         function accessCurrentAccount() {
             Principal.identity().then(function (account) {
                 vm.account = account;
-                vm.commentaire.auteur = vm.account.login;
+                vm.commentaire.auteur = vm.account.firstName+" "+vm.account.lastName;
                 vm.commentaire.datePost = new Date();
                 vm.commentaire.projet = vm.projet;
 
@@ -61,7 +61,6 @@
                 console.log('Erreur de recuperation des données');
             });
             DocumentSpecial.getDocumentByCUser().then(function (data) {
-                console.log("I am there");
                 vm.listeDocumentP = data;
             }, function () {
                 console.log('Erreur de recuperation des données');
@@ -125,8 +124,6 @@
                 console.log('Erreur de recuperation des données');
             });
         }
-
-
     }
 
 })();

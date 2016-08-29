@@ -24,7 +24,7 @@
         function accessCurrentAccount(){
             Principal.identity().then(function(account) {
                 vm.account = account;
-                vm.documents.sender =vm.account.login;
+                vm.documents.sender =vm.account.firstName+" "+vm.account.lastName;
 
             });
         }

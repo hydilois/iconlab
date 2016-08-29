@@ -48,7 +48,7 @@
                 <li class="dropdown">
                             <a style="font-size:1.2em;" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
                             <ul class="dropdown-menu animated fadeInDown">
-                                <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
+                                <li ng-show="vm.listeMessageParProjet.length != 0" class=" title text-center">
                                     Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
                                 </li>
                                  <li ng-show="vm.listeMessageParProjet.length == 0"  class="title">
@@ -66,6 +66,7 @@
      <div class="row cardrecompte">
         <div class="card col-md-12">
             <div class="row card-header">
+            <h4 style="display:inline;" class="text-center"><label>Compte:</label> {{vm.projet.compte.nom}}</h4><h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.projet.compte.user.firstName}} {{vm.projet.compte.user.lastName}}</h4>
                 <div class="pull-left card-title">
                  <div class="icon fa fa-users"></div>
                     <Label class="title">{{vm.projet.name | limitTo:15}}</Label>
@@ -100,29 +101,12 @@
           <div class="box box-widget">
             <div class="box-header with-border">
               <div class="user-block">
-                <img ng-show="!vm.projet.user.image" class="img-circle" src="/content/images/photo.png" alt="User Image">
-                <img ng-show="vm.projet.user.image" class="img-circle" data-ng-src="{{'data:' + vm.projet.user.imageContentType + ';base64,' + vm.projet.user.image}}" alt="User Image">
-                <span class="username"><a href="#">{{vm.projet.user.firstName}} {{vm.projet.user.lastName}}</a></span>
+                  <div style="font-size:1.2em;" class="text-center"><i class=" fa fa-comment"></i><label class="text-center"> &nbsp;Commentaires</label></div>
               </div>
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <!-- Attachment -->
-              <div class="attachment-block clearfix">
-                <!-- <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image">
-                <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image"> -->
-
-                <div class="attachment-pushed">
-                  <h4 class="attachment-heading">{{vm.projet.name}}</h4>
-
-                  <div class="attachment-text">
-                    {{vm.projet.description}}</a>
-                  </div>
-                  <!-- /.attachment-text -->
-                </div>
-                <!-- /.attachment-pushed -->
-              </div>
               <!-- /.attachment-block -->
               <span class="pull-right text-muted">{{vm.listeCommentaireParProjet.length}} commentaires</span>
             </div>
@@ -146,7 +130,7 @@
             <!-- /.box-footer -->
             <div class="box-footer">
               <form role="form">
-                <img class="img-responsive img-circle img-sm" src="/content/images/photo.png" alt="Alt Text">
+                <img class="img-responsive img-circle img-sm" src="content/images/photo.png" alt="Alt Text">
                 <!-- .img-push is used to add margin to elements next to floating images -->
                 <div class="img-push">
                   <input type="text" class="form-control" name="contenu" id="field_contenu"

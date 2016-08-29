@@ -53,7 +53,7 @@
                 Auth.createAccount(vm.registerAccount).then(function () {
                     vm.success = 'OK';
                     $state.go('home',null,{reload:true});
-                    toastr.info("Enregistrement Ok ,Attender votre identificqtion par l'administration ");
+                    toastr.info("Enregistrement Ok ,Attendez l'activation de votre compte par l'administration ");
                 }).catch(function (response) {
                     vm.success = null;
                     if (response.status === 400 && response.data === 'login already in use') {

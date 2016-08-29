@@ -1,155 +1,137 @@
 <div class="col-xs-12 well">
-<nav class="navbar navbar-default banniere">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand hidden-md hidden-lg" href="#">Menu</a>
-    </div>
+    <nav class="navbar navbar-default banniere">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-md hidden-lg" href="#">Menu</a>
+        </div>
 
-    <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="" type="button" style="font-size:1.2em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
-                <ul class="dropdown-menu fadeInDown">
-                    <li><a ui-sref="app.patache.newpa"><span class="icon fa fa-hand-o-right"></span> Point Avancement</a></li>
-                    <li><a  ui-sref="app.patache.newdocpa"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
-                </ul>
-            </li>
-             <li class="dropdown">
-            <a href="" style="font-size:1.2em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
-                <ul class="dropdown-menu fadeInDown">
+        <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="" type="button" style="font-size:1.2em;" data-toggle="dropdown"> Nouveau<b class="caret"></b></a>
+                    <ul class="dropdown-menu fadeInDown">
+                        <li><a ui-sref="app.patache.newpa"><span class="icon fa fa-hand-o-right"></span> Point Avancement</a></li>
+                        <li><a  ui-sref="app.patache.newdocpa"><span class="glyphicon glyphicon-folder-open"></span> Document</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" style="font-size:1.2em;" data-toggle="dropdown"> Edition<b class="caret"></b></a>
+                    <ul class="dropdown-menu fadeInDown">
                         <li class="dropdown-submenu">
                             <a data-toggle="dropdown" tabindex="-1" href=""><span class="fa fa-folder"></span>  Documents</a>
                             <ul class="dropdown-menu fadeInDown">
                                 <li ng-repeat="(key, document) in vm.listeDocumentUser"><a ui-sref="app.patache.editdocumentU({iddocpa:document.id})"><span class="fa fa-file"></span> {{document.titre}}</a></li>
                             </ul>
                         </li>
-                </ul>
-            </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li ng-show="vm.listeMessageParProjet.length == 0" class="title">
-                                    Notifications <span class="badge pull-right">0</span>
-                                </li>
-                                <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
-                                    Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
-                                </li>
-                                <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.patache.read({idmess:message.id})">{{message.contenu | limitTo:20}}</a></li>
-                            </ul>
-                        </li>
-              </ul>
-    </div>
-</nav>
-        <div class="row cardrecompte">
-        <div class="col-xs-12">
-    <div class="card">
-        <div class="row card-header">
-            <div class="pull-left card-title">
-             <div class="icon fa fa-tasks"></div>
-                <Label class="title">{{vm.tache.name | limitTo:15}}</Label>
-            </div>
-            <div class="pull-right">
-            <div class="pull-right" ng-if="vm.tache.fichierJoint">
-                <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
-            </div>
-        </div>
-        </div>
-        <div class="card-body no-padding">
-            <div class="step tabs-left card-no-padding">
-                    <ul class="nav nav-tabs cadrePa" role="tablist">
-                     <li data-ng-repeat="pa in vm.listePa"  role="step"  ng-click="setSelected(pa.id)" ng-class="{selectedd: pa.id === idSelectedVote}">
-                        <a ui-sref="app.patache.padetail({idpa : pa.id})" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-                            <div class="icon fa fa-hand-o-right"></div>
-                            <div class="step-title">
-                                <div class="title" >{{pa.libelle | limitTo:15}}</div>
-                            </div>
-                        </a>
-                     </li>
                     </ul>
-                    <div class="tab-content" ui-view="pointavancement">
+                </li>
+            </ul>
 
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i> Messages </a>
+                    <ul class="dropdown-menu animated fadeInDown">
+                        <li ng-show="vm.listeMessageParProjet.length == 0" class="title">
+                            Notifications <span class="badge pull-right">0</span>
+                        </li>
+                        <li ng-show="vm.listeMessageParProjet.length != 0" class="title">
+                            Notifications <span class="badge pull-right">{{vm.listeMessageParProjet.length}}</span>
+                        </li>
+                        <li class="title" ng-repeat="(key, message) in vm.listeMessageParProjet"><a ui-sref="app.patache.read({idmess:message.id})">{{message.contenu| limitTo:20}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row cardrecompte">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="row card-header">
+                    <h4 style="display:inline;" class="text-center"><label>Projet:</label> {{vm.tache.projet.name}}</h4><h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.tache.projet.user.firstName}} {{vm.tache.projet.user.lastName}}</h4>
+                    <div class="pull-left card-title">
+                        <div class="icon fa fa-tasks"></div>
+                        <Label class="title">{{vm.tache.name| limitTo:15}}</Label>
                     </div>
+                    <div class="pull-right">
+                        <div class="pull-right" ng-if="vm.tache.fichierJoint">
+                            <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.tache.fichierJointContentType, vm.tache.fichierJoint)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body no-padding">
+                    <div class="step tabs-left card-no-padding">
+                        <ul class="nav nav-tabs cadrePa" role="tablist">
+                            <li data-ng-repeat="pa in vm.listePa"  role="step"  ng-click="setSelected(pa.id)" ng-class="{selectedd: pa.id === idSelectedVote}">
+                                <a ui-sref="app.patache.padetail({idpa : pa.id})" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                                    <div class="icon fa fa-hand-o-right"></div>
+                                    <div class="step-title">
+                                        <div class="title" >{{pa.libelle| limitTo:15}}</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" ui-view="pointavancement">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-    </div><br>
-                     <!-- Zone de commentaire assàcié à une  -->
-        <div class="row">
-                <div class="col-md-12 col-xs-12">
-          <!-- Box Comment -->
-          <div class="box box-widget">
+</div><br>
+<!-- Zone de commentaire assàcié à une  -->
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <!-- Box Comment -->
+        <div class="box box-widget">
             <div class="box-header with-border">
-              <div class="user-block">
-                <img ng-show="!vm.projet.user.image" class="img-circle" src="/content/images/photo.png" alt="User Image">
-                <img ng-show="vm.projet.user.image" class="img-circle" data-ng-src="{{'data:' + vm.projet.user.imageContentType + ';base64,' + vm.projet.user.image}}" alt="User Image">
-                <span class="username"><a href="#">{{vm.tache.projet.user.firstName}} {{vm.tache.projet.user.lastName}}</a></span>
-              </div>
-              <!-- /.box-tools -->
+                <div class="user-block">
+                    <div style="font-size:1.2em;" class="text-center"><i class=" fa fa-comment"></i><label class="text-center"> &nbsp;Commentaires</label></div>
+                </div>
+                <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <!-- Attachment -->
-              <div class="attachment-block clearfix">
-                <!-- <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image">
-                <img class="attachment-img" src="/content/images/photo.png" alt="Attachment Image"> -->
-
-                <div class="attachment-pushed">
-                  <h4 class="attachment-heading">{{vm.tache.projet.name}}</h4>
-
-                  <div class="attachment-text">
-                    {{vm.tache.projet.description}}</a>
-                  </div>
-                  <!-- /.attachment-text -->
-                </div>
-                <!-- /.attachment-pushed -->
-              </div>
-              <!-- /.attachment-block -->
-              <span class="pull-right text-muted">{{vm.listeCommentairesParTache.length}} commentaires</span>
+                <span class="pull-right text-muted">{{vm.listeCommentairesParTache.length}} commentaires</span>
             </div>
             <!-- /.box-body -->
             <div class="box-footer box-comments">
-              <div ng-repeat="(key, commentaire) in vm.listeCommentairesParTache | orderBy:'- datePost'" class="box-comment">
-                <!-- User image -->
-                <!-- <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image"> -->
-                <span class="img-circle img-sm first-letter">{{commentaire.auteur |uppercase | limitTo:1}}</span>
-                <div class="comment-text">
-                      <span class="username">
-                       {{commentaire.auteur}}
-                        <span class="text-muted pull-right">{{commentaire.datePost | date}}</span>
-                      </span><!-- /.username -->
-                  {{commentaire.contenu}}
+                <div ng-repeat="(key, commentaire) in vm.listeCommentairesParTache | orderBy:'- datePost'" class="box-comment">
+                    <!-- User image -->
+                    <!-- <img class="img-circle img-sm" src="/content/images/photo.png" alt="User Image"> -->
+                    <span class="img-circle img-sm first-letter">{{commentaire.auteur|uppercase | limitTo:1}}</span>
+                    <div class="comment-text">
+                        <span class="username">
+                            {{commentaire.auteur}}
+                            <span class="text-muted pull-right">{{commentaire.datePost| date}}</span>
+                        </span><!-- /.username -->
+                        {{commentaire.contenu}}
+                    </div>
+                    <!-- /.comment-text -->
                 </div>
-                <!-- /.comment-text -->
-              </div>
-              <!-- /.box-comment -->
+                <!-- /.box-comment -->
             </div>
             <!-- /.box-footer -->
             <div class="box-footer">
-              <form role="form">
-                <img class="img-responsive img-circle img-sm" src="/content/images/photo.png" alt="Alt Text">
-                <!-- .img-push is used to add margin to elements next to floating images -->
-                <div class="img-push">
-                  <input type="text" class="form-control" name="contenu" id="field_contenu"
-                    ng-model="vm.commentaire.contenu"
-                    required ng-keyup="$event.keyCode == 13 && savecomment()"/>
-                  <!-- <button ng-click="savecomment()" class="btn btn-primary">Commenter</button> -->
-                </div>
-              </form>
+                <form role="form">
+                    <img class="img-responsive img-circle img-sm" src="content/images/photo.png" alt="Alt Text">
+                    <!-- .img-push is used to add margin to elements next to floating images -->
+                    <div class="img-push">
+                        <input type="text" class="form-control" name="contenu" id="field_contenu"
+                               ng-model="vm.commentaire.contenu"
+                               required ng-keyup="$event.keyCode == 13 && savecomment()"/>
+                        <!-- <button ng-click="savecomment()" class="btn btn-primary">Commenter</button> -->
+                    </div>
+                </form>
             </div>
             <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
         </div>
-            </div>
+        <!-- /.box -->
     </div>
+</div>
 

@@ -1,10 +1,10 @@
 <div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2>User settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
+            <h3>Modification des paramètres de  [<b>{{vm.settingsAccount.firstName}} {{vm.settingsAccount.lastName}}</b>]</h3>
 
             <div class="alert alert-success" ng-show="vm.success">
-                <strong>Settings saved!</strong>
+                <strong> Modifications effectuées avec succès!</strong>
             </div>
 
            <jhi-alert-error></jhi-alert-error>
@@ -12,40 +12,40 @@
             <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
                 <div class="form-group">
-                    <label class="control-label" for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your first name"
+                    <label class="control-label" for="firstName">Nom</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Votre nom"
                            ng-model="vm.settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
                         <p class="help-block"
                                ng-show="form.firstName.$error.required">
-                            Your first name is required.
+                            Votre nom est obligatoire.
                         </p>
                         <p class="help-block"
                                ng-show="form.firstName.$error.minlength">
-                            Your first name is required to be at least 1 character.
+                            Votre nom doit avoir au moins 1 caractère.
                         </p>
                         <p class="help-block"
                                ng-show="form.firstName.$error.maxlength">
-                            Your first name cannot be longer than 50 characters.
+                            Votre nom ne doit pas dépasser 50 caractères.
                         </p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="lastName">Last Name</label>
+                    <label class="control-label" for="lastName">Prenom</label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your last name"
                            ng-model="vm.settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
                         <p class="help-block"
                                ng-show="form.lastName.$error.required">
-                            Your last name is required.
+                            Votre prenom est obligatoire.
                         </p>
                         <p class="help-block"
                                ng-show="form.lastName.$error.minlength">
-                            Your last name is required to be at least 1 character.
+                            Votre prenom doit avoir au moins 1 caractère.
                         </p>
                         <p class="help-block"
                                ng-show="form.lastName.$error.maxlength">
-                            Your last name cannot be longer than 50 characters.
+                            Votre prenom ne doit pas dépasser 50 caractères.
                         </p>
                     </div>
                 </div>
@@ -56,26 +56,70 @@
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
                                ng-show="form.email.$error.required">
-                            Your e-mail is required.
+                            Votre e-mail est obligatoire.
                         </p>
                         <p class="help-block"
                                ng-show="form.email.$error.email">
-                            Your e-mail is invalid.
+                            Votre e-mail est invalide.
                         </p>
                         <p class="help-block"
                                ng-show="form.email.$error.minlength">
-                            Your e-mail is required to be at least 5 characters.
+                            Votre e-mail doit avoir au moins 1 caractère.
                         </p>
                         <p class="help-block"
                                ng-show="form.email.$error.maxlength">
-                            Your e-mail cannot be longer than 100 characters.
+                            Votre e-mail ne doit pas dépasser 50 caractères.
                         </p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <!-- <label class="control-label" for="phonenumber">Numéro de Téléphone</label> -->
+                    <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Numéro de téléphone"
+                           ng-model="vm.settingsAccount.phonenumber" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[0-9+]*$/" required><!--_'.@A-Za-z - -->
+                    <div ng-show="form.phonenumber.$dirty && form.phonenumber.$invalid">
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.required">
+                            Votre numéro de téléphone est obligatoire.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.minlength">
+                            Votre numéro de téléphone doit avoir au moins 1 caractère.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.maxlength">
+                            Votre numéro de téléphone  ne doit pas dépasser 50 caractères.
+                        </p>
+                        <p class="help-block"
+                               ng-show="form.phonenumber.$error.pattern">
+                            Votre numéro de téléphone ne doit contenir que des minuscules ou des chiffres .
+                    </p>
+                    </div>
+                </div>
+                <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.settingsAccount)" ngf-pattern="'image/*'">
+                        <!-- <label class="control-label" for="field_image">Profil Image</label> -->
+                        <div>
+                            <img data-ng-src="{{'data:' + vm.settingsAccount.imageContentType + ';base64,' + vm.settingsAccount.image}}" style="max-height: 100px;" ng-if="vm.settingsAccount.image"/>
+                            <div ng-if="vm.settingsAccount.image" class="help-block clearfix">
+                                <span class="pull-left">{{vm.settingsAccount.imageContentType}}, {{vm.byteSize(vm.settingsAccount.image)}}</span>
+                                <button ng-click="vm.settingsAccount.image=null;vm.settingsAccount.imageContentType=null;"
+                                        class="btn btn-default btn-xs pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                            <button type="file" ngf-select class="btn btn-default btn-block"
+                                    ngf-change="vm.setImage($file, vm.settingsAccount)" accept="image/*">
+                                Photo de profil
+                            </button>
+                        </div>
+                        <input type="hidden" class="form-control" name="image" id="field_image"
+                               ng-model="vm.settingsAccount.image"
+                        />
+                        <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                               ng-model="vm.settingsAccount.imageContentType" />
+                    </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Enregistrer</button>
             </form>
         </div>
     </div>
-
 </div>

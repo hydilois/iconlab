@@ -1,5 +1,3 @@
-<!-- <div class="cadrearticle" ui-view="article"></div> -->
-
 <div ng-cloak>
     <div ng-switch="vm.isAuthenticated()">
         <div   has-authority="ROLE_ADMIN" ng-switch-when="true">
@@ -162,12 +160,12 @@
         <div class="row animsortie cadrearticle" ng-switch-when="false">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal |startFrom:(currentPageArticles - 1) * pageSizeUsers |limitTo:pageSizeArticles">
+                <div class="cardArticle" data-ng-repeat="article in vm.listeArticlesTotal |startFrom:(currentPageArticles - 1) * pageSizeUsers |limitTo:pageSizeArticles | orderBy:'- datePub'">
                     <div class="card-header"></div>
                     <div class="card-body">
                         <div ng-if="article.image">
                             <a ui-sref="articleinfo({idarticle:article.id})">
-                                <img title="{{article.titre}}" class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;height:100%"/>
+                                <img title="{{article.titre}}" class="img-rounded" data-ng-src="{{'data:' + article.imageContentType + ';base64,' + article.image}}" style="width:100%;min-height:222px;"/>
                             </a>
                         </div>
                         <div ng-if="!article.image">
@@ -183,8 +181,8 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <div class="row">
-                    <div class="col-md-offset-5"><uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination></div>
+            <div class="text-center">
+                <uib-pagination class="pagination-sm" items-per-page="pageSizeArticles" total-items="vm.listeArticlesTotal.length " ng-model="currentPageArticles"></uib-pagination>
                 </div>
         </div>
     </div>

@@ -1,11 +1,11 @@
 <div>
-    <h2>Active sessions for [<b>{{vm.account.login}}</b>]</h2>
+    <h2>Sessions actives de[<b>{{vm.account.firstName}} {{vm.account.lastName}}</b>]</h2>
 
     <div class="alert alert-success" ng-show="vm.success">
-        <strong>Session invalidated!</strong>
+        <strong>Session invalidée!</strong>
     </div>
     <div class="alert alert-danger" ng-show="vm.error">
-        <strong>An error has occured!</strong> The session could not be invalidated.
+        <strong>Une erreur est survenue!</strong> La session n'a pas pu être invalidée.
     </div>
 
     <div class="table-responsive">
@@ -13,7 +13,7 @@
             <thead>
                 <tr>
                     <th>IP Address</th>
-                    <th>User agent</th>
+                    <th>Agent utilisateur</th>
                     <th>Date</th>
                     <th></th>
                 </tr>
@@ -27,7 +27,7 @@
                         <button type="submit"
                                 class="btn btn-primary"
                                 ng-click="vm.invalidate(session.series)">
-                                 Invalidate
+                                 Invalider
                         </button>
                     </td>
                 </tr>

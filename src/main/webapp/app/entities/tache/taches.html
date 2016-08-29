@@ -1,5 +1,5 @@
 <div>
-    <h2>Taches</h2>
+    <h2>Liste des Taches</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +7,7 @@
                 <button class="btn btn-primary" ui-sref="tache.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span class="hidden-xs" >
-                        Create new Tache
+                        Créer une nouvelle Tache
                     </span>
                 </button>
             </div>
@@ -43,7 +43,7 @@
                 <th jh-sort-by="tot"><span>To</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="actif"><span>Actif</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="projet.id"><span>Projet</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="user.id"><span>Responsable</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th></th>
             </tr>
             </thead>
@@ -57,10 +57,10 @@
                 <td>{{tache.tot | date:'medium'}}</td>
                 <td>{{tache.actif}}</td>
                 <td>
-                    <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.id}}</a>
+                    <a ui-sref="projet-detail({id:tache.projet.id})">{{tache.projet.name}}</a>
                 </td>
                 <td>
-                    {{tache.user.id}}
+                    {{tache.user.firstName}} {{tache.user.lastName}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

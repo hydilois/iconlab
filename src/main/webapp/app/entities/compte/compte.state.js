@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/compte?page&sort&search',
             data: {
-                authorities: ['ROLE_USER','ROLE_CEO'],
+                authorities: ['ROLE_CEO','ROLE_DO','ROLE_ADMIN','ROLE_PMO'],
                 pageTitle: 'Comptes'
             },
             views: {

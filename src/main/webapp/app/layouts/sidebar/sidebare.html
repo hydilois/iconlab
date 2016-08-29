@@ -16,12 +16,12 @@
                     <li ui-sref-active="active">
                         <a ui-sref="home">
                             <span class="icon fa fa-home fa-fw"></span>&nbsp;
-                            <span class="title">Home</span>
+                            <span class="title">Acceuil</span>
                         </a>
                     </li>
                     <li   ng-class="{active: vm.$state.includes('entity')}" has-any-authority="ROLE_CEO,ROLE_PMO, ROLE_DO, ROLE_GRH, ROLE_FINANCE, ROLE_LOGISTIQUE" ng-switch-when="true" class="panel panel-default dropdown">
                         <a ng-show="vm.listeComptesTotal.length != 0" data-toggle="collapse" href="#dropdown-elementany">
-                            <span class="icon fa  fa-list"></span><span class="title">Comptes</span>
+                            <span class="icon fa  fa-object-group"></span><span class="title">Comptes</span>
                         </a>
                         <div id="dropdown-elementany" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -90,7 +90,7 @@
                     </li>
                     <li  ng-class="{active: vm.$state.includes('entity')}" has-authority="ROLE_ADMIN" ng-switch-when="true" class="panel panel-default dropdown">
                         <a data-toggle="collapse" href="#dropdown-element1">
-                            <span class="icon fa fa-desktop"></span><span class="title">Entities</span>
+                            <span class="icon fa fa-desktop"></span><span class="title">Données</span>
                         </a>
                         <div id="dropdown-element1" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -161,15 +161,15 @@
                                         </a>
                                     </li>
                                     <li ui-sref-active="active">
-                                        <a ui-sref="jhi-metrics" ng-click="vm.collapseSidebar()">
-                                            <span class="glyphicon glyphicon-dashboard"></span>&nbsp;
-                                            <span>Metrics</span>
-                                        </a>
-                                    </li>
-                                    <li ui-sref-active="active">
                                         <a ui-sref="jhi-health" ng-click="vm.collapseSidebar()">
                                             <span class="glyphicon glyphicon-heart"></span>&nbsp;
                                             <span>Health</span>
+                                        </a>
+                                    </li>
+                                    <li ui-sref-active="active">
+                                        <a ui-sref="jhi-metrics" ng-click="vm.collapseSidebar()">
+                                            <span class="glyphicon glyphicon-dashboard"></span>&nbsp;
+                                            <span>Metrics</span>
                                         </a>
                                     </li>
                                     <li ui-sref-active="active">
@@ -202,8 +202,4 @@
                     </div>
                 </div>
 </nav>
-    <div class="listeProjet">
-        <span>Liste des projets</span>
-
-    </div>
 </div>

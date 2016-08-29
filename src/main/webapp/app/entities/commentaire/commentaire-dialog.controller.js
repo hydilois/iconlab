@@ -23,7 +23,7 @@
         function accessCurrentAccount(){
             Principal.identity().then(function(account) {
                 vm.account = account;
-                vm.commentaire.auteur =vm.account.login;
+                vm.commentaire.auteur =vm.account.firstName+" "+vm.account.lastName;
                 console.log(vm.account);
             });
         }

@@ -4,19 +4,19 @@
             <h1 class="text-center">Enregistrement</h1>
 
             <div class="alert alert-success" ng-show="vm.success">
-                <strong>Enregistrement effectué avec succès!</strong> Please check your email for confirmation.
+                <strong>Enregistrement effectué avec succès!</strong> Contacter l'administrateur pour l'activation de votre compte.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.error">
                 <strong>Echec d'enregistrement!</strong> Réessayer.
             </div>
 
-            <div class="alert alert-danger" ng-show="vm.errorregisterAccountExists">
-                <strong>Login name already registered!</strong> Please choose another one.
+            <div class="alert alert-danger" ng-show="vm.errorUserExists">
+                <strong>Login déjà en cours d'utilisation!</strong> S'il vous choisissez un autre.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.errorEmailExists">
-                <strong>E-mail déja en cours d'utilsation!</strong> Please choose another one.
+                <strong>E-mail déja en cours d'utilisation!</strong> S'il vous choisissez un autre.
             </div>
 
             <div class="alert alert-danger" ng-show="vm.doNotMatch">
