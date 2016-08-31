@@ -69,7 +69,7 @@
             <h4 style="display:inline;" class="text-center"><label>Compte:</label> {{vm.projet.compte.nom}}</h4>
                 <h4  style="display:inline; margin-left:200px;"> <label>Responsable:</label> {{vm.projet.compte.user.firstName}} {{vm.projet.compte.user.lastName}}</h4>
                 <div class="pull-left card-title">
-                    <a ui-sref="app.tacheprojet.detailuser({idprojet:vm.projet.id})" class="btn btn-primary" href=""><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a ui-sref="app.tacheprojet.detailuser({idprojet:vm.projet.id})" class="btn btn-primary"><span style="color: white" class="glyphicon glyphicon-eye-open"></span></a>
                     <Label class="title">{{vm.projet.name | limitTo:15}}</Label>
                 </div>
                 <div class="pull-right" ng-if="vm.projet.fichierProjet">

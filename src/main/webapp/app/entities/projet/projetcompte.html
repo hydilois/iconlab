@@ -57,7 +57,8 @@
             <div class=" card-header">
 
                 <div class="card-title">
-                    <div class="fa fa-object-group"></div>
+                    <div ng-show="!vm.compte.logo" class="fa fa-object-group" style="font-size:20px;"></div>
+                    <div style="display: inline;" ng-show="vm.compte.logo"><img data-ng-src="{{'data:' + vm.compte.logoContentType + ';base64,' + vm.compte.logo}}" style="max-height: 30px;"/></div>
                     <Label class="title">{{vm.compte.nom | limitTo:15}}</Label>
                 </div>
             </div>

@@ -43,7 +43,8 @@
                 templateUrl: 'app/admin/health/health.modal.html',
                 controller: 'HealthModalController',
                 controllerAs: 'vm',
-                size: 'lg',
+                windowClass:'center-modal',
+                size: 'md',
                 resolve: {
                     currentHealth: function() {
                         return health;
