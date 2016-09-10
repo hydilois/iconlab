@@ -294,6 +294,7 @@
                     templateUrl: 'app/entities/documents/documents-delete-dialog.html',
                     controller: 'DocumentsDeleteController',
                     controllerAs: 'vm',
+                    windowClass:'center-modal',
                     size: 'md',
                     resolve: {
                         entity: ['Documents', function(Documents) {

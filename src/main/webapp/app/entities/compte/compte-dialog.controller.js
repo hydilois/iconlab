@@ -40,7 +40,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:compteUpdate', result);
             $uibModalInstance.close(result);
-            toastr.info("Enregistrement du compte effectué avec Succès");
+            toastr.success("Compte créé");
             vm.isSaving = false;
         }
 

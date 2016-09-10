@@ -53,7 +53,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:messageHierachiqueUpdate', result);
             $uibModalInstance.close(result);
-            toastr.info("Opération effectuée avec Succès");
+            toastr.info("Notification envoyée");
             vm.isSaving = false;
         }
 

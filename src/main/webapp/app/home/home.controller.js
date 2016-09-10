@@ -9,11 +9,11 @@
         .controller('AcceuilInfoController', AcceuilInfoController);
 
 
-    HomeController.$inject = ['$scope', 'Principal','TacheSpecial','Article','Projet', 'LoginService', '$state','Documents','DataUtils','User'];
+    HomeController.$inject = ['$scope', 'Principal','TacheSpecial','Article','Projet', 'LoginService', '$state','Documents','DataUtils','User','Message'];
     AcceuilInfoController.$inject = ['$scope', 'Principal','Article','Projet', 'LoginService', '$state'];
 
 
-    function HomeController ($scope, Principal,TacheSpecial,Article,Projet,LoginService, $state,Documents ,DataUtils,User) {
+    function HomeController ($scope, Principal,TacheSpecial,Article,Projet,LoginService, $state,Documents ,DataUtils,User,Message) {
         var vm = this;
 
         vm.account = null;
@@ -33,6 +33,9 @@
 
         $scope.pageSizeArticles = 8;
         $scope.currentPageArticles = 1;
+
+        $scope.pageSizeMess = 8;
+        $scope.currentPageMess = 1;
 
 
 
@@ -74,17 +77,17 @@
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com", "Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com","Message","Users"]
                     },
                     series: [
                         {
-                            values: [$scope.data[0], $scope.data[1], $scope.data[2], $scope.data[3], $scope.data[4], $scope.data[5], $scope.data[6], $scope.data[7], $scope.data[8]],
+                            values: [$scope.data[0], $scope.data[1], $scope.data[2], $scope.data[3], $scope.data[4], $scope.data[5], $scope.data[6], $scope.data[7], $scope.data[8],$scope.data[9]],
                             backgroundColor: "#4DC0CF"
                         }
                     ]
                 };
                 var somme = 0;
-                for (var i = 0; i < 9; i++) {
+                for (var i = 0; i < 10; i++) {
                     somme = somme + $scope.data[i];
                 }
 
@@ -103,11 +106,11 @@
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com", "Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com","Message", "Users"]
                     },
                     series: [
                         {
-                            values: [Math.round(($scope.data[0] / somme) * 100), Math.round(($scope.data[1] / somme) * 100), Math.round(($scope.data[2] / somme) * 100), Math.round(($scope.data[3] / somme) * 100), Math.round(($scope.data[4] / somme) * 100), Math.round(($scope.data[5] / somme) * 100), Math.round(($scope.data[6] / somme) * 100), Math.round(($scope.data[7] / somme) * 100), Math.round(($scope.data[8] / somme) * 100)],
+                            values: [Math.round(($scope.data[0] / somme) * 100), Math.round(($scope.data[1] / somme) * 100), Math.round(($scope.data[2] / somme) * 100), Math.round(($scope.data[3] / somme) * 100), Math.round(($scope.data[4] / somme) * 100), Math.round(($scope.data[5] / somme) * 100), Math.round(($scope.data[6] / somme) * 100), Math.round(($scope.data[7] / somme) * 100), Math.round(($scope.data[8] / somme) * 100), Math.round(($scope.data[9] / somme) * 100)],
                             backgroundColor: "#4DC0CF"
                         }
                     ]
@@ -126,6 +129,7 @@
             getAccount();
             loadAllDocuments();
             loadAllUsers();
+            loadAllMessage();
             //$()
         });
         if(!vm.isAuthenticated()){
@@ -133,7 +137,8 @@
         }else{
         getAccount();
         loadAllDocuments();
-        loadAllUsers();}
+        loadAllUsers();
+            loadAllMessage();}
 
         if($state.params.id){
             loadAllProjetHome();
@@ -165,6 +170,28 @@
             }, function () {
                 console.log("Erreur de recuperation des données");
             });
+        }
+
+        function loadAllMessage() {
+            vm.listeMessageTotal = [];
+            vm.listeMessageLocal = [];
+            Message.query().$promise.then(function (data) {
+                vm.listeMessageTotal = data;
+                filterMessage();
+            }, function () {
+                console.log("Erreur de recuperation des données");
+            });
+        }
+
+        function filterMessage(){
+            for(var i=0; i<vm.listeMessageTotal.length;i++){
+                console.log(vm.listeMessageTotal);
+                for(var j=0; j<vm.listeMessageTotal[i].users.length; j++){
+                    if(vm.listeMessageTotal[i].users[j].email === vm.account.email){
+                        vm.listeMessageLocal.push(vm.listeMessageTotal[i]);
+                    }
+                }
+            }
         }
 
         function documentbelonging(donnee){

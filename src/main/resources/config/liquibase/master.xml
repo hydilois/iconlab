@@ -12,6 +12,7 @@
     <include file="classpath:config/liquibase/changelog/20160722104004_added_entity_Commentaire.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104006_added_entity_Tache.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104007_added_entity_MessageHierachique.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160722104008_added_entity_Message.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104005_added_entity_PointAvancement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160722104000_added_entity_constraints_Compte.xml" relativeToChangelogFile="false"/>
@@ -21,6 +22,7 @@
     <include file="classpath:config/liquibase/changelog/20160722104004_added_entity_constraints_Commentaire.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104006_added_entity_constraints_Tache.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104007_added_entity_constraints_MessageHierachique.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160722104008_added_entity_constraints_Message.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160722104005_added_entity_constraints_PointAvancement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

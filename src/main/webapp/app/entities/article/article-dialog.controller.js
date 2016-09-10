@@ -51,7 +51,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:articleUpdate', result);
             $uibModalInstance.close(result);
-            toastr.info("opération effectuée avec Succès");
+            toastr.info("Article Publiée");
             vm.isSaving = false;
         }
 

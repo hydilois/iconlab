@@ -51,7 +51,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:projetUpdate', result);
             $uibModalInstance.close(result);
-            toastr.info("Enregistrement du projet effectué avec Succès");
+            toastr.info("Projet Créé");
             vm.isSaving = false;
         }
 

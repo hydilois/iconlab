@@ -15,7 +15,7 @@
 
 
     TacheDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Tache', 'Projet', 'PointAvancement', 'User','$uibModalInstance'];
-    TacheProjetController.$inject = ['DataUtils','$scope', '$rootScope', '$state', 'entity', 'TacheSpecial', 'CommentaireSpecial', 'DocumentSpecial', 'Principal', 'Commentaire', 'User', 'MessageHierachiqueSpecial'];
+    TacheProjetController.$inject = ['$interval','DataUtils','$scope', '$rootScope', '$state', 'entity', 'TacheSpecial', 'CommentaireSpecial', 'DocumentSpecial', 'Principal', 'Commentaire', 'User', 'MessageHierachiqueSpecial'];
     GanttTacheProjetController.$inject = ['$scope', '$rootScope', '$state', 'entity', 'TacheSpecial'];
 
 
@@ -37,7 +37,7 @@
         $scope.$on('$destroy', unsubscribe);
     }
     ;
-    function TacheProjetController(DataUtils,$scope, $rootScope, $state, entity, TacheSpecial, CommentaireSpecial, DocumentSpecial, Principal, Commentaire, User, MessageHierachiqueSpecial) {
+    function TacheProjetController($interval,DataUtils,$scope, $rootScope, $state, entity, TacheSpecial, CommentaireSpecial, DocumentSpecial, Principal, Commentaire, User, MessageHierachiqueSpecial) {
         var vm = this;
         vm.projet = entity;
         vm.byteSize = DataUtils.byteSize;
@@ -76,21 +76,35 @@
             }, function () {
                 console.log('Erreur de recuperation des données');
             });
-            CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data) {
+            /*CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data) {
                 vm.listeCommentaireParProjet = data;
             }, function () {
                 console.log('Erreur de recuperation des données');
-            });
+            });*/
 
             MessageHierachiqueSpecial.getMessageByProjet($state.params.idprojet).then(function (data) {
                 vm.listeMessageParProjet = data;
             }, function () {
                 console.log("Erreur");
             });
-        }
 
+             }
+
+/*
+            $interval(function(){//pour aclualiser les donnees apres 100 ms
+                
+              if ($state.params.idprojet) {
+                CommentaireSpecial.getCommentaireByProject($state.params.idprojet).then(function (data) {
+                vm.listeCommentaireParProjet = data;
+                 }, function () {
+                 console.log('Erreur de recuperation des données');
+                });
+             }  
+            },100);
+*/
         $scope.savecomment = function () {
             //vm.isSaving = true;
+            $state.go('app.tacheprojet', null, {reload: true});
             accessCurrentAccount();
             Commentaire.save(vm.commentaire);
             $state.go('app.tacheprojet', null, {reload: true});

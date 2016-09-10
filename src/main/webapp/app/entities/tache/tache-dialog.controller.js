@@ -43,10 +43,8 @@
             } else {
                 if ($state.params.idprojet){
                     vm.tache.projet = vm.pojetP;
-                    console.log("pojet est 13..."+vm.pojetP);
                 }
                 vm.tache.actif = true;
-                console.log("pojet est 13..."+vm.pojetP);
                 Tache.save(vm.tache, onSaveSuccess, onSaveError);
             }
         }
@@ -54,7 +52,7 @@
         function onSaveSuccess (result) {
             $scope.$emit('iconlabApp:tacheUpdate', result);
             $uibModalInstance.close(result);
-            toastr.info("Enregistrement de la tâche effectué avec Succès");
+            toastr.info("Tache créée");
             vm.isSaving = false;
         }
 

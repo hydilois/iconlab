@@ -43,6 +43,10 @@ public class StatistikDashboardService {
     private TacheRepository tacheRepository;
 
     @Inject
+    private MessageRepository messageRepository;
+
+
+    @Inject
     private UserRepository userRepository;
 
 
@@ -59,6 +63,7 @@ public class StatistikDashboardService {
         int listeMessageHierachiques = messageHierachiqueRepository.findAll().size();
         int listePointAvancements = pointAvancementRepository.findAll().size();
         int listeProjets = projetRepository.findAll().size();
+        int listeMessages = messageRepository.findAll().size();
         int listeUsers = userRepository.findAll().size();
 
 
@@ -70,9 +75,9 @@ public class StatistikDashboardService {
         listeretour.add(5,listeComptes);
         listeretour.add(6,listeArticles);
         listeretour.add(7,listeCommentaires);
-        listeretour.add(8,listeUsers);
+        listeretour.add(8,listeMessages);
+        listeretour.add(9,listeUsers);
 
-        System.out.println(listeTaches+" i m here "+listeArticles+"edmin "+listeDocuments);
 
         return listeretour;
     }

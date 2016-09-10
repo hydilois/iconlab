@@ -196,9 +196,8 @@ public class UserResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(managedUserDTOs, headers, HttpStatus.OK);
     }
-    
     /**
- 
+
 
     /**
      * GET  /users/:login : get the "login" user.
