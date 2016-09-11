@@ -73,11 +73,11 @@
                     title: {
                         backgroundColor: "transparent",
                         fontColor: "black",
-                        text: "Data base counter line chart "
+                        text: "Diagramme d'effectif de données "
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com","Message","Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "Notifications", "Comptes", "Articles", "Com","Messages","Users"]
                     },
                     series: [
                         {
@@ -102,11 +102,11 @@
                     title: {
                         backgroundColor: "transparent",
                         fontColor: "black",
-                        text: "Data base counter bar chart "
+                        text: "Diagramme de Proportion des données en %"
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "MH", "Comptes", "Articles", "Com","Message", "Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "Notifications", "Comptes", "Articles", "Com","Messages", "Users"]
                     },
                     series: [
                         {
