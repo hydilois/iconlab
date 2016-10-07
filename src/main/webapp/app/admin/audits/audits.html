@@ -3,11 +3,11 @@
 
     <div class="row">
         <div class="col-md-5">
-            <h4>Filter by date</h4>
+            <h4>Filtrer par date</h4>
             <p class="input-group">
-                <span class="input-group-addon">from</span>
+                <span class="input-group-addon">De</span>
                 <input type="date" class="input-sm form-control" name="start" ng-model="vm.fromDate" ng-change="vm.onChangeDate()" required/>
-                <span class="input-group-addon">to</span>
+                <span class="input-group-addon">A</span>
                 <input type="date" class="input-sm form-control" name="end" ng-model="vm.toDate" ng-change="vm.onChangeDate()" required/>
             </p>
         </div>
@@ -18,8 +18,8 @@
         <thead>
         <tr>
             <th ng-click="predicate = 'timestamp'; reverse=!reverse"><span>Date</span></th>
-            <th ng-click="predicate = 'principal'; reverse=!reverse"><span>User</span></th>
-            <th ng-click="predicate = 'type'; reverse=!reverse"><span>State</span></th>
+            <th ng-click="predicate = 'principal'; reverse=!reverse"><span>Utilisateur</span></th>
+            <th ng-click="predicate = 'type'; reverse=!reverse"><span>Etat</span></th>
             <th ng-click="predicate = 'data.message'; reverse=!reverse"><span>Extra data</span></th>
         </tr>
         </thead>

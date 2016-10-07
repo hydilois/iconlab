@@ -32,7 +32,8 @@
             Principal.identity().then(function(account) {
                 vm.account = account;
                 vm.article.auteur =vm.account.firstName+" "+vm.account.lastName;
-                console.log(vm.account);
+                vm.article.datePub = new Date();
+                //console.log(vm.account);
             });
         }
 

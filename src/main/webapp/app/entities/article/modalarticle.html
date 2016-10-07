@@ -26,7 +26,7 @@
               </div>
               <div class="box-footer clearfix">
                 <div class="row">
-      <h5 class="col-md-3">Article redigé par: {{vm.article.user.login}}</h5>
+      <h5 class="col-md-5">Article redigé par: <strong>{{vm.article.auteur}}</strong></h5>
       <div class="col-md-offset-6 col-md-2" ng-if="vm.article.fichier">
                   <a type="button" class="btn btn-primary" style="color:white;" ng-click="vm.openFile(vm.article.fichierContentType, vm.article.fichier)"><i class="fa fa-download" aria-hidden="true"></i> Télécharger fichier joint</a>
               </div>

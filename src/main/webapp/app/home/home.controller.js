@@ -77,7 +77,7 @@
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "Notifications", "Comptes", "Articles", "Com","Messages","Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "Notif", "Comptes", "Articles", "Com","SMS","Users"]
                     },
                     series: [
                         {
@@ -106,7 +106,7 @@
                     },
                     backgroundColor: "transparent",
                     "scale-x": {
-                        "labels": ["Taches", "PA", "Doc", "Projets", "Notifications", "Comptes", "Articles", "Com","Messages", "Users"]
+                        "labels": ["Taches", "PA", "Doc", "Projets", "Notif", "Comptes", "Article", "Com","SMS", "Users"]
                     },
                     series: [
                         {

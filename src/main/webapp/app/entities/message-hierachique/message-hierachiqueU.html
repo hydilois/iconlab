@@ -2,7 +2,7 @@
     <div class="box box-info">
         <div class="box-header text-center">
             <i class="fa fa-file"></i>
-            <h4 ng-show="!vm.pointAvancement.id" class="box-title">Nouvelle Notification hierarchique </h4>
+            <h4 ng-show="!vm.pointAvancement.id" class="box-title">Nouvelle Notification</h4>
             <!-- tools box -->
             <div class="pull-right box-tools">
                 <button ng-click="vm.clear()" type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer">
@@ -14,9 +14,9 @@
             <jhi-alert-error></jhi-alert-error>
             <div class="form-group">
                 <label class="control-label" for="field_contenu">Contenu</label>
-                <input type="text" class="form-control" name="contenu" id="field_contenu"
+                <textarea row="3" type="text" class="form-control" name="contenu" id="field_contenu"
                        ng-model="vm.messageHierachique.contenu"
-                       required />
+                       required ></textarea>
                 <div ng-show="editForm.contenu.$invalid">
                     <p class="help-block"
                        ng-show="editForm.contenu.$error.required">
